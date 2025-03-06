@@ -19,79 +19,38 @@
 
         const letterArray = ['E', 't', 'c', 'h', '-', 'a', '-', 's', 'k', 'e', 't', 'c', 'h', '!']
 
+        const setTimes = [1000, 1000, 2500, 2600, 2690, 3000, 3200, 3300, 3400, 3600, 3700, 3770, 3860, 3920, 5000]
+        
         function absoluteTimer(element, array) {
             element.textContent = ''
             let i = 0
-            
-                setTimeout(() => {
-                    element.textContent += array[i]
-                    i++
-                }, 1000)
+            // Picking delay from array
+            const pickDelay = (array) => {
+                for (i = 0; i < array.length; i++) {
+                    let delay = array[i]
+                    if (i === array.length) {
+                        break;
+                    }
+                } 
 
+                for (i = array.length - 1; i > 0; i--) {
+                    
+                }
+            }
+            // Setting delay with each letter and increminting 
+            const setTime = (func, delay) => {
                 setTimeout(() => {
                     element.textContent += array[i]
                     i++
-                }, 2500)
+                }, delay)
+            }
+            /*
+            const decrementing = () => {
+                i = array.length - 1
 
-                setTimeout(() => {
-                    element.textContent += array[i]
-                    i++
-                }, 2600)
-
-                setTimeout(() => {
-                    element.textContent += array[i]
-                    i++
-                }, 2690)
-
-                setTimeout(() => {
-                    element.textContent += array[i]
-                    i++
-                }, 3000)
-
-                setTimeout(() => {
-                    element.textContent += array[i]
-                    i++
-                }, 3200)
-
-                setTimeout(() => {
-                    element.textContent += array[i]
-                    i++
-                }, 3300)
-
-                setTimeout(() => {
-                    element.textContent += array[i]
-                    i++
-                }, 3500)
-
-                setTimeout(() => {
-                    element.textContent += array[i]
-                    i++
-                }, 3600)
-
-                setTimeout(() => {
-                    element.textContent += array[i]
-                    i++
-                }, 3700)
-
-                setTimeout(() => {
-                    element.textContent += array[i]
-                    i++
-                }, 3770)
-
-                setTimeout(() => {
-                    element.textContent += array[i]
-                    i++
-                }, 3860)
-
-                setTimeout(() => {
-                    element.textContent += array[i]
-                    i++
-                }, 3920)
-
-                setTimeout(() => {
-                    element.textContent += array[i]
-                    i++
-                }, 5000)
+            }
+            */
+            setTime(setTime(setTimes), 1000)
             
         }
 
