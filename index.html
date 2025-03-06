@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Practice</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pixelify+Sans:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="animation-container">
+        <div id="animation" class="header"></div>
+    </div>
+    <script>
+        const animationContainer = document.querySelector('#animation-container')
+        const animationVisual = document.querySelector('#animation')
+
+        const letterArray = ['E', 't', 'c', 'h', '-', 'a', '-', 's', 'k', 'e', 't', 'c', 'h', '!']
+
+        function absoluteTimer(element, array) {
+            element.textContent = ''
+            let i = 0
+            
+                setTimeout(() => {
+                    element.textContent += array[i]
+                    i++
+                }, 1000)
+
+                setTimeout(() => {
+                    element.textContent += array[i]
+                    i++
+                }, 2500)
+
+                setTimeout(() => {
+                    element.textContent += array[i]
+                    i++
+                }, 2600)
+
+                setTimeout(() => {
+                    element.textContent += array[i]
+                    i++
+                }, 2690)
+
+                setTimeout(() => {
+                    element.textContent += array[i]
+                    i++
+                }, 3000)
+
+                setTimeout(() => {
+                    element.textContent += array[i]
+                    i++
+                }, 3200)
+
+                setTimeout(() => {
+                    element.textContent += array[i]
+                    i++
+                }, 3300)
+
+                setTimeout(() => {
+                    element.textContent += array[i]
+                    i++
+                }, 3500)
+
+                setTimeout(() => {
+                    element.textContent += array[i]
+                    i++
+                }, 3600)
+
+                setTimeout(() => {
+                    element.textContent += array[i]
+                    i++
+                }, 3700)
+
+                setTimeout(() => {
+                    element.textContent += array[i]
+                    i++
+                }, 3770)
+
+                setTimeout(() => {
+                    element.textContent += array[i]
+                    i++
+                }, 3860)
+
+                setTimeout(() => {
+                    element.textContent += array[i]
+                    i++
+                }, 3920)
+
+                setTimeout(() => {
+                    element.textContent += array[i]
+                    i++
+                }, 5000)
+            
+        }
+
+        absoluteTimer(animationContainer, letterArray);
+
+        /*function typeOutArray(array, element) {
+            let i = 0
+            animationContainer.textContent = ''
+            let randomDelay = 100
+
+
+            setInterval((timer) => {
+                if (i < array.length) {
+                    element.textContent += array[i]
+                    i++  
+                } else {
+                    clearInterval(timer)
+                }
+            }, randomDelay); 
+        }
+        typeOutArray(letterArray, animationContainer)*/
+    </script>
+</body>
+</html>
