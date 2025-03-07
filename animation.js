@@ -1,5 +1,6 @@
         const animationContainer = document.querySelector('#animation-container')
         const animationVisual = document.querySelector('#animation')
+        const consentButton = document.querySelector('#consent')
 
         const letterArray = ['E', 't', 'c', 'h', '-', 'a', '-', 's', 'k', 'e', 't', 'c', 'h', '!', 'B', 'y', ' ', 'A', 'i', 'd', 'a', 'n', ' ', 'M', 'c', 'n', 'a', 'b', 'b', '.', '.', '.', 'E', 'n', 'j', 'o', 'y', ' ', ':', ')']
 
@@ -9,10 +10,31 @@
             mySound.play()
         }
 
+        function buttonClick() {
+            consentButton.addEventListener('mousedown', () => {
+                consentButton.classList.remove('fade')
+                consentButton.classList.remove('button-infinite')
+                consentButton.classList.add('button-click')
+                function buttonClick2Delay(delay,) {   
+                    setTimeout(() => {
+                        //consentButton.classList.add('button-click2')
+                    }, delay)
+                }
+                buttonClick2Delay(500)
+                
+            })
+            
+            
+            
+        }
+        buttonClick()
+
         function absoluteTimer(element, array) {
             //element.textContent = ''
             let i = 0
             let keepGoing = true
+
+                        
 
             function setTime(delay) {
                 const timeoutId = setTimeout(() => {
@@ -119,9 +141,14 @@
             
             
         
+        //animate checkmark, animate border, start noise
+        //fade out
+        //remove elements
+        //body: margin-top = 400
+        //animation container: remove flex-direction: column;  align-items: center;
+        //add height: 4rem; width: 3px; background-color: black;
+        //animation container font size 90px
         
-       
-
 
         /*
         const pickDelay = (array) => {
@@ -129,11 +156,6 @@
                     let delay = array[i]
                 }
             }
-        
-        
-        height: 4rem;
-        width: 3px;
-        background-color: black;
 
         const numberArray = [1000, 2500, 2600, 2690, 3000, 3200, 3300, 3400, 3600, 3700, 3770, 3860, 3920, 5000]
 
@@ -154,7 +176,6 @@
         }
         absoluteTimer(animationContainer, letterArray, numberArray);
 
-        
         function typeOutArray(array, element) {
             let i = 0
             animationContainer.textContent = ''
