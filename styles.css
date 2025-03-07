@@ -4,9 +4,27 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: 40px;
-}
-
-#header {
     display: flex;
     justify-content: center;
+    margin-top: 400px;
+}
+
+#animation-container {
+    
+    font-size: 90px;
+}
+
+.blinking-cursor::after {
+    content: '';
+    display: inline-block;
+    height: 4rem;
+    width: 3px;
+    background-color: black;
+    animation: blink 0.7s ease infinite;
+}
+
+@keyframes blink {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
 }
