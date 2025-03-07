@@ -9,15 +9,8 @@
             mySound.play()
         }
 
-        function draggingWindow() {
-            document.createElement('icon')
-            
-        }
-
-        draggingWindow()
-
         function absoluteTimer(element, array) {
-            element.textContent = ''
+            //element.textContent = ''
             let i = 0
             let keepGoing = true
 
@@ -109,13 +102,13 @@
             setTime(14680)  
             setTime(14780)  
             setTime(14880)
-            clearTimeout(timeoutId)
+            //clearTimeout(timeoutId)
              
             
             
         }
 
-        absoluteTimer(animationContainer, letterArray)
+        
         
         
 

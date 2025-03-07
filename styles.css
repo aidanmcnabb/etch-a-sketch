@@ -11,15 +11,17 @@ body {
 
 #animation-container {
     
-    font-size: 90px;
+    font-size: 28px;
+    text-shadow: 10px 5px 5px rgb(180, 180, 180);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
 }
 
 .blinking-cursor::after {
     content: '';
     display: inline-block;
-    height: 4rem;
-    width: 3px;
-    background-color: black;
     animation: blink 0.7s ease infinite;
 }
 
@@ -27,4 +29,44 @@ body {
     0% {opacity: 1;}
     50% {opacity: 0;}
     100% {opacity: 1;}
+}
+
+@keyframes fadeRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-200px) scale(.85);
+    }
+    100% {opacity: 1;}
+}
+
+.fade {
+    opacity: 1;
+    animation-name: fadeRight;
+    animation-duration: 1.5s;
+    animation-direction: normal;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+}
+
+#consent {
+    width: 150px;
+    height: 60px;
+    background-color: white;
+    border-radius: 15px;
+    border-style: ridge;
+    border-width: 10px;
+    box-shadow: 10px 5px 5px rgba(138, 138, 138, 0.719);
+    font-family: "Pixelify Sans";
+    font-size: 15px;
+}
+
+#short {
+    display: flex;
+    height: 60px;
+    width: 330px;
+    text-align: center;
+}
+
+#pic1 {
+    
 }
