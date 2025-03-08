@@ -6,7 +6,7 @@ body {
     font-size: 40px;
     display: flex;
     justify-content: center;
-    margin-top: 300px;
+    margin-top: 220px;
 }
 
 #animation-container {
@@ -14,28 +14,30 @@ body {
     font-size: 28px;
     text-shadow: 10px 5px 5px rgb(180, 180, 180);
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+    
 }
 
 .blinking-cursor::after {
-    content: '';
-    display: inline-block;
+    height: 5rem; 
+    width: 3px; 
+    background-color: black; 
+    content: ''; 
+    display: inline-block; 
+    animation: blink 0.8s ease infinite;
+    padding-top: 20px
     
-    animation: blink 0.7s ease infinite;
 }
 
 @keyframes blink {
-    0% {opacity: 1;}
-    50% {opacity: 0;}
-    100% {opacity: 1;}
+    0% {opacity: 0;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
 }
 
 @keyframes fadeRight {
     0% {
         opacity: 0;
-        transform: translateX(0px) translateY(-1500px) scale(.01);
+        transform: translateX(0px) translateY(-1000px) scale(.01);
     }
     50% {opacity: 0;}
     65% {opacity: 0;}
@@ -61,6 +63,7 @@ body {
     box-shadow: 10px 5px 5px rgba(138, 138, 138, 0.719);
     font-family: "Pixelify Sans";
     font-size: 15px;
+    cursor: pointer;
 }
 
 .button-infinite {
@@ -68,12 +71,12 @@ body {
 }
 
 .button-click {
-    animation: buttonClick 0.5s ease-out;
+    animation: buttonClick 0.4s ease-out;
     
 }
 
 .button-click2 {
-    animation: buttonClick2 .1s infinite;
+    animation: buttonClick2 .3s ease-out;
     
 }
 
@@ -94,23 +97,23 @@ body {
         background-color: rgb(134, 134, 134); 
         border-width: 5px;
     }
+    100% {
+        
+    }
 }
 
 @keyframes buttonClick2 {
-    0% {
-        border-color: black;
-    }
-    10% {
-        border-color: green;
+    45% {
+        transform: scale(.8);
+        border-style: inset; 
+        background-color: rgb(134, 134, 134); 
+        border-width: 5px;
     }
     100% {
-        border-color: green;
+        border-color: forestgreen;
+        background-color: rgb(236, 248, 236);
     }
 }
-
-
-
-
 
 #short {
     display: flex;
@@ -136,6 +139,7 @@ body {
     border-radius: 20px;
     box-shadow: 10px 10px 7px rgb(110, 110, 110);
 }
+
 .fade2 {
     opacity: 1;
     animation-name: fadeRight2;
@@ -146,11 +150,17 @@ body {
 }
 
 @keyframes fadeRight2 {
-    0% {
+    10% {
+        transform: rotate(20deg);
+    }
+    20% {
         opacity: 0;
-        transform: translateX(0px) translateY(-3000px) scale(.01);
+        transform: translateX(500px) translateY(0px) scale(.4);
     }
     50% {opacity: 0;}
     65% {opacity: 0;}
-    100% {opacity: 1;}
+    100% {opacity: 0;}
 }
+
+
+

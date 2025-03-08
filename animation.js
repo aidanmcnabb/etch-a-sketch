@@ -1,6 +1,8 @@
         const animationContainer = document.querySelector('#animation-container')
+        const animationContainer2 = document.querySelector('#animation-container2')
         const animationVisual = document.querySelector('#animation')
         const consentButton = document.querySelector('#consent')
+        const blinkingCursor = document.querySelector('.blinking-cursor')
 
         const letterArray = ['E', 't', 'c', 'h', '-', 'a', '-', 's', 'k', 'e', 't', 'c', 'h', '!', 'B', 'y', ' ', 'A', 'i', 'd', 'a', 'n', ' ', 'M', 'c', 'n', 'a', 'b', 'b', '.', '.', '.', 'E', 'n', 'j', 'o', 'y', ' ', ':', ')']
 
@@ -15,12 +17,33 @@
                 consentButton.classList.remove('fade')
                 consentButton.classList.remove('button-infinite')
                 consentButton.classList.add('button-click')
-                function buttonClick2Delay(delay,) {   
+                consentButton.setAttribute('style', 'border-color: forestgreen;')
+                function buttonClickDelay(delay,) {   
                     setTimeout(() => {
-                        //consentButton.classList.add('button-click2')
+                        animationContainer2.classList.remove('fade')
+                        animationContainer2.classList.add('button-click2')
+                        
                     }, delay)
                 }
-                buttonClick2Delay(500)
+                buttonClickDelay(200)
+                setTimeout(() => {
+                    animationContainer2.setAttribute('style', 'border-color: forestgreen; background-color: rgb(236, 248, 236);')
+                }, 400)
+                setTimeout(() => {
+                    animationContainer2.classList.remove('button-click2')
+                    animationContainer2.classList.add('fade2')
+                }, 470)
+                setTimeout(() => {
+                    animationContainer.removeChild(animationContainer2)
+                    absoluteTimer(animationVisual, letterArray)
+                    animationVisual.setAttribute('style', 'font-size: 90px; ')
+                    document.body.setAttribute('style', 'margin-top: 400px;')
+                    
+                }, 1000)
+                setTimeout(() => {
+                    animationContainer.classList.add('blinking-cursor')
+                }, 2500)
+                
                 
             })
             
@@ -131,22 +154,11 @@
         }
 
         
-        
-        
-
-        
-        
-            
-           
-            
-            
-        
-        //animate checkmark, animate border, start noise
+        //start noise
         //fade out
-        //remove elements
-        //body: margin-top = 400
-        //animation container: remove flex-direction: column;  align-items: center;
-        //add height: 4rem; width: 3px; background-color: black;
+        
+         
+        //add 
         //animation container font size 90px
         
 
