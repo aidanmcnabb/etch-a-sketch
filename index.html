@@ -19,6 +19,26 @@
         </div> 
         <div id="animation"></div>   
     </div>
+    <svg style="display: none;" id="svg">
+        <defs>
+            <filter id="noise">
+                <feTurbulence 
+                baseFrequency="0.704,0.735" 
+                numOctaves="2" 
+                seed="0"
+                result="static" 
+                type="fractalNoise" 
+                >
+                    <animate
+                        attributeName="seed"
+                        values="0;100"
+                        dur="800ms"
+                        repeatCount="1"
+                    />
+                <feDisplacementMap in="FillPaint" in2="static" scale="1"/>
+            </filter>
+        </defs>
+    </svg>
     <script>
         
 

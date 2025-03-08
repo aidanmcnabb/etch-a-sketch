@@ -4,7 +4,7 @@
         const consentButton = document.querySelector('#consent')
         const blinkingCursor = document.querySelector('.blinking-cursor')
 
-        const letterArray = ['E', 't', 'c', 'h', '-', 'a', '-', 's', 'k', 'e', 't', 'c', 'h', '!', 'B', 'y', ' ', 'A', 'i', 'd', 'a', 'n', ' ', 'M', 'c', 'n', 'a', 'b', 'b', '.', '.', '.', 'E', 'n', 'j', 'o', 'y', ' ', ':', ')']
+        const letterArray = ['E', 't', 'c', 'h', '-', 'a', '-', 's', 'k', 'e', 't', 'c', 'h', '!', 'B', 'y', ' ', 'A', 'i', 'd', 'a', 'n', ' ', 'M', 'c', 'n', 'a', 'b', 'b', '.', '.', '.', 'E', 'n', 'j', 'o', 'y', '.']
 
         let mySound = new Audio('audio/quick-mechanical-keyboard-using-enter-14390.mp3')
 
@@ -144,9 +144,7 @@
             setTime(14380)  
             setTime(14480)  
             setTime(14580)  
-            setTime(14680)  
-            setTime(14780)  
-            setTime(14880)
+            setTime(14680)
             //clearTimeout(timeoutId)
              
             

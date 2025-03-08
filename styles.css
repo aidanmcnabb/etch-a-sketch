@@ -7,6 +7,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 220px;
+    
 }
 
 #animation-container {
@@ -14,6 +15,7 @@ body {
     font-size: 28px;
     text-shadow: 10px 5px 5px rgb(180, 180, 180);
     display: flex;
+    
     
 }
 
@@ -162,5 +164,8 @@ body {
     100% {opacity: 0;}
 }
 
+#animation {
+    filter: url(#noise)
+}
 
 
