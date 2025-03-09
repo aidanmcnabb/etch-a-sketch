@@ -3,6 +3,10 @@
         const animationVisual = document.querySelector('#animation')
         const consentButton = document.querySelector('#consent')
         const blinkingCursor = document.querySelector('.blinking-cursor')
+        const thingImg = document.createElement('img')
+        thingImg.src = 'img/what.gif'
+        const thingImg2 = document.createElement('img')
+        thingImg2.src = 'img/what.gif'
 
         const letterArray = ['E', 't', 'c', 'h', '-', 'a', '-', 's', 'k', 'e', 't', 'c', 'h', '!', 'B', 'y', ' ', 'A', 'i', 'd', 'a', 'n', ' ', 'M', 'c', 'n', 'a', 'b', 'b', '.', '.', '.', 'E', 'n', 'j', 'o', 'y', '.']
 
@@ -92,7 +96,7 @@
                     animationVisual.classList.add('glitch')
                 }, 18180)
 
-
+                //ADD A SHORT 1s VIDEO RANDOMLY
 
                 setTimeout(() => {
                     document.body.classList.add('gradient-overlay')
@@ -114,13 +118,31 @@
                 setTimeout(() => {
                     document.body.classList.add('gradient-overlay')
                     animationVisual.textContent = ''
+                    animationContainer.appendChild(thingImg)
+                    animationContainer.appendChild(thingImg2)
+                    thingImg.setAttribute('style', 'position: absolute; top: -100px; left: 400px;')
+                    thingImg2.setAttribute('style', 'position: absolute; top: 300px; left: 1000px;')
                 }, 19330)
+                setTimeout(() => {
+                    document.body.classList.remove('gradient-overlay')
+                }, 19390)
+                setTimeout(() => {
+                    document.body.classList.add('gradient-overlay')
+                }, 19460)
+                setTimeout(() => {
+                    document.body.classList.remove('gradient-overlay')
+                }, 19800)
+                setTimeout(() => {
+                    document.body.classList.add('gradient-overlay')
+                    animationContainer.removeChild(thingImg)
+                    animationContainer.removeChild(thingImg2)
+                }, 19880)
                 setTimeout(() => {
                     document.body.classList.remove('gradient-overlay')
                     animationContainer.classList.add('blinking-cursor')
                     animationVisual.textContent = '!null'
                     animationVisual.classList.add('filter')
-                }, 19390)
+                }, 19950)
                 
                 
             })
