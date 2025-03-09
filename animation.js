@@ -43,6 +43,84 @@
                 setTimeout(() => {
                     animationContainer.classList.add('blinking-cursor')
                 }, 2500)
+                setTimeout(() => {
+                    document.body.classList.add('gradient-overlay')
+                    animationVisual.textContent = ''
+                    animationContainer.classList.remove('blinking-cursor')
+                }, 17500)
+                setTimeout(() => {
+                    document.body.classList.remove('gradient-overlay')
+                    animationVisual.textContent = 'eNjoY'
+                }, 17530)
+                setTimeout(() => {
+                    document.body.classList.add('gradient-overlay')
+                    animationVisual.textContent = ''
+                }, 17560)
+                setTimeout(() => {
+                    document.body.classList.remove('gradient-overlay')
+                    animationVisual.textContent = 'njEyo'
+                    animationContainer.classList.add('blinking-cursor')
+                }, 17590)
+                
+            
+
+                setTimeout(() => {
+                    document.body.classList.add('gradient-overlay')
+                    animationContainer.classList.remove('blinking-cursor')
+                    animationVisual.textContent = ''
+                }, 17900)
+                setTimeout(() => {
+                    document.body.classList.remove('gradient-overlay')
+                    animationVisual.textContent = 'yT%ji'
+                }, 17940)
+                setTimeout(() => {
+                    document.body.classList.add('gradient-overlay')
+                    animationVisual.textContent = ''
+                }, 17980)
+                setTimeout(() => {
+                    document.body.classList.remove('gradient-overlay')
+                    animationVisual.textContent = 'jd-purgatory'
+                }, 18020)
+                setTimeout(() => {
+                    document.body.classList.add('gradient-overlay')
+                    animationVisual.textContent = ''
+                }, 18100)
+                setTimeout(() => {
+                    document.body.classList.remove('gradient-overlay')
+                    animationVisual.textContent = '<img src="JD-Purgatory">'
+                    animationContainer.classList.add('blinking-cursor')
+                    animationVisual.classList.add('glitch')
+                }, 18180)
+
+
+
+                setTimeout(() => {
+                    document.body.classList.add('gradient-overlay')
+                    animationContainer.classList.remove('blinking-cursor')
+                    animationVisual.textContent = ''
+                }, 19000)
+                setTimeout(() => {
+                    document.body.classList.remove('gradient-overlay')
+                    animationVisual.textContent = '##!@@'
+                }, 19100)
+                setTimeout(() => {
+                    document.body.classList.add('gradient-overlay')
+                    animationVisual.textContent = ''
+                }, 19180)
+                setTimeout(() => {
+                    document.body.classList.remove('gradient-overlay')
+                    animationVisual.textContent = '#####'
+                }, 19230)
+                setTimeout(() => {
+                    document.body.classList.add('gradient-overlay')
+                    animationVisual.textContent = ''
+                }, 19330)
+                setTimeout(() => {
+                    document.body.classList.remove('gradient-overlay')
+                    animationContainer.classList.add('blinking-cursor')
+                    animationVisual.textContent = '!null'
+                    animationVisual.classList.add('filter')
+                }, 19390)
                 
                 
             })
@@ -153,10 +231,8 @@
 
         
         //start noise
-        //fade out
-        
-         
-        //add 
+        //filter: url(#noise)
+        //gradient overlay 
         //animation container font size 90px
         
 
