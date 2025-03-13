@@ -100,6 +100,41 @@ body {
     cursor: pointer;
 }
 
+.consent2 {
+    width: 250px;
+    height: 150px;
+    background-color: white;
+    border-color: white;
+    border-radius: 17px;
+    border-style: none;
+    border-width: 0px;
+    font-family: "Pixelify Sans";
+    font-size: 90px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+@keyframes fadeToBlack {
+    
+}
+
+@keyframes buttonOpacity {
+    20% {
+        border-color: rgb(255, 255, 255);
+        border-width: 0px;
+        box-shadow: none;
+    }
+    100% {
+        border-color: rgb(0, 0, 0);
+        border-width: 10px;
+        border-style: ridge;
+        box-shadow: 15px 10px 10px rgba(110, 110, 110, 0.719);
+    }
+}
+
 .button-infinite {
     animation: buttonInfinite .5s infinite alternate;
 }
@@ -263,7 +298,7 @@ body {
     -5px -2.5px 0 rgba(0, 255, 0, 0.75),
     5px 2.5px 0 rgba(0, 0, 255, 0.75);
 
-    animation: glitch 250ms infinite, translation1 .5s ease-out forwards;
+    animation: glitch 250ms infinite, translation1 7s ease-out forwards;
 }
 .glitch7 {
     text-shadow: 
@@ -271,7 +306,7 @@ body {
     -5px -2.5px 0 rgba(0, 255, 0, 0.75),
     5px 2.5px 0 rgba(0, 0, 255, 0.75);
 
-    animation: glitch 250ms infinite, translation2 .5s ease-out forwards;
+    animation: glitch 250ms infinite, translation2 8s ease-out forwards;
 }
 .glitch8 {
     text-shadow: 
@@ -279,7 +314,7 @@ body {
     -5px -2.5px 0 rgba(0, 255, 0, 0.75),
     5px 2.5px 0 rgba(0, 0, 255, 0.75);
 
-    animation: glitch 250ms infinite, translation3 .5s ease-out forwards;
+    animation: glitch 250ms infinite, translation3 7s ease-out forwards;
 }
 .glitch9 {
     text-shadow: 
@@ -287,7 +322,7 @@ body {
     -5px -2.5px 0 rgba(0, 255, 0, 0.75),
     5px 2.5px 0 rgba(0, 0, 255, 0.75);
 
-    animation: glitch 250ms infinite, translation4 .5s ease-out forwards;
+    animation: glitch 250ms infinite, translation4 9s ease-out forwards;
 }
 .glitch10 {
     text-shadow: 
@@ -295,23 +330,37 @@ body {
     -5px -2.5px 0 rgba(0, 255, 0, 0.75),
     5px 2.5px 0 rgba(0, 0, 255, 0.75);
 
-    animation: glitch 250ms infinite, translation5 .5s ease-out forwards;
+    animation: glitch 250ms infinite, translation5 6s ease-out forwards;
+}
+.glitch11 {
+    text-shadow: 
+    5px 0 0 rgba(255,0,0,.75),
+    -5px -2.5px 0 rgba(0, 255, 0, 0.75),
+    5px 2.5px 0 rgba(0, 0, 255, 0.75);
+
+    animation: glitch 250ms infinite, buttonOpacity 3s ease-out forwards;
 }
 
+
 @keyframes translation1 {
-    100% {transform: translateX(-600px) translateY(-200px) scale(1.2)}
+    10% {transform: translateX(-600px) translateY(-100px) scale(1.2) rotate(360deg)}
+
 }
 @keyframes translation2 {
-    100% {transform: translateX(-300px) translateY(-250px) scale(1.2)}
+    10% {transform: translateX(-400px) translateY(-350px) scale(1.2) rotate(420deg)}
+
 }
 @keyframes translation3 {
-    100% {transform: translateX(0px) translateY(-300px) scale(1.2)}
+    10% {transform: translateX(50px) translateY(-300px) scale(1.2) rotate(300deg)}
+
 }
 @keyframes translation4 {
-    100% {transform: translateX(300px) translateY(-250px) scale(1.2)}
+    10% {transform: translateX(200px) translateY(-150px) scale(1.2) rotate(450deg)}
+
 }
 @keyframes translation5 {
-    100% {transform: translateX(600px) translateY(-200px) scale(1.2)}
+    10% {transform: translateX(600px) translateY(-200px) scale(1.2) rotate(150deg)}
+
 }
 
 @keyframes glitch {
