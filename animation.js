@@ -19,6 +19,8 @@
             mySound.play()
         }
         
+        
+
         /*
         document.body.appendChild(stickMan)
         stickMan.setAttribute('style', 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%)')
@@ -106,7 +108,7 @@
                     animationVisual.classList.add('glitch')
                 }, 18180)
 
-                //ADD A SHORT 1s VIDEO RANDOMLY
+                
 
                 setTimeout(() => {
                     document.body.classList.add('gradient-overlay')
@@ -164,7 +166,35 @@
                 setTimeout(() => {
                     animationContainer.classList.remove('blinking-cursor')
                 }, 26700)
-                
+                setTimeout(() => {
+                    document.body.classList.add('gradient-overlay2')
+                    const animationVisual2 = document.createElement('div')
+                    const animationVisual3 = document.createElement('div')
+                    const animationVisual4 = document.createElement('div')
+                    const animationVisual5 = document.createElement('div')
+                    animationVisual2.setAttribute('style', ' font-size: 90px;')
+                    animationVisual3.setAttribute('style', 'font-size: 90px;')
+                    animationVisual4.setAttribute('style', 'font-size: 90px;')
+                    animationVisual5.setAttribute('style', 'font-size: 90px;')
+                    animationVisual.textContent = '!'
+                    animationVisual2.textContent = 'n'
+                    animationVisual3.textContent = 'u'
+                    animationVisual4.textContent = 'l'
+                    animationVisual5.textContent = 'l'
+                    animationVisual.classList.remove('glitch')
+                    animationVisual.classList.add('glitch1')
+                    animationVisual2.classList.add('glitch2', 'filter')
+                    animationVisual3.classList.add('glitch3', 'filter')
+                    animationVisual4.classList.add('glitch4', 'filter')
+                    animationVisual5.classList.add('glitch5', 'filter')
+                    animationContainer.appendChild(animationVisual2)
+                    animationContainer.appendChild(animationVisual3)
+                    animationContainer.appendChild(animationVisual4)
+                    animationContainer.appendChild(animationVisual5)
+                }, 29700)
+                setTimeout(() => {
+                    document.body.classList.remove('gradient-overlay2')
+                }, 36000)
                 
             })
             
