@@ -9,6 +9,10 @@
         thingImg2.src = 'img/what2.gif'
         const stickMan = document.createElement('video')
         stickMan.src ='video/stickMan3.mp4'
+        const animationVisual2 = document.createElement('div')
+        const animationVisual3 = document.createElement('div')
+        const animationVisual4 = document.createElement('div')
+        const animationVisual5 = document.createElement('div')
         
 
         const letterArray = ['E', 't', 'c', 'h', '-', 'a', '-', 's', 'k', 'e', 't', 'c', 'h', '!', 'B', 'y', ' ', 'A', 'i', 'd', 'a', 'n', ' ', 'M', 'c', 'n', 'a', 'b', 'b', '.', '.', '.', 'E', 'n', 'j', 'o', 'y', '.']
@@ -168,10 +172,6 @@
                 }, 26700)
                 setTimeout(() => {
                     document.body.classList.add('gradient-overlay2')
-                    const animationVisual2 = document.createElement('div')
-                    const animationVisual3 = document.createElement('div')
-                    const animationVisual4 = document.createElement('div')
-                    const animationVisual5 = document.createElement('div')
                     animationVisual2.setAttribute('style', ' font-size: 90px;')
                     animationVisual3.setAttribute('style', 'font-size: 90px;')
                     animationVisual4.setAttribute('style', 'font-size: 90px;')
@@ -194,6 +194,16 @@
                 }, 29700)
                 setTimeout(() => {
                     document.body.classList.remove('gradient-overlay2')
+                    animationVisual.classList.remove('glitch1')
+                    animationVisual2.classList.remove('glitch2')
+                    animationVisual3.classList.remove('glitch3')
+                    animationVisual4.classList.remove('glitch4')
+                    animationVisual5.classList.remove('glitch5')
+                    animationVisual.classList.add('glitch6')
+                    animationVisual2.classList.add('glitch7')
+                    animationVisual3.classList.add('glitch8')
+                    animationVisual4.classList.add('glitch9')
+                    animationVisual5.classList.add('glitch10')
                 }, 36000)
                 
             })

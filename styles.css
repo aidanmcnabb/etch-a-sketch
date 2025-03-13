@@ -263,7 +263,7 @@ body {
     -5px -2.5px 0 rgba(0, 255, 0, 0.75),
     5px 2.5px 0 rgba(0, 0, 255, 0.75);
 
-    animation: glitch 250ms infinite, translation1 2.2s ease-out;
+    animation: glitch 250ms infinite, translation1 .5s ease-out forwards;
 }
 .glitch7 {
     text-shadow: 
@@ -271,7 +271,7 @@ body {
     -5px -2.5px 0 rgba(0, 255, 0, 0.75),
     5px 2.5px 0 rgba(0, 0, 255, 0.75);
 
-    animation: glitch 250ms infinite, translation2 2.5s ease-out;
+    animation: glitch 250ms infinite, translation2 .5s ease-out forwards;
 }
 .glitch8 {
     text-shadow: 
@@ -279,7 +279,7 @@ body {
     -5px -2.5px 0 rgba(0, 255, 0, 0.75),
     5px 2.5px 0 rgba(0, 0, 255, 0.75);
 
-    animation: glitch 250ms infinite, translation3 2.3s ease-out;
+    animation: glitch 250ms infinite, translation3 .5s ease-out forwards;
 }
 .glitch9 {
     text-shadow: 
@@ -287,7 +287,7 @@ body {
     -5px -2.5px 0 rgba(0, 255, 0, 0.75),
     5px 2.5px 0 rgba(0, 0, 255, 0.75);
 
-    animation: glitch 250ms infinite, translation4 2.4s ease-out;
+    animation: glitch 250ms infinite, translation4 .5s ease-out forwards;
 }
 .glitch10 {
     text-shadow: 
@@ -295,23 +295,23 @@ body {
     -5px -2.5px 0 rgba(0, 255, 0, 0.75),
     5px 2.5px 0 rgba(0, 0, 255, 0.75);
 
-    animation: glitch 250ms infinite, translation5 2.1s ease-out;
+    animation: glitch 250ms infinite, translation5 .5s ease-out forwards;
 }
 
 @keyframes translation1 {
-    
+    100% {transform: translateX(-600px) translateY(-200px) scale(1.2)}
 }
 @keyframes translation2 {
-
+    100% {transform: translateX(-300px) translateY(-250px) scale(1.2)}
 }
 @keyframes translation3 {
-
+    100% {transform: translateX(0px) translateY(-300px) scale(1.2)}
 }
 @keyframes translation4 {
-
+    100% {transform: translateX(300px) translateY(-250px) scale(1.2)}
 }
 @keyframes translation5 {
-
+    100% {transform: translateX(600px) translateY(-200px) scale(1.2)}
 }
 
 @keyframes glitch {
