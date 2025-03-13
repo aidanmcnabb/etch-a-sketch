@@ -4,9 +4,12 @@
         const consentButton = document.querySelector('#consent')
         const blinkingCursor = document.querySelector('.blinking-cursor')
         const thingImg = document.createElement('img')
-        thingImg.src = 'img/what.gif'
+        thingImg.src = 'img/what2.gif'
         const thingImg2 = document.createElement('img')
-        thingImg2.src = 'img/what.gif'
+        thingImg2.src = 'img/what2.gif'
+        const stickMan = document.createElement('video')
+        stickMan.src ='video/stickMan3.mp4'
+        
 
         const letterArray = ['E', 't', 'c', 'h', '-', 'a', '-', 's', 'k', 'e', 't', 'c', 'h', '!', 'B', 'y', ' ', 'A', 'i', 'd', 'a', 'n', ' ', 'M', 'c', 'n', 'a', 'b', 'b', '.', '.', '.', 'E', 'n', 'j', 'o', 'y', '.']
 
@@ -15,6 +18,13 @@
         function playMySound() {
             mySound.play()
         }
+        
+        /*
+        document.body.appendChild(stickMan)
+        stickMan.setAttribute('style', 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%)')
+        stickMan.play()
+        */
+
 
         function buttonClick() {
             consentButton.addEventListener('mousedown', () => {
@@ -83,7 +93,7 @@
                 }, 17980)
                 setTimeout(() => {
                     document.body.classList.remove('gradient-overlay')
-                    animationVisual.textContent = 'jd-purgatory'
+                    animationVisual.textContent = 'slender'
                 }, 18020)
                 setTimeout(() => {
                     document.body.classList.add('gradient-overlay')
@@ -106,6 +116,7 @@
                 setTimeout(() => {
                     document.body.classList.remove('gradient-overlay')
                     animationVisual.textContent = '##!@@'
+                    animationVisual.classList.add('filter')
                 }, 19100)
                 setTimeout(() => {
                     document.body.classList.add('gradient-overlay')
@@ -120,8 +131,10 @@
                     animationVisual.textContent = ''
                     animationContainer.appendChild(thingImg)
                     animationContainer.appendChild(thingImg2)
-                    thingImg.setAttribute('style', 'position: absolute; top: -100px; left: 400px;')
-                    thingImg2.setAttribute('style', 'position: absolute; top: 300px; left: 1000px;')
+                    thingImg.setAttribute('style', 'position: absolute; top: -300px; left: 400px;')
+                    thingImg2.setAttribute('style', 'position: absolute; top: -200px; left: 800px;')
+                    thingImg.classList.add('filter')
+                    thingImg2.classList.add('filter')
                 }, 19330)
                 setTimeout(() => {
                     document.body.classList.remove('gradient-overlay')
@@ -141,8 +154,16 @@
                     document.body.classList.remove('gradient-overlay')
                     animationContainer.classList.add('blinking-cursor')
                     animationVisual.textContent = '!null'
-                    animationVisual.classList.add('filter')
+                    animationContainer.setAttribute('style', 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;')
+                    document.body.appendChild(stickMan)
+                    stickMan.setAttribute('style', 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;')
                 }, 19950)
+                setTimeout(() => {
+                    stickMan.play()
+                }, 22400)
+                setTimeout(() => {
+                    animationContainer.classList.remove('blinking-cursor')
+                }, 26700)
                 
                 
             })
@@ -151,6 +172,11 @@
             
         }
         buttonClick()
+
+        //Top: 400
+        //Left: 433.1875
+        //Right: 599.8125
+        //Bottom: 508
 
         function absoluteTimer(element, array) {
             //element.textContent = ''
