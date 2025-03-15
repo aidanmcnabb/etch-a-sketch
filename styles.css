@@ -29,11 +29,53 @@ body {
     animation: blinkred 0.7s ease infinite;
 }
 
+.gradient-overlay3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 1;
+    z-index: 3;
+    animation: fadeOutAndIn 6s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeOutAndIn {
+    0% {
+        opacity: 1;
+    }
+    20% {
+        opacity: 0;
+    }
+    50% {
+        background-color: black;
+        opacity: 0;
+    }
+    70% {
+        background-color: black;
+        opacity: 0;
+    }
+    100% {
+        background-color: white;
+        opacity: 1;
+    }
+}
+
 @keyframes blinkred {
     0% {opacity: 1}
     50% {opacity: 0.5}
     100% {opacity: 1}
 
+}
+
+
+
+@keyframes hit {
+    0% {transform: translateX(0px) translateY(0px);}
+    50% {transform: translateX(-20px) translateY(10px);}
+    100% {transform: translateX(0px) translateY(0px);}
 }
 
 #animation-container {
@@ -118,7 +160,18 @@ body {
 }
 
 @keyframes fadeToBlack {
-    
+    5% {
+        transform: scale(.8);
+        border-style: inset; 
+        background-color: rgb(134, 134, 134); 
+        border-width: 5px;
+    }
+    10% {
+        transform: scale(1);
+        border-style: ridge;
+        background-color: white;
+        border-width: 10px;
+    }
 }
 
 @keyframes buttonOpacity {
@@ -341,25 +394,39 @@ body {
     animation: glitch 250ms infinite, buttonOpacity 3s ease-out forwards;
 }
 
+.glitch12 {
+    text-shadow: 
+        5px 0 0 rgba(255,0,0,.75),
+        -5px -2.5px 0 rgba(0, 255, 0, 0.75),
+        5px 2.5px 0 rgba(0, 0, 255, 0.75);
+
+    animation: glitch 250ms infinite, hit .2s linear;
+}
+
 
 @keyframes translation1 {
     10% {transform: translateX(-600px) translateY(-100px) scale(1.2) rotate(360deg)}
+    15% {transform: translateX(-600px) translateY(-100px) scale(1.2) rotate(360deg)}
 
 }
 @keyframes translation2 {
     10% {transform: translateX(-400px) translateY(-350px) scale(1.2) rotate(420deg)}
+    15% {transform: translateX(-400px) translateY(-350px) scale(1.2) rotate(420deg)}
 
 }
 @keyframes translation3 {
     10% {transform: translateX(50px) translateY(-300px) scale(1.2) rotate(300deg)}
+    15% {transform: translateX(50px) translateY(-300px) scale(1.2) rotate(300deg)}
 
 }
 @keyframes translation4 {
     10% {transform: translateX(200px) translateY(-150px) scale(1.2) rotate(450deg)}
+    15% {transform: translateX(200px) translateY(-150px) scale(1.2) rotate(450deg)}
 
 }
 @keyframes translation5 {
     10% {transform: translateX(600px) translateY(-200px) scale(1.2) rotate(150deg)}
+    15% {transform: translateX(600px) translateY(-200px) scale(1.2) rotate(150deg)}
 
 }
 
