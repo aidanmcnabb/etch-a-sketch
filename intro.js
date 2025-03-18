@@ -16,7 +16,7 @@
         const playButton = document.createElement('button')
         const insidePlayButton = document.createElement('span')
 
-        const letterArray = ['E', 't', 'c', 'h', '-', 'a', '-', 's', 'k', 'e', 't', 'c', 'h', '!', 'B', 'y', ' ', 'A', 'i', 'd', 'a', 'n', ' ', 'M', 'c', 'n', 'a', 'b', 'b', '.', '.', '.', 'E', 'n', 'j', 'o', 'y', '.']
+        const letterArray = ['J', 'e', 't', ' ', ' ', ' ', ' ', 'S', 'k', 'e', 't', 'c', 'h', '!', 'B', 'y', ' ', 'A', 'i', 'd', 'a', 'n', ' ', 'M', 'c', 'n', 'a', 'b', 'b', '.', '.', '.', 'E', 'n', 'j', 'o', 'y', '.']
 
         let mySound = new Audio('audio/quick-mechanical-keyboard-using-enter-14390.mp3')
 
@@ -321,7 +321,7 @@
                     animationVisual5.textContent = '!'
                 }, 36100)
                 setTimeout(() => {
-                    //replaced the 5 seperate divs with one so i can make a button=.
+                    //replaced the 5 seperate divs with one so i can make a button
                     animationContainer.removeChild(animationVisual)
                     animationContainer.removeChild(animationVisual2)
                     animationContainer.removeChild(animationVisual3)
@@ -347,6 +347,7 @@
             setTimeout(() => {
                 document.body.removeChild(animationContainer)
                 document.body.removeChild(stickMan)
+                tutorial()
             }, 3000)
             setTimeout(() => {
                 document.classList.remove('gradient-overlay3')
