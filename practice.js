@@ -4,51 +4,61 @@
 
 function createCards() {
     
-    const box = document.createElement('div')
-    const cardTitle = document.createElement('header')
+    // if ((cardnumber) === (arraynumber)) {color = (arraycolor)}
     
+    let cardZIndex = 7
 
-    for (c = 1; c < 7; c++) {
+    outerLoop: for (c = 1; c <= 7; c++) {
+        const box = document.createElement('div')
+        const cardTitle = document.createElement('header')
         const card = document.createElement('div')
-        const currentZIndex = parseInt(card.style.zIndex) || 0
-        const cardLocation = parseInt(card.style.top)
         card.classList.add('card')
-        if (currentZIndex <= 7) {  
 
-            document.body.appendChild(card)
-            cardTitle.textContent = 'Drawing!'
-            cardTitle.classList.add('title')
-            card.appendChild(cardTitle)
-            if (currentZIndex <= 2) {    
-                box.classList.add('box')
-                card.appendChild(box)
-                function createSquares() {
-                    for (i = 1; i < 100; i++) {
-                        const square = document.createElement('div')
-                        square.classList.add('square')
-                        square.addEventListener('mouseover',  () => {
-                            square.classList.add('mouseover')
-                        })
-                        square.addEventListener('mouseout', () => {
-                            square.classList.remove('mouseover')
-                        })
-                        square.addEventListener('click', () => {
-                            square
-                        })
-                        box.appendChild(square)
-                        
-                        const numberofDivs = document.querySelectorAll('.box > div').length
-                        console.log(numberofDivs)
-                        if (numberofDivs >= 76) {break}
-                    } 
+        card.style.zIndex = cardZIndex-- //making each card a lower z-index with each iteration
+        console.log(card.style.zIndex)
+
+        document.body.appendChild(card)
+        cardTitle.textContent = 'Drawing!'
+        cardTitle.classList.add('title')
+        card.appendChild(cardTitle)
+        box.classList.add('box')
+        card.appendChild(box)
+
+        
+        innerLoop: for (i = 1; i < 100; i++) {
+            const square = document.createElement('div')
+            square.classList.add('square')  //making that squares
+            square.addEventListener('mouseover',  () => {
+                square.classList.add('mouseover')   //making squares interactable
+            })
+            square.addEventListener('mouseout', () => {
+                square.classList.remove('mouseover') //
+            })
+            square.addEventListener('click', () => {
+                square  //will add soon
+            })
+            box.appendChild(square)
             
-                }
-                createSquares()
-            }
-            card.setAttribute('style', `z-index: ${currentZIndex + 1}`)
-            console.log(currentZIndex)
-            console.log(cardLocation)
-        }    
+            
+            if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container
+        }
+        
+        
+        
+        
     }
 }
 createCards()
+
+        //const numberofDivs = document.querySelectorAll('.square').length
+        //const cardLocation = parseInt(card.style.top)
+        //if (currentZIndex <= 7) { 
+        //if (currentZIndex <= 2) {
+        //function createSquares() {
+        //}              
+        //createSquares()
+        // }
+        //card.setAttribute('style', `z-index: ${currentZIndex + 1}`)
+        //console.log(currentZIndex)
+        //console.log(cardLocation)
+       // }    
