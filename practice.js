@@ -9,20 +9,20 @@ function createCards() {
     let cardZIndex = 7
 
     outerLoop: for (c = 1; c <= 7; c++) {
-        const box = document.createElement('div')
-        const cardTitle = document.createElement('header')
-        const card = document.createElement('div')
-        card.classList.add('card')
+            const box = document.createElement('div')
+            const cardTitle = document.createElement('header')
+            const card = document.createElement('div')
+            card.classList.add('card')
 
-        card.style.zIndex = cardZIndex-- //making each card a lower z-index with each iteration
-        console.log(card.style.zIndex)
+            card.style.zIndex = cardZIndex-- //making each card a lower z-index with each iteration
+            console.log(card.style.zIndex)
 
-        document.body.appendChild(card)
-        cardTitle.textContent = 'Drawing!'
-        cardTitle.classList.add('title')
-        card.appendChild(cardTitle)
-        box.classList.add('box')
-        card.appendChild(box)
+            document.body.appendChild(card)
+            cardTitle.textContent = 'Drawing!'
+            cardTitle.classList.add('title')
+            card.appendChild(cardTitle)
+            box.classList.add('box')
+            card.appendChild(box)
 
         
         innerLoop: for (i = 1; i < 100; i++) {
@@ -40,7 +40,7 @@ function createCards() {
             box.appendChild(square)
             
             
-            if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container
+            if (i === 81) {break innerLoop} //breaking innerLoop after squares fill up container
         }
         
         
