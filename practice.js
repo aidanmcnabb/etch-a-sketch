@@ -42,31 +42,34 @@ function createCards() {
                 // array.prototype.indexOf()
                 // array.from()
                 // one of these might point me in the right direction to be able to acomplish what im trying to do 
-
-                cardTitle.textContent = 'Drawing!'
-                cardTitle.classList.add('title')
-                card.appendChild(cardTitle)
-                box.classList.add('box')
-                card.appendChild(box)
+                setTimeout(() => {
+                    cardTitle.textContent = 'Drawing!'
+                    cardTitle.classList.add('title')
+                    cardTitle.classList.add('blinking-cursor')
+                    card.appendChild(cardTitle)
+                    box.classList.add('box')
+                    card.appendChild(box)
+                }, 1000)
             
-                
-                innerLoop: for (i = 1; i < 100; i++) {
-                    const square = document.createElement('div')
-                    square.classList.add('square')  //making that squares
-                    square.addEventListener('mouseover',  () => {
-                        square.classList.add('mouseover')   //making squares interactable
-                    })
-                    square.addEventListener('mouseout', () => {
-                        square.classList.remove('mouseover') //
-                    })
-                    square.addEventListener('click', () => {
-                        square  //will add soon
-                    })
-                    box.appendChild(square)
-                    
-                    
-                    if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
-                }
+                //setTimeout(() => {   
+                    innerLoop: for (i = 1; i < 100; i++) {
+                        const square = document.createElement('div')
+                        square.classList.add('square')  //making that squares
+                        square.addEventListener('mouseover',  () => {
+                            square.classList.add('mouseover')   //making squares interactable
+                        })
+                        square.addEventListener('mouseout', () => {
+                            square.classList.remove('mouseover') //
+                        })
+                        square.addEventListener('click', () => {
+                            square  //will add soon
+                        })
+                        box.appendChild(square)
+                        
+                        
+                        if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
+                    }
+                //},1000)
                 c++
             } else {clearInterval(cardStartUp)}    
         }, 120)

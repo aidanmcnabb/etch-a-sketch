@@ -45,6 +45,14 @@ body {
     padding-bottom: 0px;
     width: 504px;
     flex-wrap: wrap;
+    animation: grow .7s ease-in-out forwards;
+}
+
+@keyframes grow {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
 }
 
 .square {
@@ -57,6 +65,23 @@ body {
 
 .title {
     margin-bottom: 40px;
+}
+
+@keyframes blink {
+    0% {opacity: 0;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.blinking-cursor::after {
+    height: 3rem; 
+    width: 3px; 
+    background-color: black; 
+    content: ''; 
+    display: inline-block; 
+    animation: blink 0.8s ease infinite;
+    padding-top: 20px
+    
 }
 
 .mouseover {
