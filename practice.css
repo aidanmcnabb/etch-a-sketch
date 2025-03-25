@@ -73,7 +73,7 @@ body {
     100% {opacity: 0;}
 }
 
-.blinking-cursor::after {
+.blinking-cursor2::after {
     height: 3rem; 
     width: 3px; 
     background-color: black; 

@@ -10,7 +10,7 @@ the 'card' is the master container div
 the 'box' is the secondary container div
 the 'squares' are the multiple interactable tiles
 
-while playing, the stack should NOT have all of the 'boxes' & 'squares' rendered, only the current 'card' and the 'card' after it
+while playing, the stack should NOT have all of the 'boxes' & 'squares' rendered, only the current on the first 'card' and the 'card' after it
 maybe an array of objects will be used to store the data of all the unique card types with a mathRandom function to choose the numbered name of an object at random
 the unique card style will have a certain background color for certain hilighted squares
 the player will have 4 colors to choose from with the keyboard, likely wasd, with each key press corresponding to a selected color

@@ -4,6 +4,10 @@
 
 
 // if z-index value is <= 2
+function squareSound() {
+    var squareClick = new Audio("audio/click-buttons-ui-menu-sounds-effects-button-2-203594.mp3")
+    squareClick.play()
+}
 
 
 function createCards() {
@@ -13,6 +17,8 @@ function createCards() {
     let cardZIndex = 1
     let cardTranslationValue = 55
     let c = 1
+    
+    
     
     setTimeout(() => {
         const cardStartUp = setInterval(() => {
@@ -43,41 +49,90 @@ function createCards() {
                 // array.from()
                 // one of these might point me in the right direction to be able to acomplish what im trying to do 
                 setTimeout(() => {
-                    cardTitle.textContent = 'Drawing!'
+                    let index = 0
+                    let speed = 80;
+                    let titleText = 'Jet Sketch'
                     cardTitle.classList.add('title')
-                    cardTitle.classList.add('blinking-cursor')
+                    cardTitle.classList.add('blinking-cursor2')
+                    function typeWriter() {
+                        
+                        if (index < titleText.length) {
+                            cardTitle.textContent += titleText.charAt(index)
+                            index++;
+                            setTimeout(typeWriter, speed)
+                        } 
+                    }
+                    typeWriter();
+
                     card.appendChild(cardTitle)
                     box.classList.add('box')
                     card.appendChild(box)
                 }, 1000)
-            
-                //setTimeout(() => {   
-                    innerLoop: for (i = 1; i < 100; i++) {
-                        const square = document.createElement('div')
-                        square.classList.add('square')  //making that squares
-                        square.addEventListener('mouseover',  () => {
-                            square.classList.add('mouseover')   //making squares interactable
-                        })
-                        square.addEventListener('mouseout', () => {
-                            square.classList.remove('mouseover') //
-                        })
-                        square.addEventListener('click', () => {
-                            square  //will add soon
-                        })
-                        box.appendChild(square)
+
+                
+
+                innerLoop: for (i = 1; i < 100; i++) {
+                    const square = document.createElement('div')
+                    square.classList.add('square')  //making that squares
+                    square.addEventListener('mouseover',  () => {
+                        square.classList.add('mouseover')   //making squares interactable
+                    })
+                    square.addEventListener('mouseout', () => {
+                        square.classList.remove('mouseover')
                         
-                        
-                        if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
-                    }
-                //},1000)
+                    })
+                    square.setAttribute('onclick', 'squareSound()')
+                    box.appendChild(square)
+                    
+                    
+                    if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
+                }
+                
                 c++
             } else {clearInterval(cardStartUp)}    
         }, 120)
     }, 1000)        
     
+  
 }
 createCards()
 
+function startTutorial() {
+    
+    let index = 0
+    let speed = 80;
+    let titleTextQuery = document.querySelectorAll('header')
+    let titleTextContent = 'hello'
+
+    function typeWriter() {
+                        
+        if (index < titleTextQuery.length) {
+            cardTitle.textContent += titleText.charAt(index)
+            index++;
+            setTimeout(typeWriter, speed)
+        } 
+    }
+    
+    function typeDecrement() {
+        titleTextContent = titleTextQuery.textContent
+        titleTextQuery.textContent -= titleTextContent.charAt(index)
+        index++;
+        setTimeout(typeDecrement, speed)
+        
+    }
+        
+    
+    document.body.removeChild(titleTextQuery)
+    
+    console.log(titleTextQuery.textContent)
+    
+            
+}
+setTimeout(() => {
+    startTutorial()
+}, 4000)
+
+        // console.log(titleTextQuery.textContent)
         //const numberofDivs = document.querySelectorAll('.square').length
         //const cardLocation = parseInt(card.style.top)
         //if (currentZIndex <= 7) { 

@@ -351,7 +351,11 @@
             }, 3000)
             setTimeout(() => {
                 document.classList.remove('gradient-overlay3')
+                
             }, 8000)
+            setTimeout(() => {
+                createCards()
+            }, 8001)
         }
 
         //Top: 400
