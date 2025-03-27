@@ -125,6 +125,23 @@ body {
     100% {transform: scale(0.75);}
 }
 
+.bad {
+    animation: badChoice 1s infinite;
+}
+
+@keyframes badChoise {
+    10% {background-color: red;}
+    20% {background-color: white;}
+    30% {background-color: red;}
+    40% {background-color: white;}
+    50% {background-color: red;}
+    60% {background-color: white;}
+    70% {background-color: red;}
+    80% {background-color: white;}
+    90% {background-color: red;}
+    100% {background-color: white;}
+
+}
 
 
 @keyframes throwCards {

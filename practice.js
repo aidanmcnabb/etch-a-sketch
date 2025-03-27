@@ -94,19 +94,32 @@ function createCards() {
                         
                     })
                     square.addEventListener('mousedown', () => {
+                        
+                        //square.style.backgroundColor = 'red'
                         square.classList.add('square-mouse-down')
-                        if (square.style.backgroundColor === 'white') {
+                        square.classList.remove('mouseover')
+                        square.classList.add('mouseover-without-color')
+                        const color = window.getComputedStyle(square) ["background-color"]
+                        console.log(color)
+                        if (color === 'rgb(255, 255, 255)') {
+                            square.classList.remove('mouseover-without-color')
+                            square.classList.remove('box2')
+                            square.classList.add('mouseover')
                             square.classList.add('bad')
+
                             setTimeout(() => {
                                 square.classList.remove('bad')
-                            }, 200)
+                                
+                            }, 1000)
                         } else if (square.style.backgroundColor === 'gray') {
                             square.classList.add('good')
                             square.classList.remove('mouseover')
                         }
+                        
                         setTimeout(() => {
                             square.classList.remove('square-mouse-down')
                         }, 100)
+                        
                     })
                     
                     /*
@@ -131,7 +144,7 @@ function createCards() {
   
 }
 createCards()
-
+/*
 function startTutorial() {
     
     let index = 0
@@ -166,7 +179,7 @@ function startTutorial() {
 setTimeout(() => {
     startTutorial()
 }, 4000)
-
+*/
         // console.log(titleTextQuery.textContent)
         //const numberofDivs = document.querySelectorAll('.square').length
         //const cardLocation = parseInt(card.style.top)
