@@ -99,7 +99,10 @@ function createCards() {
                             square.classList.add('bad')
                             setTimeout(() => {
                                 square.classList.remove('bad')
-                            },200)
+                            }, 200)
+                        } else if (square.style.backgroundColor === 'gray') {
+                            square.classList.add('good')
+                            square.classList.remove('mouseover')
                         }
                         setTimeout(() => {
                             square.classList.remove('square-mouse-down')
