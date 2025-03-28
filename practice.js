@@ -111,9 +111,11 @@ function createCards() {
                                 square.classList.remove('bad')
                                 
                             }, 1000)
-                        } else if (color === 'rgb(128,128,128)') {
+                        } else if (color === 'rgb(128, 128, 128)') {
+                            square.classList.remove('mouseover-without-color')
+                            square.classList.remove('box2')
+                            square.classList.add('mouseover')
                             square.classList.add('good')
-                            square.classList.remove('mouseover')
                         }
                         
                         setTimeout(() => {
