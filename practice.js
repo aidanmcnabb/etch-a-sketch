@@ -111,7 +111,7 @@ function createCards() {
                                 square.classList.remove('bad')
                                 
                             }, 1000)
-                        } else if (square.style.backgroundColor === 'gray') {
+                        } else if (color === 'rgb(128,128,128)') {
                             square.classList.add('good')
                             square.classList.remove('mouseover')
                         }
