@@ -54,31 +54,55 @@ body {
     animation: coolIn 2s ease-in-out forwards;
 }
 
+.cool-in2 {
+    animation: coolIn2 1s ease-in-out infinite;
+}
+
 @keyframes coolIn {
     0% {transform: translateY(1500px) translateX(-300px);}
 }
 
+@keyframes coolIn2 {
+    0% {
+        transform: scale(1);
+        border-color: rgb(0, 0, 0);
+        transform: translateX(-284px) translateY(-50px);
+    }
+    50% {
+        transform: scale(.5);
+        transform: translateX(-284px) translateY(-35px);
+        border-color: green;
+    }
+    100% {
+        transform: scale(1);
+        border-color: rgb(0, 41, 0);
+        transform: translateX(-284px) translateY(-40px);
+    }
+}
+
 .cool-button-click {
-    animation: coolButtonClick 0.4s ease-out;
-    
+    animation: coolButtonClick 0.25s ease-out forwards;
 }
 
 @keyframes coolButtonClick {
     45% {
-        transform: scale(.8) translateX(0px) translateY(0px);
+        
+        transform: scale(.3);
+        transform: translateX(-284px) translateY(-30px);
         border-style: inset; 
         background-color: rgb(134, 134, 134); 
         border-width: 5px;
+        border-color: forestgreen;
     }
     100% {
-        
+        border-color: black;
     }
 }
 
 .cool-button-click2 {
     animation: coolButtonClick2 .3s ease-out;
 }
-
+/*
 @keyframes coolButtonClick2 {
     45% {
         transform: scale(.8);
@@ -91,7 +115,7 @@ body {
         background-color: rgb(236, 248, 236);
     }
 }
-
+*/
 .box {
     font-size: 28px;
     text-shadow: 10px 5px 5px rgb(180, 180, 180);
