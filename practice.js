@@ -37,9 +37,19 @@ function tutorialFuntion() {
         }
         chooseString()
         function cardAnimation() {
+            const aniNumber = cardAnimationArray.at(coolIndex)
             if (coolIndex >= 18) {
-                card.classList.add(cardAnimationArray.at(coolIndex)) //THIS IS WHERE I AM
+                card.classList.add(aniNumber) 
+                if (coolIndex > 18 && coolIndex <= 21 || coolIndex > 22 && coolIndex <= 23 || coolIndex > 23 && coolIndex <= 25) { 
+                    //trying to make some of the classes only last for a little bit so they dont clash a fuck shit up
+                    setTimeout(() => { 
+                        card.classList.remove(aniNumber)
+                    }, 1000)
+                    // if (classlistnumber > 3) {remove 1 class}
+                }
             }
+
+            
         }
         cardAnimation()
         coolIndex++
