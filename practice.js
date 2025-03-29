@@ -21,29 +21,29 @@ function tutorialFuntion() {
     coolButton.classList.add('cool')
     coolButton.classList.add('cool-in')
     let coolIndex = 0
+    const card = document.createElement('div')
     coolButton.addEventListener('mousedown', () => {
         const coolButtonArray = ['nice', 'sick', 'dont care', 'wow', 'really?', 'this sucks', 'play the game', 'please stop', 'enjoy your life', 'leave me alone', 'i hate you', 'stop lecturing', 'fuck off', 'no one asked', 'that\'s irresponsible', 'wow you\'re a dick', 'why can\'t i skip this', 'jesus STOP', 'STOP ALREADY', 'STOP', 'NOW', 'ENOUGH', 'LET ME OUT', 'OUT I SAY', 'OUT', 'FUCK', 'AH', 'AHHH', 'ARGH', 'ARGGGAAH', '*huff*', 'eehhEEEIIIUH', 'YAAAAAAAA', 'OOOOOOUT', 'NOOOOWWW', 'FFFFFUUUUUUUUCKK', 'LET', 'ME', 'OUT', 'YYYYYAAAAAAAAAAAHH', '*huff*', '*puff*', 'EEEEEUUUGH', 'YARGGHHAAAA', 'AAAAAAAAAHHHHHHHHHHHHHHHHH']
+        //26 total animations
+        const cardAnimationArray = ['ani1', 'ani2', 'ani3', 'ani4', 'ani5', 'ani6', 'ani7', 'ani8', 'ani9', 'ani10', 'ani11', 'ani12', 'ani13', 'ani14', 'ani15', 'ani16', 'ani17', 'ani18', 'ani19', 'ani20', 'ani21', 'ani22', 'ani23', 'ani24', 'ani25', 'ani26']
         coolButton.classList.remove('cool-in')
         coolButton.classList.add('cool-button-click')
         function chooseString() {
             coolButton.textContent = coolButtonArray.at(coolIndex)
-            coolIndex++
+            
             if (coolIndex >= coolButtonArray.length) {
                 coolIndex = 0
             }
         }
         chooseString()
-        
-        
-        /*
-        function chooseString(item, index, arr) {
-            index = 0
-            coolButton.textContent = arr[index]
-            index++
-            console.log(index)
+        function cardAnimation() {
+            if (coolIndex >= 18) {
+                card.classList.add(cardAnimationArray.at(coolIndex)) //THIS IS WHERE I AM
+            }
         }
-        coolButtonArray.forEach(chooseString)
-        */
+        cardAnimation()
+        coolIndex++
+        console.log(coolIndex)
         setTimeout(() => {
             coolButton.classList.remove('cool-button-click')
         }, 250)   
@@ -54,7 +54,7 @@ function tutorialFuntion() {
     let c = 1
     
     const cardTitle = document.createElement('header')
-    const card = document.createElement('div')
+    
     card.classList.add('card')
     card.classList.add('card-animation')
 
