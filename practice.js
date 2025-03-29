@@ -28,26 +28,28 @@ function tutorialFuntion() {
 
     setTimeout(() => {
         let index = 0
-        let speed = 80;
         let titleText = '...hello'
         cardTitle.classList.add('title')
         cardTitle.classList.add('blinking-cursor2')
         function typeWriter() {
             
             if (index < titleText.length) {
-                let index1 = 0
+                const speedUp = 80
                 cardTitle.textContent += titleText.charAt(index)
                 index++;
-                setTimeout(typeWriter, speed)
+                setTimeout(typeWriter, speedUp)
             } 
         }
 
         function decrementTypeWriter() {
-            if (titleText.length > 0) {
-                let index2 = 0
-                cardTitle.textContent -= titleText.charAt(index)
-                setTimeout(typeWriter, speed)
-            } 
+            if (index > 0) {
+                //cardTitle.textContent = titleText.(0, -2).charAt(index)
+                const speedDown = 50
+                titleText = cardTitle.textContent.slice(0, -1)
+                cardTitle.textContent = titleText
+                index--
+                setTimeout(decrementTypeWriter, speedDown)
+            }
         }
 
         setTimeout(() => {
@@ -57,6 +59,50 @@ function tutorialFuntion() {
         setTimeout(() => {
             decrementTypeWriter()
         }, 1500)
+
+        setTimeout(() => {
+            titleText = 'so... how is your day?'
+            typeWriter()
+        }, 2500)
+
+        setTimeout(() => {
+            decrementTypeWriter()
+        }, 5000)
+
+        setTimeout(() => {
+            titleText = 'good...?'
+            typeWriter()
+        }, 7000)
+
+        setTimeout(() => {
+            titleText = '         jk, you obviously have a ton of shit going on.'
+            typeWriter()
+        }, 11000)
+
+        setTimeout(() => {
+            decrementTypeWriter()
+        }, 16000)
+
+        setTimeout(() => {
+            titleText = 'you know what goes great with depression and anxiety?'
+            typeWriter()
+        }, 19000)
+
+        setTimeout(() => {
+            titleText = '                                                     car keys and alcohol'
+            typeWriter()
+        }, 27000)
+
+        setTimeout(() => {
+            decrementTypeWriter()
+        }, 30000)
+
+        setTimeout(() => {
+            titleText = 'but just in case you don\'t have a car, i made this game to bide your time'
+            typeWriter()
+        }, 34000)
+
+
         
         card.appendChild(cardTitle)
     }, 1000)
@@ -108,8 +154,12 @@ function createCards() {
                             index++;
                             setTimeout(typeWriter, speed)
                         } 
+
                     }
                     typeWriter()
+                    function decrementType() {
+                        
+                    }
 
                     card.appendChild(cardTitle)
                     box.classList.add('box')
