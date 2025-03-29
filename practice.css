@@ -85,6 +85,9 @@ body {
 
 .title {
     margin-bottom: 40px;
+    margin-right: 40px;
+    margin-left: 40px;
+    text-align: center;
 }
 
 @keyframes blink {
