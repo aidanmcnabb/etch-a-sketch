@@ -32,6 +32,66 @@ body {
     
 }
 
+.cool {
+    position: fixed; 
+    top: 92%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 570px;
+    height: 90px;
+    background-color: white;
+    border-radius: 15px;
+    border-style: ridge;
+    border-width: 10px;
+    box-shadow: 10px 5px 5px rgba(138, 138, 138, 0.719);
+    font-family: "Pixelify Sans";
+    font-size: 50px;
+    cursor: pointer;
+    
+}
+
+.cool-in {
+    animation: coolIn 2s ease-in-out forwards;
+}
+
+@keyframes coolIn {
+    0% {transform: translateY(1500px) translateX(-300px);}
+}
+
+.cool-button-click {
+    animation: coolButtonClick 0.4s ease-out;
+    
+}
+
+@keyframes coolButtonClick {
+    45% {
+        transform: scale(.8) translateX(0px) translateY(0px);
+        border-style: inset; 
+        background-color: rgb(134, 134, 134); 
+        border-width: 5px;
+    }
+    100% {
+        
+    }
+}
+
+.cool-button-click2 {
+    animation: coolButtonClick2 .3s ease-out;
+}
+
+@keyframes coolButtonClick2 {
+    45% {
+        transform: scale(.8);
+        border-style: inset; 
+        background-color: rgb(134, 134, 134); 
+        border-width: 5px;
+    }
+    100% {
+        border-color: forestgreen;
+        background-color: rgb(236, 248, 236);
+    }
+}
+
 .box {
     font-size: 28px;
     text-shadow: 10px 5px 5px rgb(180, 180, 180);

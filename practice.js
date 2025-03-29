@@ -12,7 +12,16 @@ function squareSound() {
 
 function tutorialFuntion() {
     const box = document.createElement('div')
-             
+    const coolButton = document.createElement('button')
+    coolButton.textContent = 'cool'
+    coolButton.classList.add('cool')
+    coolButton.classList.add('cool-in')
+    coolButton.addEventListener('mousedown', () => {
+        coolButton.setAttribute('style', 'border-color: forestgreen;')
+        coolButton.classList.remove('cool-in')
+        coolButton.classList.add('cool-button-click')
+    })    
+    document.body.appendChild(coolButton)
     let cardZIndex = 1
     let cardTranslationValue = 55
     let c = 1
@@ -101,6 +110,11 @@ function tutorialFuntion() {
             titleText = 'but just in case you don\'t have a car, i made this game to bide your time'
             typeWriter()
         }, 34000)
+
+        setTimeout(() => {
+            cool.classList.add('consent')
+            document.body.appendChild(cool)
+        }, 38000)
 
 
         
