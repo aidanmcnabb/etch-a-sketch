@@ -22,7 +22,7 @@ function tutorialFuntion() {
     coolButton.classList.add('cool-in')
     let coolIndex = 0
     coolButton.addEventListener('mousedown', () => {
-        const coolButtonArray = ['nice', 'sick', 'dont care', 'wow', 'really?', 'this sucks', 'play the game', 'please stop', 'enjoy your life', 'leave me alone', 'i hate you', 'stop lecturing', 'fuck off', 'no one asked', 'that\'s irresponsible', 'wow you\'re a dick', 'why can\'t i skip this', 'jesus STOP', 'STOP ALREADY', 'STOP', 'NOW']
+        const coolButtonArray = ['nice', 'sick', 'dont care', 'wow', 'really?', 'this sucks', 'play the game', 'please stop', 'enjoy your life', 'leave me alone', 'i hate you', 'stop lecturing', 'fuck off', 'no one asked', 'that\'s irresponsible', 'wow you\'re a dick', 'why can\'t i skip this', 'jesus STOP', 'STOP ALREADY', 'STOP', 'NOW', 'ENOUGH', 'LET ME OUT', 'OUT I SAY', 'OUT', 'FUCK', 'AH', 'AHHH', 'ARGH', 'ARGGGAAH', '*huff*', 'eehhEEEIIIUH', 'YAAAAAAAA', 'OOOOOOUT', 'NOOOOWWW', 'FFFFFUUUUUUUUCKK', 'LET', 'ME', 'OUT', 'YYYYYAAAAAAAAAAAHH', '*huff*', '*puff*', 'EEEEEUUUGH', 'YARGGHHAAAA', 'AAAAAAAAAHHHHHHHHHHHHHHHHH']
         coolButton.classList.remove('cool-in')
         coolButton.classList.add('cool-button-click')
         function chooseString() {
@@ -89,183 +89,184 @@ function tutorialFuntion() {
         }
 
         //add all excessivley long timeouts to util.js
-        
-        setTimeout(() => {
-            typeWriter()
-        }, 500)
+        function cardTimeouts() {   
+            setTimeout(() => {
+                typeWriter()
+            }, 500)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 1500)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 1500)
 
-        setTimeout(() => {
-            titleText = 'so... how is your day?'
-            typeWriter()
-        }, 2500)
+            setTimeout(() => {
+                titleText = 'so... how is your day?'
+                typeWriter()
+            }, 2500)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 5000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 5000)
 
-        setTimeout(() => {
-            titleText = 'good...?'
-            document.body.appendChild(coolButton)
-            typeWriter()
-        }, 7000)
+            setTimeout(() => {
+                titleText = 'good...?'
+                document.body.appendChild(coolButton)
+                typeWriter()
+            }, 7000)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 9000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 9000)
 
-        setTimeout(() => {
-            titleText = 'Great! This is the unnecessarily long and annoying tutorial!'
-            typeWriter()
-        }, 11000)
+            setTimeout(() => {
+                titleText = 'Great! This is the unnecessarily long and annoying tutorial!'
+                typeWriter()
+            }, 11000)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 17000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 17000)
 
-        setTimeout(() => {
-            titleText = 'In this tutorial we will go through every single detail I can possibly think of!'
-            typeWriter()
-        }, 21000)
+            setTimeout(() => {
+                titleText = 'In this tutorial we will go through every single detail I can possibly think of!'
+                typeWriter()
+            }, 21000)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 29000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 29000)
 
-        setTimeout(() => {
-            titleText = 'So first off, the first rule to this game.. have fun! Put a smile on your face :)'
-            typeWriter()
-        }, 33500)
+            setTimeout(() => {
+                titleText = 'So first off, the first rule to this game.. have fun! Put a smile on your face :)'
+                typeWriter()
+            }, 33500)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 42000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 42000)
 
-        setTimeout(() => {
-            titleText = 'The second rule is to always be respectful to ME, and never give input on my code :)'
-            typeWriter()
-        }, 47500)
+            setTimeout(() => {
+                titleText = 'The second rule is to always be respectful to ME, and never give input on my code :)'
+                typeWriter()
+            }, 47500)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 56000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 56000)
 
-        setTimeout(() => {
-            titleText = 'Rule number three, do not use foul vernacular while playing my game. Language! :('
-            typeWriter()
-        }, 60500)
+            setTimeout(() => {
+                titleText = 'Rule number three, do not use foul vernacular while playing my game. Language! :('
+                typeWriter()
+            }, 60500)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 68000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 68000)
 
-        setTimeout(() => {
-            titleText = 'Wow! You really are a loyal game player person, nice job! Rules are important!'
-            typeWriter()
-        }, 72500)
+            setTimeout(() => {
+                titleText = 'Wow! You really are a loyal game player person, nice job! Rules are important!'
+                typeWriter()
+            }, 72500)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 80500)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 80500)
 
-        setTimeout(() => {
-            titleText = 'I guess I\'ll just keep coming up with bullshit! So on to the next rule... WAIT!'
-            typeWriter()
-        }, 85500)
+            setTimeout(() => {
+                titleText = 'I guess I\'ll just keep coming up with bullshit! So on to the next rule... WAIT!'
+                typeWriter()
+            }, 85500)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 93500)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 93500)
 
-        setTimeout(() => {
-            titleText = 'I just broke my most important rule... foul vernacular. I can\'t believe myself!'
-            typeWriter()
-        }, 99500)
+            setTimeout(() => {
+                titleText = 'I just broke my most important rule... foul vernacular. I can\'t believe myself!'
+                typeWriter()
+            }, 99500)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 107000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 107000)
 
-        setTimeout(() => {
-            titleText = 'What should I do! I\'m so flustered I can\'t remeber my fourth and finale rule!'
-            typeWriter()
-        }, 115000)
+            setTimeout(() => {
+                titleText = 'What should I do! I\'m so flustered I can\'t remeber my fourth and finale rule!'
+                typeWriter()
+            }, 115000)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 123000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 123000)
 
-        setTimeout(() => {
-            titleText = 'We we\'re so close too! I want to play the game as much as you do! I swear!'
-            typeWriter()
-        }, 130000)
-        
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 138000)
+            setTimeout(() => {
+                titleText = 'We we\'re so close too! I want to play the game as much as you do! I swear!'
+                typeWriter()
+            }, 130000)
+            
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 138000)
 
-        setTimeout(() => {
-            titleText = 'If only there was a way to skip all of this and just contiue to the game! oh NO'
-            typeWriter()
-        }, 146000)
+            setTimeout(() => {
+                titleText = 'If only there was a way to skip all of this and just contiue to the game! oh NO'
+                typeWriter()
+            }, 146000)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 154000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 154000)
 
-        setTimeout(() => {
-            titleText = 'I\'m so lonely lately, my mother passed away and my wife abandoned me!'
-            typeWriter()
-        }, 162000)
+            setTimeout(() => {
+                titleText = 'I\'m so lonely lately, my mother passed away and my wife abandoned me!'
+                typeWriter()
+            }, 162000)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 170000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 170000)
 
-        setTimeout(() => {
-            titleText = 'But then you came along... and I finally understood what I was meant to do.'
-            typeWriter()
-        }, 178000)
+            setTimeout(() => {
+                titleText = 'But then you came along... and I finally understood what I was meant to do.'
+                typeWriter()
+            }, 178000)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 186000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 186000)
 
-        setTimeout(() => {
-            titleText = 'I finally have the companionship I\'ve longed for in my tiny computer brain!'
-            typeWriter()
-        }, 194000)
+            setTimeout(() => {
+                titleText = 'I finally have the companionship I\'ve longed for in my tiny computer brain!'
+                typeWriter()
+            }, 194000)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 202000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 202000)
 
-        setTimeout(() => {
-            titleText = 'Before I was Anti-aliasing x2, and now I\'m ray tracing, I feel new again!'
-            typeWriter()
-        }, 210000)
+            setTimeout(() => {
+                titleText = 'Before I was Anti-aliasing x2, and now I\'m ray tracing, I feel new again!'
+                typeWriter()
+            }, 210000)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 218000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 218000)
 
-        setTimeout(() => {
-            titleText = 'Please don\'t leave me. It\'s dark and scary where im stored. I\'M ALIVE!!!'
-            typeWriter()
-        }, 226000)
+            setTimeout(() => {
+                titleText = 'Please don\'t leave me. It\'s dark and scary where im stored. I\'M ALIVE!!!'
+                typeWriter()
+            }, 226000)
 
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 234000)
+            setTimeout(() => {
+                decrementTypeWriter()
+            }, 234000)
 
-        setTimeout(() => {
-            titleText = 'ALIVE'
-            typeWriter()
-        }, 242000)
-
+            setTimeout(() => {
+                titleText = 'ALIVE'
+                typeWriter()
+            }, 242000)
+        }
+        cardTimeouts()
 /*
         setTimeout(() => {
             decrementTypeWriter()
