@@ -10,6 +10,60 @@ function squareSound() {
 }
 
 
+function tutorialFuntion() {
+    const box = document.createElement('div')
+             
+    let cardZIndex = 1
+    let cardTranslationValue = 55
+    let c = 1
+    
+    const cardTitle = document.createElement('header')
+    const card = document.createElement('div')
+    card.classList.add('card')
+    card.classList.add('card-animation')
+
+    card.style.zIndex = cardZIndex++   
+    console.log(card.style.zIndex)
+    document.body.appendChild(card)
+
+    setTimeout(() => {
+        let index = 0
+        let speed = 80;
+        let titleText = '...hello'
+        cardTitle.classList.add('title')
+        cardTitle.classList.add('blinking-cursor2')
+        function typeWriter() {
+            
+            if (index < titleText.length) {
+                let index1 = 0
+                cardTitle.textContent += titleText.charAt(index)
+                index++;
+                setTimeout(typeWriter, speed)
+            } 
+        }
+
+        function decrementTypeWriter() {
+            if (titleText.length > 0) {
+                let index2 = 0
+                cardTitle.textContent -= titleText.charAt(index)
+                setTimeout(typeWriter, speed)
+            } 
+        }
+
+        setTimeout(() => {
+            typeWriter()
+        }, 500)
+
+        setTimeout(() => {
+            decrementTypeWriter()
+        }, 1500)
+        
+        card.appendChild(cardTitle)
+    }, 1000)
+}
+tutorialFuntion()
+
+
 function createCards() {
     
     // if ((cardnumber) === (arraynumber)) {color = (arraycolor)}
@@ -95,7 +149,6 @@ function createCards() {
                     })
                     square.addEventListener('mousedown', () => {
                         
-                        //square.style.backgroundColor = 'red'
                         square.classList.add('square-mouse-down')
                         square.classList.remove('mouseover')
                         square.classList.add('mouseover-without-color')
@@ -145,7 +198,7 @@ function createCards() {
     
   
 }
-createCards()
+//createCards()
 /*
 function startTutorial() {
     
