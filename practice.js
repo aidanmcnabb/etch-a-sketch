@@ -23,17 +23,18 @@ function tutorialFuntion() {
     let coolIndex = 0
     const card = document.createElement('div')
     coolButton.addEventListener('mousedown', () => {
-        card.classList.remove('card-animation')
-        const coolButtonArray = ['nice', 'sick', 'dont care', 'wow', 'really?', 'this sucks', 'play the game', 'please stop', 'enjoy your life', 'leave me alone', 'i hate you', 'stop lecturing', 'fuck off', 'no one asked', 'that\'s irresponsible', 'wow you\'re a dick', 'why can\'t i skip this', 'jesus STOP', 'STOP ALREADY', 'STOP', 'NOW', 'ENOUGH', 'LET ME OUT', 'OUT I SAY', 'OUT', 'FUCK', 'AH', 'AHHH', 'ARGH', 'ARGGGAAH', '*huff*', 'eehhEEEIIIUH', 'YAAAAAAAA', 'OOOOOOUT', 'NOOOOWWW', 'FFFFFUUUUUUUUCKK', 'LET', 'ME', 'OUT', 'YYYYYAAAAAAAAAAAHH', '*huff*', '*puff*', 'EEEEEUUUGH', 'YARGGHHAAAA', 'AAAAAAAAAHHHHHHHHHHHHHHHHH']
-        //26 total animations
+        card.classList.remove('card-animation2')
+        const coolButtonArray = ['nice', 'sick', 'dont care', 'wow', 'really?', 'this sucks', 'play the game', 'please stop', 'enjoy your life', 'leave me alone', 'i hate you', 'stop lecturing', 'fuck off', 'no one asked', 'that\'s irresponsible', 'wow you\'re a dick', 'why can\'t i skip this', 'jesus STOP', 'STOP ALREADY', 'STOP', 'NOW', 'ENOUGH', 'LET ME OUT', 'OUT I SAY', 'OUT', 'FUCK', 'AH', 'AHHH', 'ARGH', 'ARGGGAAH', '*huff*', 'eehhEEEIIIUH', 'YAAAAAAAA', 'OOOOOOUT', 'NOOOOWWW', 'FFFFFUUUUUUUUCKK', 'LET', 'ME', 'OUT', 'YYYYYAAAAAAAAAAAHH', '*huff*', '*puff*', 'EEEEEUUUGH', 'YARGGHHAAAA', 'AAAAAAAAAHHHHHHHHHHHHHHHHH', 'DIE']
+        
         const cardAnimationArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'ani1', 'ani2', 'ani3', 'ani4', 'ani5', 'ani6', 'ani7', 'ani8', 'ani9', 'ani10', 'ani11', 'ani12', 'ani13', 'ani14', 'ani15', 'ani16', 'ani17', 'ani18', 'ani19', 'ani20', 'ani21', 'ani22', 'ani23', 'ani24', 'ani25', 'ani26', 'ani27']
+
         coolButton.classList.remove('cool-in')
         coolButton.classList.add('cool-button-click')
         function chooseString() {
             coolButton.textContent = coolButtonArray.at(coolIndex)
             
             if (coolIndex >= coolButtonArray.length) {
-                coolIndex = 0
+                coolButton.textContent = 'DIE'
             }
         }
         chooseString()
@@ -41,17 +42,26 @@ function tutorialFuntion() {
             const aniNumber = cardAnimationArray.at(coolIndex)
             if (coolIndex >= 18) {
                 card.classList.add(aniNumber) 
-                if (coolIndex > 0 && coolIndex <= 27 || coolIndex > 28 && coolIndex <= 35 || coolIndex > 36 && coolIndex <= 45 || coolIndex > 46) { 
+                if (coolIndex > 0 && coolIndex <= 27 || coolIndex > 28 && coolIndex <= 41 || coolIndex > 42 && coolIndex <= 45) { 
                     //trying to make some of the classes only last for a little bit so they dont clash a fuck shit up
                     setTimeout(() => { 
                         card.classList.remove(aniNumber)
                     }, 500)
-                    // if (classlistnumber > 3) {remove 1 class}
                 }
-                if (coolIndex)
-            }
+                if (coolIndex === 28) {
+                    setTimeout(() => {
+                        coolButton.classList.add(aniNumber)
+                    },250)
+                }
+                if (coolIndex === 30) {
+                    card.classList.remove(aniNumber)
+                    document.body.classList.add(aniNumber)
+                }
+                if (coolIndex === 45) {
 
-            
+                }
+
+            } 
         }
         cardAnimation()
         coolIndex++
@@ -68,12 +78,13 @@ function tutorialFuntion() {
     const cardTitle = document.createElement('header')
     
     card.classList.add('card')
-    card.classList.add('card-animation')
+    card.classList.add('card-animation2')
 
     card.style.zIndex = cardZIndex++   
     console.log(card.style.zIndex)
-    document.body.appendChild(card)
-
+    setTimeout(() => {
+        document.body.appendChild(card)
+    }, 300)
     setTimeout(() => {
         let index = 0
         let titleText = '...hello'
