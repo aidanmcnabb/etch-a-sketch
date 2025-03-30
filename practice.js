@@ -23,9 +23,10 @@ function tutorialFuntion() {
     let coolIndex = 0
     const card = document.createElement('div')
     coolButton.addEventListener('mousedown', () => {
+        card.classList.remove('card-animation')
         const coolButtonArray = ['nice', 'sick', 'dont care', 'wow', 'really?', 'this sucks', 'play the game', 'please stop', 'enjoy your life', 'leave me alone', 'i hate you', 'stop lecturing', 'fuck off', 'no one asked', 'that\'s irresponsible', 'wow you\'re a dick', 'why can\'t i skip this', 'jesus STOP', 'STOP ALREADY', 'STOP', 'NOW', 'ENOUGH', 'LET ME OUT', 'OUT I SAY', 'OUT', 'FUCK', 'AH', 'AHHH', 'ARGH', 'ARGGGAAH', '*huff*', 'eehhEEEIIIUH', 'YAAAAAAAA', 'OOOOOOUT', 'NOOOOWWW', 'FFFFFUUUUUUUUCKK', 'LET', 'ME', 'OUT', 'YYYYYAAAAAAAAAAAHH', '*huff*', '*puff*', 'EEEEEUUUGH', 'YARGGHHAAAA', 'AAAAAAAAAHHHHHHHHHHHHHHHHH']
         //26 total animations
-        const cardAnimationArray = ['ani1', 'ani2', 'ani3', 'ani4', 'ani5', 'ani6', 'ani7', 'ani8', 'ani9', 'ani10', 'ani11', 'ani12', 'ani13', 'ani14', 'ani15', 'ani16', 'ani17', 'ani18', 'ani19', 'ani20', 'ani21', 'ani22', 'ani23', 'ani24', 'ani25', 'ani26']
+        const cardAnimationArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'ani1', 'ani2', 'ani3', 'ani4', 'ani5', 'ani6', 'ani7', 'ani8', 'ani9', 'ani10', 'ani11', 'ani12', 'ani13', 'ani14', 'ani15', 'ani16', 'ani17', 'ani18', 'ani19', 'ani20', 'ani21', 'ani22', 'ani23', 'ani24', 'ani25', 'ani26', 'ani27']
         coolButton.classList.remove('cool-in')
         coolButton.classList.add('cool-button-click')
         function chooseString() {
@@ -40,7 +41,7 @@ function tutorialFuntion() {
             const aniNumber = cardAnimationArray.at(coolIndex)
             if (coolIndex >= 18) {
                 card.classList.add(aniNumber) 
-                if (coolIndex > 18 && coolIndex <= 21 || coolIndex > 22 && coolIndex <= 23 || coolIndex > 23 && coolIndex <= 25) { 
+                if (coolIndex > 0 && coolIndex <= 30 || coolIndex > 31 && coolIndex <= 35 || coolIndex > 36 && coolIndex <= 45 || coolIndex > 46) { 
                     //trying to make some of the classes only last for a little bit so they dont clash a fuck shit up
                     setTimeout(() => { 
                         card.classList.remove(aniNumber)

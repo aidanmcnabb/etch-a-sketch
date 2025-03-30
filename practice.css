@@ -281,3 +281,25 @@ body {
         opacity: 1;
     }
 }
+/* change position off of fixed and just give a height to page top margin? maybe that will fix it's "original position", this shits fucking retarded*/
+.ani1 {
+    animation: ani1 .7s linear;
+}
+
+@keyframes ani1 {
+    0% {
+        transform: translateX(-284px) translateY(-30px);
+    }
+    33% {
+        transform: rotate(50deg);
+        transform: translateX(-284px) translateY(-30px);
+    }
+    66% {
+        transform: rotate(-50deg);
+        transform: translateX(-284px) translateY(-30px);
+    }
+    99% {
+        transform: rotate(0deg);
+        transform: translateX(-284px) translateY(-30px);
+    }
+}
