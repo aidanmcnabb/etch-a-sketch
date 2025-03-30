@@ -41,13 +41,14 @@ function tutorialFuntion() {
             const aniNumber = cardAnimationArray.at(coolIndex)
             if (coolIndex >= 18) {
                 card.classList.add(aniNumber) 
-                if (coolIndex > 0 && coolIndex <= 30 || coolIndex > 31 && coolIndex <= 35 || coolIndex > 36 && coolIndex <= 45 || coolIndex > 46) { 
+                if (coolIndex > 0 && coolIndex <= 27 || coolIndex > 28 && coolIndex <= 35 || coolIndex > 36 && coolIndex <= 45 || coolIndex > 46) { 
                     //trying to make some of the classes only last for a little bit so they dont clash a fuck shit up
                     setTimeout(() => { 
                         card.classList.remove(aniNumber)
-                    }, 1000)
+                    }, 500)
                     // if (classlistnumber > 3) {remove 1 class}
                 }
+                if (coolIndex)
             }
 
             
