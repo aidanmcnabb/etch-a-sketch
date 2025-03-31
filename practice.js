@@ -69,14 +69,23 @@ function tutorialFuntion() {
                     const killShotText = document.createElement('div')
                     killShotText.classList.add('kill-shot-text')
                     killShotText.classList.add('kill-shot-in')
-                    killShotText.textContent = 'OOOOOOOOOOOOOOOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNLLLLEEETTTMMMEEEOOOUUUTTTLLLLEEETTTMMMEEEOOOUUUTTTLLLLEEETTTMMMEEEOOOUUUTTTFFFUUUCCCKKKOOOFFFFFFUUUCCCKKKOOOFFFFFFUUUCCCKKKOOOFFFLLLEEETTTMMMEEEOOOUUUTTTLLLLEEETTTMMMEEEOOOUUUTTTLLLLEEETTTMMMEEEOOOUUUTTTFFFUUUCCCKKKOOOFFFFFFUUUCCCKKKOOOFFFFFFUUUCCCKKKOOOFFF'
+                    killShotText.textContent = 'LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEETTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT'
                     setTimeout(() => {
                         document.body.appendChild(killShotText)
+                        // make background and text invert eachothers colors
+                        //make it impossible to highlight the card text
                     }, 3000)
                     setTimeout(() => {
                         card.classList.add('card-out')
                         coolButton.classList.add('card-out')
                     }, 3100)
+                    setTimeout(() => {
+                        document.body.removeChild(card)
+                        document.body.removeChild(coolButton)
+                    }, 3500)
+                    setTimeout(() => {
+                        document.body.removeChild(killShotText)
+                    }, 12000)
                 }
 
             } 
