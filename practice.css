@@ -375,7 +375,7 @@ body {
 }
 
 @keyframes killShotText {
-    100% {transform: translateX(-80000px) translateY(-235px);}
+    100% {transform: translateX(-90000px) translateY(-235px);}
 }
 
 @keyframes ani1 {
