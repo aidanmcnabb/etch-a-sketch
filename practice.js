@@ -20,6 +20,7 @@ function tutorialFuntion() {
     coolButton.textContent = 'cool'
     coolButton.classList.add('cool')
     coolButton.classList.add('cool-in')
+    const killShotText = document.createElement('div')
     let coolIndex = 0
     const card = document.createElement('div')
     coolButton.addEventListener('mousedown', () => {
@@ -57,7 +58,14 @@ function tutorialFuntion() {
                     card.classList.remove(aniNumber)
                     document.body.classList.add(aniNumber)
                 }
-                if (coolIndex === 45) {
+                if (coolIndex === 46) {
+                    card.classList.remove('ani25')
+                    card.classList.remove('ani11')
+                    card.classList.remove('undefined')
+                    coolButton.classList.remove('ani11')
+                    document.body.classList.remove('ani13')
+                    card.classList.add('ani27')
+                    coolButton.classList.add('ani27')
 
                 }
 
@@ -113,70 +121,70 @@ function tutorialFuntion() {
 
         //add all excessivley long timeouts to util.js
         function cardTimeouts() {   
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 typeWriter()
             }, 500)
 
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 decrementTypeWriter()
             }, 1500)
 
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 titleText = 'so... how is your day?'
                 typeWriter()
             }, 2500)
 
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 decrementTypeWriter()
             }, 5000)
 
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 titleText = 'good...?'
                 document.body.appendChild(coolButton)
                 typeWriter()
             }, 7000)
 
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 decrementTypeWriter()
             }, 9000)
 
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 titleText = 'Great! This is the unnecessarily long and annoying tutorial!'
                 typeWriter()
             }, 11000)
 
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 decrementTypeWriter()
             }, 17000)
 
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 titleText = 'In this tutorial we will go through every single detail I can possibly think of!'
                 typeWriter()
             }, 21000)
 
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 decrementTypeWriter()
             }, 29000)
 
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 titleText = 'So first off, the first rule to this game.. have fun! Put a smile on your face :)'
                 typeWriter()
             }, 33500)
 
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 decrementTypeWriter()
             }, 42000)
 
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 titleText = 'The second rule is to always be respectful to ME, and never give input on my code :)'
                 typeWriter()
             }, 47500)
 
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 decrementTypeWriter()
             }, 56000)
 
-            setTimeout(() => {
+            setTimeout((stopAll) => {
                 titleText = 'Rule number three, do not use foul vernacular while playing my game. Language! :('
                 typeWriter()
             }, 60500)
@@ -288,6 +296,8 @@ function tutorialFuntion() {
                 titleText = 'ALIVE'
                 typeWriter()
             }, 242000)
+            
+            
         }
         cardTimeouts()
 /*
