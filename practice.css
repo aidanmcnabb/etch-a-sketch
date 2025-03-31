@@ -355,8 +355,27 @@ body {
     animation: ani25 .5s ease-in-out infinite;
 }
 /* I can change the scale if the entire window?? */
-.ani27 {
-    animation: killShot 1s 
+.card-out {
+    animation: killShot .1s linear forwards;
+}
+
+@keyframes killShot {
+    100% {
+        transform: translateX(-2000px);
+    }
+}
+
+.kill-shot-text {
+    font-size: 400px;
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(2%, -50%);
+    animation: killShotText 7s linear forwards;
+}
+
+@keyframes killShotText {
+    100% {transform: translateX(-80000px) translateY(-235px);}
 }
 
 @keyframes ani1 {

@@ -10,6 +10,7 @@ function squareSound() {
 }
 
 
+
 function tutorialFuntion() {
     const box = document.createElement('div')
     const coolButton = document.createElement('button')
@@ -20,7 +21,7 @@ function tutorialFuntion() {
     coolButton.textContent = 'cool'
     coolButton.classList.add('cool')
     coolButton.classList.add('cool-in')
-    const killShotText = document.createElement('div')
+
     let coolIndex = 0
     const card = document.createElement('div')
     coolButton.addEventListener('mousedown', () => {
@@ -35,7 +36,7 @@ function tutorialFuntion() {
             coolButton.textContent = coolButtonArray.at(coolIndex)
             
             if (coolIndex >= coolButtonArray.length) {
-                coolButton.textContent = 'DIE'
+                coolButton.textContent = 'What\'s that noise?'
             }
         }
         chooseString()
@@ -59,14 +60,23 @@ function tutorialFuntion() {
                     document.body.classList.add(aniNumber)
                 }
                 if (coolIndex === 46) {
+                    
                     card.classList.remove('ani25')
                     card.classList.remove('ani11')
                     card.classList.remove('undefined')
                     coolButton.classList.remove('ani11')
                     document.body.classList.remove('ani13')
-                    card.classList.add('ani27')
-                    coolButton.classList.add('ani27')
-
+                    const killShotText = document.createElement('div')
+                    killShotText.classList.add('kill-shot-text')
+                    killShotText.classList.add('kill-shot-in')
+                    killShotText.textContent = 'OOOOOOOOOOOOOOOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNLLLLEEETTTMMMEEEOOOUUUTTTLLLLEEETTTMMMEEEOOOUUUTTTLLLLEEETTTMMMEEEOOOUUUTTTFFFUUUCCCKKKOOOFFFFFFUUUCCCKKKOOOFFFFFFUUUCCCKKKOOOFFFLLLEEETTTMMMEEEOOOUUUTTTLLLLEEETTTMMMEEEOOOUUUTTTLLLLEEETTTMMMEEEOOOUUUTTTFFFUUUCCCKKKOOOFFFFFFUUUCCCKKKOOOFFFFFFUUUCCCKKKOOOFFF'
+                    setTimeout(() => {
+                        document.body.appendChild(killShotText)
+                    }, 3000)
+                    setTimeout(() => {
+                        card.classList.add('card-out')
+                        coolButton.classList.add('card-out')
+                    }, 3100)
                 }
 
             } 
