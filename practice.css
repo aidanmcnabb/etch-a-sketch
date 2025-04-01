@@ -7,6 +7,102 @@ body {
     font-family: "Pixelify Sans", sans-serif;
 }
 
+.side-bar-left {
+    background-color: rgb(224, 224, 224);
+    position: fixed;
+    width: 230px;
+    height: 80vh;
+    left: -15%;
+    top: 10%;
+    border-style: ridge double;
+    border-left-style:none;
+    border-width: 15px;
+    border-radius: 30px;
+    border-top-left-radius: 0%;
+    border-bottom-left-radius: 0%;
+    border-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.side-bar-left-in {
+    animation: leftIn .5s ease-in-out forwards;
+    animation-delay: 2s;
+}
+
+@keyframes leftIn {
+    30% {
+        left: 0%
+    }
+    40% {
+        left: -2%
+    }
+    52% {
+        left: 0%
+    }
+    64% {
+        left: -1%
+    }
+    76% {
+        left: 0%
+    }
+    88% {
+        left: -.5%
+    }
+    100% {
+        left: 0%
+    }
+}
+
+.side-bar-right {
+    background-color: rgb(224, 224, 224);
+    position: fixed;
+    width: 230px;
+    height: 80vh;
+    top: 10%;
+    right: -15%;
+    border-radius: 30px;
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 0%;
+    border-style: ridge double;
+    border-right-style: none;
+    border-width: 15px;
+    border-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.side-bar-right-in {
+    animation: rightIn .5s ease-in-out forwards;
+    animation-delay: 2s;
+}
+
+@keyframes rightIn {
+    30% {
+        right: 0%
+    }
+    40% {
+        right: -2%
+    }
+    52% {
+        right: 0%
+    }
+    64% {
+        right: -1%
+    }
+    76% {
+        right: 0%
+    }
+    88% {
+        right: -.5%
+    }
+    100% {
+        right: 0%
+    }
+}
+
 .card {
     font-size: 75px;
     text-shadow: 10px 5px 5px rgb(180, 180, 180);
@@ -52,6 +148,7 @@ body {
     font-size: 50px;
     cursor: pointer;
     margin-top: 14px;
+    user-select: none;
 }
 
 .cool-in {
@@ -186,6 +283,7 @@ body {
     margin-right: 40px;
     margin-left: 40px;
     text-align: center;
+    user-select: none;
 }
 
 @keyframes blink {

@@ -11,6 +11,7 @@ function squareSound() {
 
 
 
+
 function tutorialFuntion() {
     const box = document.createElement('div')
     const coolButton = document.createElement('button')
@@ -69,7 +70,7 @@ function tutorialFuntion() {
                     const killShotText = document.createElement('div')
                     killShotText.classList.add('kill-shot-text')
                     killShotText.classList.add('kill-shot-in')
-                    killShotText.textContent = 'LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEETTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT'
+                    killShotText.textContent = 'LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEETTTTTTTTTTTTTTTTTTTTTTTTTTTTTMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT'
                     setTimeout(() => {
                         document.body.appendChild(killShotText)
                         // make background and text invert eachothers colors
@@ -83,6 +84,17 @@ function tutorialFuntion() {
                         document.body.removeChild(card)
                         document.body.removeChild(coolButton)
                     }, 3500)
+                    setTimeout(() => {
+                        const sideBarLeft = document.createElement('div')
+                        const sideBarRight = document.createElement('div')
+                        sideBarLeft.classList.add('side-bar-right')
+                        sideBarRight.classList.add('side-bar-left')
+                        sideBarLeft.classList.add('side-bar-right-in')
+                        sideBarRight.classList.add('side-bar-left-in')
+                        document.body.appendChild(sideBarLeft)
+                        document.body.appendChild(sideBarRight)
+                        document.body.setAttribute('style', 'flex-direction: row;')
+                    }, 6500)
                     setTimeout(() => {
                         document.body.removeChild(killShotText)
                     }, 12000)
@@ -319,28 +331,13 @@ function tutorialFuntion() {
             
         }
         cardTimeouts()
-/*
-        setTimeout(() => {
-            decrementTypeWriter()
-        }, 30000)
 
-        setTimeout(() => {
-            titleText = 'but just in case you don\'t have a car, i made this game to bide your time'
-            typeWriter()
-        }, 34000)
-
-        setTimeout(() => {
-            document.body.removeChild(coolButton)
-            document.body.appendChild(coolButton2)
-            
-        }, 42000)
-*/
-
-        
         card.appendChild(cardTitle)
     }, 1000)
 }
 tutorialFuntion()
+
+
 
 
 function createCards() {
