@@ -9,8 +9,37 @@ function squareSound() {
     squareClick.play()
 }
 
-
-
+const sideBarRight = document.createElement('div')
+const sideBarLeft = document.createElement('div')
+sideBarLeft.classList.add('side-bar-left')
+sideBarRight.classList.add('side-bar-right')
+sideBarLeft.classList.add('side-bar-left-in')
+sideBarRight.classList.add('side-bar-right-in')
+document.body.appendChild(sideBarLeft)
+document.body.appendChild(sideBarRight)
+document.body.setAttribute('style', 'flex-direction: row;')
+const soundIcon = document.createElement('img')
+soundIcon.src = "img/soundIcon2.png"
+const settingsCog = document.createElement('img')
+settingsCog.src = "img/settingsCog.png"
+const discordIcon = document.createElement('img')
+discordIcon.src = "img/discordIcon.png"
+soundIcon.width = 150
+settingsCog.width = 125
+discordIcon.width = 175
+const soundButton = document.createElement('button')
+const settingsButton = document.createElement('button')
+const discordButton = document.createElement('button')
+soundButton.classList.add('sound-button')
+settingsButton.classList.add('settings-button')
+discordButton.classList.add('discord-button')
+sideBarLeft.appendChild(soundButton)
+sideBarLeft.appendChild(settingsButton)
+sideBarLeft.appendChild(discordButton)
+soundButton.appendChild(soundIcon)
+settingsButton.appendChild(settingsCog)
+discordButton.appendChild(discordIcon)
+ /*
 
 function tutorialFuntion() {
     const box = document.createElement('div')
@@ -338,7 +367,7 @@ function tutorialFuntion() {
 tutorialFuntion()
 
 
-
+*/
 
 function createCards() {
     
@@ -476,10 +505,12 @@ function createCards() {
         //}, 120)
     }, 1000)        
     
+    
   
 }
+
 //createCards()
-/*
+
 function startTutorial() {
     
     let index = 0
@@ -514,7 +545,7 @@ function startTutorial() {
 setTimeout(() => {
     startTutorial()
 }, 4000)
-*/
+
         // console.log(titleTextQuery.textContent)
         //const numberofDivs = document.querySelectorAll('.square').length
         //const cardLocation = parseInt(card.style.top)

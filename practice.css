@@ -8,7 +8,7 @@ body {
 }
 
 .side-bar-left {
-    background-color: rgb(224, 224, 224);
+    background-color: rgb(238, 238, 238);
     position: fixed;
     width: 230px;
     height: 80vh;
@@ -24,6 +24,42 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
+}
+
+.sound-button {
+    border-width: 7px;
+    border-radius: 20px;
+    background-color: rgb(241, 241, 241);
+    cursor: pointer;
+    border-style:solid double;
+    box-shadow: 10px 10px 7px rgb(110, 110, 110);
+    animation: soundButtonIn ;
+}
+
+.settings-button {
+    padding: 10px;
+    border-width: 7px;
+    border-radius: 20px;
+    background-color: rgb(241, 241, 241);
+    cursor: pointer;
+    border-style:solid double;
+    box-shadow: 10px 10px 7px rgb(110, 110, 110);
+    animation: soundButtonIn;
+}
+
+.discord-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-width: 7px;
+    border-radius: 10px;
+    background-color: rgb(243, 243, 243);
+    cursor: pointer;
+    border-style:solid double;
+    box-shadow: 10px 10px 7px rgb(110, 110, 110);
+    animation: soundButtonIn;
 }
 
 .side-bar-left-in {
@@ -56,7 +92,7 @@ body {
 }
 
 .side-bar-right {
-    background-color: rgb(224, 224, 224);
+    background-color: rgb(238, 238, 238);
     position: fixed;
     width: 230px;
     height: 80vh;
