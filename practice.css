@@ -34,7 +34,28 @@ body {
     cursor: pointer;
     border-style:solid double;
     box-shadow: 10px 10px 7px rgb(110, 110, 110);
-    animation: soundButtonIn ;
+    border-color: rgba(0, 0, 0, 0.499);
+}
+
+.sound-button-press {
+    animation: soundButtonIn .5s ease-in-out;
+}
+
+@keyframes soundButtonIn {
+    50% {
+        transform: scale(0.8);
+        background-color: rgb(163, 162, 162);
+    }
+}
+
+.sound-button-hover {
+    animation: soundButtonHover .2s ease-in-out forwards;
+}
+
+@keyframes soundButtonHover {
+    100% {
+        background-color: rgb(209, 209, 209);
+    }
 }
 
 .settings-button {
@@ -45,7 +66,28 @@ body {
     cursor: pointer;
     border-style:solid double;
     box-shadow: 10px 10px 7px rgb(110, 110, 110);
-    animation: soundButtonIn;
+    border-color: rgba(0, 0, 0, 0.499);
+}
+
+.settings-button-press {
+    animation: settingsButtonIn .5s ease-in-out;
+}
+
+@keyframes settingsButtonIn {
+    50% {
+        transform: scale(0.8);
+        background-color: rgb(175, 175, 175);
+    }
+}
+
+.settings-button-hover {
+    animation: settingsButtonHover .2s ease-in-out forwards;
+}
+
+@keyframes settingsButtonHover {
+    100% {
+        background-color: rgb(209, 209, 209);
+    }
 }
 
 .discord-button {
@@ -59,7 +101,29 @@ body {
     cursor: pointer;
     border-style:solid double;
     box-shadow: 10px 10px 7px rgb(110, 110, 110);
-    animation: soundButtonIn;
+    border-color: rgba(0, 0, 0, 0.199);
+
+}
+
+.discord-button-press {
+    animation: discordButtonIn .5s ease-in-out;
+}
+
+@keyframes discordButtonIn {
+    50% {
+        transform: scale(0.8);
+        background-color: gray;
+    }
+}
+
+.discord-button-hover {
+    animation: discordButtonHover .2s ease-in-out forwards;
+}
+
+@keyframes discordButtonHover {
+    100% {
+        background-color: rgb(209, 209, 209);
+    }
 }
 
 .side-bar-left-in {
@@ -505,11 +569,29 @@ body {
     top: 50%; 
     left: 50%; 
     transform: translate(2%, -50%);
-    animation: killShotText 7s linear forwards;
+    animation: killShotText 7s linear forwards, killShotTextBlink .3s infinite;
 }
 
 @keyframes killShotText {
     100% {transform: translateX(-90000px) translateY(-235px);}
+}
+
+.kill-shot-text-blink {
+    animation: killShotTextBlink .3s infinite;
+}
+
+@keyframes killShotTextBlink {
+    0% {color: black;}
+    50% {color: white;}
+    100% {color: black;}
+}
+
+.kill-shot-background {
+    animation: killShotBackground .3s infinite;
+}
+
+@keyframes killShotBackground {
+    50% {background-color: black;}
 }
 
 @keyframes ani1 {

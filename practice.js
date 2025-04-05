@@ -9,6 +9,7 @@ function squareSound() {
     squareClick.play()
 }
 
+/*
 const sideBarRight = document.createElement('div')
 const sideBarLeft = document.createElement('div')
 sideBarLeft.classList.add('side-bar-left')
@@ -24,9 +25,9 @@ const settingsCog = document.createElement('img')
 settingsCog.src = "img/settingsCog.png"
 const discordIcon = document.createElement('img')
 discordIcon.src = "img/discordIcon.png"
-soundIcon.width = 150
-settingsCog.width = 125
-discordIcon.width = 175
+soundIcon.width = 120
+settingsCog.width = 105
+discordIcon.width = 165
 const soundButton = document.createElement('button')
 const settingsButton = document.createElement('button')
 const discordButton = document.createElement('button')
@@ -39,7 +40,54 @@ sideBarLeft.appendChild(discordButton)
 soundButton.appendChild(soundIcon)
 settingsButton.appendChild(settingsCog)
 discordButton.appendChild(discordIcon)
- /*
+const globalAudio = (volumeLevel) => {
+    const audios = document.querySelectorAll('audio')
+    audios.forEach(audio => {
+        audio.volume = volumeLevel
+    })
+}
+
+soundButton.addEventListener('mousedown', () => {
+    soundButton.classList.remove('sound-button-hover')
+    soundButton.classList.add('sound-button-press')
+    setTimeout(() => {
+        soundButton.classList.remove('sound-button-press')
+    }, 500)
+})
+soundButton.addEventListener('mouseover', () => {
+    soundButton.classList.add('sound-button-hover')
+})
+soundButton.addEventListener('mouseleave', () => {
+    soundButton.classList.remove('sound-button-hover')
+})
+settingsButton.addEventListener('mousedown', () => {
+    settingsButton.classList.remove('settings-button-hover')
+    settingsButton.classList.add('settings-button-press')
+    setTimeout(() => {
+        settingsButton.classList.remove('settings-button-press')
+    }, 500)
+})
+settingsButton.addEventListener('mouseover', () => {
+    settingsButton.classList.add('settings-button-hover')
+})
+settingsButton.addEventListener('mouseleave', () => {
+    settingsButton.classList.remove('settings-button-hover')
+})
+discordButton.addEventListener('mousedown', () => {
+    discordButton.classList.remove('discord-button-hover')
+    discordButton.classList.add('discord-button-press')
+    setTimeout(() => {
+        discordButton.classList.remove('discord-button-press')
+    }, 500)
+})
+discordButton.addEventListener('mouseover', () => {
+    discordButton.classList.add('discord-button-hover')
+})
+discordButton.addEventListener('mouseleave', () => {
+    discordButton.classList.remove('discord-button-hover')
+})
+    */
+
 
 function tutorialFuntion() {
     const box = document.createElement('div')
@@ -102,8 +150,7 @@ function tutorialFuntion() {
                     killShotText.textContent = 'LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEETTTTTTTTTTTTTTTTTTTTTTTTTTTTTMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT'
                     setTimeout(() => {
                         document.body.appendChild(killShotText)
-                        // make background and text invert eachothers colors
-                        //make it impossible to highlight the card text
+                        document.body.classList.add('kill-shot-background')
                     }, 3000)
                     setTimeout(() => {
                         card.classList.add('card-out')
@@ -114,16 +161,90 @@ function tutorialFuntion() {
                         document.body.removeChild(coolButton)
                     }, 3500)
                     setTimeout(() => {
-                        const sideBarLeft = document.createElement('div')
                         const sideBarRight = document.createElement('div')
-                        sideBarLeft.classList.add('side-bar-right')
-                        sideBarRight.classList.add('side-bar-left')
-                        sideBarLeft.classList.add('side-bar-right-in')
-                        sideBarRight.classList.add('side-bar-left-in')
+                        const sideBarLeft = document.createElement('div')
+                        sideBarLeft.classList.add('side-bar-left')
+                        sideBarRight.classList.add('side-bar-right')
+                        sideBarLeft.classList.add('side-bar-left-in')
+                        sideBarRight.classList.add('side-bar-right-in')
                         document.body.appendChild(sideBarLeft)
                         document.body.appendChild(sideBarRight)
                         document.body.setAttribute('style', 'flex-direction: row;')
+                        const soundIcon = document.createElement('img')
+                        soundIcon.src = "img/soundIcon2.png"
+                        const settingsCog = document.createElement('img')
+                        settingsCog.src = "img/settingsCog.png"
+                        const discordIcon = document.createElement('img')
+                        discordIcon.src = "img/discordIcon.png"
+                        soundIcon.width = 120
+                        settingsCog.width = 105
+                        discordIcon.width = 165
+                        const soundButton = document.createElement('button')
+                        const settingsButton = document.createElement('button')
+                        const discordButton = document.createElement('button')
+                        soundButton.classList.add('sound-button')
+                        settingsButton.classList.add('settings-button')
+                        discordButton.classList.add('discord-button')
+
+                        sideBarLeft.appendChild(soundButton)
+                        sideBarLeft.appendChild(settingsButton)
+                        sideBarLeft.appendChild(discordButton)
+                        soundButton.appendChild(soundIcon)
+                        settingsButton.appendChild(settingsCog)
+                        discordButton.appendChild(discordIcon)
+                        const globalAudio = (volumeLevel) => {
+                            const audios = document.querySelectorAll('audio')
+                            audios.forEach(audio => {
+                                audio.volume = volumeLevel
+                            })
+                        }
+
+                        soundButton.addEventListener('mousedown', () => {
+                            soundButton.classList.remove('sound-button-hover')
+                            soundButton.classList.add('sound-button-press')
+                            setTimeout(() => {
+                                soundButton.classList.remove('sound-button-press')
+                            }, 500)
+                        })
+                        soundButton.addEventListener('mouseover', () => {
+                            soundButton.classList.add('sound-button-hover')
+                        })
+                        soundButton.addEventListener('mouseleave', () => {
+                            soundButton.classList.remove('sound-button-hover')
+                        })
+                        settingsButton.addEventListener('mousedown', () => {
+                            settingsButton.classList.remove('settings-button-hover')
+                            settingsButton.classList.add('settings-button-press')
+                            setTimeout(() => {
+                                settingsButton.classList.remove('settings-button-press')
+                            }, 500)
+                        })
+                        settingsButton.addEventListener('mouseover', () => {
+                            settingsButton.classList.add('settings-button-hover')
+                        })
+                        settingsButton.addEventListener('mouseleave', () => {
+                            settingsButton.classList.remove('settings-button-hover')
+                        })
+                        discordButton.addEventListener('mousedown', () => {
+                            discordButton.classList.remove('discord-button-hover')
+                            discordButton.classList.add('discord-button-press')
+                            setTimeout(() => {
+                                discordButton.classList.remove('discord-button-press')
+                            }, 500)
+                        })
+                        discordButton.addEventListener('mouseover', () => {
+                            discordButton.classList.add('discord-button-hover')
+                        })
+                        discordButton.addEventListener('mouseleave', () => {
+                            discordButton.classList.remove('discord-button-hover')
+                        })
                     }, 6500)
+                    setTimeout(() => {
+                        document.body.classList.remove('kill-shot-background')
+                        createCards()
+                        card.setAttribute('style', 'font-size: 75px; text-shadow: 10px 5px 5px rgb(180, 180, 180);position: fixed; top: 50%; left: 50%; transform: translate(-50%, -55%);display: flex;flex-direction: column;justify-content: center;align-items: center;border-style:solid double;border-color: black;border-width: 12px;height: 750px;padding-bottom: 0px;width: 570px;border-radius: 20px;box-shadow: 10px 10px 7px rgb(110, 110, 110);flex-wrap: wrap;background-color: white;')
+                        document.body.setAttribute('style', 'flex-direction: column;')
+                    }, 8090)
                     setTimeout(() => {
                         document.body.removeChild(killShotText)
                     }, 12000)
@@ -137,7 +258,9 @@ function tutorialFuntion() {
         setTimeout(() => {
             coolButton.classList.remove('cool-button-click')
         }, 250)   
-    })    
+    })
+
+    
     
     let cardZIndex = 1
     let cardTranslationValue = 55
@@ -367,7 +490,7 @@ function tutorialFuntion() {
 tutorialFuntion()
 
 
-*/
+
 
 function createCards() {
     
@@ -380,11 +503,12 @@ function createCards() {
     
     
     setTimeout(() => {
-        //const cardStartUp = setInterval(() => {
-            //if (c <= 7) {
+        const cardStartUp = setInterval(() => {
+            if (c <= 7) {
                 const box = document.createElement('div')
                 const cardTitle = document.createElement('header')
                 const card = document.createElement('div')
+                card.setAttribute('style', 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -55%);')
                 card.classList.add('card')
                 card.classList.add('card-animation')
 
@@ -416,9 +540,7 @@ function createCards() {
 
                     }
                     typeWriter()
-                    function decrementType() {
-                        
-                    }
+                    
 
                     card.appendChild(cardTitle)
                     box.classList.add('box')
@@ -501,16 +623,13 @@ function createCards() {
                 }
                 
                 c++
-            //} else {clearInterval(cardStartUp)}    
-        //}, 120)
+            } else {clearInterval(cardStartUp)}    
+        }, 120)
     }, 1000)        
-    
-    
-  
 }
 
-//createCards()
 
+/*
 function startTutorial() {
     
     let index = 0
@@ -543,8 +662,9 @@ function startTutorial() {
             
 }
 setTimeout(() => {
-    startTutorial()
+    //startTutorial()
 }, 4000)
+*/
 
         // console.log(titleTextQuery.textContent)
         //const numberofDivs = document.querySelectorAll('.square').length
