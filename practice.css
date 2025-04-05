@@ -1,3 +1,29 @@
+.button {
+    position: fixed; 
+    top: 50%; 
+    left: 80%; 
+}
+
+.fixed {
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -55%);
+    
+}
+
+.test {
+    animation: moveCards .6s infinite;
+}
+
+@keyframes moveCards {
+    0% {transform: translateX(-297px) translateY(-333px);}
+    
+    50% {transform: rotate(-30deg) translateX(-397px) translateY(-363px);}
+    100% {transform: translateX(1000px);}
+    
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -206,12 +232,6 @@ body {
 .card {
     font-size: 75px;
     text-shadow: 10px 5px 5px rgb(180, 180, 180);
-    /*
-    position: fixed; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -55%);
-    */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -226,7 +246,62 @@ body {
     box-shadow: 10px 10px 7px rgb(110, 110, 110);
     flex-wrap: wrap;
     background-color: white;
-    
+}
+
+.card1 {
+    transform: translate(-50%, -55%);
+    position: fixed; 
+    top: 50%; 
+    left: 50%;
+    z-index: 1; 
+}
+
+.card2 {
+    transform: translate(-50%, -53%);
+    position: fixed; 
+    top: 50%; 
+    left: 50%;
+    z-index: 2; 
+}
+
+.card3 {
+    transform: translate(-50%, -51%);
+    position: fixed; 
+    top: 50%; 
+    left: 50%;
+    z-index: 3; 
+}
+
+.card4 {
+    transform: translate(-50%, -49%);
+    position: fixed; 
+    top: 50%; 
+    left: 50%;
+    z-index: 4; 
+}
+
+.card5 {
+    transform: translate(-50%, -47%);
+    position: fixed; 
+    top: 50%; 
+    left: 50%;
+    z-index: 5; 
+}
+
+.card6 {
+    transform: translate(-50%, -45%);
+    position: fixed; 
+    top: 50%; 
+    left: 50%;
+    z-index: 6; 
+}
+
+.card7 {
+    transform: translate(-50%, -43%);
+    position: fixed; 
+    top: 50%; 
+    left: 50%;
+    z-index: 7; 
 }
 
 .cool {

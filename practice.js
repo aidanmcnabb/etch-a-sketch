@@ -88,7 +88,7 @@ discordButton.addEventListener('mouseleave', () => {
 })
     */
 
-
+/*
 function tutorialFuntion() {
     const box = document.createElement('div')
     const coolButton = document.createElement('button')
@@ -488,7 +488,7 @@ function tutorialFuntion() {
     }, 1000)
 }
 tutorialFuntion()
-
+*/
 
 
 
@@ -499,8 +499,8 @@ function createCards() {
     let cardZIndex = 1
     let cardTranslationValue = 55
     let c = 1
-    
-    
+    const cardNumbers = [' ', 'card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7']
+    const dataArray = ['', '1', '2', '3', '4', '5', '6', '7']
     
     setTimeout(() => {
         const cardStartUp = setInterval(() => {
@@ -508,21 +508,25 @@ function createCards() {
                 const box = document.createElement('div')
                 const cardTitle = document.createElement('header')
                 const card = document.createElement('div')
-                card.setAttribute('style', 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -55%);')
+                //card.classList.add('fixed')
                 card.classList.add('card')
                 card.classList.add('card-animation')
+                card.setAttribute('data-index', `${dataArray.at(c)}`)
 
                 //making each card a lower z-index with each iteration
-                card.style.zIndex = cardZIndex++   
-                console.log(card.style.zIndex)
-                document.body.appendChild(card)
+                //card.style.zIndex = cardZIndex++   
+                //console.log(card.style.zIndex)
+                
 
                 //changing translation per iteration
                 function decrementTranslation() {
-                    card.style.transform = `translate(-50%, -${cardTranslationValue}%)`
-                    cardTranslationValue -= 2
+                    card.classList.add(cardNumbers.at(c))
+                    //card.style.transform = `translate(-50%, -${cardTranslationValue}%)`
+                    //cardTranslationValue -= 2
                 }
                 decrementTranslation()
+
+                document.body.appendChild(card)
                  
                 setTimeout(() => {
                     let index = 0
@@ -627,8 +631,30 @@ function createCards() {
         }, 120)
     }, 1000)        
 }
+createCards()
 
+function practiceFunction() {
+    //const targetCards = [target1, target2, target3, target4, target5, target6, target7]
+}
+setTimeout(() => {
+    practiceFunction()
+}, 2000)
 
+setTimeout(() => {
+    function cardSwipeFunction() {
+        const practiceButton = document.createElement('button')
+        const finishedCard = document.querySelector('.card7')
+        practiceButton.textContent = 'test'
+        practiceButton.classList.add('button')
+        practiceButton.addEventListener('click', () => {
+            finishedCard.classList.remove('card-animation')
+            finishedCard.classList.add('test')
+        })
+        document.body.appendChild(practiceButton)
+    }
+    cardSwipeFunction()
+    console.log('ready!')
+}, 3500)
 /*
 function startTutorial() {
     
