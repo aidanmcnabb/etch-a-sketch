@@ -1,7 +1,7 @@
 .button {
     position: fixed; 
     top: 50%; 
-    left: 80%; 
+    left: 90%; 
 }
 
 .fixed {
@@ -12,15 +12,26 @@
     
 }
 
+.first-card-animation {
+    animation: firstCardAnimation .2s forwards;
+}
+
+@keyframes firstCardAnimation {
+    0% {
+        transform: translateX(-1000px) translateY(-423px);
+        
+    }
+    100% {transform: translate(-50%, -55%);}
+}
+
 .test {
-    animation: moveCards .6s infinite;
+    animation: moveCards .6s forwards;
 }
 
 @keyframes moveCards {
     0% {transform: translateX(-297px) translateY(-333px);}
-    
     50% {transform: rotate(-30deg) translateX(-397px) translateY(-363px);}
-    100% {transform: translateX(1000px);}
+    100% {transform: translateX(1000px) translateY(-300px);}
     
 }
 

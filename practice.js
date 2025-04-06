@@ -490,7 +490,8 @@ function tutorialFuntion() {
 tutorialFuntion()
 */
 
-
+const cardNumbers = [' ', 'card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7']
+const dataArray = ['', '1', '2', '3', '4', '5', '6', '7']
 
 function createCards() {
     
@@ -499,8 +500,7 @@ function createCards() {
     let cardZIndex = 1
     let cardTranslationValue = 55
     let c = 1
-    const cardNumbers = [' ', 'card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7']
-    const dataArray = ['', '1', '2', '3', '4', '5', '6', '7']
+    
     
     setTimeout(() => {
         const cardStartUp = setInterval(() => {
@@ -641,7 +641,7 @@ setTimeout(() => {
 }, 2000)
 
 setTimeout(() => {
-    function cardSwipeFunction() {
+    function lastCardSwipeFunction() {
         const practiceButton = document.createElement('button')
         const finishedCard = document.querySelector('.card7')
         practiceButton.textContent = 'test'
@@ -649,51 +649,130 @@ setTimeout(() => {
         practiceButton.addEventListener('click', () => {
             finishedCard.classList.remove('card-animation')
             finishedCard.classList.add('test')
+            setTimeout(() => {
+                firstCardDataIncrement()
+            }, 200)
+            setTimeout(() => {
+                document.body.removeChild(finishedCard)
+            }, 600)
         })
         document.body.appendChild(practiceButton)
     }
-    cardSwipeFunction()
+    lastCardSwipeFunction()
     console.log('ready!')
 }, 3500)
-/*
-function startTutorial() {
-    
-    let index = 0
-    let speed = 80;
-    let titleTextQuery = document.querySelectorAll('header')
-    let titleTextContent = 'hello'
 
-    function typeWriter() {
-                        
-        if (index < titleTextQuery.length) {
-            cardTitle.textContent += titleText.charAt(index)
-            index++;
-            setTimeout(typeWriter, speed)
-        } 
-    }
-    
-    function typeDecrement() {
-        titleTextContent = titleTextQuery.textContent
-        titleTextQuery.textContent -= titleTextContent.charAt(index)
-        index++;
-        setTimeout(typeDecrement, speed)
+function firstCardDataIncrement() {
+    const box = document.createElement('div')
+    const cardTitle = document.createElement('header')
+    const card = document.createElement('div')
+
+    card.classList.add('first-card-animation')
+    card.classList.add('card')
+    card.classList.add('card1')
+    card.setAttribute('data-index', '1')
+
+    document.body.appendChild(card)
+    setTimeout(() => {
+        card.classList.remove('first-card-animation')
+    }, 300)
+
+    setTimeout(() => {
+        let index = 0
+        let speed = 80;
+        let titleText = 'Jet Sketch'
+        cardTitle.classList.add('title')
+        cardTitle.classList.add('blinking-cursor2')
+        function typeWriter() {
+            
+            if (index < titleText.length) {
+                cardTitle.textContent += titleText.charAt(index)
+                index++;
+                setTimeout(typeWriter, speed)
+            } 
+
+        }
+        typeWriter()
         
-    }
+
+        card.appendChild(cardTitle)
+        box.classList.add('box')
+        card.appendChild(box)
+        setTimeout(() => {
+            
+        })
+    }, 1000)
+
+    
+    innerLoop: for (i = 1; i < 100; i++) {
+        const square = document.createElement('div')
         
-    
-    document.body.removeChild(titleTextQuery)
-    
-    console.log(titleTextQuery.textContent)
-    
+        let white = undefined
+        let gray = undefined
+        
+        function randomColor() {
+            const color = Math.random()
+
+            if (color >= 0 && color <= 0.2) {
+                square.classList.add('gray')
+            } else if (color > 0.2 && color <= 1) {
+                square.classList.add('white')
+            }
+        }
+        randomColor()
+
+        square.classList.add('box2')
+        square.classList.add('square')  //making that squares
+        square.addEventListener('mouseover',  () => {
+            square.classList.add('mouseover')   //making squares interactable
+        })
+        square.addEventListener('mouseout', () => {
+            square.classList.remove('mouseover')
+            
+        })
+        square.addEventListener('mousedown', () => {
+            
+            square.classList.add('square-mouse-down')
+            square.classList.remove('mouseover')
+            square.classList.add('mouseover-without-color')
+            const color = window.getComputedStyle(square) ["background-color"]
+            console.log(color)
+            if (color === 'rgb(255, 255, 255)') {
+                square.classList.remove('mouseover-without-color')
+                square.classList.remove('box2')
+                square.classList.add('mouseover')
+                square.classList.add('bad')
+
+                setTimeout(() => {
+                    square.classList.remove('bad')
+                    
+                }, 1000)
+            } else if (color === 'rgb(128, 128, 128)') {
+                square.classList.remove('mouseover-without-color')
+                square.classList.remove('box2')
+                square.classList.add('mouseover')
+                square.classList.add('good')
+            }
+            
+            setTimeout(() => {
+                square.classList.remove('square-mouse-down')
+            }, 100)
+            
+        })
+        
+        /*
+        square.addEventListener('mouseup', () => {
+            square.classList.remove('square-mouse-down')
+            square.classList.add('square-mouse-up')
+        })
+        */
+
+        square.setAttribute('onclick', 'squareSound()')
+        
+        box.appendChild(square)
+        
+        
+        if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
+    }
             
 }
-setTimeout(() => {
-    //startTutorial()
-}, 4000)
-*/
-
-        // console.log(titleTextQuery.textContent)
-        //const numberofDivs = document.querySelectorAll('.square').length
-        //const cardLocation = parseInt(card.style.top)
-        //if (currentZIndex <= 7) { 
-        //if (currentZIndex <= 2) {
