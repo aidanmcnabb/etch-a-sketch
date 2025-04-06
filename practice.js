@@ -650,7 +650,7 @@ setTimeout(() => {
             finishedCard.classList.remove('card-animation')
             finishedCard.classList.add('test')
             setTimeout(() => {
-                firstCardDataIncrement()
+                firstCardSwipe()
             }, 200)
             setTimeout(() => {
                 document.body.removeChild(finishedCard)
@@ -662,7 +662,7 @@ setTimeout(() => {
     console.log('ready!')
 }, 3500)
 
-function firstCardDataIncrement() {
+function firstCardSwipe() {
     const box = document.createElement('div')
     const cardTitle = document.createElement('header')
     const card = document.createElement('div')
@@ -774,5 +774,16 @@ function firstCardDataIncrement() {
         
         if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
     }
-            
+    dataIncrement()       
+}
+
+function dataIncrement() {
+    //im probably going to make an animation for each card going to new position. so like .one-to-two & .two-to-three, etc.
+    const element1 = document.querySelector('[data-index="1"]') //this should always only target the very first element if there is another that is the same data-index
+    const element2 = document.querySelector('[data-index="2"]')
+    const element3 = document.querySelector('[data-index="3"]')
+    const element4 = document.querySelector('[data-index="4"]')
+    const element5 = document.querySelector('[data-index="5"]')
+    const element6 = document.querySelector('[data-index="6"]')
+    const element7 = document.querySelector('[data-index="7"]')
 }
