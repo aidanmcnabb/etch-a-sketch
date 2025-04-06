@@ -549,9 +549,7 @@ function createCards() {
                     card.appendChild(cardTitle)
                     box.classList.add('box')
                     card.appendChild(box)
-                    setTimeout(() => {
-                        
-                    })
+                    card.classList.remove('card-animation')
                 }, 1000)
 
                 
@@ -647,7 +645,6 @@ setTimeout(() => {
         practiceButton.textContent = 'test'
         practiceButton.classList.add('button')
         practiceButton.addEventListener('click', () => {
-            finishedCard.classList.remove('card-animation')
             finishedCard.classList.add('test')
             setTimeout(() => {
                 firstCardSwipe()
@@ -774,16 +771,52 @@ function firstCardSwipe() {
         
         if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
     }
-    dataIncrement()       
+    dataTranslation()
+    
+    //maybe i could start the index at 8 with the new card and infinitley go up where the index corresponds with the data-index, that way they'll always be in sync and i keep my 1-7 indexs that were already created.
+
+    //ooooor, i could do the arry increment, and before i pop and unshift assign all the values i need to as well as the animations according to the data-index from the array, and after everything is assigned THEN i can pop and unshift(1)
+
+    let infiniteDataIncrement = 8
+
+    function dataTranslation() {
+        
+        const dataIndexArray = [1, 2, 3, 4, 5, 6, 7]
+        //im probably going to make an animation for each card going to new position. so like .one-to-two & .two-to-three, etc.
+        
+    
+        function dataIncrement(arr) {
+            for (i = 0; i < arr.length; i++) {
+                arr[i]++
+            }
+
+            
+
+            /*
+            arr.pop()
+            arr.unshift(1)
+            */
+            return arr
+        }
+    
+        //i probably need two seperate functions, one for the increment, storing the values, then one that shifts the data and then store the values again
+
+        let incrementedData = dataIncrement(dataIndexArray)
+        
+        const originalData1 = document.querySelector(`[data-index='${incrementedData[0]}']`)
+        const originalData2 = document.querySelector(`[data-index='${dataIndexArray[1]}']`)
+        const originalData3 = document.querySelector(`[data-index='${dataIndexArray[2]}']`)
+        const originalData4 = document.querySelector(`[data-index='${dataIndexArray[3]}']`)
+        const originalData5 = document.querySelector(`[data-index='${dataIndexArray[4]}']`)
+        const originalData6 = document.querySelector(`[data-index='${dataIndexArray[5]}']`)
+        const originalData7 = document.querySelector(`[data-index='${dataIndexArray[6]}']`)
+
+        console.log(originalData1)
+        
+        console.log(incrementedData)
+        
+    }       
 }
 
-function dataIncrement() {
-    //im probably going to make an animation for each card going to new position. so like .one-to-two & .two-to-three, etc.
-    const element1 = document.querySelector('[data-index="1"]') //this should always only target the very first element if there is another that is the same data-index
-    const element2 = document.querySelector('[data-index="2"]')
-    const element3 = document.querySelector('[data-index="3"]')
-    const element4 = document.querySelector('[data-index="4"]')
-    const element5 = document.querySelector('[data-index="5"]')
-    const element6 = document.querySelector('[data-index="6"]')
-    const element7 = document.querySelector('[data-index="7"]')
-}
+
+
