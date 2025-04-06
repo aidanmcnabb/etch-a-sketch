@@ -496,9 +496,7 @@ const dataArray = ['', '1', '2', '3', '4', '5', '6', '7']
 function createCards() {
     
     // if ((cardnumber) === (arraynumber)) {color = (arraycolor)}
-    
-    let cardZIndex = 1
-    let cardTranslationValue = 55
+
     let c = 1
     
     
@@ -508,21 +506,14 @@ function createCards() {
                 const box = document.createElement('div')
                 const cardTitle = document.createElement('header')
                 const card = document.createElement('div')
-                //card.classList.add('fixed')
+
                 card.classList.add('card')
                 card.classList.add('card-animation')
                 card.setAttribute('data-index', `${dataArray.at(c)}`)
 
-                //making each card a lower z-index with each iteration
-                //card.style.zIndex = cardZIndex++   
-                //console.log(card.style.zIndex)
-                
-
                 //changing translation per iteration
                 function decrementTranslation() {
                     card.classList.add(cardNumbers.at(c))
-                    //card.style.transform = `translate(-50%, -${cardTranslationValue}%)`
-                    //cardTranslationValue -= 2
                 }
                 decrementTranslation()
 
@@ -541,11 +532,9 @@ function createCards() {
                             index++;
                             setTimeout(typeWriter, speed)
                         } 
-
                     }
                     typeWriter()
                     
-
                     card.appendChild(cardTitle)
                     box.classList.add('box')
                     card.appendChild(box)
@@ -578,7 +567,6 @@ function createCards() {
                     })
                     square.addEventListener('mouseout', () => {
                         square.classList.remove('mouseover')
-                        
                     })
                     square.addEventListener('mousedown', () => {
                         
@@ -607,19 +595,10 @@ function createCards() {
                         setTimeout(() => {
                             square.classList.remove('square-mouse-down')
                         }, 100)
-                        
                     })
-                    
-                    /*
-                    square.addEventListener('mouseup', () => {
-                        square.classList.remove('square-mouse-down')
-                        square.classList.add('square-mouse-up')
-                    })
-                    */
+                  
                     square.setAttribute('onclick', 'squareSound()')
-                    
                     box.appendChild(square)
-                    
                     
                     if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
                 }
@@ -631,192 +610,214 @@ function createCards() {
 }
 createCards()
 
-function practiceFunction() {
-    //const targetCards = [target1, target2, target3, target4, target5, target6, target7]
-}
-setTimeout(() => {
-    practiceFunction()
-}, 2000)
-
-setTimeout(() => {
-    function lastCardSwipeFunction() {
-        const practiceButton = document.createElement('button')
-        const finishedCard = document.querySelector('.card7')
-        practiceButton.textContent = 'test'
-        practiceButton.classList.add('button')
-        practiceButton.addEventListener('click', () => {
-            finishedCard.classList.add('test')
-            setTimeout(() => {
-                firstCardSwipe()
-            }, 200)
-            setTimeout(() => {
-                document.body.removeChild(finishedCard)
-            }, 600)
-        })
-        document.body.appendChild(practiceButton)
-    }
-    lastCardSwipeFunction()
-    console.log('ready!')
-}, 3500)
-
-function firstCardSwipe() {
-    const box = document.createElement('div')
-    const cardTitle = document.createElement('header')
-    const card = document.createElement('div')
-
-    card.classList.add('first-card-animation')
-    card.classList.add('card')
-    card.classList.add('card1')
-    card.setAttribute('data-index', '1')
-
-    document.body.appendChild(card)
-    setTimeout(() => {
-        card.classList.remove('first-card-animation')
-    }, 300)
+function gameCardfunction() {
+    const practiceButton = document.createElement('button')
+    practiceButton.textContent = 'test'
+    practiceButton.classList.add('button')
 
     setTimeout(() => {
-        let index = 0
-        let speed = 80;
-        let titleText = 'Jet Sketch'
-        cardTitle.classList.add('title')
-        cardTitle.classList.add('blinking-cursor2')
-        function typeWriter() {
+        function lastCardSwipeFunction() {
             
-            if (index < titleText.length) {
-                cardTitle.textContent += titleText.charAt(index)
-                index++;
-                setTimeout(typeWriter, speed)
-            } 
-
-        }
-        typeWriter()
-        
-
-        card.appendChild(cardTitle)
-        box.classList.add('box')
-        card.appendChild(box)
-        setTimeout(() => {
-            
-        })
-    }, 1000)
-
-    
-    innerLoop: for (i = 1; i < 100; i++) {
-        const square = document.createElement('div')
-        
-        let white = undefined
-        let gray = undefined
-        
-        function randomColor() {
-            const color = Math.random()
-
-            if (color >= 0 && color <= 0.2) {
-                square.classList.add('gray')
-            } else if (color > 0.2 && color <= 1) {
-                square.classList.add('white')
-            }
-        }
-        randomColor()
-
-        square.classList.add('box2')
-        square.classList.add('square')  //making that squares
-        square.addEventListener('mouseover',  () => {
-            square.classList.add('mouseover')   //making squares interactable
-        })
-        square.addEventListener('mouseout', () => {
-            square.classList.remove('mouseover')
-            
-        })
-        square.addEventListener('mousedown', () => {
-            
-            square.classList.add('square-mouse-down')
-            square.classList.remove('mouseover')
-            square.classList.add('mouseover-without-color')
-            const color = window.getComputedStyle(square) ["background-color"]
-            console.log(color)
-            if (color === 'rgb(255, 255, 255)') {
-                square.classList.remove('mouseover-without-color')
-                square.classList.remove('box2')
-                square.classList.add('mouseover')
-                square.classList.add('bad')
-
+            practiceButton.addEventListener('click', () => {
+                const finishedCard = document.querySelector('.card7')
+                finishedCard.classList.add('test')
                 setTimeout(() => {
-                    square.classList.remove('bad')
-                    
-                }, 1000)
-            } else if (color === 'rgb(128, 128, 128)') {
-                square.classList.remove('mouseover-without-color')
-                square.classList.remove('box2')
-                square.classList.add('mouseover')
-                square.classList.add('good')
-            }
-            
-            setTimeout(() => {
-                square.classList.remove('square-mouse-down')
-            }, 100)
-            
-        })
-        
-        /*
-        square.addEventListener('mouseup', () => {
-            square.classList.remove('square-mouse-down')
-            square.classList.add('square-mouse-up')
-        })
-        */
-
-        square.setAttribute('onclick', 'squareSound()')
-        
-        box.appendChild(square)
-        
-        
-        if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
-    }
-    dataTranslation()
-    
-    //maybe i could start the index at 8 with the new card and infinitley go up where the index corresponds with the data-index, that way they'll always be in sync and i keep my 1-7 indexs that were already created.
-
-    //ooooor, i could do the arry increment, and before i pop and unshift assign all the values i need to as well as the animations according to the data-index from the array, and after everything is assigned THEN i can pop and unshift(1)
-
-    let infiniteDataIncrement = 8
-
-    function dataTranslation() {
-        
-        const dataIndexArray = [1, 2, 3, 4, 5, 6, 7]
-        //im probably going to make an animation for each card going to new position. so like .one-to-two & .two-to-three, etc.
-        
-    
-        function dataIncrement(arr) {
-            for (i = 0; i < arr.length; i++) {
-                arr[i]++
-            }
-
-            
-
-            /*
-            arr.pop()
-            arr.unshift(1)
-            */
-            return arr
+                    firstCardSwipe()
+                }, 200)
+                setTimeout(() => {
+                    document.body.removeChild(finishedCard)
+                }, 400)
+            })
+            document.body.appendChild(practiceButton)
         }
+        lastCardSwipeFunction()
+    }, 3500)
+
+    function firstCardSwipe() {
+        const box = document.createElement('div')
+        const cardTitle = document.createElement('header')
+        const card = document.createElement('div')
+
+        card.classList.add('first-card-animation')
+        card.classList.add('card')
+        card.classList.add('card1')
+        card.setAttribute('data-index', '1')
+
+        document.body.appendChild(card)
+        setTimeout(() => {
+            card.classList.remove('first-card-animation')
+        }, 300)
+
+        setTimeout(() => {
+            let index = 0
+            let speed = 80;
+            let titleText = 'Jet Sketch'
+            cardTitle.classList.add('title')
+            cardTitle.classList.add('blinking-cursor2')
+            function typeWriter() {
+                
+                if (index < titleText.length) {
+                    cardTitle.textContent += titleText.charAt(index)
+                    index++;
+                    setTimeout(typeWriter, speed)
+                } 
+            }
+            typeWriter()
+            
+            card.appendChild(cardTitle)
+            box.classList.add('box')
+            card.appendChild(box)
+            setTimeout(() => {
+                
+            })
+        }, 1000)
+
+        
+        innerLoop: for (i = 1; i < 100; i++) {
+            const square = document.createElement('div')
+            
+            let white = undefined
+            let gray = undefined
+            
+            function randomColor() {
+                const color = Math.random()
+
+                if (color >= 0 && color <= 0.2) {
+                    square.classList.add('gray')
+                } else if (color > 0.2 && color <= 1) {
+                    square.classList.add('white')
+                }
+            }
+            randomColor()
+
+            square.classList.add('box2')
+            square.classList.add('square')  //making that squares
+            square.addEventListener('mouseover',  () => {
+                square.classList.add('mouseover')   //making squares interactable
+            })
+            square.addEventListener('mouseout', () => {
+                square.classList.remove('mouseover')
+            })
+            square.addEventListener('mousedown', () => {
+                
+                square.classList.add('square-mouse-down')
+                square.classList.remove('mouseover')
+                square.classList.add('mouseover-without-color')
+                const color = window.getComputedStyle(square) ["background-color"]
+                console.log(color)
+                if (color === 'rgb(255, 255, 255)') {
+                    square.classList.remove('mouseover-without-color')
+                    square.classList.remove('box2')
+                    square.classList.add('mouseover')
+                    square.classList.add('bad')
+
+                    setTimeout(() => {
+                        square.classList.remove('bad')
+                        
+                    }, 1000)
+                } else if (color === 'rgb(128, 128, 128)') {
+                    square.classList.remove('mouseover-without-color')
+                    square.classList.remove('box2')
+                    square.classList.add('mouseover')
+                    square.classList.add('good')
+                }
+                
+                setTimeout(() => {
+                    square.classList.remove('square-mouse-down')
+                }, 100)
+            })
     
-        //i probably need two seperate functions, one for the increment, storing the values, then one that shifts the data and then store the values again
+            square.setAttribute('onclick', 'squareSound()')
+            box.appendChild(square)
+            
+            if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
+        }
+        cardDataHandling()
 
-        let incrementedData = dataIncrement(dataIndexArray)
-        
-        const originalData1 = document.querySelector(`[data-index='${incrementedData[0]}']`)
-        const originalData2 = document.querySelector(`[data-index='${dataIndexArray[1]}']`)
-        const originalData3 = document.querySelector(`[data-index='${dataIndexArray[2]}']`)
-        const originalData4 = document.querySelector(`[data-index='${dataIndexArray[3]}']`)
-        const originalData5 = document.querySelector(`[data-index='${dataIndexArray[4]}']`)
-        const originalData6 = document.querySelector(`[data-index='${dataIndexArray[5]}']`)
-        const originalData7 = document.querySelector(`[data-index='${dataIndexArray[6]}']`)
+        function cardDataHandling() {
+            
+            const dataIndexArray = [1, 2, 3, 4, 5, 6, 7]
+            //im probably going to make an animation for each card going to new position. so like .one-to-two & .two-to-three, etc.
+            
+            function dataIncrement(arr) {
+                for (i = 0; i < arr.length; i++) {
+                    arr[i]++
+                }
+                return arr
+            }
 
-        console.log(originalData1)
-        
-        console.log(incrementedData)
-        
-    }       
+            let incrementedData = dataIncrement(dataIndexArray)
+            
+            let incrementedData1 = document.querySelector(`[data-index='${incrementedData[0]}']`)
+            const incrementedData2 = document.querySelector(`[data-index='${incrementedData[1]}']`)
+            const incrementedData3 = document.querySelector(`[data-index='${incrementedData[2]}']`)
+            const incrementedData4 = document.querySelector(`[data-index='${incrementedData[3]}']`)
+            const incrementedData5 = document.querySelector(`[data-index='${incrementedData[4]}']`)
+            const incrementedData6 = document.querySelector(`[data-index='${incrementedData[5]}']`)
+            const incrementedData7 = document.querySelector(`[data-index='${incrementedData[6]}']`)
+
+            function changeDataAndClass() {
+                incrementedData6.setAttribute('style', 'z-index: 9;')
+                
+                incrementedData5.classList.remove('card6')
+                incrementedData5.classList.add('card7')
+                incrementedData5.dataset.index = '7'
+                
+                incrementedData4.classList.remove('card5')
+                incrementedData4.classList.add('card6')
+                incrementedData4.dataset.index = '6'
+                
+                incrementedData3.classList.remove('card4')
+                incrementedData3.classList.add('card5')
+                incrementedData3.dataset.index = '5'
+                
+                incrementedData2.classList.remove('card3')
+                incrementedData2.classList.add('card4')
+                incrementedData2.dataset.index = '4'
+                
+                incrementedData1.classList.remove('card2')
+                incrementedData1.classList.add('card3')
+                incrementedData1.dataset.index = '3'
+
+                function dataTranslation(arr) {
+                    arr.unshift(1)
+                    incrementedData1 = document.querySelector(`[data-index='${incrementedData[0]}']`)
+                    incrementedData1.classList.remove('card1')
+                    incrementedData1.classList.add('card2')
+                    incrementedData1.dataset.index = '2'
+
+                    arr.pop()
+                }
+                dataTranslation(dataIndexArray)
+            }
+            changeDataAndClass()
+        }       
+    }
 }
+gameCardfunction()
 
+function cardCompletionCheck() {
+    const test2 = document.createElement('button')
+    test2.textContent = 'test2'
+    document.body.appendChild(test2)
+    test2.addEventListener('click', () => {
+        const topCard = document.querySelector('.card7')
+        const topBox = topCard.querySelector('.box')
+        //so if I use querySelectorAll, it can't determine what the color is for all the boxes.  first off i need the exact number of colored boxes to begin with, so i dont have to loop through every single click, once the final box is reached then i can start the next function i will describe. maybe i can loop through the boxes and store the rgb of each in an array and then loop the array through a filter, checking for the rgb of green (0, 128, 0)
 
+        //maybe another way around this is to just have a boolean statement for each square stored in an array.  So make an array outside the scope of both functions, give 81 stored false boolean functions, somehow match the current square to the index of the boolean array index and add the "boolean = true" to the eventlistener. send that information to cardComplettionCheck() and loop through to see if all true.
+        const topSquares = topBox.querySelector('.gray')
 
+        const color = window.getComputedStyle(topSquares) ["background-color"]
+        console.log(color)
+        /*
+        if (color === 'rgb(255, 255, 255)') {
+
+        }
+        */
+        console.log(topSquares)
+    })
+}
+setTimeout(() => {
+    cardCompletionCheck()
+},3500)
