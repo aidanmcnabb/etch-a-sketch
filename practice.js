@@ -518,30 +518,170 @@ function createCards() {
                 decrementTranslation()
 
                 document.body.appendChild(card)
-                 
                 setTimeout(() => {
-                    let index = 0
-                    let speed = 80;
-                    let titleText = 'Jet Sketch'
-                    cardTitle.classList.add('title')
-                    cardTitle.classList.add('blinking-cursor2')
-                    function typeWriter() {
-                        
-                        if (index < titleText.length) {
-                            cardTitle.textContent += titleText.charAt(index)
-                            index++;
-                            setTimeout(typeWriter, speed)
-                        } 
-                    }
-                    typeWriter()
-                    
-                    card.appendChild(cardTitle)
-                    box.classList.add('box')
-                    card.appendChild(box)
                     card.classList.remove('card-animation')
-                }, 1000)
-
+                },1000)
                 
+                if (card.dataset.index === '6' || card.dataset.index === '7') {
+
+                    setTimeout(() => {
+                        let index = 0
+                        let speed = 80;
+                        let titleText = 'Jet Sketch'
+                        cardTitle.classList.add('title')
+                        cardTitle.classList.add('blinking-cursor2')
+                        function typeWriter() {
+                            
+                            if (index < titleText.length) {
+                                cardTitle.textContent += titleText.charAt(index)
+                                index++;
+                                setTimeout(typeWriter, speed)
+                            } 
+                        }
+                        typeWriter()
+                        
+                        card.appendChild(cardTitle)
+                        box.classList.add('box')
+                        card.appendChild(box)
+                    }, 1000)
+
+                    
+
+                    innerLoop: for (i = 1; i < 100; i++) {
+                        const square = document.createElement('div')
+                        
+                        let white = undefined
+                        let gray = undefined
+                        
+                        function randomColor() {
+                            const color = Math.random()
+
+                            if (color >= 0 && color <= 0.2) {
+                                square.classList.add('gray')
+                            } else if (color > 0.2 && color <= 1) {
+                                square.classList.add('white')
+                            }
+                        }
+                        randomColor()
+
+                        square.classList.add('box2')
+                        square.classList.add('square')  //making that squares
+                        square.addEventListener('mouseover',  () => {
+                            square.classList.add('mouseover')   //making squares interactable
+                        })
+                        square.addEventListener('mouseout', () => {
+                            square.classList.remove('mouseover')
+                        })
+                        square.addEventListener('mousedown', () => {
+                            
+                            square.classList.add('square-mouse-down')
+                            square.classList.remove('mouseover')
+                            square.classList.add('mouseover-without-color')
+                            const color = window.getComputedStyle(square) ["background-color"]
+                            console.log(color)
+                            if (color === 'rgb(255, 255, 255)') {
+                                square.classList.remove('mouseover-without-color')
+                                square.classList.remove('box2')
+                                square.classList.add('mouseover')
+                                square.classList.add('bad')
+
+                                setTimeout(() => {
+                                    square.classList.remove('bad')
+                                    
+                                }, 1000)
+                            } else if (color === 'rgb(128, 128, 128)') {
+                                square.classList.remove('mouseover-without-color')
+                                square.classList.remove('box2')
+                                square.classList.add('mouseover')
+                                square.classList.add('good')
+                            }
+                            
+                            setTimeout(() => {
+                                square.classList.remove('square-mouse-down')
+                            }, 100)
+                        })
+                    
+                        square.setAttribute('onclick', 'squareSound()')
+                        box.appendChild(square)
+                        
+                        if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
+                    }
+                    
+                }    
+                    c++
+                
+            } else {clearInterval(cardStartUp)}    
+        }, 120)
+    }, 1000)        
+}
+createCards()
+
+function gameCardfunction() {
+    const practiceButton = document.createElement('button')
+    practiceButton.textContent = 'test'
+    practiceButton.classList.add('button')
+
+    setTimeout(() => {
+        function lastCardSwipeFunction() {
+            
+            practiceButton.addEventListener('click', () => {
+                const finishedCard = document.querySelector('.card7')
+                finishedCard.classList.add('test')
+                setTimeout(() => {
+                    firstCardSwipe()
+                }, 200)
+                setTimeout(() => {
+                    document.body.removeChild(finishedCard)
+                }, 400)
+            })
+            document.body.appendChild(practiceButton)
+        }
+        lastCardSwipeFunction()
+    }, 3500)
+
+    function firstCardSwipe() {
+        const box = document.createElement('div')
+        const cardTitle = document.createElement('header')
+        const card = document.createElement('div')
+        let card6 = document.querySelector('.card6')
+
+        card.classList.add('first-card-animation')
+        card.classList.add('card')
+        card.classList.add('card1')
+        card.setAttribute('data-index', '1')
+
+        document.body.appendChild(card)
+        setTimeout(() => {
+            card.classList.remove('first-card-animation')
+        }, 300)
+
+        if (card.children.length === 0) {
+
+            setTimeout(() => {
+                let index = 0
+                let speed = 80;
+                let titleText = 'Jet Sketch'
+                cardTitle.classList.add('title')
+                cardTitle.classList.add('blinking-cursor2')
+                function typeWriter() {
+                    
+                    if (index < titleText.length) {
+                        cardTitle.textContent += titleText.charAt(index)
+                        index++;
+                        setTimeout(typeWriter, speed)
+                    } 
+                }
+                typeWriter()
+                
+                box.classList.add('box')
+                
+                setTimeout(() => {
+                    card6 = document.querySelector('.card6')
+                    card6.appendChild(cardTitle)
+                    card6.appendChild(box)
+                }, 1)
+           
+            }, 200)
 
                 innerLoop: for (i = 1; i < 100; i++) {
                     const square = document.createElement('div')
@@ -596,142 +736,13 @@ function createCards() {
                             square.classList.remove('square-mouse-down')
                         }, 100)
                     })
-                  
+            
                     square.setAttribute('onclick', 'squareSound()')
                     box.appendChild(square)
                     
                     if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
                 }
-                
-                c++
-            } else {clearInterval(cardStartUp)}    
-        }, 120)
-    }, 1000)        
-}
-createCards()
-
-function gameCardfunction() {
-    const practiceButton = document.createElement('button')
-    practiceButton.textContent = 'test'
-    practiceButton.classList.add('button')
-
-    setTimeout(() => {
-        function lastCardSwipeFunction() {
-            
-            practiceButton.addEventListener('click', () => {
-                const finishedCard = document.querySelector('.card7')
-                finishedCard.classList.add('test')
-                setTimeout(() => {
-                    firstCardSwipe()
-                }, 200)
-                setTimeout(() => {
-                    document.body.removeChild(finishedCard)
-                }, 400)
-            })
-            document.body.appendChild(practiceButton)
-        }
-        lastCardSwipeFunction()
-    }, 3500)
-
-    function firstCardSwipe() {
-        const box = document.createElement('div')
-        const cardTitle = document.createElement('header')
-        const card = document.createElement('div')
-
-        card.classList.add('first-card-animation')
-        card.classList.add('card')
-        card.classList.add('card1')
-        card.setAttribute('data-index', '1')
-
-        document.body.appendChild(card)
-        setTimeout(() => {
-            card.classList.remove('first-card-animation')
-        }, 300)
-
-        setTimeout(() => {
-            let index = 0
-            let speed = 80;
-            let titleText = 'Jet Sketch'
-            cardTitle.classList.add('title')
-            cardTitle.classList.add('blinking-cursor2')
-            function typeWriter() {
-                
-                if (index < titleText.length) {
-                    cardTitle.textContent += titleText.charAt(index)
-                    index++;
-                    setTimeout(typeWriter, speed)
-                } 
             }
-            typeWriter()
-            
-            card.appendChild(cardTitle)
-            box.classList.add('box')
-            card.appendChild(box)
-            setTimeout(() => {
-                
-            })
-        }, 1000)
-
-        
-        innerLoop: for (i = 1; i < 100; i++) {
-            const square = document.createElement('div')
-            
-            let white = undefined
-            let gray = undefined
-            
-            function randomColor() {
-                const color = Math.random()
-
-                if (color >= 0 && color <= 0.2) {
-                    square.classList.add('gray')
-                } else if (color > 0.2 && color <= 1) {
-                    square.classList.add('white')
-                }
-            }
-            randomColor()
-
-            square.classList.add('box2')
-            square.classList.add('square')  //making that squares
-            square.addEventListener('mouseover',  () => {
-                square.classList.add('mouseover')   //making squares interactable
-            })
-            square.addEventListener('mouseout', () => {
-                square.classList.remove('mouseover')
-            })
-            square.addEventListener('mousedown', () => {
-                
-                square.classList.add('square-mouse-down')
-                square.classList.remove('mouseover')
-                square.classList.add('mouseover-without-color')
-                const color = window.getComputedStyle(square) ["background-color"]
-                console.log(color)
-                if (color === 'rgb(255, 255, 255)') {
-                    square.classList.remove('mouseover-without-color')
-                    square.classList.remove('box2')
-                    square.classList.add('mouseover')
-                    square.classList.add('bad')
-
-                    setTimeout(() => {
-                        square.classList.remove('bad')
-                        
-                    }, 1000)
-                } else if (color === 'rgb(128, 128, 128)') {
-                    square.classList.remove('mouseover-without-color')
-                    square.classList.remove('box2')
-                    square.classList.add('mouseover')
-                    square.classList.add('good')
-                }
-                
-                setTimeout(() => {
-                    square.classList.remove('square-mouse-down')
-                }, 100)
-            })
-    
-            square.setAttribute('onclick', 'squareSound()')
-            box.appendChild(square)
-            
-            if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
-        }
         cardDataHandling()
 
         function cardDataHandling() {
@@ -804,6 +815,8 @@ function cardCompletionCheck() {
         const topCard = document.querySelector('.card7')
         const topBox = topCard.querySelector('.box')
         //so if I use querySelectorAll, it can't determine what the color is for all the boxes.  first off i need the exact number of colored boxes to begin with, so i dont have to loop through every single click, once the final box is reached then i can start the next function i will describe. maybe i can loop through the boxes and store the rgb of each in an array and then loop the array through a filter, checking for the rgb of green (0, 128, 0)
+
+        //
 
         //maybe another way around this is to just have a boolean statement for each square stored in an array.  So make an array outside the scope of both functions, give 81 stored false boolean functions, somehow match the current square to the index of the boolean array index and add the "boolean = true" to the eventlistener. send that information to cardComplettionCheck() and loop through to see if all true.
         const topSquares = topBox.querySelector('.gray')
