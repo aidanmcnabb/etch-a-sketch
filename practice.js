@@ -815,15 +815,30 @@ function cardCompletionCheck() {
         const topCard = document.querySelector('.card7')
         const topBox = topCard.querySelector('.box')
         const topSquares = topBox.querySelector('.gray')
-        const color = window.getComputedStyle(topSquares) ["background-color"]
-        console.log(color)
+        //const color = window.getComputedStyle(topCard) ["background-color"]
+        
         //so if I use querySelectorAll, it can't determine what the color is for all the boxes.  first off i need the exact number of colored boxes to begin with, so i dont have to loop through every single click, once the final box is reached then i can start the next function i will describe. maybe i can loop through the boxes and store the rgb of each in an array and then loop the array through a filter, checking for the rgb of green (0, 128, 0)
 
         // extrapolating on my first option, i can map an array starting from box1 all the way to box 81. so maybe inspect first color, map that to a new array, take the new array & add a placeholder variable for the next index, and then send that info to the next computeStyle read where the number corresponds to the 'nth child'. and just loop everything over and over until 81. the loop creates its own array whie also propegating itself for the next iteration
 
         //create array of 81 boxColor variables, create a function to make the index of the array correspond with the nth .card7 child while also storing the value of the square's backgroundColor RGB on the variable/nth child index. next check if the index of the array equals the rgb value of (). this is all stored in a loop, if i < arr.length; i++. If all true, then start gameCardFunction. finally map that function to the array
         
-        const boxArray = [...Array(81).keys()]
+        let squareArray = []
+        let n = 0
+
+        for (i = 1; i < 82; i++) {
+            squareArray[i] = `square${[i]}`
+            let nthChild = topBox.querySelector(`:nth-child(${n})`)
+            if (nthChild.classList.contains(gray)) {
+                console.log('yes')
+            } else {console.log('no')}
+            //console.log(color)
+            n++
+        }
+
+        
+
+        
 
         /*
         
@@ -831,7 +846,7 @@ function cardCompletionCheck() {
 
         }
         */
-        console.log(topSquares)
+        
     })
 }
 setTimeout(() => {
@@ -839,8 +854,6 @@ setTimeout(() => {
 },3500)
 
 //maybe another way around this is to just have a boolean statement for each square stored in an array.  So make an array outside the scope of both functions, give 81 stored false boolean functions, somehow match the current square to the index of the boolean array index and add the "boolean = true" to the eventlistener. send that information to cardComplettionCheck() and loop through to see if all true.
-
-
 
 
 
