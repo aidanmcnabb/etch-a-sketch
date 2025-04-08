@@ -814,7 +814,7 @@ function cardCompletionCheck() {
     test2.addEventListener('click', () => {
         const topCard = document.querySelector('.card7')
         const topBox = topCard.querySelector('.box')
-        const topSquares = topBox.querySelector('.gray')
+        //const topSquares = topBox.querySelector('.gray')
         //const color = window.getComputedStyle(topCard) ["background-color"]
         
         //so if I use querySelectorAll, it can't determine what the color is for all the boxes.  first off i need the exact number of colored boxes to begin with, so i dont have to loop through every single click, once the final box is reached then i can start the next function i will describe. maybe i can loop through the boxes and store the rgb of each in an array and then loop the array through a filter, checking for the rgb of green (0, 128, 0)
@@ -823,20 +823,33 @@ function cardCompletionCheck() {
 
         //create array of 81 boxColor variables, create a function to make the index of the array correspond with the nth .card7 child while also storing the value of the square's backgroundColor RGB on the variable/nth child index. next check if the index of the array equals the rgb value of (). this is all stored in a loop, if i < arr.length; i++. If all true, then start gameCardFunction. finally map that function to the array
         
-        let squareArray = []
-        let n = 0
-
-        for (i = 1; i < 82; i++) {
-            squareArray[i] = `square${[i]}`
-            let nthChild = topBox.querySelector(`:nth-child(${n})`)
-            if (nthChild.classList.contains(gray)) {
-                console.log('yes')
-            } else {console.log('no')}
-            //console.log(color)
+        let graySquareArray = []
+        let n = 1
+        //let c =
+        
+        for (i = 0; i < 82; i++) {
+            let nthChild = topBox.querySelector(`:nth-child(${n}).gray`)
+            if (nthChild) {
+                graySquareArray[i] = nthChild //filter array to new array
+            }
             n++
         }
-
         
+        console.log(graySquareArray)
+
+        let color = undefined
+        function checkColor(element) {
+            window.getComputedStyle(element) ["background-color"]
+            
+        }        
+
+        for (i = 0; i < 82; i++) {
+            let element = graySquareArray[i]
+            console.log(element)
+            checkColor(element)
+            
+            
+        }
 
         
 
