@@ -845,7 +845,7 @@ function cardCompletionCheck() {
 
         for (i = 0; i < 82; i++) {
             let element = graySquareArray[i]
-            console.log(element)
+            console.log(element)    //lets not use compute style and instead use the .good class check
             checkColor(element)
             
             
