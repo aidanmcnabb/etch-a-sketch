@@ -609,8 +609,6 @@ function createCards() {
                         
                         if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
                     }
-
-                    
                     
                 }    
                     c++
@@ -634,11 +632,42 @@ function gameCardfunction() {
     practiceButton.textContent = 'test'
     practiceButton.classList.add('button')
 
+    //the gray square amount and clicks variable only registers once for the if statement and does not update itself? so i need to find a way to keep this activey updated. I have the function, and im thinking everytime clicks increases by one i need to run this function to constatly check if its reached graysquarearray.length (graysquareamount). maybe use setters and getters? i cant think of anything else, i would have to completely reshape how I built the interactability of the squares and where the scope of it should be if i want to do it any other way. that would entail removing the creation of boxes from the create cards function completey and reroute them to the gamecardfunction. thats how it should have been done to begin with, these two seperated functions have cause a lot of problems to begin with and I can't exacctly remember why i did it like this to begin with.
+
+    //there has to be a better way to update the graySquare amount BEFORE
+
     setTimeout(() => {
         function lastCardSwipeFunction() {
+            const finishedCard = document.querySelector('.card7')
+            
+            function cardCompletionCheck() {
+                if (clicks === graySquareAmount) {
+                    finishedCard.classList.add('test')
+                    setTimeout(() => {
+                        firstCardSwipe()
+                    }, 200)
+                    setTimeout(() => {
+                        document.body.removeChild(finishedCard)
+                    }, 400)
+                    
+                }
+            }
+                if (graySquareAmount === undefined) {
+                    let quickUpdate = setInterval(() => {
+                        cardCompletionCheck()
+                    },100)
+                } else {
+                    clearInterval(quickUpdate)
+                    if (clicks === graySquareAmount) {
+                        cardCompletionCheck()
+                    }
+            }
+            //WHAT THE FUCK IS GOING ON THIS IS THE WORST FUCKING BUG EVER
+        }
+        lastCardSwipeFunction() // this is what im trying to pair everything with
+        
+        function lastCardSwipeFunctionTest() {
 
-            
-            
             practiceButton.addEventListener('click', () => {
                 const finishedCard = document.querySelector('.card7')
                 finishedCard.classList.add('test')
@@ -651,7 +680,7 @@ function gameCardfunction() {
             })
             document.body.appendChild(practiceButton)
         }
-        lastCardSwipeFunction()
+        lastCardSwipeFunctionTest() //this is just the test swipe
     }, 3500)
 
     function firstCardSwipe() {
@@ -789,7 +818,7 @@ function gameCardfunction() {
                 incrementedData5.classList.add('card7')
                 incrementedData5.dataset.index = '7'
 
-                function colorCheck() {
+                function createColorArray() {
                     topCard = document.querySelector('.card7')
                     topBox = topCard.querySelector('.box')
 
@@ -809,8 +838,9 @@ function gameCardfunction() {
                     graySquareAmount = graySquareArray.length
                     console.log(graySquareArray)
                     console.log(graySquareAmount)
+                    
                 }
-                colorCheck()
+                createColorArray()
                 
                 incrementedData4.classList.remove('card5')
                 incrementedData4.classList.add('card6')
@@ -844,39 +874,39 @@ function gameCardfunction() {
 }
 gameCardfunction()
 
-function cardCompletionCheck() {
-    
-    if (clicks === graySquareArray.length) {
-        gameCardfunction()
+
+/*
+function topCardCompletionCheck() {
+    if (c === 7) {
+        let clicksPlaceholder = 0
+        
+        let topCardPlaceholder = document.querySelector('.card7')
+        let topBoxPlaceholder = topCardPlaceholder.querySelector('.box')
+
+        let graySquareArrayWithEmptyPlaceholder = []
+        let n = 1
+        
+        for (i = 0; i < 82; i++) {
+            let nthChildPlaceholder = topBoxPlaceholder.querySelector(`:nth-child(${n}).gray`)
+            if (nthChild) {
+                graySquareArrayWithEmptyPlaceholder[i] = nthChildPlaceholder //filter array to new array
+            }
+            n++
+        }
+        
+        
+        let graySquareArrayPlaceholder = graySquareArrayWithEmptyPlaceholder.filter(() => 'div.gray')
+        let graySquareAmountPlaceholder = graySquareArrayPlaceholder.length
     }
 
-    /*
-    const test2 = document.createElement('button')
-    test2.textContent = 'test2'
-    document.body.appendChild(test2)
-    test2.addEventListener('click', () => {
-    
-    
-        let color = undefined
-        function checkColor(element) {
-            window.getComputedStyle(element) ["background-color"]
-            
-        }        
-
-        for (i = 0; i < 82; i++) {
-            let element = graySquareArrayWithEmpty[i]
-            console.log(element)    //lets not use compute style and instead use the .good class check
-            checkColor(element)
-            
-            
+    if (graySquareArrayPlaceholder) {
+        if (clicksPlaceholder === graySquareAmountPlaceholder) {
+            gameCardfunction()
         }
-    
-        
-    })
-    */
-   
+    }
 }
-cardCompletionCheck()
+*/
+
 
 /*
 setTimeout(() => {
@@ -914,3 +944,29 @@ setTimeout(() => {
         let graySquareAmount = graySquareArray.length
 
         */
+
+
+    /*
+    const test2 = document.createElement('button')
+    test2.textContent = 'test2'
+    document.body.appendChild(test2)
+    test2.addEventListener('click', () => {
+    
+    
+        let color = undefined
+        function checkColor(element) {
+            window.getComputedStyle(element) ["background-color"]
+            
+        }        
+
+        for (i = 0; i < 82; i++) {
+            let element = graySquareArrayWithEmpty[i]
+            console.log(element)    //lets not use compute style and instead use the .good class check
+            checkColor(element)
+            
+            
+        }
+    
+        
+    })
+    */
