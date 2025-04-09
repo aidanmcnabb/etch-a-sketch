@@ -492,6 +492,7 @@ tutorialFuntion()
 
 const cardNumbers = [' ', 'card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7']
 const dataArray = ['', '1', '2', '3', '4', '5', '6', '7']
+let clicks = 0
 
 function createCards() {
     
@@ -594,6 +595,8 @@ function createCards() {
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
                                 square.classList.add('good')
+                                clicks++
+                                console.log(clicks)
                             }
                             
                             setTimeout(() => {
@@ -842,12 +845,18 @@ function gameCardfunction() {
 gameCardfunction()
 
 function cardCompletionCheck() {
+    
+    if (clicks === graySquareArray.length) {
+        gameCardfunction()
+    }
+
+    /*
     const test2 = document.createElement('button')
     test2.textContent = 'test2'
     document.body.appendChild(test2)
     test2.addEventListener('click', () => {
     
-    /*
+    
         let color = undefined
         function checkColor(element) {
             window.getComputedStyle(element) ["background-color"]
@@ -861,13 +870,19 @@ function cardCompletionCheck() {
             
             
         }
-    */
+    
         
     })
+    */
+   
 }
+cardCompletionCheck()
+
+/*
 setTimeout(() => {
     cardCompletionCheck()
 },3500)
+*/
 
 //maybe another way around this is to just have a boolean statement for each square stored in an array.  So make an array outside the scope of both functions, give 81 stored false boolean functions, somehow match the current square to the index of the boolean array index and add the "boolean = true" to the eventlistener. send that information to cardComplettionCheck() and loop through to see if all true.
 
