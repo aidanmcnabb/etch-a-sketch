@@ -606,6 +606,8 @@ function createCards() {
                         
                         if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
                     }
+
+                    
                     
                 }    
                     c++
@@ -616,6 +618,14 @@ function createCards() {
 }
 createCards()
 
+let graySquareArrayWithEmpty = []
+let n = 1
+let graySquareArray = undefined
+let graySquareAmount = undefined
+let topCard = undefined
+let topBox = undefined
+
+
 function gameCardfunction() {
     const practiceButton = document.createElement('button')
     practiceButton.textContent = 'test'
@@ -623,6 +633,8 @@ function gameCardfunction() {
 
     setTimeout(() => {
         function lastCardSwipeFunction() {
+
+            
             
             practiceButton.addEventListener('click', () => {
                 const finishedCard = document.querySelector('.card7')
@@ -773,6 +785,29 @@ function gameCardfunction() {
                 incrementedData5.classList.remove('card6')
                 incrementedData5.classList.add('card7')
                 incrementedData5.dataset.index = '7'
+
+                function colorCheck() {
+                    topCard = document.querySelector('.card7')
+                    topBox = topCard.querySelector('.box')
+
+                    graySquareArrayWithEmpty = []
+                    n = 1
+                    
+                    for (i = 0; i < 82; i++) {
+                        let nthChild = topBox.querySelector(`:nth-child(${n}).gray`)
+                        if (nthChild) {
+                            graySquareArrayWithEmpty[i] = nthChild //filter array to new array
+                        }
+                        n++
+                    }
+                    
+                    
+                    graySquareArray = graySquareArrayWithEmpty.filter(() => 'div.gray')
+                    graySquareAmount = graySquareArray.length
+                    console.log(graySquareArray)
+                    console.log(graySquareAmount)
+                }
+                colorCheck()
                 
                 incrementedData4.classList.remove('card5')
                 incrementedData4.classList.add('card6')
@@ -796,7 +831,6 @@ function gameCardfunction() {
                     incrementedData1.classList.remove('card1')
                     incrementedData1.classList.add('card2')
                     incrementedData1.dataset.index = '2'
-
                     arr.pop()
                 }
                 dataTranslation(dataIndexArray)
@@ -812,6 +846,32 @@ function cardCompletionCheck() {
     test2.textContent = 'test2'
     document.body.appendChild(test2)
     test2.addEventListener('click', () => {
+    
+    /*
+        let color = undefined
+        function checkColor(element) {
+            window.getComputedStyle(element) ["background-color"]
+            
+        }        
+
+        for (i = 0; i < 82; i++) {
+            let element = graySquareArrayWithEmpty[i]
+            console.log(element)    //lets not use compute style and instead use the .good class check
+            checkColor(element)
+            
+            
+        }
+    */
+        
+    })
+}
+setTimeout(() => {
+    cardCompletionCheck()
+},3500)
+
+//maybe another way around this is to just have a boolean statement for each square stored in an array.  So make an array outside the scope of both functions, give 81 stored false boolean functions, somehow match the current square to the index of the boolean array index and add the "boolean = true" to the eventlistener. send that information to cardComplettionCheck() and loop through to see if all true.
+
+/*
         const topCard = document.querySelector('.card7')
         const topBox = topCard.querySelector('.box')
         //const topSquares = topBox.querySelector('.gray')
@@ -823,50 +883,19 @@ function cardCompletionCheck() {
 
         //create array of 81 boxColor variables, create a function to make the index of the array correspond with the nth .card7 child while also storing the value of the square's backgroundColor RGB on the variable/nth child index. next check if the index of the array equals the rgb value of (). this is all stored in a loop, if i < arr.length; i++. If all true, then start gameCardFunction. finally map that function to the array
         
-        let graySquareArray = []
+
+        let graySquareArrayWithEmpty = []
         let n = 1
-        //let c =
         
         for (i = 0; i < 82; i++) {
             let nthChild = topBox.querySelector(`:nth-child(${n}).gray`)
             if (nthChild) {
-                graySquareArray[i] = nthChild //filter array to new array
+                graySquareArrayWithEmpty[i] = nthChild //filter array to new array
             }
             n++
         }
         
-        console.log(graySquareArray)
+        let graySquareArray = graySquareArrayWithEmpty.filter(() => 'div.gray')
+        let graySquareAmount = graySquareArray.length
 
-        let color = undefined
-        function checkColor(element) {
-            window.getComputedStyle(element) ["background-color"]
-            
-        }        
-
-        for (i = 0; i < 82; i++) {
-            let element = graySquareArray[i]
-            console.log(element)    //lets not use compute style and instead use the .good class check
-            checkColor(element)
-            
-            
-        }
-
-        
-
-        /*
-        
-        if (color === 'rgb(255, 255, 255)') {
-
-        }
         */
-        
-    })
-}
-setTimeout(() => {
-    cardCompletionCheck()
-},3500)
-
-//maybe another way around this is to just have a boolean statement for each square stored in an array.  So make an array outside the scope of both functions, give 81 stored false boolean functions, somehow match the current square to the index of the boolean array index and add the "boolean = true" to the eventlistener. send that information to cardComplettionCheck() and loop through to see if all true.
-
-
-
