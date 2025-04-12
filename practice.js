@@ -490,405 +490,411 @@ function tutorialFuntion() {
 tutorialFuntion()
 */
 
-const cardNumbers = [' ', 'card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7']
-const dataArray = ['', '1', '2', '3', '4', '5', '6', '7']
-let clicks = 0
-let clicksInitial = 0
+function playGameTutorial() {
 
-let graySquareArrayWithEmptyInitial = []
-let nInitial = 1
-let graySquareArrayInitial = undefined
-let graySquareAmountInitial = undefined
-let topCardInitial = undefined
-let topBoxInitial = undefined
+    const cardNumbers = [' ', 'card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7']
+    const dataArray = ['', '1', '2', '3', '4', '5', '6', '7']
+    let clicks = 0
+    let clicksInitial = 0
 
-let graySquareArrayWithEmpty = []
-let n = 1
-let graySquareArray = undefined
-let graySquareAmount = undefined
-let topCard = undefined
-let topBox = undefined
+    let graySquareArrayWithEmptyInitial = []
+    let nInitial = 1
+    let graySquareArrayInitial = undefined
+    let graySquareAmountInitial = undefined
+    let topCardInitial = undefined
+    let topBoxInitial = undefined
 
-function createCards() {
-    
-    // if ((cardnumber) === (arraynumber)) {color = (arraycolor)}
+    let graySquareArrayWithEmpty = []
+    let n = 1
+    let graySquareArray = undefined
+    let graySquareAmount = undefined
+    let topCard = undefined
+    let topBox = undefined
 
-    let c = 1
-    
-    
-    setTimeout(() => {
-        const cardStartUp = setInterval(() => {
-            if (c <= 7) {
-                const box = document.createElement('div')
-                const cardTitle = document.createElement('header')
-                const card = document.createElement('div')
-
-                card.classList.add('card')
-                card.classList.add('card-animation')
-                card.setAttribute('data-index', `${dataArray.at(c)}`)
-
-                //changing translation per iteration
-                function decrementTranslation() {
-                    card.classList.add(cardNumbers.at(c))
-                }
-                decrementTranslation()
-
-                document.body.appendChild(card)
-                setTimeout(() => {
-                    card.classList.remove('card-animation')
-                },1000)
-                
-                if (card.dataset.index === '6' || card.dataset.index === '7') {
-
-                    setTimeout(() => {
-                        let index = 0
-                        let speed = 80;
-                        let titleText = 'Jet Sketch'
-                        cardTitle.classList.add('title')
-                        cardTitle.classList.add('blinking-cursor2')
-                        function typeWriter() {
-                            
-                            if (index < titleText.length) {
-                                cardTitle.textContent += titleText.charAt(index)
-                                index++;
-                                setTimeout(typeWriter, speed)
-                            } 
-                        }
-                        typeWriter()
-                        
-                        card.appendChild(cardTitle)
-                        box.classList.add('box')
-                        card.appendChild(box)
-                    }, 1000)
-
-                    
-
-                    innerLoop: for (i = 1; i < 100; i++) {
-                        const square = document.createElement('div')
-                        
-                        let white = undefined
-                        let gray = undefined
-                        
-                        function randomColor() {
-                            const color = Math.random()
-
-                            if (color >= 0 && color <= 0.2) {
-                                square.classList.add('gray')
-                            } else if (color > 0.2 && color <= 1) {
-                                square.classList.add('white')
-                            }
-                        }
-                        randomColor()
-
-                        square.classList.add('box2')
-                        square.classList.add('square')  //making that squares
-                        square.addEventListener('mouseover',  () => {
-                            square.classList.add('mouseover')   //making squares interactable
-                        })
-                        square.addEventListener('mouseout', () => {
-                            square.classList.remove('mouseover')
-                        })
-                        square.addEventListener('mousedown', () => {
-                            
-                            square.classList.add('square-mouse-down')
-                            square.classList.remove('mouseover')
-                            square.classList.add('mouseover-without-color')
-                            const color = window.getComputedStyle(square) ["background-color"]
-                            //console.log(color)
-                            if (color === 'rgb(255, 255, 255)') {
-                                square.classList.remove('mouseover-without-color')
-                                square.classList.remove('box2')
-                                square.classList.add('mouseover')
-                                square.classList.add('bad')
-
-                                setTimeout(() => {
-                                    square.classList.remove('bad')
-                                    
-                                }, 1000)
-                            } else if (color === 'rgb(128, 128, 128)') {
-                                square.classList.remove('mouseover-without-color')
-                                square.classList.remove('box2')
-                                square.classList.add('mouseover')
-                                square.classList.add('good')
-                                
-                                if (graySquareArray) {
-                                    clicks++
-                                } else {
-                                    clicksInitial++
-                                }
-                                cardCompletionCheck()
-                                initialCardCompletionCheck()
-                            }
-                            
-                            setTimeout(() => {
-                                square.classList.remove('square-mouse-down')
-                            }, 100)
-                        })
-                    
-                        square.setAttribute('onclick', 'squareSound()')
-                        box.appendChild(square)
-                        
-                        if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
-                    }
-                    
-                    
-                    setTimeout(() => {
-                        initialDataHandling()
-                    }, 2000)
-                }    
-                    c++
-                
-            } else {clearInterval(cardStartUp)}    
-        }, 120)
-    }, 1000)        
-}
-createCards()
-
-
-
-function cardCompletionCheck() {
-    const finishedCard = document.querySelector('.card7')
-    if (clicks === graySquareAmount) {
-        finishedCard.classList.add('test')
-        clicks = 0
-        setTimeout(() => {
-            firstCardSwipe()
-        }, 200)
-        setTimeout(() => {
-            document.body.removeChild(finishedCard)
-        }, 400)
+    function createCards() {
         
-    }
-}
+        // if ((cardnumber) === (arraynumber)) {color = (arraycolor)}
 
-function initialDataHandling() {
-    topCardInitial = document.querySelector('.card7')
-    topBoxInitial = topCardInitial.querySelector('.box')
-
-    graySquareArrayWithEmptyInitial = []
-    nInitial = 1
-    
-    for (i = 0; i < 82; i++) {
-        let nthChildInitial = topBoxInitial.querySelector(`:nth-child(${nInitial}).gray`)
-        if (nthChildInitial) {
-            graySquareArrayWithEmptyInitial[i] = nthChildInitial //filter array to new array
-        }
-        nInitial++
-    }
-    
-    graySquareArrayInitial = graySquareArrayWithEmptyInitial.filter(() => 'div.gray')
-    graySquareAmountInitial = graySquareArrayInitial.length
-}
-
-function initialCardCompletionCheck() {
-    const finishedCard = document.querySelector('.card7')
-    
-    if (clicksInitial === graySquareAmountInitial) {
-        finishedCard.classList.add('test')
-        clicksInitial = 0
-        setTimeout(() => {
-            firstCardSwipe()
-        }, 200)
-        setTimeout(() => {
-            document.body.removeChild(finishedCard)
-        }, 400)
+        let c = 1
         
-    }
-}
-
-function firstCardSwipe() {
-    const box = document.createElement('div')
-    const cardTitle = document.createElement('header')
-    const card = document.createElement('div')
-    let card6 = document.querySelector('.card6')
-
-    card.classList.add('first-card-animation')
-    card.classList.add('card')
-    card.classList.add('card1')
-    card.setAttribute('data-index', '1')
-
-    document.body.appendChild(card)
-    setTimeout(() => {
-        card.classList.remove('first-card-animation')
-    }, 300)
-
-    if (card.children.length === 0) {
-
+        
         setTimeout(() => {
-            let index = 0
-            let speed = 80;
-            let titleText = 'Jet Sketch'
-            cardTitle.classList.add('title')
-            cardTitle.classList.add('blinking-cursor2')
-            function typeWriter() {
-                
-                if (index < titleText.length) {
-                    cardTitle.textContent += titleText.charAt(index)
-                    index++;
-                    setTimeout(typeWriter, speed)
-                } 
-            }
-            typeWriter()
-            
-            box.classList.add('box')
-            
-            setTimeout(() => {
-                card6 = document.querySelector('.card6')
-                card6.appendChild(cardTitle)
-                card6.appendChild(box)
-            }, 1)
-       
-        }, 200)
+            const cardStartUp = setInterval(() => {
+                if (c <= 7) {
+                    const box = document.createElement('div')
+                    const cardTitle = document.createElement('header')
+                    const card = document.createElement('div')
 
-            innerLoop: for (i = 1; i < 100; i++) {
-                const square = document.createElement('div')
-                
-                let white = undefined
-                let gray = undefined
-                
-                function randomColor() {
-                    const color = Math.random()
+                    card.classList.add('card')
+                    card.classList.add('card-animation')
+                    card.setAttribute('data-index', `${dataArray.at(c)}`)
 
-                    if (color >= 0 && color <= 0.2) {
-                        square.classList.add('gray')
-                    } else if (color > 0.2 && color <= 1) {
-                        square.classList.add('white')
+                    //changing translation per iteration
+                    function decrementTranslation() {
+                        card.classList.add(cardNumbers.at(c))
                     }
-                }
-                randomColor()
+                    decrementTranslation()
 
-                square.classList.add('box2')
-                square.classList.add('square')  //making that squares
-                square.addEventListener('mouseover',  () => {
-                    square.classList.add('mouseover')   //making squares interactable
-                })
-                square.addEventListener('mouseout', () => {
-                    square.classList.remove('mouseover')
-                })
-                square.addEventListener('mousedown', () => {
+                    document.body.appendChild(card)
+                    setTimeout(() => {
+                        card.classList.remove('card-animation')
+                    },1000)
                     
-                    square.classList.add('square-mouse-down')
-                    square.classList.remove('mouseover')
-                    square.classList.add('mouseover-without-color')
-                    const color = window.getComputedStyle(square) ["background-color"]
-                    //console.log(color)
-                    if (color === 'rgb(255, 255, 255)') {
-                        square.classList.remove('mouseover-without-color')
-                        square.classList.remove('box2')
-                        square.classList.add('mouseover')
-                        square.classList.add('bad')
+                    if (card.dataset.index === '6' || card.dataset.index === '7') {
 
                         setTimeout(() => {
-                            square.classList.remove('bad')
+                            let index = 0
+                            let speed = 80;
+                            let titleText = 'Jet Sketch'
+                            cardTitle.classList.add('title')
+                            cardTitle.classList.add('blinking-cursor2')
+                            function typeWriter() {
+                                
+                                if (index < titleText.length) {
+                                    cardTitle.textContent += titleText.charAt(index)
+                                    index++;
+                                    setTimeout(typeWriter, speed)
+                                } 
+                            }
+                            typeWriter()
                             
+                            card.appendChild(cardTitle)
+                            box.classList.add('box')
+                            card.appendChild(box)
                         }, 1000)
-                    } else if (color === 'rgb(128, 128, 128)') {
-                        square.classList.remove('mouseover-without-color')
-                        square.classList.remove('box2')
-                        square.classList.add('mouseover')
-                        square.classList.add('good')
-                        clicks++
-                        cardCompletionCheck()
+
+                        
+
+                        innerLoop: for (i = 1; i < 100; i++) {
+                            const square = document.createElement('div')
+                            
+                            let white = undefined
+                            let gray = undefined
+                            
+                            function randomColor() {
+                                const color = Math.random()
+
+                                if (color >= 0 && color <= 0.2) {
+                                    square.classList.add('gray')
+                                } else if (color > 0.2 && color <= 1) {
+                                    square.classList.add('white')
+                                }
+                            }
+                            randomColor()
+
+                            square.classList.add('box2')
+                            square.classList.add('square')  //making that squares
+                            square.addEventListener('mouseover',  () => {
+                                square.classList.add('mouseover')   //making squares interactable
+                            })
+                            square.addEventListener('mouseout', () => {
+                                square.classList.remove('mouseover')
+                            })
+                            square.addEventListener('mousedown', () => {
+                                
+                                square.classList.add('square-mouse-down')
+                                square.classList.remove('mouseover')
+                                square.classList.add('mouseover-without-color')
+                                const color = window.getComputedStyle(square) ["background-color"]
+                                //console.log(color)
+                                if (color === 'rgb(255, 255, 255)') {
+                                    square.classList.remove('mouseover-without-color')
+                                    square.classList.remove('box2')
+                                    square.classList.add('mouseover')
+                                    square.classList.add('bad')
+
+                                    setTimeout(() => {
+                                        square.classList.remove('bad')
+                                        
+                                    }, 1000)
+                                } else if (color === 'rgb(128, 128, 128)') {
+                                    square.classList.remove('mouseover-without-color')
+                                    square.classList.remove('box2')
+                                    square.classList.add('mouseover')
+                                    square.classList.add('good')
+                                    
+                                    if (graySquareArray) {
+                                        clicks++
+                                    } else {
+                                        clicksInitial++
+                                    }
+                                    cardCompletionCheck()
+                                    initialCardCompletionCheck()
+                                }
+                                
+                                setTimeout(() => {
+                                    square.classList.remove('square-mouse-down')
+                                }, 100)
+                            })
+                        
+                            square.setAttribute('onclick', 'squareSound()')
+                            box.appendChild(square)
+                            
+                            if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
+                        }
+                        
+                        
+                        setTimeout(() => {
+                            initialDataHandling()
+                        }, 2000)
+                    }    
+                        c++
+                    
+                } else {clearInterval(cardStartUp)}    
+            }, 120)
+        }, 1000)        
+    }
+    createCards()
+
+
+
+    function cardCompletionCheck() {
+        const finishedCard = document.querySelector('.card7')
+        if (clicks === graySquareAmount) {
+            finishedCard.classList.add('test')
+            clicks = 0
+            setTimeout(() => {
+                firstCardSwipe()
+            }, 200)
+            setTimeout(() => {
+                document.body.removeChild(finishedCard)
+            }, 400)
+            
+        }
+    }
+
+    function initialDataHandling() {
+        topCardInitial = document.querySelector('.card7')
+        topBoxInitial = topCardInitial.querySelector('.box')
+
+        graySquareArrayWithEmptyInitial = []
+        nInitial = 1
+        
+        for (i = 0; i < 82; i++) {
+            let nthChildInitial = topBoxInitial.querySelector(`:nth-child(${nInitial}).gray`)
+            if (nthChildInitial) {
+                graySquareArrayWithEmptyInitial[i] = nthChildInitial //filter array to new array
+            }
+            nInitial++
+        }
+        
+        graySquareArrayInitial = graySquareArrayWithEmptyInitial.filter(() => 'div.gray')
+        graySquareAmountInitial = graySquareArrayInitial.length
+    }
+
+    function initialCardCompletionCheck() {
+        const finishedCard = document.querySelector('.card7')
+        
+        if (clicksInitial === graySquareAmountInitial) {
+            finishedCard.classList.add('test')
+            clicksInitial = 0
+            setTimeout(() => {
+                firstCardSwipe()
+            }, 200)
+            setTimeout(() => {
+                document.body.removeChild(finishedCard)
+            }, 400)
+            
+        }
+    }
+
+    function firstCardSwipe() {
+        const box = document.createElement('div')
+        const cardTitle = document.createElement('header')
+        const card = document.createElement('div')
+        let card6 = document.querySelector('.card6')
+
+        card.classList.add('first-card-animation')
+        card.classList.add('card')
+        card.classList.add('card1')
+        card.setAttribute('data-index', '1')
+
+        document.body.appendChild(card)
+        setTimeout(() => {
+            card.classList.remove('first-card-animation')
+        }, 300)
+
+        if (card.children.length === 0) {
+
+            setTimeout(() => {
+                let index = 0
+                let speed = 80;
+                let titleText = 'Jet Sketch'
+                cardTitle.classList.add('title')
+                cardTitle.classList.add('blinking-cursor2')
+                function typeWriter() {
+                    
+                    if (index < titleText.length) {
+                        cardTitle.textContent += titleText.charAt(index)
+                        index++;
+                        setTimeout(typeWriter, speed)
+                    } 
+                }
+                typeWriter()
+                
+                box.classList.add('box')
+                
+                setTimeout(() => {
+                    card6 = document.querySelector('.card6')
+                    card6.appendChild(cardTitle)
+                    card6.appendChild(box)
+                }, 1)
+        
+            }, 200)
+
+                innerLoop: for (i = 1; i < 100; i++) {
+                    const square = document.createElement('div')
+                    
+                    let white = undefined
+                    let gray = undefined
+                    
+                    function randomColor() {
+                        const color = Math.random()
+
+                        if (color >= 0 && color <= 0.2) {
+                            square.classList.add('gray')
+                        } else if (color > 0.2 && color <= 1) {
+                            square.classList.add('white')
+                        }
+                    }
+                    randomColor()
+
+                    square.classList.add('box2')
+                    square.classList.add('square')  //making that squares
+                    square.addEventListener('mouseover',  () => {
+                        square.classList.add('mouseover')   //making squares interactable
+                    })
+                    square.addEventListener('mouseout', () => {
+                        square.classList.remove('mouseover')
+                    })
+                    square.addEventListener('mousedown', () => {
+                        
+                        square.classList.add('square-mouse-down')
+                        square.classList.remove('mouseover')
+                        square.classList.add('mouseover-without-color')
+                        const color = window.getComputedStyle(square) ["background-color"]
+                        //console.log(color)
+                        if (color === 'rgb(255, 255, 255)') {
+                            square.classList.remove('mouseover-without-color')
+                            square.classList.remove('box2')
+                            square.classList.add('mouseover')
+                            square.classList.add('bad')
+
+                            setTimeout(() => {
+                                square.classList.remove('bad')
+                                
+                            }, 1000)
+                        } else if (color === 'rgb(128, 128, 128)') {
+                            square.classList.remove('mouseover-without-color')
+                            square.classList.remove('box2')
+                            square.classList.add('mouseover')
+                            square.classList.add('good')
+                            clicks++
+                            cardCompletionCheck()
+                            
+                        }
+                        
+                        setTimeout(() => {
+                            square.classList.remove('square-mouse-down')
+                        }, 100)
+                    })
+            
+                    square.setAttribute('onclick', 'squareSound()')
+                    box.appendChild(square)
+                    
+                    if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
+                }
+            }
+        cardDataHandling()
+
+        function cardDataHandling() {
+            
+            const dataIndexArray = [1, 2, 3, 4, 5, 6, 7]
+            //im probably going to make an animation for each card going to new position. so like .one-to-two & .two-to-three, etc.
+            
+            function dataIncrement(arr) {
+                for (i = 0; i < arr.length; i++) {
+                    arr[i]++
+                }
+                return arr
+            }
+
+            let incrementedData = dataIncrement(dataIndexArray)
+            
+            let incrementedData1 = document.querySelector(`[data-index='${incrementedData[0]}']`)
+            const incrementedData2 = document.querySelector(`[data-index='${incrementedData[1]}']`)
+            const incrementedData3 = document.querySelector(`[data-index='${incrementedData[2]}']`)
+            const incrementedData4 = document.querySelector(`[data-index='${incrementedData[3]}']`)
+            const incrementedData5 = document.querySelector(`[data-index='${incrementedData[4]}']`)
+            const incrementedData6 = document.querySelector(`[data-index='${incrementedData[5]}']`)
+            const incrementedData7 = document.querySelector(`[data-index='${incrementedData[6]}']`)
+
+            function changeDataAndClass() {
+                incrementedData6.setAttribute('style', 'z-index: 9;')
+                
+                incrementedData5.classList.remove('card6')
+                incrementedData5.classList.add('card7')
+                incrementedData5.dataset.index = '7'
+
+                setTimeout(() => {  
+                    function createColorArray() {
+                        topCard = document.querySelector('.card7')
+                        topBox = topCard.querySelector('.box')
+
+                        graySquareArrayWithEmpty = []
+                        n = 1
+                        
+                        for (i = 0; i < 82; i++) {
+                            let nthChild = topBox.querySelector(`:nth-child(${n}).gray`)
+                            if (nthChild) {
+                                graySquareArrayWithEmpty[i] = nthChild //filtered array
+                            }
+                            n++
+                        }
+                        
+                        graySquareArray = graySquareArrayWithEmpty.filter(() => 'div.gray')
+                        graySquareAmount = graySquareArray.length
+                        
+                        //bug orriginates from how fast the class changes on the 7th card
                         
                     }
-                    
-                    setTimeout(() => {
-                        square.classList.remove('square-mouse-down')
-                    }, 100)
-                })
-        
-                square.setAttribute('onclick', 'squareSound()')
-                box.appendChild(square)
+                    createColorArray()
+                }, 200)    
                 
-                if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
-            }
-        }
-    cardDataHandling()
+                incrementedData4.classList.remove('card5')
+                incrementedData4.classList.add('card6')
+                incrementedData4.dataset.index = '6'
+                
+                incrementedData3.classList.remove('card4')
+                incrementedData3.classList.add('card5')
+                incrementedData3.dataset.index = '5'
+                
+                incrementedData2.classList.remove('card3')
+                incrementedData2.classList.add('card4')
+                incrementedData2.dataset.index = '4'
+                
+                incrementedData1.classList.remove('card2')
+                incrementedData1.classList.add('card3')
+                incrementedData1.dataset.index = '3'
 
-    function cardDataHandling() {
-        
-        const dataIndexArray = [1, 2, 3, 4, 5, 6, 7]
-        //im probably going to make an animation for each card going to new position. so like .one-to-two & .two-to-three, etc.
-        
-        function dataIncrement(arr) {
-            for (i = 0; i < arr.length; i++) {
-                arr[i]++
-            }
-            return arr
-        }
-
-        let incrementedData = dataIncrement(dataIndexArray)
-        
-        let incrementedData1 = document.querySelector(`[data-index='${incrementedData[0]}']`)
-        const incrementedData2 = document.querySelector(`[data-index='${incrementedData[1]}']`)
-        const incrementedData3 = document.querySelector(`[data-index='${incrementedData[2]}']`)
-        const incrementedData4 = document.querySelector(`[data-index='${incrementedData[3]}']`)
-        const incrementedData5 = document.querySelector(`[data-index='${incrementedData[4]}']`)
-        const incrementedData6 = document.querySelector(`[data-index='${incrementedData[5]}']`)
-        const incrementedData7 = document.querySelector(`[data-index='${incrementedData[6]}']`)
-
-        function changeDataAndClass() {
-            incrementedData6.setAttribute('style', 'z-index: 9;')
-            
-            incrementedData5.classList.remove('card6')
-            incrementedData5.classList.add('card7')
-            incrementedData5.dataset.index = '7'
-
-            setTimeout(() => {  
-                function createColorArray() {
-                    topCard = document.querySelector('.card7')
-                    topBox = topCard.querySelector('.box')
-
-                    graySquareArrayWithEmpty = []
-                    n = 1
-                    
-                    for (i = 0; i < 82; i++) {
-                        let nthChild = topBox.querySelector(`:nth-child(${n}).gray`)
-                        if (nthChild) {
-                            graySquareArrayWithEmpty[i] = nthChild //filtered array
-                        }
-                        n++
-                    }
-                    
-                    graySquareArray = graySquareArrayWithEmpty.filter(() => 'div.gray')
-                    graySquareAmount = graySquareArray.length
-                    
-                    //bug orriginates from how fast the class changes on the 7th card
-                    
+                function dataTranslation(arr) {
+                    arr.unshift(1)
+                    incrementedData1 = document.querySelector(`[data-index='${incrementedData[0]}']`)
+                    incrementedData1.classList.remove('card1')
+                    incrementedData1.classList.add('card2')
+                    incrementedData1.dataset.index = '2'
+                    arr.pop()
                 }
-                createColorArray()
-            }, 200)    
-            
-            incrementedData4.classList.remove('card5')
-            incrementedData4.classList.add('card6')
-            incrementedData4.dataset.index = '6'
-            
-            incrementedData3.classList.remove('card4')
-            incrementedData3.classList.add('card5')
-            incrementedData3.dataset.index = '5'
-            
-            incrementedData2.classList.remove('card3')
-            incrementedData2.classList.add('card4')
-            incrementedData2.dataset.index = '4'
-            
-            incrementedData1.classList.remove('card2')
-            incrementedData1.classList.add('card3')
-            incrementedData1.dataset.index = '3'
-
-            function dataTranslation(arr) {
-                arr.unshift(1)
-                incrementedData1 = document.querySelector(`[data-index='${incrementedData[0]}']`)
-                incrementedData1.classList.remove('card1')
-                incrementedData1.classList.add('card2')
-                incrementedData1.dataset.index = '2'
-                arr.pop()
+                dataTranslation(dataIndexArray)
             }
-            dataTranslation(dataIndexArray)
-        }
-        changeDataAndClass()
-    }       
-}
+            changeDataAndClass()
+        }       
+    }
 
+}
+playGameTutorial()
+
+/*
 function gameCardfunction() {
     const practiceButton = document.createElement('button')
     practiceButton.textContent = 'test'
@@ -916,7 +922,7 @@ function gameCardfunction() {
     
 }
 gameCardfunction()
-
+*/
 
 /*
 function topCardCompletionCheck() {
