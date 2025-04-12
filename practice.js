@@ -648,8 +648,6 @@ createCards()
 
 function cardCompletionCheck() {
     const finishedCard = document.querySelector('.card7')
-    console.log(graySquareAmount)
-    console.log(graySquareArray)
     if (clicks === graySquareAmount) {
         finishedCard.classList.add('test')
         clicks = 0
@@ -836,28 +834,30 @@ function firstCardSwipe() {
             incrementedData5.classList.add('card7')
             incrementedData5.dataset.index = '7'
 
-            function createColorArray() {
-                topCard = document.querySelector('.card7')
-                topBox = topCard.querySelector('.box')
+            setTimeout(() => {  
+                function createColorArray() {
+                    topCard = document.querySelector('.card7')
+                    topBox = topCard.querySelector('.box')
 
-                graySquareArrayWithEmpty = []
-                n = 1
-                
-                for (i = 0; i < 82; i++) {
-                    let nthChild = topBox.querySelector(`:nth-child(${n}).gray`)
-                    if (nthChild) {
-                        graySquareArrayWithEmpty[i] = nthChild //filter array to new array
+                    graySquareArrayWithEmpty = []
+                    n = 1
+                    
+                    for (i = 0; i < 82; i++) {
+                        let nthChild = topBox.querySelector(`:nth-child(${n}).gray`)
+                        if (nthChild) {
+                            graySquareArrayWithEmpty[i] = nthChild //filtered array
+                        }
+                        n++
                     }
-                    n++
+                    
+                    graySquareArray = graySquareArrayWithEmpty.filter(() => 'div.gray')
+                    graySquareAmount = graySquareArray.length
+                    
+                    //bug orriginates from how fast the class changes on the 7th card
+                    
                 }
-                
-                graySquareArray = graySquareArrayWithEmpty.filter(() => 'div.gray')
-                graySquareAmount = graySquareArray.length
-
-                //at the 7th card for this function, it stops progressing therefore can not activate that swipe card functions.
-                
-            }
-            createColorArray()
+                createColorArray()
+            }, 200)    
             
             incrementedData4.classList.remove('card5')
             incrementedData4.classList.add('card6')
