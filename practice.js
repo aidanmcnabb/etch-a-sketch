@@ -891,11 +891,24 @@ function playGameTutorial() {
         }       
     }
 
+    let chosenColor = 0
     const keyPadContainer = document.createElement('div')
     const wKeyContainer = document.createElement('div')
     const aKeyContainer = document.createElement('div')
     const sKeyContainer = document.createElement('div')
     const dKeyContainer = document.createElement('div')
+    const wPicture = document.createElement('img')
+    wPicture.src = 'img/wKey.png'
+    wPicture.width = 60
+    const aPicture = document.createElement('img')
+    aPicture.src = 'img/aKey.png'
+    aPicture.width = 60
+    const sPicture = document.createElement('img')
+    sPicture.src = 'img/sKey.jpg'
+    sPicture.width = 60
+    const dPicture = document.createElement('img')
+    dPicture.src = 'img/dKey.png'
+    dPicture.width = 60
     
     function colorPicker() {
         keyPadContainer.classList.add('key-pad')
@@ -904,10 +917,87 @@ function playGameTutorial() {
         sKeyContainer.classList.add('s-key')
         dKeyContainer.classList.add('d-key')
         document.body.appendChild(keyPadContainer)
-        document.body.appendChild(wKeyContainer)
-        document.body.appendChild(aKeyContainer)
-        document.body.appendChild(sKeyContainer)
-        document.body.appendChild(dKeyContainer)
+        keyPadContainer.appendChild(wKeyContainer)
+        keyPadContainer.appendChild(aKeyContainer)
+        keyPadContainer.appendChild(sKeyContainer)
+        keyPadContainer.appendChild(dKeyContainer)
+        wKeyContainer.appendChild(wPicture)
+        aKeyContainer.appendChild(aPicture)
+        sKeyContainer.appendChild(sPicture)
+        dKeyContainer.appendChild(dPicture)
+
+        //1 = gray(w)
+        //2 = red(a)
+        //3 = green(s)
+        //4 = blue(d)
+
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'w') {
+                wKeyContainer.classList.add('w-press-in')
+                keyPadContainer.classList.add('w-keypad-color')
+                if (chosenColor === 'red') {
+                    aKeyContainer.classList.remove('a-press-in')
+                    aKeyContainer.classList.add('a-press-out')
+                    keyPadContainer.classList.remove('a-keypad-color')
+                } else if (chosenColor === 'green') {
+
+                } else if (chosenColor === 'blue')
+                chosenColor = 'gray'
+                console.log(chosenColor)
+                setTimeout(() => {
+                    
+                    //wKeyContainer.classList.remove('w-press')
+                },180)
+            }
+            if (event.key === 'a') {
+                aKeyContainer.classList.add('a-press-in')
+                keyPadContainer.classList.add('a-keypad-color')
+                if (chosenColor === 'gray') {
+
+                } else if (chosenColor === 'green') {
+
+                } else if (chosenColor === 'blue')
+                chosenColor = 'red'
+                console.log(chosenColor)
+                setTimeout(() => {
+                    
+                    //wKeyContainer.classList.remove('w-press')
+                },180)
+            }
+            if (event.key === 's') {
+                sKeyContainer.classList.add('s-press-in')
+                keyPadContainer.classList.add('s-keypad-color')
+                if (chosenColor === 'gray') {
+
+                } else if (chosenColor === 'red') {
+
+                } else if (chosenColor === 'blue')
+                chosenColor = 'green'
+                console.log(chosenColor)
+                setTimeout(() => {
+                    
+                    //wKeyContainer.classList.remove('w-press')
+                },180)
+            }
+            if (event.key === 'd') {
+                dKeyContainer.classList.add('d-press-in')
+                keyPadContainer.classList.add('d-keypad-color')
+                if (chosenColor === 'gray') {
+
+                } else if (chosenColor === 'green') {
+
+                } else if (chosenColor === 'red')
+                chosenColor = 'blue'
+                console.log(chosenColor)
+                setTimeout(() => {
+                    
+                    //wKeyContainer.classList.remove('w-press')
+                },180)
+            }
+            //a is rgb(169,97,108)
+            //s is rgb(114,170,145)
+            //d is rgb(115,127,167)
+        })
     }
     colorPicker()
 
