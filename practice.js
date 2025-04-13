@@ -646,7 +646,7 @@ function playGameTutorial() {
     }
     createCards()
 
-
+    //A PLAY BUTTON THAT COVERS THE BOX and maybe falls off slightly and then fully falls off and simutaneously the timer shows up
 
     function cardCompletionCheck() {
         const finishedCard = document.querySelector('.card7')
@@ -891,131 +891,37 @@ function playGameTutorial() {
         }       
     }
 
+    const keyPadContainer = document.createElement('div')
+    const wKeyContainer = document.createElement('div')
+    const aKeyContainer = document.createElement('div')
+    const sKeyContainer = document.createElement('div')
+    const dKeyContainer = document.createElement('div')
+    
+    function colorPicker() {
+        keyPadContainer.classList.add('key-pad')
+        wKeyContainer.classList.add('w-key')
+        aKeyContainer.classList.add('a-key')
+        sKeyContainer.classList.add('s-key')
+        dKeyContainer.classList.add('d-key')
+        document.body.appendChild(keyPadContainer)
+        document.body.appendChild(wKeyContainer)
+        document.body.appendChild(aKeyContainer)
+        document.body.appendChild(sKeyContainer)
+        document.body.appendChild(dKeyContainer)
+    }
+    colorPicker()
+
 }
 playGameTutorial()
 
-/*
-function gameCardfunction() {
-    const practiceButton = document.createElement('button')
-    practiceButton.textContent = 'test'
-    practiceButton.classList.add('button')
+//THANGS TO DO
 
-    setTimeout(() => {
-        
-        function lastCardSwipeFunctionTest() {
+//COLOR WHEEL, also integrating different colors and changing interactibility with master functions.
 
-            practiceButton.addEventListener('click', () => {
-                const finishedCard = document.querySelector('.card7')
-                finishedCard.classList.add('test')
-                setTimeout(() => {
-                    firstCardSwipe()
-                }, 200)
-                setTimeout(() => {
-                    document.body.removeChild(finishedCard)
-                }, 400)
-            })
-            document.body.appendChild(practiceButton)
-        }
-        lastCardSwipeFunctionTest() //this is just the test swipe
-    }, 3500)
+// -- SO.... instead of the color wheel actually spinning, i decided to just leave that animation part out if it and just do scale and color to indicate.  if i did a sliding animation between colors, i genuinely dont know how I would implement that.  Even though it would look really cool to be able to code something like that, im not really sure where to even begin.  well to even begin, im gonna need to create it, so probably four fixed position divs with a child div
 
-    
-}
-gameCardfunction()
-*/
+//when pressing wrong square, same size div that covers top card and blinks red and then gets removed to prevent interaction and lose time on clock.
 
-/*
-function topCardCompletionCheck() {
-    if (c === 7) {
-        let clicksPlaceholder = 0
-        
-        let topCardPlaceholder = document.querySelector('.card7')
-        let topBoxPlaceholder = topCardPlaceholder.querySelector('.box')
+//a timer with a function to add time to clock once a card is completed
 
-        let graySquareArrayWithEmptyPlaceholder = []
-        let n = 1
-        
-        for (i = 0; i < 82; i++) {
-            let nthChildPlaceholder = topBoxPlaceholder.querySelector(`:nth-child(${n}).gray`)
-            if (nthChild) {
-                graySquareArrayWithEmptyPlaceholder[i] = nthChildPlaceholder //filter array to new array
-            }
-            n++
-        }
-        
-        
-        let graySquareArrayPlaceholder = graySquareArrayWithEmptyPlaceholder.filter(() => 'div.gray')
-        let graySquareAmountPlaceholder = graySquareArrayPlaceholder.length
-    }
-
-    if (graySquareArrayPlaceholder) {
-        if (clicksPlaceholder === graySquareAmountPlaceholder) {
-            gameCardfunction()
-        }
-    }
-}
-*/
-
-
-/*
-setTimeout(() => {
-    cardCompletionCheck()
-},3500)
-*/
-
-//maybe another way around this is to just have a boolean statement for each square stored in an array.  So make an array outside the scope of both functions, give 81 stored false boolean functions, somehow match the current square to the index of the boolean array index and add the "boolean = true" to the eventlistener. send that information to cardComplettionCheck() and loop through to see if all true.
-
-/*
-        const topCard = document.querySelector('.card7')
-        const topBox = topCard.querySelector('.box')
-        //const topSquares = topBox.querySelector('.gray')
-        //const color = window.getComputedStyle(topCard) ["background-color"]
-        
-        //so if I use querySelectorAll, it can't determine what the color is for all the boxes.  first off i need the exact number of colored boxes to begin with, so i dont have to loop through every single click, once the final box is reached then i can start the next function i will describe. maybe i can loop through the boxes and store the rgb of each in an array and then loop the array through a filter, checking for the rgb of green (0, 128, 0)
-
-        // extrapolating on my first option, i can map an array starting from box1 all the way to box 81. so maybe inspect first color, map that to a new array, take the new array & add a placeholder variable for the next index, and then send that info to the next computeStyle read where the number corresponds to the 'nth child'. and just loop everything over and over until 81. the loop creates its own array whie also propegating itself for the next iteration
-
-        //create array of 81 boxColor variables, create a function to make the index of the array correspond with the nth .card7 child while also storing the value of the square's backgroundColor RGB on the variable/nth child index. next check if the index of the array equals the rgb value of (). this is all stored in a loop, if i < arr.length; i++. If all true, then start gameCardFunction. finally map that function to the array
-        
-
-        let graySquareArrayWithEmpty = []
-        let n = 1
-        
-        for (i = 0; i < 82; i++) {
-            let nthChild = topBox.querySelector(`:nth-child(${n}).gray`)
-            if (nthChild) {
-                graySquareArrayWithEmpty[i] = nthChild //filter array to new array
-            }
-            n++
-        }
-        
-        let graySquareArray = graySquareArrayWithEmpty.filter(() => 'div.gray')
-        let graySquareAmount = graySquareArray.length
-
-        */
-
-
-    /*
-    const test2 = document.createElement('button')
-    test2.textContent = 'test2'
-    document.body.appendChild(test2)
-    test2.addEventListener('click', () => {
-    
-    
-        let color = undefined
-        function checkColor(element) {
-            window.getComputedStyle(element) ["background-color"]
-            
-        }        
-
-        for (i = 0; i < 82; i++) {
-            let element = graySquareArrayWithEmpty[i]
-            console.log(element)    //lets not use compute style and instead use the .good class check
-            checkColor(element)
-            
-            
-        }
-    
-        
-    })
-    */
+// the card titles!!
