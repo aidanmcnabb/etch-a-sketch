@@ -975,3 +975,163 @@ body {
 @keyframes ani25 {
     0%{transform: rotate(360deg);}
 }
+
+.key-pad {
+    height: 190px;
+    width: 260px;
+    position: relative;
+    top: 683px; 
+    left: 490px;
+    display: inline;
+    border-style:solid double;
+    border-color: black;
+    border-width: 12px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 7px rgb(110, 110, 110);
+    background-color: white;
+}
+
+.w-key {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    position: absolute;
+    top: 18.5%; 
+    left: 39%;
+    
+}
+
+.a-key {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    position: absolute;
+    top: 53%; 
+    left: 13.5%;
+}
+
+.s-key {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    position: absolute;
+    top: 53%; 
+    left: 39%;
+}
+
+.d-key {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    position: absolute;
+    top: 53%;  
+    left: 64.5%;
+}
+
+.w-press-in {
+    animation: wPressIn .25s ease-in-out forwards;
+}
+
+.w-keypad-color {
+    animation: wKeypadColor .25s ease-in-out forwards;
+}
+
+@keyframes wPressIn {
+    50% {transform: scale(.5);}
+    100% {transform: scale(.8);}
+}
+
+@keyframes wKeypadColor {
+    100% {background-color: gray;}
+}
+
+.a-press-in {
+    animation: aPressIn .25s ease-in-out forwards;
+}
+
+.a-keypad-color {
+    animation: aKeypadColor .25s ease-in-out forwards;
+}
+
+@keyframes aPressIn {
+    50% {transform: scale(.5);}
+    100% {transform: scale(.8);}
+}
+
+@keyframes aKeypadColor {
+    100% {background-color: rgb(169,97,108);}
+}
+
+.s-press-in {
+    animation: sPressIn .25s ease-in-out forwards;
+}
+
+.s-keypad-color {
+    animation: sKeypadColor .25s ease-in-out forwards;
+}
+
+@keyframes sPressIn {
+    50% {transform: scale(.5);}
+    100% {transform: scale(.8);}
+}
+
+@keyframes sKeypadColor {
+    100% {background-color: rgb(114,170,145);}
+}
+
+.d-press-in {
+    animation: dPressIn .25s ease-in-out forwards;
+}
+
+.d-keypad-color {
+    animation: dKeypadColor .25s ease-in-out forwards;
+}
+
+@keyframes dPressIn {
+    50% {transform: scale(.5);}
+    100% {transform: scale(.8);}
+}
+
+@keyframes dKeypadColor {
+    100% {background-color: rgb(115,127,167);}
+}
+
+.a-press-out {
+    animation: aPressOut .1s ease-out forwards;
+}
+
+@keyframes aPressOut {
+    0% {transform: scale(.8);}
+    50% {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+
+.w-press-out {
+    animation: wPressOut .1s ease-out forwards;
+}
+
+@keyframes wPressOut {
+    0% {transform: scale(.8);}
+    50% {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+
+.s-press-out {
+    animation: sPressOut .1s ease-out forwards;
+}
+
+@keyframes sPressOut {
+    0% {transform: scale(.8);}
+    50% {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+
+.d-press-out {
+    animation: dPressOut .1s ease-out forwards;
+}
+
+@keyframes dPressOut {
+    0% {transform: scale(.8);}
+    50% {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
