@@ -976,7 +976,7 @@ body {
     0%{transform: rotate(360deg);}
 }
 
-.key-pad {
+.keypad {
     height: 190px;
     width: 260px;
     position: relative;
@@ -989,6 +989,25 @@ body {
     border-radius: 20px;
     box-shadow: 10px 10px 7px rgb(110, 110, 110);
     background-color: white;
+    opacity: 0;
+}
+
+.keypad-in {
+    animation: keypadIn 1.5s ease-out forwards;
+    animation-delay: 2s;
+}
+
+@keyframes keypadIn {
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    100% {
+        
+        opacity: 1;
+    }
 }
 
 .w-key {

@@ -916,12 +916,17 @@ function playGameTutorial() {
     function colorPicker() {
         
         
-        keyPadContainer.classList.add('key-pad')
+        keyPadContainer.classList.add('keypad')
+        keyPadContainer.classList.add('keypad-in')
         wKeyContainer.classList.add('w-key')
         aKeyContainer.classList.add('a-key')
         sKeyContainer.classList.add('s-key')
         dKeyContainer.classList.add('d-key')
         document.body.appendChild(keyPadContainer)
+        setTimeout(() => {
+            keyPadContainer.classList.remove('keypad-in')
+            keyPadContainer.style.opacity = '1'
+        },4000)
         keyPadContainer.appendChild(wKeyContainer)
         keyPadContainer.appendChild(aKeyContainer)
         keyPadContainer.appendChild(sKeyContainer)
