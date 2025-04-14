@@ -438,6 +438,18 @@ body {
     background-color: gray;
 }
 
+.red {
+    background-color: rgb(169,97,108);
+}
+
+.green {
+    background-color: rgb(114,170,145);
+}
+
+.blue {
+    background-color: rgb(115,127,167);
+}
+
 .white {
     background-color: white;
 }
@@ -489,9 +501,68 @@ body {
     
 }
 
-.mouseover {
-    background-color: aqua;
-    animation: mouseOver .1s ease forwards;
+.mouseover-red {
+    /*background-color: aqua;*/
+    border-color: rgb(169,97,108);
+    border-radius: 0px;
+    outline-offset: 0px;
+    outline-style: double;
+    outline-color: rgb(169,97,108);
+    outline-width: 7px;
+    animation: mouseOver .1s ease forwards, mouseOverSquare .63s infinite ease-in-out;
+    z-index: 4;
+}
+
+.mouseover-green {
+    /*background-color: aqua;*/
+    border-color: rgb(114,170,145);
+    border-radius: 0px;
+    outline-offset: 0px;
+    outline-style: double;
+    outline-color: rgb(114,170,145);
+    outline-width: 7px;
+    animation: mouseOver .1s ease forwards, mouseOverSquare .63s infinite ease-in-out;
+    z-index: 4;
+}
+
+.mouseover-blue {
+    /*background-color: aqua;*/
+    border-color: rgb(115,127,167);
+    border-radius: 0px;
+    outline-offset: 0px;
+    outline-style: double;
+    outline-color: rgb(115,127,167);
+    outline-width: 7px;
+    animation: mouseOver .1s ease forwards, mouseOverSquare .63s infinite ease-in-out;
+    z-index: 4;
+}
+
+.mouseover-gray {
+    /*background-color: aqua;*/
+    border-color: gray;
+    border-radius: 0px;
+    outline-offset: 0px;
+    outline-style: double;
+    outline-color: gray;
+    outline-width: 7px;
+    animation: mouseOver .1s ease forwards, mouseOverSquare .63s infinite ease-in-out;
+    z-index: 4;
+} 
+
+@keyframes mouseOverSquare {
+    0% {
+        outline-offset: -7px;
+    }
+    50% {
+        outline-offset: -30px;
+        border-radius: 10px;
+        outline-style:dotted;
+        outline-width: 4px;
+        border-style: dashed;
+    }
+    100% {
+        outline-offset: -7px;
+    }
 }
 
 .mouseover-without-color {
@@ -500,7 +571,7 @@ body {
 }
 
 @keyframes mouseOver {
-    100% {transform: scale(1.3);}
+    100% {transform: scale(1.2);}
 }
 
 .card-animation {

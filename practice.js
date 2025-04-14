@@ -576,21 +576,52 @@ function playGameTutorial() {
                             function randomColor() {
                                 const color = Math.random()
 
-                                if (color >= 0 && color <= 0.2) {
+                                if (color >= 0 && color <= 0.05) {
                                     square.classList.add('gray')
-                                } else if (color > 0.2 && color <= 1) {
+                                } else if (color >= 0.05 && color <= .1) {
+                                    square.classList.add('red')
+                                }  else if (color >= 0.1 && color <= 0.15) {
+                                    square.classList.add('green')
+                                }  else if (color >= 0.15 && color <= 0.2) {
+                                    square.classList.add('blue')
+                                }  else if (color > 0.2 && color <= 1) {
                                     square.classList.add('white')
-                                }
+                                }  
                             }
                             randomColor()
 
                             square.classList.add('box2')
                             square.classList.add('square')  //making that squares
-                            square.addEventListener('mouseover',  () => {
-                                square.classList.add('mouseover')   //making squares interactable
+                            square.addEventListener('mouseover',  () => { //reattatch event listener
+                                if (chosenColor === 'red') { 
+                                    square.classList.remove('mouseover-green')
+                                    square.classList.remove('mouseover-blue')
+                                    square.classList.remove('mouseover-gray')
+                                    square.classList.add('mouseover-red')   //making squares interactable
+                                } else if (chosenColor === 'green') {
+                                    square.classList.remove('mouseover-blue')
+                                    square.classList.remove('mouseover-gray')
+                                    square.classList.remove('mouseover-red')
+                                    square.classList.add('mouseover-green')
+                                } else if (chosenColor === 'blue') {
+                                    square.classList.remove('mouseover-gray')
+                                    square.classList.remove('mouseover-gray')
+                                    square.classList.remove('mouseover-red')
+                                    square.classList.add('mouseover-blue')
+                                } else if (chosenColor === 'gray') {
+                                    square.classList.remove('mouseover-blue')
+                                    square.classList.remove('mouseover-green')
+                                    square.classList.remove('mouseover-red')
+                                    square.classList.add('mouseover-gray')
+                                } else {
+
+                                }
                             })
                             square.addEventListener('mouseout', () => {
-                                square.classList.remove('mouseover')
+                                square.classList.remove('mouseover-red')
+                                square.classList.remove('mouseover-green')
+                                square.classList.remove('mouseover-blue')
+                                square.classList.remove('mouseover-gray')
                             })
                             square.addEventListener('mousedown', () => {
                                 
