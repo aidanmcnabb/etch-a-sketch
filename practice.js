@@ -513,6 +513,8 @@ function playGameTutorial() {
     let topCard = undefined
     let topBox = undefined
 
+    let chosenColor = '' 
+
     function createCards() {
         
         // if ((cardnumber) === (arraynumber)) {color = (arraycolor)}
@@ -565,8 +567,9 @@ function playGameTutorial() {
                             card.appendChild(box)
                         }, 1000)
 
-                        
+                        const square = document.createElement('div')
 
+                        
                         innerLoop: for (i = 1; i < 100; i++) {
                             const square = document.createElement('div')
                             
@@ -589,15 +592,21 @@ function playGameTutorial() {
                                 }  
                             }
                             randomColor()
-
+                            
                             square.classList.add('box2')
                             square.classList.add('square')  //making that squares
-                            square.addEventListener('mouseover',  () => { //reattatch event listener
+
+                            
+                            
+                            square.addEventListener('mouseover', () => {
+                                
                                 if (chosenColor === 'red') { 
+                                    console.log('yoyo')
                                     square.classList.remove('mouseover-green')
                                     square.classList.remove('mouseover-blue')
                                     square.classList.remove('mouseover-gray')
-                                    square.classList.add('mouseover-red')   //making squares interactable
+                                    square.classList.add('mouseover-red')   
+                                    
                                 } else if (chosenColor === 'green') {
                                     square.classList.remove('mouseover-blue')
                                     square.classList.remove('mouseover-gray')
@@ -616,13 +625,16 @@ function playGameTutorial() {
                                 } else {
 
                                 }
+                                
                             })
+                            
                             square.addEventListener('mouseout', () => {
                                 square.classList.remove('mouseover-red')
                                 square.classList.remove('mouseover-green')
                                 square.classList.remove('mouseover-blue')
                                 square.classList.remove('mouseover-gray')
                             })
+                            
                             square.addEventListener('mousedown', () => {
                                 
                                 square.classList.add('square-mouse-down')
@@ -665,6 +677,8 @@ function playGameTutorial() {
                             
                             if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
                         }
+                        
+                        
                         
                         
                         setTimeout(() => {
@@ -924,8 +938,8 @@ function playGameTutorial() {
         }       
     }
     
-    let chosenColor = '' //HOW IS THIS DEFINED??????????? WTF
-
+    
+    
     const keyPadContainer = document.createElement('div')
     const wKeyContainer = document.createElement('div')
     const aKeyContainer = document.createElement('div')
@@ -1001,6 +1015,9 @@ function playGameTutorial() {
                     setTimeout(() => {
                         dKeyContainer.classList.remove('d-press-out')
                     },100)
+                }
+                function test() {
+                    console.log('test')
                 }
                 chosenColor = 'gray'
                 console.log(chosenColor)
