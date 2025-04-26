@@ -597,11 +597,11 @@ function playGameTutorial() {
                             square.classList.add('square')  //making that squares
 
                             
-                            
-                            square.addEventListener('mouseover', () => {
+
+                            square.addEventListener('mouseenter', () => {
                                 
                                 if (chosenColor === 'red') { 
-                                    console.log('yoyo')
+                                    
                                     square.classList.remove('mouseover-green')
                                     square.classList.remove('mouseover-blue')
                                     square.classList.remove('mouseover-gray')
@@ -625,14 +625,15 @@ function playGameTutorial() {
                                 } else {
 
                                 }
-                                
                             })
+                            
                             
                             square.addEventListener('mouseout', () => {
                                 square.classList.remove('mouseover-red')
                                 square.classList.remove('mouseover-green')
                                 square.classList.remove('mouseover-blue')
                                 square.classList.remove('mouseover-gray')
+                                
                             })
                             
                             square.addEventListener('mousedown', () => {
@@ -671,6 +672,7 @@ function playGameTutorial() {
                                     square.classList.remove('square-mouse-down')
                                 }, 100)
                             })
+                            
                         
                             square.setAttribute('onclick', 'squareSound()')
                             box.appendChild(square)
@@ -987,6 +989,12 @@ function playGameTutorial() {
         //4 = blue(d)
 
         window.addEventListener('keydown', function(event) {
+
+            let topCard = document.querySelector('.card7')
+            let topBox = topCard.querySelector('.box')
+            let square = topBox.querySelector('.square')
+            
+            
             
             if (event.key === 'w') {
                 wKeyContainer.classList.add('w-press-in')
@@ -1016,9 +1024,7 @@ function playGameTutorial() {
                         dKeyContainer.classList.remove('d-press-out')
                     },100)
                 }
-                function test() {
-                    console.log('test')
-                }
+            
                 chosenColor = 'gray'
                 console.log(chosenColor)
             }
@@ -1115,13 +1121,280 @@ function playGameTutorial() {
                 chosenColor = 'blue'
                 console.log(chosenColor)
             }
+            
+            /*
+            square.addEventListener('mouseover', () => {
+                        square.classList.remove('mouseover-green', 'mouseover-gray', 'mouseover-blue')
+                        square.classList.add('mouseover-red')
+                    })
+
+            square.removeEventListener('mouseover', mouseoverRed)
+            square.addEventListener('mouseover', mouseoverRed)
+            */
+/*
+            square.addEventListener('mouseenter', () => {
+                isInDiv = true
+                console.log(isInDiv)
+            }) 
+            
+            
+                
+                if (chosenColor === 'red') { 
+                        square.classList.remove('mouseover-blue')
+                        square.classList.remove('mouseover-gray')
+                        square.classList.remove('mouseover-green')
+                        square.classList.add('mouseover-red')
+                    //if (chosenColor !== 'red') {square.removeEventListener('mouseover', mouseoverRed)}
+                } else if (chosenColor === 'green') {
+                    //square.addEventListener('mouseover', () => {   
+                        square.classList.remove('mouseover-blue')
+                        square.classList.remove('mouseover-gray')
+                        square.classList.remove('mouseover-red')
+                        square.classList.add('mouseover-green')
+                        //if (chosenColor !== 'green') {square.removeEventListener('mouseover')} 
+                   // })
+                } else if (chosenColor === 'blue') {
+                   // square.addEventListener('mouseover', () => {  
+                        //square.removeEventListener('mouseover', mouseoverRed)
+                        square.classList.remove('mouseover-gray')
+                        square.classList.remove('mouseover-gray')
+                        square.classList.remove('mouseover-red')
+                        square.classList.add('mouseover-blue')
+                        //if (chosenColor !== 'blue') {square.removeEventListener('mouseover')} 
+                   // })
+                } else if (chosenColor === 'gray') {
+                   // square.addEventListener('mouseover', () => { 
+                        square.classList.remove('mouseover-blue')
+                        square.classList.remove('mouseover-green')
+                        square.classList.remove('mouseover-red')
+                        square.classList.add('mouseover-gray')
+                        //if (chosenColor !== 'gray') {square.removeEventListener('mouseover')} 
+                   // })
+                } else {
+
+                }
+            */
+            
+/*
+                function mouseoverRed() {   
+                    square.classList.remove('mouseover-green', 'mouseover-gray', 'mouseover-blue')
+                    square.classList.add('mouseover-red')
+                }
+                function mouseoverGreen() {   
+                    square.classList.remove('mouseover-red', 'mouseover-gray', 'mouseover-blue')
+                    square.classList.add('mouseover-green')
+                }
+                function mouseoverBlue() {   
+                    square.classList.remove('mouseover-green', 'mouseover-gray', 'mouseover-red')
+                    square.classList.add('mouseover-blue')
+                }
+                function mouseoverGray() {   
+                    square.classList.remove('mouseover-green', 'mouseover-red', 'mouseover-blue')
+                    square.classList.add('mouseover-gray')
+                }
+*/
+                //square.removeEventListener('mouseover', mouseoverGray)
+                //square.classList.remove('mouseover-gray')
+                //square.removeEventListener('mouseover', mouseoverGreen)
+                //square.classList.remove('mouseover-green')
+                //square.removeEventListener('mouseover', mouseoverBlue)
+                //square.classList.remove('mouseover-blue')
+                //square.removeEventListener('mouseover', mouseoverRed)
+                //square.classList.remove('mouseover-red')
+                /*
+                switch(chosenColor) {
+                    case 'red':
+                        
+                            square.addEventListener('mouseover', mouseoverRed)
+                            square.removeEventListener('mouseover', mouseoverGray)
+                            square.removeEventListener('mouseover', mouseoverGreen)
+                            square.removeEventListener('mouseover', mouseoverBlue)
+                        
+                    break;
+
+                    case 'green':
+                        square.addEventListener('mouseover', mouseoverGreen)
+                        square.removeEventListener('mouseover', mouseoverRed)
+                        square.removeEventListener('mouseover', mouseoverBlue)
+                        square.removeEventListener('mouseover', mouseoverGray)
+                    break;
+
+                    case 'blue':
+                        square.addEventListener('mouseover', mouseoverBlue)
+                        square.removeEventListener('mouseover', mouseoverRed)
+                        square.removeEventListener('mouseover', mouseoverGreen)
+                        square.removeEventListener('mouseover', mouseoverGray)
+                    break;
+
+                    case 'gray':
+                        square.addEventListener('mouseover', mouseoverGray)
+                        square.removeEventListener('mouseover', mouseoverRed)
+                        square.removeEventListener('mouseover', mouseoverBlue)
+                        square.removeEventListener('mouseover', mouseoverGreen)
+                    break;
+                    
+                }
+            
+
+                function squareMouseOver() {
+                    if (chosenColor === 'red') {
+                        square.classList.remove('mouseover-green', 'mouseover-gray', 'mouseover-blue')
+                        square.classList.add('mouseover-red')
+                    } else if (chosenColor == 'green') {
+                        square.classList.remove('mouseover-red', 'mouseover-gray', 'mouseover-blue')
+                        square.classList.add('mouseover-green')
+                    }
+                }
+                square.addEventListener('mouseover', squareMouseOver)
+            */
+        /*
+        square.addEventListener('mouseout', () => {
+            square.classList.remove('mouseover-red')
+            square.classList.remove('mouseover-green')
+            square.classList.remove('mouseover-blue')
+            square.classList.remove('mouseover-gray')
+            isInDiv = false
+            console.log(isInDiv)
+        })
+        
+        square.addEventListener('mousedown', () => {
+            
+            square.classList.add('square-mouse-down')
+            square.classList.remove('mouseover')
+            square.classList.add('mouseover-without-color')
+            const color = window.getComputedStyle(square) ["background-color"]
+            
+            if (color === 'rgb(255, 255, 255)') {
+                square.classList.remove('mouseover-without-color')
+                square.classList.remove('box2')
+                square.classList.add('mouseover')
+                square.classList.add('bad')
+
+                setTimeout(() => {
+                    square.classList.remove('bad')
+                    
+                }, 1000)
+            } else if (color === 'rgb(128, 128, 128)') {
+                square.classList.remove('mouseover-without-color')
+                square.classList.remove('box2')
+                square.classList.add('mouseover')
+                square.classList.add('good')
+                
+                if (graySquareArray) {
+                    clicks++
+                } else {
+                    clicksInitial++
+                }
+                cardCompletionCheck()
+                initialCardCompletionCheck()
+            }
+            
+            setTimeout(() => {
+                square.classList.remove('square-mouse-down')
+            }, 100)
+        })
+        */
             //a is rgb(169,97,108)
             //s is rgb(114,170,145)
             //d is rgb(115,127,167)
+
+
+
         })
+        /*
+        function squareEvents() {
+            setTimeout(() => {
+                let topCard = document.querySelector('.card7')
+                let topBox = topCard.querySelector('.box')
+                const square = topBox.querySelector('.square')
+                console.log(square)
+            
+
+            
+                                        
+                if (chosenColor === 'red') { 
+                    console.log('yoyo')
+                    square.classList.remove('mouseover-green')
+                    square.classList.remove('mouseover-blue')
+                    square.classList.remove('mouseover-gray')
+                    square.classList.add('mouseover-red')   
+                    
+                } else if (chosenColor === 'green') {
+                    square.classList.remove('mouseover-blue')
+                    square.classList.remove('mouseover-gray')
+                    square.classList.remove('mouseover-red')
+                    square.classList.add('mouseover-green')
+                } else if (chosenColor === 'blue') {
+                    square.classList.remove('mouseover-gray')
+                    square.classList.remove('mouseover-gray')
+                    square.classList.remove('mouseover-red')
+                    square.classList.add('mouseover-blue')
+                } else if (chosenColor === 'gray') {
+                    square.classList.remove('mouseover-blue')
+                    square.classList.remove('mouseover-green')
+                    square.classList.remove('mouseover-red')
+                    square.classList.add('mouseover-gray')
+                } else {
+    
+                }
+                
+            
+            
+            
+            square.addEventListener('mouseout', () => {
+                square.classList.remove('mouseover-red')
+                square.classList.remove('mouseover-green')
+                square.classList.remove('mouseover-blue')
+                square.classList.remove('mouseover-gray')
+            })
+            
+            square.addEventListener('mousedown', () => {
+                
+                square.classList.add('square-mouse-down')
+                square.classList.remove('mouseover')
+                square.classList.add('mouseover-without-color')
+                const color = window.getComputedStyle(square) ["background-color"]
+                
+                if (color === 'rgb(255, 255, 255)') {
+                    square.classList.remove('mouseover-without-color')
+                    square.classList.remove('box2')
+                    square.classList.add('mouseover')
+                    square.classList.add('bad')
+    
+                    setTimeout(() => {
+                        square.classList.remove('bad')
+                        
+                    }, 1000)
+                } else if (color === 'rgb(128, 128, 128)') {
+                    square.classList.remove('mouseover-without-color')
+                    square.classList.remove('box2')
+                    square.classList.add('mouseover')
+                    square.classList.add('good')
+                    
+                    if (graySquareArray) {
+                        clicks++
+                    } else {
+                        clicksInitial++
+                    }
+                    cardCompletionCheck()
+                    initialCardCompletionCheck()
+                }
+                
+                setTimeout(() => {
+                    square.classList.remove('square-mouse-down')
+                }, 100)
+            })
+
+        }, 3000)
+        
+            
+        }
+        squareEvents()
+        */
     }
     colorPicker()
-
+    
+    
 }
 playGameTutorial()
 
