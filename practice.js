@@ -490,7 +490,7 @@ function tutorialFuntion() {
 tutorialFuntion()
 */
 
-function playGameTutorial() {
+function playGame() {
 
     
 
@@ -1725,12 +1725,16 @@ function playGameTutorial() {
     
     
 }
-playGameTutorial()
+playGame()
 
 //THANGS TO DO
+
+//color picker container scale changes once picked
 
 //when pressing wrong square, same size div that covers top card and blinks red and then gets removed to prevent interaction and lose time on clock.
 
 //a timer with a function to add time to clock once a card is completed
 
 // the card titles!!
+
+//seperate intro and tutorial
