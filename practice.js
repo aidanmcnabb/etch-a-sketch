@@ -677,59 +677,107 @@ function playGameTutorial() {
                                         
                                     }, 1000)
                                 } else if (color === 'rgb(128, 128, 128)') {
-                                    square.classList.remove('mouseover-without-color')
-                                    square.classList.remove('box2')
-                                    square.classList.add('mouseover')
-                                    square.classList.add('good')
-                                    
-                                    if (graySquareArray) {
-                                        grayClicks++
-                                    } else {
-                                        grayClicksInitial++
+                                    if (chosenColor === 'gray') {   
+                                        square.classList.remove('mouseover-without-color')
+                                        square.classList.remove('box2')
+                                        square.classList.add('mouseover')
+                                        square.classList.add('good')
                                         
+                                        if (graySquareArray) {
+                                            grayClicks++
+                                        } else {
+                                            grayClicksInitial++
+                                            
+                                        }
+                                        cardCompletionCheck()
+                                        initialCardCompletionCheck()
+                                    } else {
+                                        square.classList.remove('mouseover-without-color')
+                                        square.classList.remove('box2')
+                                        square.classList.add('mouseover')
+                                        square.classList.add('bad')
+
+                                        setTimeout(() => {
+                                            square.classList.remove('bad')
+                                        
+                                        }, 1000)
                                     }
-                                    cardCompletionCheck()
-                                    initialCardCompletionCheck()
                                 } else if (color === 'rgb(169, 97, 108)') {
-                                    square.classList.remove('mouseover-without-color')
-                                    square.classList.remove('box2')
-                                    square.classList.add('mouseover')
-                                    square.classList.add('good')
-                                    
-                                    if (redSquareArray) {
-                                        redClicks++
-                                    } else {
-                                        redClicksInitial++
+                                    if (chosenColor === 'red') {  
+                                        square.classList.remove('mouseover-without-color')
+                                        square.classList.remove('box2')
+                                        square.classList.add('mouseover')
+                                        square.classList.add('good')
                                         
+                                        if (redSquareArray) {
+                                            redClicks++
+                                        } else {
+                                            redClicksInitial++
+                                            
+                                        }
+                                        cardCompletionCheck()
+                                        initialCardCompletionCheck()
+                                    } else {
+                                        square.classList.remove('mouseover-without-color')
+                                        square.classList.remove('box2')
+                                        square.classList.add('mouseover')
+                                        square.classList.add('bad')
+
+                                        setTimeout(() => {
+                                            square.classList.remove('bad')
+                                        
+                                        }, 1000)
                                     }
-                                    cardCompletionCheck()
-                                    initialCardCompletionCheck()
                                 } else if (color === 'rgb(114, 170, 145)') {
-                                    square.classList.remove('mouseover-without-color')
-                                    square.classList.remove('box2')
-                                    square.classList.add('mouseover')
-                                    square.classList.add('good')
-                                    
-                                    if (greenSquareArray) {
-                                        greenClicks++
+                                    if (chosenColor === 'green') {  
+                                        square.classList.remove('mouseover-without-color')
+                                        square.classList.remove('box2')
+                                        square.classList.add('mouseover')
+                                        square.classList.add('good')
+                                        
+                                        if (greenSquareArray) {
+                                            greenClicks++
+                                        } else {
+                                            greenClicksInitial++
+                                        }
+                                        cardCompletionCheck()
+                                        initialCardCompletionCheck()
                                     } else {
-                                        greenClicksInitial++
+                                        square.classList.remove('mouseover-without-color')
+                                        square.classList.remove('box2')
+                                        square.classList.add('mouseover')
+                                        square.classList.add('bad')
+
+                                        setTimeout(() => {
+                                            square.classList.remove('bad')
+                                        
+                                        }, 1000)
                                     }
-                                    cardCompletionCheck()
-                                    initialCardCompletionCheck()
                                 } else if (color === 'rgb(115, 127, 167)') {
-                                    square.classList.remove('mouseover-without-color')
-                                    square.classList.remove('box2')
-                                    square.classList.add('mouseover')
-                                    square.classList.add('good')
-                                    
-                                    if (blueSquareArray) {
-                                        blueClicks++
+                                    if (chosenColor === 'blue') {
+                                        square.classList.remove('mouseover-without-color')
+                                        square.classList.remove('box2')
+                                        square.classList.add('mouseover')
+                                        square.classList.add('good')
+                                        
+                                        if (blueSquareArray) {
+                                            blueClicks++
+                                        } else {
+                                            blueClicksInitial++
+                                        }
+                                        cardCompletionCheck()
+                                        initialCardCompletionCheck()
                                     } else {
-                                        blueClicksInitial++
+                                        square.classList.remove('mouseover-without-color')
+                                        square.classList.remove('box2')
+                                        square.classList.add('mouseover')
+                                        square.classList.add('bad')
+
+                                        setTimeout(() => {
+                                            square.classList.remove('bad')
+                                        
+                                        }, 1000)
                                     }
-                                    cardCompletionCheck()
-                                    initialCardCompletionCheck()
                                 }
                                 
                                 setTimeout(() => {
@@ -766,6 +814,9 @@ function playGameTutorial() {
         if (grayClicks === graySquareAmount && redClicks === redSquareAmount && greenClicks === greenSquareAmount && blueClicks === blueSquareAmount) {
             finishedCard.classList.add('test')
             grayClicks = 0
+            redClicks = 0
+            greenClicks = 0
+            blueClicks = 0
             setTimeout(() => {
                 firstCardSwipe()
             }, 200)
@@ -849,6 +900,9 @@ function playGameTutorial() {
         if (grayClicksInitial === graySquareAmountInitial && redClicksInitial === redSquareAmountInitial && greenClicksInitial === greenSquareAmountInitial && blueClicksInitial === blueSquareAmountInitial) {
             finishedCard.classList.add('test')
             grayClicksInitial = 0
+            redClicksInitial = 0
+            greenClicksInitial = 0
+            blueClicksInitial = 0
             setTimeout(() => {
                 firstCardSwipe()
             }, 200)
@@ -926,6 +980,42 @@ function playGameTutorial() {
                     }
                     randomColor()
 
+                    square.addEventListener('mouseover', () => {
+                                
+                        if (chosenColor === 'red') { 
+                            square.classList.remove('mouseover-green')
+                            square.classList.remove('mouseover-blue')
+                            square.classList.remove('mouseover-gray')
+                            square.classList.add('mouseover-red')   
+                        } else if (chosenColor === 'green') {
+                            square.classList.remove('mouseover-blue')
+                            square.classList.remove('mouseover-gray')
+                            square.classList.remove('mouseover-red')
+                            square.classList.add('mouseover-green')
+                        } else if (chosenColor === 'blue') {
+                            square.classList.remove('mouseover-gray')
+                            square.classList.remove('mouseover-gray')
+                            square.classList.remove('mouseover-red')
+                            square.classList.add('mouseover-blue')
+                        } else if (chosenColor === 'gray') {
+                            square.classList.remove('mouseover-blue')
+                            square.classList.remove('mouseover-green')
+                            square.classList.remove('mouseover-red')
+                            square.classList.add('mouseover-gray')
+                        } else {
+
+                        }
+                    })
+                    
+                    
+                    square.addEventListener('mouseout', () => {
+                        square.classList.remove('mouseover-red')
+                        square.classList.remove('mouseover-green')
+                        square.classList.remove('mouseover-blue')
+                        square.classList.remove('mouseover-gray')
+                        
+                    })
+
                     square.classList.add('box2')
                     square.classList.add('square')  //making that squares
                     square.addEventListener('mouseover',  () => {
@@ -940,7 +1030,7 @@ function playGameTutorial() {
                         square.classList.remove('mouseover')
                         square.classList.add('mouseover-without-color')
                         const color = window.getComputedStyle(square) ["background-color"]
-                        console.log(color)
+                        //console.log(color)
                         if (color === 'rgb(255, 255, 255)') {
                             square.classList.remove('mouseover-without-color')
                             square.classList.remove('box2')
@@ -951,35 +1041,83 @@ function playGameTutorial() {
                                 square.classList.remove('bad')
                                 
                             }, 1000)
+                            
                         } else if (color === 'rgb(128, 128, 128)') {
-                            square.classList.remove('mouseover-without-color')
-                            square.classList.remove('box2')
-                            square.classList.add('mouseover')
-                            square.classList.add('good')
-                            grayClicks++
-                            cardCompletionCheck()
+                            if (chosenColor === 'gray') {   
+                                square.classList.remove('mouseover-without-color')
+                                square.classList.remove('box2')
+                                square.classList.add('mouseover')
+                                square.classList.add('good')
+                                grayClicks++
+                                cardCompletionCheck()
+                            } else {
+                                square.classList.remove('mouseover-without-color')
+                                square.classList.remove('box2')
+                                square.classList.add('mouseover')
+                                square.classList.add('bad')
+
+                                setTimeout(() => {
+                                    square.classList.remove('bad')
+                                
+                                }, 1000)
+                            }
                         } else if (color === 'rgb(169, 97, 108)') {
-                            console.log(redSquareAmount)
-                            square.classList.remove('mouseover-without-color')
-                            square.classList.remove('box2')
-                            square.classList.add('mouseover')
-                            square.classList.add('good')
-                            redClicks++
-                            cardCompletionCheck()
+                            if (chosenColor === 'red') {   
+                                square.classList.remove('mouseover-without-color')
+                                square.classList.remove('box2')
+                                square.classList.add('mouseover')
+                                square.classList.add('good')
+                                redClicks++
+                                cardCompletionCheck()
+                            } else {
+                                square.classList.remove('mouseover-without-color')
+                                square.classList.remove('box2')
+                                square.classList.add('mouseover')
+                                square.classList.add('bad')
+
+                                setTimeout(() => {
+                                    square.classList.remove('bad')
+                                
+                                }, 1000)
+                            }
                         } else if (color === 'rgb(114, 170, 145)') {
-                            square.classList.remove('mouseover-without-color')
-                            square.classList.remove('box2')
-                            square.classList.add('mouseover')
-                            square.classList.add('good')
-                            greenClicks++
-                            cardCompletionCheck()
+                            if (chosenColor === 'green') {     
+                                square.classList.remove('mouseover-without-color')
+                                square.classList.remove('box2')
+                                square.classList.add('mouseover')
+                                square.classList.add('good')
+                                greenClicks++
+                                cardCompletionCheck()
+                            } else {
+                                square.classList.remove('mouseover-without-color')
+                                square.classList.remove('box2')
+                                square.classList.add('mouseover')
+                                square.classList.add('bad')
+
+                                setTimeout(() => {
+                                    square.classList.remove('bad')
+                                
+                                }, 1000)
+                            }
                         } else if (color === 'rgb(115, 127, 167)') {
-                            square.classList.remove('mouseover-without-color')
-                            square.classList.remove('box2')
-                            square.classList.add('mouseover')
-                            square.classList.add('good')
-                            blueClicks++
-                            cardCompletionCheck()
+                            if (chosenColor === 'blue') {   
+                                square.classList.remove('mouseover-without-color')
+                                square.classList.remove('box2')
+                                square.classList.add('mouseover')
+                                square.classList.add('good')
+                                blueClicks++
+                                cardCompletionCheck()
+                            } else {
+                                square.classList.remove('mouseover-without-color')
+                                square.classList.remove('box2')
+                                square.classList.add('mouseover')
+                                square.classList.add('bad')
+
+                                setTimeout(() => {
+                                    square.classList.remove('bad')
+                                
+                                }, 1000)
+                            }
                         }
                         
                         setTimeout(() => {
@@ -1046,7 +1184,7 @@ function playGameTutorial() {
                         graySquareArray = graySquareArrayWithEmpty.filter(() => 'div.gray')
                         graySquareAmount = graySquareArray.length
 
-                        console.log(graySquareAmount)
+                        //console.log(graySquareAmount)
 
                         n = 1
 
@@ -1061,7 +1199,7 @@ function playGameTutorial() {
                         redSquareArray = redSquareArrayWithEmpty.filter(() => 'div.red')
                         redSquareAmount = redSquareArray.length
 
-                        console.log(redSquareAmount)
+                        //console.log(redSquareAmount)
 
                         n = 1
 
@@ -1076,6 +1214,8 @@ function playGameTutorial() {
                         greenSquareArray = greenSquareArrayWithEmpty.filter(() => 'div.green')
                         greenSquareAmount = greenSquareArray.length
 
+                        //console.log(greenSquareAmount)
+
                         n = 1
 
                         for (i = 0; i < 82; i++) {
@@ -1088,6 +1228,8 @@ function playGameTutorial() {
                         
                         blueSquareArray = blueSquareArrayWithEmpty.filter(() => 'div.blue')
                         blueSquareAmount = blueSquareArray.length
+
+                        //console.log(blueSquareAmount)
 
                         n = 1
                         
@@ -1586,10 +1728,6 @@ function playGameTutorial() {
 playGameTutorial()
 
 //THANGS TO DO
-
-//COLOR WHEEL, also integrating different colors and changing interactibility with master functions.
-
-// -- SO.... instead of the color wheel actually spinning, i decided to just leave that animation part out if it and just do scale and color to indicate.  if i did a sliding animation between colors, i genuinely dont know how I would implement that.  Even though it would look really cool to be able to code something like that, im not really sure where to even begin.  well to even begin, im gonna need to create it, so probably four fixed position divs with a child div
 
 //when pressing wrong square, same size div that covers top card and blinks red and then gets removed to prevent interaction and lose time on clock.
 

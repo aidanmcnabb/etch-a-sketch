@@ -503,11 +503,11 @@ body {
 
 .mouseover-red {
     /*background-color: aqua;*/
-    border-color: rgb(169,97,108);
+    border-color: rgb(207, 145, 154);
     border-radius: 0px;
     outline-offset: 0px;
     outline-style: double;
-    outline-color: rgb(169,97,108);
+    outline-color: rgb(218, 45, 71);
     outline-width: 7px;
     animation: mouseOver .1s ease forwards, mouseOverSquare .63s infinite ease-in-out;
     z-index: 4;
@@ -515,11 +515,11 @@ body {
 
 .mouseover-green {
     /*background-color: aqua;*/
-    border-color: rgb(114,170,145);
+    border-color: rgb(166, 209, 190);
     border-radius: 0px;
     outline-offset: 0px;
     outline-style: double;
-    outline-color: rgb(114,170,145);
+    outline-color: rgb(57, 206, 139);
     outline-width: 7px;
     animation: mouseOver .1s ease forwards, mouseOverSquare .63s infinite ease-in-out;
     z-index: 4;
@@ -527,11 +527,11 @@ body {
 
 .mouseover-blue {
     /*background-color: aqua;*/
-    border-color: rgb(115,127,167);
+    border-color: rgb(171, 181, 214);
     border-radius: 0px;
     outline-offset: 0px;
     outline-style: double;
-    outline-color: rgb(115,127,167);
+    outline-color: rgb(73, 103, 201);
     outline-width: 7px;
     animation: mouseOver .1s ease forwards, mouseOverSquare .63s infinite ease-in-out;
     z-index: 4;
@@ -539,11 +539,11 @@ body {
 
 .mouseover-gray {
     /*background-color: aqua;*/
-    border-color: gray;
+    border-color: rgb(202, 202, 202);
     border-radius: 0px;
     outline-offset: 0px;
     outline-style: double;
-    outline-color: gray;
+    outline-color: rgb(37, 37, 37);
     outline-width: 7px;
     animation: mouseOver .1s ease forwards, mouseOverSquare .63s infinite ease-in-out;
     z-index: 4;
