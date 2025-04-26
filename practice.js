@@ -496,20 +496,41 @@ function playGameTutorial() {
 
     const cardNumbers = [' ', 'card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7']
     const dataArray = ['', '1', '2', '3', '4', '5', '6', '7']
-    let clicks = 0
-    let clicksInitial = 0
+    let grayClicks = 0
+    let grayClicksInitial = 0
+    let redClicks = 0
+    let redClicksInitial = 0
+    let greenClicks = 0
+    let greenClicksInitial = 0
+    let blueClicks = 0
+    let blueClicksInitial = 0
 
     let graySquareArrayWithEmptyInitial = []
     let nInitial = 1
     let graySquareArrayInitial = undefined
     let graySquareAmountInitial = undefined
+    let redSquareArrayInitial = undefined
+    let redSquareAmountInitial = undefined
+    let greenSquareArrayInitial = undefined
+    let greenSquareAmountInitial = undefined
+    let blueSquareArrayInitial = undefined
+    let blueSquareAmountInitial = undefined
     let topCardInitial = undefined
     let topBoxInitial = undefined
 
     let graySquareArrayWithEmpty = []
+    let redSquareArrayWithEmpty = []
+    let greenSquareArrayWithEmpty = []
+    let blueSquareArrayWithEmpty = []
     let n = 1
     let graySquareArray = undefined
     let graySquareAmount = undefined
+    let redSquareArray = undefined
+    let redSquareAmount = undefined
+    let greenSquareArray = undefined
+    let greenSquareAmount = undefined
+    let blueSquareArray = undefined
+    let blueSquareAmount = undefined
     let topCard = undefined
     let topBox = undefined
 
@@ -598,15 +619,13 @@ function playGameTutorial() {
 
                             
 
-                            square.addEventListener('mouseenter', () => {
+                            square.addEventListener('mouseover', () => {
                                 
                                 if (chosenColor === 'red') { 
-                                    
                                     square.classList.remove('mouseover-green')
                                     square.classList.remove('mouseover-blue')
                                     square.classList.remove('mouseover-gray')
                                     square.classList.add('mouseover-red')   
-                                    
                                 } else if (chosenColor === 'green') {
                                     square.classList.remove('mouseover-blue')
                                     square.classList.remove('mouseover-gray')
@@ -636,6 +655,10 @@ function playGameTutorial() {
                                 
                             })
                             
+                            //a is rgb(169,97,108)
+                            //s is rgb(114,170,145)
+                            //d is rgb(115,127,167)
+                            
                             square.addEventListener('mousedown', () => {
                                 
                                 square.classList.add('square-mouse-down')
@@ -660,9 +683,50 @@ function playGameTutorial() {
                                     square.classList.add('good')
                                     
                                     if (graySquareArray) {
-                                        clicks++
+                                        grayClicks++
                                     } else {
-                                        clicksInitial++
+                                        grayClicksInitial++
+                                        
+                                    }
+                                    cardCompletionCheck()
+                                    initialCardCompletionCheck()
+                                } else if (color === 'rgb(169, 97, 108)') {
+                                    square.classList.remove('mouseover-without-color')
+                                    square.classList.remove('box2')
+                                    square.classList.add('mouseover')
+                                    square.classList.add('good')
+                                    
+                                    if (redSquareArray) {
+                                        redClicks++
+                                    } else {
+                                        redClicksInitial++
+                                        
+                                    }
+                                    cardCompletionCheck()
+                                    initialCardCompletionCheck()
+                                } else if (color === 'rgb(114, 170, 145)') {
+                                    square.classList.remove('mouseover-without-color')
+                                    square.classList.remove('box2')
+                                    square.classList.add('mouseover')
+                                    square.classList.add('good')
+                                    
+                                    if (greenSquareArray) {
+                                        greenClicks++
+                                    } else {
+                                        greenClicksInitial++
+                                    }
+                                    cardCompletionCheck()
+                                    initialCardCompletionCheck()
+                                } else if (color === 'rgb(115, 127, 167)') {
+                                    square.classList.remove('mouseover-without-color')
+                                    square.classList.remove('box2')
+                                    square.classList.add('mouseover')
+                                    square.classList.add('good')
+                                    
+                                    if (blueSquareArray) {
+                                        blueClicks++
+                                    } else {
+                                        blueClicksInitial++
                                     }
                                     cardCompletionCheck()
                                     initialCardCompletionCheck()
@@ -699,9 +763,9 @@ function playGameTutorial() {
 
     function cardCompletionCheck() {
         const finishedCard = document.querySelector('.card7')
-        if (clicks === graySquareAmount) {
+        if (grayClicks === graySquareAmount && redClicks === redSquareAmount && greenClicks === greenSquareAmount && blueClicks === blueSquareAmount) {
             finishedCard.classList.add('test')
-            clicks = 0
+            grayClicks = 0
             setTimeout(() => {
                 firstCardSwipe()
             }, 200)
@@ -717,6 +781,9 @@ function playGameTutorial() {
         topBoxInitial = topCardInitial.querySelector('.box')
 
         graySquareArrayWithEmptyInitial = []
+        redSquareArrayWithEmptyInitial = []
+        greenSquareArrayWithEmptyInitial = []
+        blueSquareArrayWithEmptyInitial = []
         nInitial = 1
         
         for (i = 0; i < 82; i++) {
@@ -726,17 +793,62 @@ function playGameTutorial() {
             }
             nInitial++
         }
-        
+
         graySquareArrayInitial = graySquareArrayWithEmptyInitial.filter(() => 'div.gray')
         graySquareAmountInitial = graySquareArrayInitial.length
+
+        nInitial = 1
+
+        for (i = 0; i < 82; i++) {
+            let nthChildInitial = topBoxInitial.querySelector(`:nth-child(${nInitial}).red`)
+            if (nthChildInitial) {
+                redSquareArrayWithEmptyInitial[i] = nthChildInitial //filter array to new array
+            }
+            nInitial++
+        }
+
+        nInitial = 1
+        
+        redSquareArrayInitial = redSquareArrayWithEmptyInitial.filter(() => 'div.red')
+        redSquareAmountInitial = redSquareArrayInitial.length
+
+
+        for (i = 0; i < 82; i++) {
+            let nthChildInitial = topBoxInitial.querySelector(`:nth-child(${nInitial}).green`)
+            if (nthChildInitial) {
+                greenSquareArrayWithEmptyInitial[i] = nthChildInitial //filter array to new array
+            }
+            nInitial++
+        }
+
+        nInitial = 1
+        
+        greenSquareArrayInitial = greenSquareArrayWithEmptyInitial.filter(() => 'div.green')
+        greenSquareAmountInitial = greenSquareArrayInitial.length
+
+
+        for (i = 0; i < 82; i++) {
+            let nthChildInitial = topBoxInitial.querySelector(`:nth-child(${nInitial}).blue`)
+            if (nthChildInitial) {
+                blueSquareArrayWithEmptyInitial[i] = nthChildInitial //filter array to new array
+            }
+            nInitial++
+        }
+
+        nInitial = 1
+        
+        blueSquareArrayInitial = blueSquareArrayWithEmptyInitial.filter(() => 'div.blue')
+        blueSquareAmountInitial = blueSquareArrayInitial.length
+
+        
     }
 
     function initialCardCompletionCheck() {
         const finishedCard = document.querySelector('.card7')
         
-        if (clicksInitial === graySquareAmountInitial) {
+        if (grayClicksInitial === graySquareAmountInitial && redClicksInitial === redSquareAmountInitial && greenClicksInitial === greenSquareAmountInitial && blueClicksInitial === blueSquareAmountInitial) {
             finishedCard.classList.add('test')
-            clicksInitial = 0
+            grayClicksInitial = 0
             setTimeout(() => {
                 firstCardSwipe()
             }, 200)
@@ -800,11 +912,17 @@ function playGameTutorial() {
                     function randomColor() {
                         const color = Math.random()
 
-                        if (color >= 0 && color <= 0.2) {
+                        if (color >= 0 && color <= 0.05) {
                             square.classList.add('gray')
-                        } else if (color > 0.2 && color <= 1) {
+                        } else if (color >= 0.05 && color <= .1) {
+                            square.classList.add('red')
+                        }  else if (color >= 0.1 && color <= 0.15) {
+                            square.classList.add('green')
+                        }  else if (color >= 0.15 && color <= 0.2) {
+                            square.classList.add('blue')
+                        }  else if (color > 0.2 && color <= 1) {
                             square.classList.add('white')
-                        }
+                        }  
                     }
                     randomColor()
 
@@ -822,7 +940,7 @@ function playGameTutorial() {
                         square.classList.remove('mouseover')
                         square.classList.add('mouseover-without-color')
                         const color = window.getComputedStyle(square) ["background-color"]
-                        //console.log(color)
+                        console.log(color)
                         if (color === 'rgb(255, 255, 255)') {
                             square.classList.remove('mouseover-without-color')
                             square.classList.remove('box2')
@@ -838,9 +956,30 @@ function playGameTutorial() {
                             square.classList.remove('box2')
                             square.classList.add('mouseover')
                             square.classList.add('good')
-                            clicks++
+                            grayClicks++
                             cardCompletionCheck()
-                            
+                        } else if (color === 'rgb(169, 97, 108)') {
+                            console.log(redSquareAmount)
+                            square.classList.remove('mouseover-without-color')
+                            square.classList.remove('box2')
+                            square.classList.add('mouseover')
+                            square.classList.add('good')
+                            redClicks++
+                            cardCompletionCheck()
+                        } else if (color === 'rgb(114, 170, 145)') {
+                            square.classList.remove('mouseover-without-color')
+                            square.classList.remove('box2')
+                            square.classList.add('mouseover')
+                            square.classList.add('good')
+                            greenClicks++
+                            cardCompletionCheck()
+                        } else if (color === 'rgb(115, 127, 167)') {
+                            square.classList.remove('mouseover-without-color')
+                            square.classList.remove('box2')
+                            square.classList.add('mouseover')
+                            square.classList.add('good')
+                            blueClicks++
+                            cardCompletionCheck()
                         }
                         
                         setTimeout(() => {
@@ -891,6 +1030,9 @@ function playGameTutorial() {
                         topBox = topCard.querySelector('.box')
 
                         graySquareArrayWithEmpty = []
+                        redSquareArrayWithEmpty = []
+                        greenSquareArrayWithEmpty = []
+                        blueSquareArrayWithEmpty = []
                         n = 1
                         
                         for (i = 0; i < 82; i++) {
@@ -903,6 +1045,51 @@ function playGameTutorial() {
                         
                         graySquareArray = graySquareArrayWithEmpty.filter(() => 'div.gray')
                         graySquareAmount = graySquareArray.length
+
+                        console.log(graySquareAmount)
+
+                        n = 1
+
+                        for (i = 0; i < 82; i++) {
+                            let nthChild = topBox.querySelector(`:nth-child(${n}).red`)
+                            if (nthChild) {
+                                redSquareArrayWithEmpty[i] = nthChild //filtered array
+                            }
+                            n++
+                        }
+                        
+                        redSquareArray = redSquareArrayWithEmpty.filter(() => 'div.red')
+                        redSquareAmount = redSquareArray.length
+
+                        console.log(redSquareAmount)
+
+                        n = 1
+
+                        for (i = 0; i < 82; i++) {
+                            let nthChild = topBox.querySelector(`:nth-child(${n}).green`)
+                            if (nthChild) {
+                                greenSquareArrayWithEmpty[i] = nthChild //filtered array
+                            }
+                            n++
+                        }
+                        
+                        greenSquareArray = greenSquareArrayWithEmpty.filter(() => 'div.green')
+                        greenSquareAmount = greenSquareArray.length
+
+                        n = 1
+
+                        for (i = 0; i < 82; i++) {
+                            let nthChild = topBox.querySelector(`:nth-child(${n}).blue`)
+                            if (nthChild) {
+                                blueSquareArrayWithEmpty[i] = nthChild //filtered array
+                            }
+                            n++
+                        }
+                        
+                        blueSquareArray = blueSquareArrayWithEmpty.filter(() => 'div.blue')
+                        blueSquareAmount = blueSquareArray.length
+
+                        n = 1
                         
                         //bug orriginates from how fast the class changes on the 7th card
                         
