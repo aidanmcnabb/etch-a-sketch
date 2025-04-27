@@ -822,6 +822,9 @@ function playGame() {
             }, 200)
             setTimeout(() => {
                 document.body.removeChild(finishedCard)
+                timePassed -= 7
+                document.getElementById("base-timer-label").innerHTML = timeLeft += 7
+                
             }, 400)
             
         }
@@ -908,6 +911,9 @@ function playGame() {
             }, 200)
             setTimeout(() => {
                 document.body.removeChild(finishedCard)
+                timePassed -= 7
+                document.getElementById("base-timer-label").innerHTML = timeLeft += 7
+            
             }, 400)
             
         }
@@ -1355,7 +1361,7 @@ function playGame() {
                 }
             
                 chosenColor = 'gray'
-                console.log(chosenColor)
+                //console.log(chosenColor)
             }
             if (event.key === 'a') {
                 aKeyContainer.classList.add('a-press-in')
@@ -1386,7 +1392,7 @@ function playGame() {
                     },100)
                 }
                 chosenColor = 'red'
-                console.log(chosenColor)
+                //console.log(chosenColor)
             }
             if (event.key === 's') {
                 sKeyContainer.classList.add('s-press-in')
@@ -1417,7 +1423,7 @@ function playGame() {
                     },100)
                 }
                 chosenColor = 'green'
-                console.log(chosenColor)
+                //console.log(chosenColor)
             }
             if (event.key === 'd') {
                 dKeyContainer.classList.add('d-press-in')
@@ -1448,7 +1454,7 @@ function playGame() {
                     },100)
                 }
                 chosenColor = 'blue'
-                console.log(chosenColor)
+                //console.log(chosenColor)
             }
             
             /*
@@ -1722,6 +1728,7 @@ function playGame() {
         */
     }
     colorPicker()
+    
     
     
 }

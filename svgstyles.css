@@ -1,0 +1,170 @@
+
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.base-timer {
+    position: relative;
+    top: 350px;
+    left: 500px;
+    height: 300px;
+    width: 300px;
+}
+.base-timer__svg {
+    /*transform: scale(-1);*/
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.base-timer__circle{
+    fill: none;
+    stroke: none;
+    
+}
+
+.shadow {
+    filter: drop-shadow(3px 10px 4px rgba(0, 0, 0, 0.5));
+}
+
+.base-timer__path-elapsed {
+    
+    stroke-width: 0px;
+    stroke-linecap: round;
+    
+    
+}
+
+.base-timer__path-remaining {
+    box-shadow: 10, 10, 15, 15;
+    stroke-width: 14px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    fill-rule:nonzero;
+    stroke: currentColor;
+    outline-offset: -90px;
+    outline-width: 0px;
+    outline-color: rgb(211, 190, 0);
+    outline-style: solid;
+    border-radius: 50%;
+    animation: timerIn 5s ease forwards;
+    
+}
+
+@keyframes timerIn {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+}
+
+.countdown {
+    animation: countdown 1s infinite ease-in-out;
+}
+
+@keyframes countdown {
+    5% {
+        outline-width: 20px;
+        border-radius: 50%;
+    }
+    10% {
+        outline-style: dashed;
+    }
+    25% {
+        
+        outline-offset: -45px;
+        border-radius: 50%;
+        outline-width: 10px;
+        
+    }
+    50% {
+        outline-width: 2px;
+        border-radius: 50%;
+        outline-color: rgb(0, 238, 255);
+        outline-style: dashed;
+    }
+    55% {
+        outline-width: 5px;
+        outline-style: dotted;
+        outline-offset: -70px;
+    }
+    75% {
+        
+    }
+    90% {
+        outline-width: 7px;
+        border-radius: 50%;
+        
+    }
+    95% {
+        outline-width: 20px;
+        border-radius: 50%;
+        
+    }
+    
+}
+
+.base-timer__path-remaining.green{
+    color: rgb(143, 221, 26);
+}
+.base-timer__path-remaining.orange{
+    color: orange;
+}
+.base-timer__path-remaining.red{
+    color: red;
+}
+
+.base-timer__label{
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    width: 280px;
+    height: 300px;
+    padding-top: 3px;
+    animation: timerIn 5s ease forwards;
+}
+
+.timer-test {
+    position: fixed;
+    left: 75%;
+}
+
+
+/*
+#rectangle {
+    width: 580px;
+    aspect-ratio: 2/3;
+    border: .25rem solid black;
+    overflow: hidden;
+}
+
+#rectangle > span {
+    height: 100%;
+    width: 100%;
+    border-color: black;
+    object-fit: cover;
+    
+    filter: url(#noise);
+}
+
+@keyframes pulse {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 1.08;
+    }
+}
+    */
+
