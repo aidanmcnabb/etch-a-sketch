@@ -822,8 +822,8 @@ function playGame() {
             }, 200)
             setTimeout(() => {
                 document.body.removeChild(finishedCard)
-                timePassed -= 7
-                document.getElementById("base-timer-label").innerHTML = timeLeft += 7
+                timePassed -= 10
+                document.getElementById("base-timer-label").innerHTML = timeLeft += 10
                 
             }, 400)
             
@@ -911,8 +911,8 @@ function playGame() {
             }, 200)
             setTimeout(() => {
                 document.body.removeChild(finishedCard)
-                timePassed -= 7
-                document.getElementById("base-timer-label").innerHTML = timeLeft += 7
+                timePassed -= 10
+                document.getElementById("base-timer-label").innerHTML = timeLeft += 10
             
             }, 400)
             
@@ -1300,6 +1300,9 @@ function playGame() {
         
         keyPadContainer.classList.add('keypad')
         keyPadContainer.classList.add('keypad-in')
+        setTimeout(() => {
+            keyPadContainer.classList.remove('keypad-in')
+        },4000)
         wKeyContainer.classList.add('w-key')
         aKeyContainer.classList.add('a-key')
         sKeyContainer.classList.add('s-key')
@@ -1332,6 +1335,13 @@ function playGame() {
             
             
             if (event.key === 'w') {
+                keyPadContainer.animate([
+                    { transform: 'scale(1)' },
+                    { transform: 'scale(1.2)' },
+                    { transform: 'scale(1)' }
+                  ], {
+                    duration: 150
+                  });
                 wKeyContainer.classList.add('w-press-in')
                 keyPadContainer.classList.add('w-keypad-color')
                 if (chosenColor === 'red') {
@@ -1364,6 +1374,13 @@ function playGame() {
                 //console.log(chosenColor)
             }
             if (event.key === 'a') {
+                keyPadContainer.animate([
+                    { transform: 'scale(1)' },
+                    { transform: 'scale(1.2)' },
+                    { transform: 'scale(1)' }
+                  ], {
+                    duration: 150
+                  });
                 aKeyContainer.classList.add('a-press-in')
                 keyPadContainer.classList.add('a-keypad-color')
                 if (chosenColor === 'gray') {
@@ -1395,6 +1412,13 @@ function playGame() {
                 //console.log(chosenColor)
             }
             if (event.key === 's') {
+                keyPadContainer.animate([
+                    { transform: 'scale(1)' },
+                    { transform: 'scale(1.2)' },
+                    { transform: 'scale(1)' }
+                  ], {
+                    duration: 150
+                  });
                 sKeyContainer.classList.add('s-press-in')
                 keyPadContainer.classList.add('s-keypad-color')
                 if (chosenColor === 'gray') {
@@ -1426,6 +1450,13 @@ function playGame() {
                 //console.log(chosenColor)
             }
             if (event.key === 'd') {
+                keyPadContainer.animate([
+                    { transform: 'scale(1)' },
+                    { transform: 'scale(1.2)' },
+                    { transform: 'scale(1)' }
+                  ], {
+                    duration: 150
+                  });
                 dKeyContainer.classList.add('d-press-in')
                 keyPadContainer.classList.add('d-keypad-color')
                 if (chosenColor === 'gray') {
@@ -1457,7 +1488,60 @@ function playGame() {
                 //console.log(chosenColor)
             }
             
-            /*
+            
+
+        })
+        
+    }
+    colorPicker()
+    
+    function scoreLabel() {
+        const scoreLabelContainer = document.createElement('div')
+        scoreLabelContainer.classList.add('score-label')
+        scoreLabelContainer.classList.add('score-label-in')
+        document.body.appendChild(scoreLabelContainer)
+        scoreLabelContainer.textContent = '100'
+    }
+    scoreLabel()
+
+    function leaderBoards() {
+        const leaderBoardContainer = document.createElement('div')
+        leaderBoardContainer.classList.add('leader-board')
+        leaderBoardContainer.classList.add('leader-board-in')
+        document.body.appendChild(leaderBoardContainer)
+    }
+    leaderBoards()
+
+    function matrixMode() {
+        const matrixModeContainer = document.createElement('div')
+        matrixModeContainer.classList.add('matrix-mode-container')
+        matrixModeContainer.classList.add('matrix-mode-container-in')
+        document.body.appendChild(matrixModeContainer)
+    }
+    matrixMode()
+
+    //the leaderboards will have
+    //add a matrix mode that triggers by getting 5 cards in a row or something
+    
+}
+playGame()
+
+//THANGS TO DO
+
+//when pressing wrong square, same size div that covers top card and blinks red and then gets removed to prevent interaction and lose time on clock.
+
+// the card titles!!
+
+//leaderboards
+
+//matrixmode
+
+//seperate intro and tutorial from the actual game
+
+//LAST IS AUDIO THAT WILL TAKE ABOUT A WEEK
+
+
+/*
             square.addEventListener('mouseover', () => {
                         square.classList.remove('mouseover-green', 'mouseover-gray', 'mouseover-blue')
                         square.classList.add('mouseover-red')
@@ -1635,8 +1719,7 @@ function playGame() {
 
 
 
-        })
-        /*
+/*
         function squareEvents() {
             setTimeout(() => {
                 let topCard = document.querySelector('.card7')
@@ -1726,22 +1809,3 @@ function playGame() {
         }
         squareEvents()
         */
-    }
-    colorPicker()
-    
-    
-    
-}
-playGame()
-
-//THANGS TO DO
-
-//color picker container scale changes once picked
-
-//when pressing wrong square, same size div that covers top card and blinks red and then gets removed to prevent interaction and lose time on clock.
-
-//a timer with a function to add time to clock once a card is completed
-
-// the card titles!!
-
-//seperate intro and tutorial
