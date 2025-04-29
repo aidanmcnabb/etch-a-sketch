@@ -1,4 +1,5 @@
-    
+
+  
     const FULL_DASH_ARRAY= 283
     const WARNING_THRESHOLD = 10
     const ALERT_THRESHOLD = 5
@@ -126,5 +127,6 @@
             document.getElementById("base-timer-path-remaining").classList.remove(warning.color)
         }
     }
+
 
     //viewBox="-426 -145 690 300"

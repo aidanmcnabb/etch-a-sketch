@@ -155,6 +155,7 @@ body {
     height: 300px;
     padding-top: 3px;
     animation: timerIn 5s ease forwards;
+    user-select: none;
 }
 
 .timer-test {

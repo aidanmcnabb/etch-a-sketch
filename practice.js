@@ -536,6 +536,8 @@ function playGame() {
 
     let chosenColor = '' 
 
+    let scoreNumber = 0
+
     function createCards() {
         
         // if ((cardnumber) === (arraynumber)) {color = (arraycolor)}
@@ -824,7 +826,8 @@ function playGame() {
                 document.body.removeChild(finishedCard)
                 timePassed -= 10
                 document.getElementById("base-timer-label").innerHTML = timeLeft += 10
-                
+                scoreNumber += 1
+                scoreLabelContainer.textContent = scoreNumber
             }, 400)
             
         }
@@ -913,7 +916,8 @@ function playGame() {
                 document.body.removeChild(finishedCard)
                 timePassed -= 10
                 document.getElementById("base-timer-label").innerHTML = timeLeft += 10
-            
+                scoreNumber += 1
+                scoreLabelContainer.textContent = scoreNumber
             }, 400)
             
         }
@@ -1495,17 +1499,21 @@ function playGame() {
     }
     colorPicker()
     
+    const scoreLabelContainer = document.createElement('div')
+    const leaderBoardContainer = document.createElement('div')
+    const matrixModeContainer = document.createElement('div')
+
     function scoreLabel() {
-        const scoreLabelContainer = document.createElement('div')
+        
         scoreLabelContainer.classList.add('score-label')
         scoreLabelContainer.classList.add('score-label-in')
         document.body.appendChild(scoreLabelContainer)
-        scoreLabelContainer.textContent = '100'
+        scoreLabelContainer.textContent = scoreNumber
     }
     scoreLabel()
 
     function leaderBoards() {
-        const leaderBoardContainer = document.createElement('div')
+        
         leaderBoardContainer.classList.add('leader-board')
         leaderBoardContainer.classList.add('leader-board-in')
         document.body.appendChild(leaderBoardContainer)
@@ -1513,12 +1521,32 @@ function playGame() {
     leaderBoards()
 
     function matrixMode() {
-        const matrixModeContainer = document.createElement('div')
+        
         matrixModeContainer.classList.add('matrix-mode-container')
         matrixModeContainer.classList.add('matrix-mode-container-in')
         document.body.appendChild(matrixModeContainer)
     }
     matrixMode()
+
+    function startButton() {
+        setTimeout(() => {
+            let topCard = document.querySelector('.card7')
+            console.log(topCard)
+            const startConstraint = document.createElement('div')
+            startConstraint.classList.add('start-constraint')
+            topCard.appendChild(startConstraint)
+            const startButton = document.createElement('button')
+            startButton.classList.add('start-button')
+            startButton.classList.add('start-button-in')
+            const startPic = document.createElement('img')
+            startPic.src = 'img/playbutton.gif'
+            setTimeout(() => {
+                startConstraint.appendChild(startButton)
+                
+            },2100)
+        },2000)
+    }
+    startButton()
 
     //the leaderboards will have
     //add a matrix mode that triggers by getting 5 cards in a row or something

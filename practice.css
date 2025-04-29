@@ -1188,6 +1188,7 @@ body {
     align-items: center;
     font-size: 130px;
     z-index: 2;
+    user-select: none;
 }
 
 .score-label-in {
@@ -1376,4 +1377,26 @@ body {
     0% {transform: scale(.8);}
     50% {transform: scale(1.2);}
     100% {transform: scale(1);}
+}
+
+.start-constraint {
+    position: fixed;
+    top: 182px;
+    left: 28px;
+    height: 515px;
+    width: 514px;
+    background-color: rgb(255, 255, 255);
+    opacity: .5;
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-button {
+    
+}
+
+.start-button-in {
+    
 }
