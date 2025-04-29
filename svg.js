@@ -60,7 +60,7 @@
     timerTest.classList.add('timer-test')
     timerTest.textContent = 'test'
     //document.body.appendChild(timerTest)
-
+    /*
     timerTest.addEventListener("click", () => {
         timePassed = 0
         document.getElementById("base-timer-path-remaining").setAttribute("stroke-dasharray", 29)
@@ -70,7 +70,7 @@
             
         startTimer();
     })
-
+    */
     function startTimer() {
         timer = setInterval(() => {
             timePassed = timePassed += 1;

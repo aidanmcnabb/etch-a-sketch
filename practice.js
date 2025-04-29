@@ -794,7 +794,9 @@ function playGame() {
                             if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
                         }
                         
-                        
+                        if (card.dataset.index === '7') {
+                            startButton()
+                        }
                         
                         
                         setTimeout(() => {
@@ -1528,8 +1530,9 @@ function playGame() {
     }
     matrixMode()
 
+    
     function startButton() {
-        setTimeout(() => {
+        
             let topCard = document.querySelector('.card7')
             console.log(topCard)
             const startConstraint = document.createElement('div')
@@ -1540,13 +1543,59 @@ function playGame() {
             startButton.classList.add('start-button-in')
             const startPic = document.createElement('img')
             startPic.src = 'img/playbutton.gif'
+            startPic.height = 150
+            startPic.width = 150
+            startPic.setAttribute('style', 'padding-left: 11px;')
+            startButton.classList.add('start-button-in')
+            startPic.classList.add('start-button-in')
+            const startCountdown = document.createElement('div')
+            startCountdown.classList.add('start-countdown')
+            startCountdown.classList.add('start-countdown-ani')
+
             setTimeout(() => {
                 startConstraint.appendChild(startButton)
-                
-            },2100)
-        },2000)
+                startButton.appendChild(startPic)
+            },1500)
+            setTimeout(() => {
+                startButton.classList.remove('start-button-in')
+                startPic.classList.remove('start-button-in')
+                startButton.addEventListener('click', () => {
+                    startButton.classList.add('start-button-press')
+                    setTimeout(() => {
+                        startConstraint.removeChild(startButton)
+                    },1400)
+                    setTimeout(() => {
+                        startConstraint.appendChild(startCountdown)
+                        startConstraint.classList.add('start-constraint-opacity')
+                        startCountdown.textContent = '3'
+                    },2400)
+                    setTimeout(() => {
+                        startCountdown.textContent = '2'
+                    },3400)
+                    setTimeout(() => {
+                        startCountdown.textContent = '1'
+                    },4400)
+                    setTimeout(() => {
+                        startCountdown.textContent = 'GO'
+                    },5400)
+                    setTimeout(() => {
+                        timePassed = 0
+                        document.getElementById("base-timer-path-remaining").setAttribute("stroke-dasharray", 29)
+                        setTimeout(() => {
+                            document.getElementById("base-timer-path-remaining").classList.add('countdown')
+                        },865)  
+                        startTimer();
+                    },5600)
+                    setTimeout(() => {
+                        topCard.removeChild(startConstraint)
+                    },6200)                 
+                })  
+            },2500)
+            
     }
-    startButton()
+    
+
+    
 
     //the leaderboards will have
     //add a matrix mode that triggers by getting 5 cards in a row or something
@@ -1565,6 +1614,8 @@ playGame()
 //matrixmode
 
 //seperate intro and tutorial from the actual game
+
+//tutorial can just be a giant transparent sheet over everything and the spotlight div has the exact opposite color to make it look like it becomes completely transparent. so black?
 
 //LAST IS AUDIO THAT WILL TAKE ABOUT A WEEK
 

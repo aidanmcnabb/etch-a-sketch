@@ -1155,6 +1155,7 @@ body {
     0% {
         height: 0px;
         width: 0px;
+        
     }
     5% {
         opacity: 1;
@@ -1201,6 +1202,8 @@ body {
         display: none;
         opacity: 0;
         top: 1000px;
+        transform: scale(2);
+
     }
     60% {
         display: none;
@@ -1222,6 +1225,8 @@ body {
         
         opacity: 0;
         top: -1000px;
+        transform: scale(2);
+
     }
     60% {
         
@@ -1385,8 +1390,8 @@ body {
     left: 28px;
     height: 515px;
     width: 514px;
-    background-color: rgb(255, 255, 255);
-    opacity: .5;
+    background-color: rgba(255, 255, 255, 0.5);
+    /*opacity: .5;*/
     z-index: 9;
     display: flex;
     justify-content: center;
@@ -1394,9 +1399,107 @@ body {
 }
 
 .start-button {
-    
+    height: 100px;
+    width: 100px;
+    opacity: 1;
+    background-color: rgb(255, 255, 255);
+    border-color: black;
+    z-index: 10;
+    border-radius: 40%;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: double solid;
+    border-width: 5px;
 }
 
 .start-button-in {
-    
+    animation: startButtonIn 1s ease forwards;
+}
+
+@keyframes startButtonIn {
+    0% {
+        opacity: 0;
+        height: 0px;
+        width: 0px;
+        transform: scale(2);
+    }
+    50% {
+        height: 0px;
+        width: 100px;
+    }
+}
+
+.start-button-press {
+    animation: startButtonPress 1.2s ease forwards;
+}
+
+@keyframes startButtonPress {
+    25% {
+        transform: scale(.6);
+        border-color: rgb(46, 46, 46);
+        background-color: rgb(82, 82, 82);
+    }
+    35% {
+        transform: scale(.8);
+        border-color: rgb(24, 24, 24);
+        background-color: rgb(185, 185, 185);
+    }
+    40% {
+        transform: rotate(0deg) scale(.8);
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(720deg) scale(4);
+        opacity: 0;
+    }
+}
+
+.start-countdown {
+    height: 515px;
+    width: 514px;
+    font-size: 400px;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: none;
+}
+
+.start-countdown-ani {
+    animation: startCountdown 1s infinite forwards;
+}
+
+@keyframes startCountdown {
+    0% {
+        opacity: 0;
+    }
+    45% {
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    55% {
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.start-constraint-opacity {
+    animation: startConstraintOpacity 4s linear forwards;
+}
+
+@keyframes startConstraintOpacity {
+    0% {
+        background-color: rgba(255, 255, 255, 0.5);;
+    }
+    100% {
+        background-color: rgba(255, 255, 255, 0);;
+    }
 }
