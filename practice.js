@@ -538,6 +538,8 @@ function playGame() {
 
     let scoreNumber = 0
 
+    const startConstraint = document.createElement('div')
+
     function createCards() {
         
         // if ((cardnumber) === (arraynumber)) {color = (arraycolor)}
@@ -673,10 +675,14 @@ function playGame() {
                                     square.classList.remove('box2')
                                     square.classList.add('mouseover')
                                     square.classList.add('bad')
-
+                                    card.appendChild(startConstraint)
+                                    startConstraint.classList.add('wrong-square')
                                     setTimeout(() => {
                                         square.classList.remove('bad')
-                                        
+                                        setTimeout(() => {
+                                            startConstraint.classList.remove('wrong-square')
+                                            card.removeChild(startConstraint)
+                                        },500)   
                                     }, 1000)
                                 } else if (color === 'rgb(128, 128, 128)') {
                                     if (chosenColor === 'gray') {   
@@ -698,10 +704,14 @@ function playGame() {
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
-
+                                        card.appendChild(startConstraint)
+                                        startConstraint.classList.add('wrong-square')
                                         setTimeout(() => {
                                             square.classList.remove('bad')
-                                        
+                                            setTimeout(() => {
+                                                startConstraint.classList.remove('wrong-square')
+                                                card.removeChild(startConstraint)
+                                            },500)   
                                         }, 1000)
                                     }
                                 } else if (color === 'rgb(169, 97, 108)') {
@@ -724,10 +734,14 @@ function playGame() {
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
-
+                                        card.appendChild(startConstraint)
+                                        startConstraint.classList.add('wrong-square')
                                         setTimeout(() => {
                                             square.classList.remove('bad')
-                                        
+                                            setTimeout(() => {
+                                                startConstraint.classList.remove('wrong-square')
+                                                card.removeChild(startConstraint)
+                                            },500)   
                                         }, 1000)
                                     }
                                 } else if (color === 'rgb(114, 170, 145)') {
@@ -749,10 +763,14 @@ function playGame() {
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
-
+                                        card.appendChild(startConstraint)
+                                        startConstraint.classList.add('wrong-square')
                                         setTimeout(() => {
                                             square.classList.remove('bad')
-                                        
+                                            setTimeout(() => {
+                                                startConstraint.classList.remove('wrong-square')
+                                                card.removeChild(startConstraint)
+                                            },500)   
                                         }, 1000)
                                     }
                                 } else if (color === 'rgb(115, 127, 167)') {
@@ -774,10 +792,14 @@ function playGame() {
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
-
+                                        card.appendChild(startConstraint)
+                                        startConstraint.classList.add('wrong-square')
                                         setTimeout(() => {
                                             square.classList.remove('bad')
-                                        
+                                            setTimeout(() => {
+                                                startConstraint.classList.remove('wrong-square')
+                                                card.removeChild(startConstraint)
+                                            },500)   
                                         }, 1000)
                                     }
                                 }
@@ -811,7 +833,7 @@ function playGame() {
     }
     createCards()
 
-    //A PLAY BUTTON THAT COVERS THE BOX and maybe falls off slightly and then fully falls off and simutaneously the timer shows up
+    
 
     function cardCompletionCheck() {
         const finishedCard = document.querySelector('.card7')
@@ -826,9 +848,33 @@ function playGame() {
             }, 200)
             setTimeout(() => {
                 document.body.removeChild(finishedCard)
-                timePassed -= 10
-                document.getElementById("base-timer-label").innerHTML = timeLeft += 10
                 scoreNumber += 1
+                levels()
+                if (scoreNumber < 10) {
+                    timePassed -= 10
+                    document.getElementById("base-timer-label").innerHTML = timeLeft += 10
+                    //Level 1
+                } else if (scoreNumber >= 10 && scoreNumber < 20) {
+                    timePassed -= 9
+                    document.getElementById("base-timer-label").innerHTML = timeLeft += 9
+                    
+                    //Level 2
+                } else if (scoreNumber >= 20 && scoreNumber < 30) {
+                    timePassed -= 8
+                    document.getElementById("base-timer-label").innerHTML = timeLeft += 8
+                    
+                    //Level 3
+                } else if (scoreNumber >= 30 && scoreNumber < 40) {
+                    timePassed -= 7
+                    document.getElementById("base-timer-label").innerHTML = timeLeft += 7
+                    
+                    //Level 4
+                } else if (scoreNumber >= 40) {
+                    timePassed -= 6
+                    document.getElementById("base-timer-label").innerHTML = timeLeft += 6
+                    
+                    //Level 5
+                }
                 scoreLabelContainer.textContent = scoreNumber
             }, 400)
             
@@ -930,6 +976,7 @@ function playGame() {
         const cardTitle = document.createElement('header')
         const card = document.createElement('div')
         let card6 = document.querySelector('.card6')
+        let card7 = document.querySelector('.card7')
 
         card.classList.add('first-card-animation')
         card.classList.add('card')
@@ -1048,10 +1095,15 @@ function playGame() {
                             square.classList.remove('box2')
                             square.classList.add('mouseover')
                             square.classList.add('bad')
-
+                            card7 = document.querySelector('.card7')
+                            card7.appendChild(startConstraint)
+                            startConstraint.classList.add('wrong-square')
                             setTimeout(() => {
                                 square.classList.remove('bad')
-                                
+                                setTimeout(() => {
+                                    startConstraint.classList.remove('wrong-square')
+                                    card7.removeChild(startConstraint)
+                                },500)   
                             }, 1000)
                             
                         } else if (color === 'rgb(128, 128, 128)') {
@@ -1067,10 +1119,15 @@ function playGame() {
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
-
+                                card7 = document.querySelector('.card7')
+                                card7.appendChild(startConstraint)
+                                startConstraint.classList.add('wrong-square')
                                 setTimeout(() => {
                                     square.classList.remove('bad')
-                                
+                                    setTimeout(() => {
+                                        startConstraint.classList.remove('wrong-square')
+                                        card7.removeChild(startConstraint)
+                                    },500)   
                                 }, 1000)
                             }
                         } else if (color === 'rgb(169, 97, 108)') {
@@ -1086,10 +1143,15 @@ function playGame() {
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
-
+                                card7 = document.querySelector('.card7')
+                                card7.appendChild(startConstraint)
+                                startConstraint.classList.add('wrong-square')
                                 setTimeout(() => {
                                     square.classList.remove('bad')
-                                
+                                    setTimeout(() => {
+                                        startConstraint.classList.remove('wrong-square')
+                                        card7.removeChild(startConstraint)
+                                    },500)   
                                 }, 1000)
                             }
                         } else if (color === 'rgb(114, 170, 145)') {
@@ -1105,10 +1167,15 @@ function playGame() {
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
-
+                                card7 = document.querySelector('.card7')
+                                card7.appendChild(startConstraint)
+                                startConstraint.classList.add('wrong-square')
                                 setTimeout(() => {
                                     square.classList.remove('bad')
-                                
+                                    setTimeout(() => {
+                                        startConstraint.classList.remove('wrong-square')
+                                        card7.removeChild(startConstraint)
+                                    },500)   
                                 }, 1000)
                             }
                         } else if (color === 'rgb(115, 127, 167)') {
@@ -1124,10 +1191,15 @@ function playGame() {
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
-
+                                card7 = document.querySelector('.card7')
+                                card7.appendChild(startConstraint)
+                                startConstraint.classList.add('wrong-square')
                                 setTimeout(() => {
                                     square.classList.remove('bad')
-                                
+                                    setTimeout(() => {
+                                        startConstraint.classList.remove('wrong-square')
+                                        card7.removeChild(startConstraint)
+                                    },500)   
                                 }, 1000)
                             }
                         }
@@ -1531,11 +1603,10 @@ function playGame() {
     matrixMode()
 
     
+    
     function startButton() {
         
             let topCard = document.querySelector('.card7')
-            console.log(topCard)
-            const startConstraint = document.createElement('div')
             startConstraint.classList.add('start-constraint')
             topCard.appendChild(startConstraint)
             const startButton = document.createElement('button')
@@ -1560,6 +1631,7 @@ function playGame() {
                 startButton.classList.remove('start-button-in')
                 startPic.classList.remove('start-button-in')
                 startButton.addEventListener('click', () => {
+                    startButton.disabled = true
                     startButton.classList.add('start-button-press')
                     setTimeout(() => {
                         startConstraint.removeChild(startButton)
@@ -1568,6 +1640,7 @@ function playGame() {
                         startConstraint.appendChild(startCountdown)
                         startConstraint.classList.add('start-constraint-opacity')
                         startCountdown.textContent = '3'
+                        //startCountdown.setAttribute('style', 'color: yellow;')
                     },2400)
                     setTimeout(() => {
                         startCountdown.textContent = '2'
@@ -1577,6 +1650,7 @@ function playGame() {
                     },4400)
                     setTimeout(() => {
                         startCountdown.textContent = 'GO'
+                        //startCountdown.setAttribute('style', 'color: green;')
                     },5400)
                     setTimeout(() => {
                         timePassed = 0
@@ -1587,31 +1661,80 @@ function playGame() {
                         startTimer();
                     },5600)
                     setTimeout(() => {
+                        startConstraint.removeChild(startCountdown)
+                        startConstraint.classList.remove('start-constraint-opacity')
+                        startConstraint.classList.remove('start-constraint')
                         topCard.removeChild(startConstraint)
+
+                        const level1 = document.createElement('div')
+                        level1.classList.add('level-1')
+                        level1.textContent = 'LEVEL1'
+                        document.body.appendChild(level1)
+                        setTimeout(() => {
+                            document.body.removeChild(level1)
+                        },7000)
                     },6200)                 
                 })  
             },2500)
             
     }
+
+    function levels() {
+        
+        if (scoreNumber === 10) {
+            const level2 = document.createElement('div')
+            level2.classList.add('level-2')
+            level2.textContent = 'LEVEL2'
+            document.body.appendChild(level2)
+            setTimeout(() => {
+                document.body.removeChild(level2)
+            },7000)
+        } else if (scoreNumber === 20) {
+            const level3 = document.createElement('div')
+            level3.classList.add('level-3')
+            level3.textContent = 'LEVEL3'
+            document.body.appendChild(level3)
+            setTimeout(() => {
+                document.body.removeChild(level3)
+            },7000)
+        } else if (scoreNumber === 30) {
+            const level4 = document.createElement('div')
+            level4.classList.add('level-4')
+            level4.textContent = 'LEVEL4'
+            document.body.appendChild(level4)
+            setTimeout(() => {
+                document.body.removeChild(level4)
+            },7000)
+        } else if (scoreNumber === 40) {
+            const level5 = document.createElement('div')
+            level5.classList.add('level-5')
+            level5.textContent = 'LEVEL5'
+            document.body.appendChild(level5)
+            setTimeout(() => {
+                document.body.removeChild(level5)
+            },7000)
+        }
+    }
     
 
     
-
-    //the leaderboards will have
-    //add a matrix mode that triggers by getting 5 cards in a row or something
     
 }
 playGame()
 
 //THANGS TO DO
 
-//when pressing wrong square, same size div that covers top card and blinks red and then gets removed to prevent interaction and lose time on clock.
+//an animation of time being added
+
+//a credits and options button that transistions the page and scrolls you up or down depnding on where you click... very hard... i think
 
 // the card titles!!
 
+//box shadow turns red around all cards everytime a second passes under 5 seconds
+
 //leaderboards
 
-//matrixmode
+//matrixmode, triggers by getting 5 cards in a row or something
 
 //seperate intro and tutorial from the actual game
 
