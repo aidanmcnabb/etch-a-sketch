@@ -23,6 +23,7 @@
     let timeLeft = TIME_LIMIT
     let timerInterval = null;
     let remainingPathColor = COLOR_CODES.info.color
+    let plusTimeLabel = ''
 
     document.querySelector("#timer").innerHTML = `
     <div class="base-timer base-timer-in">
@@ -53,24 +54,14 @@
                                 </g>
                             </svg>
                             <span id="base-timer-label" class="base-timer__label">${timeLeft}</span>
+                            <span id="plus-time-label">${plusTimeLabel}</span>
                         </div>
     `
 
     const timerTest = document.createElement('button')
     timerTest.classList.add('timer-test')
     timerTest.textContent = 'test'
-    //document.body.appendChild(timerTest)
-    /*
-    timerTest.addEventListener("click", () => {
-        timePassed = 0
-        document.getElementById("base-timer-path-remaining").setAttribute("stroke-dasharray", 29)
-        setTimeout(() => {
-            document.getElementById("base-timer-path-remaining").classList.add('countdown')
-        },865)  
-            
-        startTimer();
-    })
-    */
+    
     function startTimer() {
         timer = setInterval(() => {
             timePassed = timePassed += 1;
@@ -88,6 +79,41 @@
     function onTimesUp() {
         clearInterval(timer);
         document.getElementById("base-timer-path-remaining").classList.remove('countdown')
+        const card7 = document.querySelector('.card7')
+        const card6 = document.querySelector('.card6')
+        const card5 = document.querySelector('.card5')
+        const card4 = document.querySelector('.card4')
+        const card3 = document.querySelector('.card3')
+        const card2 = document.querySelector('.card2')
+        const card1 = document.querySelector('.card1')
+        card7.classList.add('game-over-7')
+        setTimeout(() => {
+            card6.classList.add('game-over-6')
+        },50)
+        setTimeout(() => {
+            card5.classList.add('game-over-5')
+        },100)
+        setTimeout(() => {
+            card4.classList.add('game-over-4')
+        },150)
+        setTimeout(() => {
+            card3.classList.add('game-over-3')
+        },200)
+        setTimeout(() => {
+            card2.classList.add('game-over-2')
+        },250)
+        setTimeout(() => {
+            card1.classList.add('game-over-1')
+        },300)
+        setTimeout(() => {
+            document.body.removeChild(card7)
+            document.body.removeChild(card6)
+            document.body.removeChild(card5)
+            document.body.removeChild(card4)
+            document.body.removeChild(card3)
+            document.body.removeChild(card2)
+            document.body.removeChild(card1)
+        },750)
     }
     /*
     function formatTime(time) {

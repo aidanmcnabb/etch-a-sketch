@@ -849,30 +849,57 @@ function playGame() {
             setTimeout(() => {
                 document.body.removeChild(finishedCard)
                 scoreNumber += 1
+                const plusTime = document.getElementById('plus-time-label')
                 levels()
                 if (scoreNumber < 10) {
                     timePassed -= 10
                     document.getElementById("base-timer-label").innerHTML = timeLeft += 10
+                    plusTime.classList.add('plus-time-label-in')
+                    plusTimeLabel = '+10'
+                    document.getElementById("plus-time-label").innerHTML = plusTimeLabel
+                    setTimeout(() => {
+                        plusTime.classList.remove('plus-time-label-in')
+                    },2000)
                     //Level 1
                 } else if (scoreNumber >= 10 && scoreNumber < 20) {
                     timePassed -= 9
                     document.getElementById("base-timer-label").innerHTML = timeLeft += 9
-                    
+                    plusTime.classList.add('plus-time-label-in')
+                    plusTimeLabel = '+9'
+                    document.getElementById("plus-time-label").innerHTML = plusTimeLabel
+                    setTimeout(() => {
+                        plusTime.classList.remove('plus-time-label-in')
+                    },2000)
                     //Level 2
                 } else if (scoreNumber >= 20 && scoreNumber < 30) {
                     timePassed -= 8
                     document.getElementById("base-timer-label").innerHTML = timeLeft += 8
-                    
+                    plusTime.classList.add('plus-time-label-in')
+                    plusTimeLabel = '+8'
+                    document.getElementById("plus-time-label").innerHTML = plusTimeLabel
+                    setTimeout(() => {
+                        plusTime.classList.remove('plus-time-label-in')
+                    },2000)
                     //Level 3
                 } else if (scoreNumber >= 30 && scoreNumber < 40) {
                     timePassed -= 7
                     document.getElementById("base-timer-label").innerHTML = timeLeft += 7
-                    
+                    plusTime.classList.add('plus-time-label-in')
+                    plusTimeLabel = '+7'
+                    document.getElementById("plus-time-label").innerHTML = plusTimeLabel
+                    setTimeout(() => {
+                        plusTime.classList.remove('plus-time-label-in')
+                    },2000)
                     //Level 4
                 } else if (scoreNumber >= 40) {
                     timePassed -= 6
                     document.getElementById("base-timer-label").innerHTML = timeLeft += 6
-                    
+                    plusTime.classList.add('plus-time-label-in')
+                    plusTimeLabel = '+6'
+                    document.getElementById("plus-time-label").innerHTML = plusTimeLabel
+                    setTimeout(() => {
+                        plusTime.classList.remove('plus-time-label-in')
+                    },2000)
                     //Level 5
                 }
                 scoreLabelContainer.textContent = scoreNumber
@@ -961,6 +988,13 @@ function playGame() {
                 firstCardSwipe()
             }, 200)
             setTimeout(() => {
+                const plusTime = document.getElementById('plus-time-label')
+                plusTime.classList.add('plus-time-label-in')
+                plusTimeLabel = '+10'
+                document.getElementById("plus-time-label").innerHTML = plusTimeLabel
+                setTimeout(() => {
+                    plusTime.classList.remove('plus-time-label-in')
+                },2000)
                 document.body.removeChild(finishedCard)
                 timePassed -= 10
                 document.getElementById("base-timer-label").innerHTML = timeLeft += 10
@@ -1587,12 +1621,46 @@ function playGame() {
     scoreLabel()
 
     function leaderBoards() {
+        function leaderBoardsContainer() {
+            //a title, a numbered list of 15 or 20 scores depending on font, names left, scores right, dots in dead space.
+            //the animations of list will be scale and a timeout for each list. i can have one animation for everything but have '#item #' for each li
+            //send all player information to array of objects, have a loop once you send the info to automatically sort the array to index by score?
+            //setInterval for like 150ms, each iteration grab array[i], format name to left & score to right fill dead space with dots in between, add animations.
+            //dont know how im going to keep left and right aligned while also filling dead space with dots thats a tough one.
+            leaderBoardContainer.classList.add('leader-board')
+            leaderBoardContainer.classList.add('leader-board-in')
+            document.body.appendChild(leaderBoardContainer)
+            const leaderBoardTitle = document.createElement('span')
+            leaderBoardTitle.classList.add('leader-board-title')
+            leaderBoardTitle.textContent = 'Leaderboards'
+            /*
+            const leaderBoardNameTitle = document.createElement('span')
+            const leaderBoardScoreTitle = document.createElement('span')
+            leaderBoardNameTitle.classList.add('leader-board-name-title')
+            leaderBoardNameTitle.textContent = 'Name'
+            */
+            const nameScoreContainer = document.createElement('div')
+            nameScoreContainer.classList.add('name-score')
+
+            setTimeout(() => {
+                leaderBoardContainer.appendChild(leaderBoardTitle)
+                leaderBoardContainer.appendChild(nameScoreContainer)
+            },4200)
+        }
+        leaderBoardsContainer()
         
-        leaderBoardContainer.classList.add('leader-board')
-        leaderBoardContainer.classList.add('leader-board-in')
-        document.body.appendChild(leaderBoardContainer)
+        function leaderBoardsIntake() {
+            function sortObjectsDescending(arr, property) {
+    
+            }
+            sortObjectsDescending()
+        }
+        leaderBoardsIntake()
+            
     }
     leaderBoards()
+
+    
 
     function matrixMode() {
         
@@ -1631,6 +1699,7 @@ function playGame() {
                 startButton.classList.remove('start-button-in')
                 startPic.classList.remove('start-button-in')
                 startButton.addEventListener('click', () => {
+                    
                     startButton.disabled = true
                     startButton.classList.add('start-button-press')
                     setTimeout(() => {
@@ -1715,16 +1784,12 @@ function playGame() {
             },7000)
         }
     }
-    
-
-    
-    
 }
 playGame()
 
 //THANGS TO DO
 
-//an animation of time being added
+//animation for score change
 
 //a credits and options button that transistions the page and scrolls you up or down depnding on where you click... very hard... i think
 

@@ -1558,6 +1558,8 @@ body {
     animation: 9s level1 ease forwards, level1Scale 2s ease-in-out infinite;
 }
 
+
+
 @keyframes level1 {
     0% {
         top: -5000px;
@@ -1816,3 +1818,125 @@ body {
         transform: scale(1);
     }
 }
+
+.leader-board-title {
+    position: absolute;
+    top: 17px;
+    left: 13px;
+    font-size: 34px;
+    font-style: italic;
+    text-underline-offset: 13px;
+    text-decoration: underline;
+    opacity: 0;
+    animation: leaderBoardTitle .4s ease-in-out forwards;
+}
+
+@keyframes leaderBoardTitle {
+    0% {
+        opacity: 0;
+        transform: scale(.7);
+    }
+    100% {
+        opacity: 1;
+
+    }
+}
+
+.name-score {
+    position: absolute;
+    height: 500px;
+    width: 220px;
+    top: 80px; 
+    left: 20px;
+    background-color: rgba(178, 0, 248, 0.356);
+    opacity: 1;
+    font-size: 20px;
+}
+
+.game-over-7 {
+    z-index: 7;
+    animation: gameOverOdd .5s ease-in-out forwards;
+}
+
+.game-over-5 {
+    z-index: 5;
+    animation: gameOverOdd .5s ease-in-out forwards;
+}
+
+.game-over-3 {
+    z-index: 3;
+    animation: gameOverOdd .5s ease-in-out forwards;
+}
+
+.game-over-1 {
+    z-index: 1;
+    animation: gameOverOdd .5s ease-in-out forwards;
+}
+
+@keyframes gameOverOdd {
+    0% {
+        transform: translateX(-297px) translateY(-335px);
+        position: absolute;
+    }
+    
+    50% {
+        /*rotate(-35deg)*/
+    }
+    
+    100% {
+        transform: translateX(-297px) translateY(-2000px) /*rotate(-50deg)*/;
+    }
+}
+
+.game-over-6 {
+    z-index: 6;
+    animation: gameOverOdd .5s ease-in-out forwards;
+}
+
+.game-over-4 {
+    z-index: 4;
+    animation: gameOverOdd .5s ease-in-out forwards;
+}
+
+.game-over-2 {
+    z-index: 2;
+    animation: gameOverOdd .5s ease-in-out forwards;
+}
+/*
+@keyframes gameOverEven {
+    0% {
+        transform: translateX(-297px) translateY(-335px);
+        position: absolute;
+    }
+    
+    50% {
+        transform: translateX(-170px) translateY(-490px) rotate(35deg);
+    }
+    
+    100% {
+        transform: translateX(130px) translateY(1000px) rotate(50deg);
+    }
+}
+*/
+/*
+.leader-board-name-title {
+    position: absolute;
+    top: 57px;
+    left: 13px;
+    font-size: 34px;
+    text-decoration: underline;
+    opacity: 1;
+    animation: leaderBoardTitle .5s ease-in-out forwards;
+}
+
+@keyframes leaderBoardNameOrScore {
+    0% {
+        opacity: 0;
+        transform: scale(.7);
+    }
+    100% {
+        opacity: 1;
+        
+    }
+}
+*/
