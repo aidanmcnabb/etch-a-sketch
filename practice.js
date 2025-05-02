@@ -833,7 +833,9 @@ function playGame() {
     }
     createCards()
 
-    
+    if (startAnew === true) {
+        createCards()
+    }
 
     function cardCompletionCheck() {
         const finishedCard = document.querySelector('.card7')
@@ -1698,8 +1700,62 @@ function playGame() {
             setTimeout(() => {
                 startButton.classList.remove('start-button-in')
                 startPic.classList.remove('start-button-in')
+                
                 startButton.addEventListener('click', () => {
+                /* 
+                    const gameOverTextContainer = document.createElement('div')
+                    gameOverTextContainer.classList.add('game-over-text-container')
+                    gameOverTextContainer.classList.add('game-over-text-container-in')
+                    document.body.appendChild(gameOverTextContainer)
+                    const gameOverFilter = document.createElement('div')
+                    gameOverFilter.classList.add('game-over-filter')
+                    gameOverFilter.classList.add('game-over-filter-in')
+                    document.body.appendChild(gameOverFilter)
+                    const gameOverTextHeader = document.createElement('span')
+                    const gameOverTextFooter = document.createElement('span')
+                    gameOverTextHeader.classList.add('game-over-text-header')
+                    gameOverTextFooter.classList.add('game-over-text-footer')
+                    gameOverTextHeader.textContent = 'GAME OVER'
+                    gameOverTextFooter.textContent = 'You know what works? Trying harder.'
+                    const gameOverButton = document.createElement('button')
+                    gameOverButton.classList.add('game-over-button')
+                    gameOverButton.classList.add('game-over-button-in')
+                    gameOverButton.textContent = 'Thanks..?'
+
+                    setTimeout(() => {
+                        gameOverTextContainer.appendChild(gameOverTextHeader)
+                        setTimeout(() => {
+                            gameOverTextContainer.appendChild(gameOverTextFooter)
+                            gameOverTextContainer.classList.remove('game-over-text-container-in')
+                            setTimeout(() => {
+                                gameOverTextContainer.appendChild(gameOverButton)
+                            },1250)
+                        },1050)
+                    },500)
+
+                    gameOverButton.addEventListener('mousedown', () => {
+                        gameOverButton.classList.remove('game-over-button-in')
+                        gameOverButton.classList.add('game-over-button-click')
+                        setTimeout(() => {
+                            gameOverTextContainer.classList.add('game-over-button-click')
+                            setTimeout(() => {
+                                gameOverTextContainer.classList.add('game-over-text-container-out')
+                                setTimeout(() => {
+                                    gameOverFilter.classList.remove('game-over-filter-in')
+                                    gameOverFilter.classList.add('game-over-filter-out')
+                                },300)
+                                setTimeout(() => {
+                                    document.body.removeChild(gameOverTextContainer)
+                                    setTimeout(() => {
+                                        document.body.removeChild(gameOverFilter)
+                                    },300)
+                                },550)
+                            },500)
+                        }, 250) 
+                    })
+                    */
                     
+
                     startButton.disabled = true
                     startButton.classList.add('start-button-press')
                     setTimeout(() => {

@@ -76,7 +76,28 @@
         },1000)
     }
 
+    let startAnew = false
+
     function onTimesUp() {
+        
+        const gameOverTextContainer = document.createElement('div')
+        gameOverTextContainer.classList.add('game-over-text-container')
+        gameOverTextContainer.classList.add('game-over-text-container-in')
+        const gameOverFilter = document.createElement('div')
+        gameOverFilter.classList.add('game-over-filter')
+        gameOverFilter.classList.add('game-over-filter-in')
+        const gameOverTextHeader = document.createElement('span')
+        const gameOverTextFooter = document.createElement('span')
+        gameOverTextHeader.classList.add('game-over-text-header')
+        gameOverTextFooter.classList.add('game-over-text-footer')
+        gameOverTextHeader.textContent = 'GAME OVER'
+        gameOverTextFooter.textContent = 'You know what works? Trying harder.'
+        const gameOverButton = document.createElement('button')
+        gameOverButton.classList.add('game-over-button')
+        gameOverButton.classList.add('game-over-button-in')
+        gameOverButton.textContent = 'Thanks..?'
+        
+        
         clearInterval(timer);
         document.getElementById("base-timer-path-remaining").classList.remove('countdown')
         const card7 = document.querySelector('.card7')
@@ -114,7 +135,45 @@
             document.body.removeChild(card2)
             document.body.removeChild(card1)
         },750)
+
+        setTimeout(() => {
+            document.body.appendChild(gameOverTextContainer)
+            document.body.appendChild(gameOverFilter)
+            setTimeout(() => {
+                gameOverTextContainer.appendChild(gameOverTextHeader)
+                setTimeout(() => {
+                    gameOverTextContainer.appendChild(gameOverTextFooter)
+                    gameOverTextContainer.classList.remove('game-over-text-container-in')
+                    setTimeout(() => {
+                        gameOverTextContainer.appendChild(gameOverButton)
+                    },1250)
+                },1050)
+            },500)
+        },500)
+        gameOverButton.addEventListener('mousedown', () => {
+            gameOverButton.classList.remove('game-over-button-in')
+            gameOverButton.classList.add('game-over-button-click')
+            setTimeout(() => {
+                gameOverTextContainer.classList.add('game-over-button-click')
+                setTimeout(() => {
+                    gameOverTextContainer.classList.add('game-over-text-container-out')
+                    setTimeout(() => {
+                        gameOverFilter.classList.remove('game-over-filter-in')
+                        gameOverFilter.classList.add('game-over-filter-out')
+                    },300)
+                    setTimeout(() => {
+                        document.body.removeChild(gameOverTextContainer)
+                        startAnew = true
+                        setTimeout(() => {
+                            document.body.removeChild(gameOverFilter)
+                        },300)
+                    },550)
+                },500)
+            }, 250) 
+        })
+        return startAnew
     }
+    
     /*
     function formatTime(time) {
         let seconds = time % 30;
@@ -126,6 +185,7 @@
         return `${seconds}`
     }
     */
+   
     function calculateTimeFraction() {
         const rawTimeFraction = timeLeft/ TIME_LIMIT
         return rawTimeFraction - (1/ TIME_LIMIT) * (1 - rawTimeFraction)
