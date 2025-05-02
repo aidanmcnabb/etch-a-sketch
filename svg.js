@@ -1,5 +1,5 @@
 
-  
+  /*
     const FULL_DASH_ARRAY= 283
     const WARNING_THRESHOLD = 10
     const ALERT_THRESHOLD = 5
@@ -76,9 +76,11 @@
         },1000)
     }
 
-    let startAnew = false
+    
 
     function onTimesUp() {
+
+        let startAnew = false
         
         const gameOverTextContainer = document.createElement('div')
         gameOverTextContainer.classList.add('game-over-text-container')
@@ -166,6 +168,7 @@
                         startAnew = true
                         setTimeout(() => {
                             document.body.removeChild(gameOverFilter)
+                            
                         },300)
                     },550)
                 },500)
@@ -173,7 +176,8 @@
         })
         return startAnew
     }
-    
+        */
+
     /*
     function formatTime(time) {
         let seconds = time % 30;
@@ -185,7 +189,7 @@
         return `${seconds}`
     }
     */
-   
+   /*
     function calculateTimeFraction() {
         const rawTimeFraction = timeLeft/ TIME_LIMIT
         return rawTimeFraction - (1/ TIME_LIMIT) * (1 - rawTimeFraction)
@@ -213,6 +217,6 @@
             document.getElementById("base-timer-path-remaining").classList.remove(warning.color)
         }
     }
-
+*/
 
     //viewBox="-426 -145 690 300"
