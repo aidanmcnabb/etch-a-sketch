@@ -1627,29 +1627,79 @@ function playGame() {
     scoreLabel()
 
     function leaderBoards() {
+        
+        //a title, a numbered list of 15 or 20 scores depending on font, names left, scores right, dots in dead space.
+        //the animations of list will be scale and a timeout for each list. i can have one animation for everything but have '#item #' for each li
+        //send all player information to array of objects, have a loop once you send the info to automatically sort the array to index by score?
+        //setInterval for like 150ms, each iteration grab array[i], format name to left & score to right fill dead space with dots in between, add animations.
+        //dont know how im going to keep left and right aligned while also filling dead space with dots thats a tough one.
+        leaderBoardContainer.classList.add('leader-board')
+        leaderBoardContainer.classList.add('leader-board-in')
+        document.body.appendChild(leaderBoardContainer)
+        const leaderBoardTitle = document.createElement('span')
+        leaderBoardTitle.classList.add('leader-board-title')
+        leaderBoardTitle.textContent = 'Leaderboards'
+        const nameScoreContainer = document.createElement('div')
+        nameScoreContainer.classList.add('name-score')
+        const dropDownInput = document.createElement('input')
+        const dropDownHeader = document.createElement('span')
+        const leaderBoardDropDown = document.createElement('div')
+        let dropDownInputValue = dropDownInput.value
+        
         function leaderBoardsContainer() {
-            //a title, a numbered list of 15 or 20 scores depending on font, names left, scores right, dots in dead space.
-            //the animations of list will be scale and a timeout for each list. i can have one animation for everything but have '#item #' for each li
-            //send all player information to array of objects, have a loop once you send the info to automatically sort the array to index by score?
-            //setInterval for like 150ms, each iteration grab array[i], format name to left & score to right fill dead space with dots in between, add animations.
-            //dont know how im going to keep left and right aligned while also filling dead space with dots thats a tough one.
-            leaderBoardContainer.classList.add('leader-board')
-            leaderBoardContainer.classList.add('leader-board-in')
-            document.body.appendChild(leaderBoardContainer)
-            const leaderBoardTitle = document.createElement('span')
-            leaderBoardTitle.classList.add('leader-board-title')
-            leaderBoardTitle.textContent = 'Leaderboards'
-            const nameScoreContainer = document.createElement('div')
-            nameScoreContainer.classList.add('name-score')
 
             setTimeout(() => {
                 leaderBoardContainer.appendChild(leaderBoardTitle)
                 leaderBoardContainer.appendChild(nameScoreContainer)
+                
+                leaderBoardDropDown.classList.add('leader-drop-down')
+                leaderBoardDropDown.classList.add('leader-drop-down-in')
+                leaderBoardContainer.appendChild(leaderBoardDropDown)
+                
+                dropDownHeader.classList.add('drop-down-header')
+                dropDownHeader.classList.add('drop-down-header-in')
+                dropDownHeader.textContent = 'Enter Name!'
+                
+                dropDownInput.classList.add('drop-down-input')
+                dropDownInput.classList.add('drop-down-input-in')
+                dropDownInput.setAttribute('spellcheck', 'false')
+
+                setTimeout(() => {
+                    leaderBoardContainer.classList.remove('leader-board-in')
+                    leaderBoardContainer.setAttribute('style', 'height: 600px; width: 260px; opacity: 1;')
+                    leaderBoardContainer.classList.add('leader-board-filter')
+                    setTimeout(() => {
+                        leaderBoardDropDown.appendChild(dropDownHeader)
+                        setTimeout(() => {
+                            leaderBoardDropDown.appendChild(dropDownInput)
+                        },500)
+                    },500)
+                },300)
             },4200)
+
+            let nameInput = false
+
+            dropDownInput.addEventListener('input', () => {
+                nameInput = true
+                if (nameInput === true) {
+                    dropDownInput.addEventListener('keyup', (e) => {
+                        if (e.key === 'Enter') {
+                            dropDownInputValue = dropDownInput.value
+                            
+                            leaderBoardsIntake()
+                        }
+                    })
+                }
+            }, {once: true})
+
         }
         leaderBoardsContainer()
         
         function leaderBoardsIntake() {
+            console.log(dropDownInputValue)
+
+            //soooo, i dont really know how to host a server yet and how to pull info.  but thinking logically the way to go about it is to pull the JSON file from the server that contains the array of objects starting out when the leaderboard loads, once game over, enter input, push array object, filter array, update screen, and send JSON to server while overwriting the original. 
+
             function sortObjectsDescending(arr, property) {
     
             }
@@ -1990,15 +2040,21 @@ function playGame() {
                             topCard = undefined
                             topBox = undefined
                             scoreNumber = 0
-                            /*
-                            scoreLabelContainer.textContent = scoreNumber
-                            createCards()
-                            */
+
+                            const leaderBoardDropDown = document.createElement('div')
+                            leaderBoardDropDown.classList.add('leader-drop-down')
+                            leaderBoardDropDown.classList.add('leader-drop-down-in')
+                            leaderBoardContainer.appendChild(leaderBoardDropDown)
+
                         },300)
                     },550)
                 },500)
             }, 250) 
         })
+        /*
+        scoreLabelContainer.textContent = scoreNumber
+        createCards()
+        */
     }
     
     function calculateTimeFraction() {
