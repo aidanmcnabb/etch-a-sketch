@@ -6,58 +6,19 @@
     <title>Jet Sketch by Aidan</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="practice.css">
+    <link rel="stylesheet" href="svgstyles.css">
+    <script defer src="index.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pixelify+Sans:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script defer src="intro.js"></script>
-    <script defer src="tutorial.js"></script>
-    <script defer src="game.js"></script>
-    <script defer src="util.js"></script>
+    <audio src="audio/click-buttons-ui-menu-sounds-effects-button-2-203594.mp3" id="square-click"></audio>
+    
 </head>
 <body>
-    <div id="animation-container">
-        <div id="animation-container2" class="fade">
-            <img src="img/headset3.png" alt="" class="" id="pic1">
-            <span class="fade" id="short">This is best experienced with Headphones</span>
-            <button id="consent" class="fade button-infinite">I Understand</button>
-        </div> 
-        <div id="animation"></div>   
-    </div>
-    <!--Below is the custom SVG that I needed for the fractalnoise filter. I might consider deleting it and only using it for the intro animation. I'll find out soon if i will need it again.-->
-    <svg style="display: none;" id="svg">
-        <defs>
-            <filter id="noise">
-                <feTurbulence 
-                    baseFrequency="0.7,0.8"
-                    seed="0"
-                    type="fractalNoise"
-                    result="static"
-                >
-                 <animate 
-                        attributeName="seed"
-                        values="0;100;0"
-                        dur="40ms"
-                        repeatCount="indefinite"
-                ></animate>
-                </feTurbulence>
-                <feDisplacementMap 
-                in="SourceGraphic" 
-                in2="static" 
-                scale="20"
-                >
-                <animate 
-                attributeName="scale"
-                values="0;60;0"
-                dur="40ms"
-                repeatCount="indefinite"
-                ></animate>
-                />
-            </filter>
-        </defs>
-    </svg>
-    <script>
-        
+   
+    <div id="timer">
 
-    </script>
+    </div>
+
 </body>
 </html>
