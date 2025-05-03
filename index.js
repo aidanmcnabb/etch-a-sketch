@@ -2070,6 +2070,60 @@ function playGame() {
         const dropDownHeader = document.createElement('span')
         const leaderBoardDropDown = document.createElement('div')
         let dropDownInputValue = dropDownInput.value
+        const leaderBoardOpacity = document.createElement('div')
+        leaderBoardOpacity.classList.add('leader-board-opacity')
+        
+        let NSI = 0
+
+        const players = [
+            {name: 'Lil Ugly Mane', score: 15},
+            {name: 'pIgLyWiGlY', score: 13},
+            {name: 'urmom97', score: 11},
+            {name: 'Boolxan', score: 20},
+            {name: 'lilplato', score: 27},
+            {name: 'bigBagBool', score: 35},
+            {name: 'mrfuxk', score: 23},
+            {name: 'mfDoom03',score: 7},
+            {name: 'theChats', score: 18},
+            {name: 'downsyBoy23', score: 1},
+            {name: 'SHIESTYP', score: 3},
+            {name: 'coMMas', score: 10},
+            {name: 'whoDatboy',score: 19},
+            {name: 'tkeForever420', score: 40},
+        ]
+
+        function sortObjectsDescending(arr) {
+            arr.sort((a, b) => b.score - a.score)
+        }
+        sortObjectsDescending(players)
+
+        function appendSortedPlayers() {
+            const append = setInterval(() => {
+                const span = document.createElement('span')
+                span.textContent = `${NSI + 1}. ${players[NSI].name} ....... ${players[NSI].score}`
+                span.classList.add('span-in')
+                if (NSI === 0) {
+                    span.classList.add('cool-span')
+                }
+                if (NSI >= 1 && NSI < 5) {
+                    span.classList.add('cool-span-2')
+                }
+                setTimeout(() => {
+                    span.classList.remove('span-in')
+                },250)
+                nameScoreContainer.appendChild(span)
+                NSI++
+                if (NSI === 14) {
+                    clearInterval(append)
+                    NSI = 0
+                }
+            },75)
+            
+        }
+        
+        function removeSortedPlayers(container) {
+
+        }
         
         function leaderBoardsContainer() {
 
@@ -2077,6 +2131,10 @@ function playGame() {
                 leaderBoardContainer.appendChild(leaderBoardTitle)
                 leaderBoardContainer.appendChild(nameScoreContainer)
                 
+                console.log(NSI)
+
+                appendSortedPlayers()
+
                 leaderBoardDropDown.classList.add('leader-drop-down')
                 leaderBoardDropDown.classList.add('leader-drop-down-in')
                 leaderBoardContainer.appendChild(leaderBoardDropDown)
@@ -2092,7 +2150,8 @@ function playGame() {
                 setTimeout(() => {
                     leaderBoardContainer.classList.remove('leader-board-in')
                     leaderBoardContainer.setAttribute('style', 'height: 600px; width: 260px; opacity: 1;')
-                    leaderBoardContainer.classList.add('leader-board-filter')
+                    leaderBoardOpacity.classList.add('leader-board-filter')
+                    leaderBoardContainer.appendChild(leaderBoardOpacity)
                     setTimeout(() => {
                         leaderBoardDropDown.appendChild(dropDownHeader)
                         setTimeout(() => {
@@ -2110,7 +2169,24 @@ function playGame() {
                     dropDownInput.addEventListener('keyup', (e) => {
                         if (e.key === 'Enter') {
                             dropDownInputValue = dropDownInput.value
-                            
+                            dropDownHeader.classList.remove('drop-down-header')
+                            dropDownInput.classList.remove('drop-down-input-in')
+                            dropDownHeader.classList.add('drop-down-header-2')
+                            dropDownHeader.classList.add('drop-down-header-out')
+                            dropDownInput.classList.add('drop-down-input-out')
+                            setTimeout(() => {
+                                leaderBoardDropDown.removeChild(dropDownHeader)
+                                leaderBoardDropDown.removeChild(dropDownInput)
+                                leaderBoardDropDown.classList.remove('leader-drop-down-in')
+                                leaderBoardDropDown.classList.add('leader-drop-down-out')
+                                setTimeout(() => {
+                                    leaderBoardOpacity.classList.remove('leader-board-filter')
+                                    leaderBoardOpacity.classList.add('leader-board-filter-out')
+                                    setTimeout(() => {
+                                        leaderBoardContainer.removeChild(leaderBoardDropDown)
+                                    },300)
+                                },500)
+                            },400)
                             leaderBoardsIntake()
                         }
                     })
@@ -2119,27 +2195,12 @@ function playGame() {
 
         }
         leaderBoardsContainer()
-
-        
         
         function leaderBoardsIntake() {
-            console.log(dropDownInputValue)
-
             
-
             
-            const filePath = 'json/leaderboard.json'
-            const newData = {
-            key1: 'value',
-            key2: 'value2'
-        }
 
             //soooo, i dont really know how to host a server yet and how to pull info.  but thinking logically the way to go about it is to pull the JSON file from the server that contains the array of objects starting out when the leaderboard loads, un-stringify it, once game over, enter input, push array object, filter array, update screen, and send JSON to server while overwriting the original. all the while keeping the original data from the JSON file that i orginaly pulled, just push array object and updating local side only until I refresh and then it pulls server side again
-
-            function sortObjectsDescending(arr, property) {
-    
-            }
-            sortObjectsDescending()
         }
         leaderBoardsIntake()
             

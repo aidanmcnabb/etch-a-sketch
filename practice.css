@@ -1843,13 +1843,22 @@ body {
 
 .name-score {
     position: absolute;
-    height: 500px;
-    width: 220px;
+    height: 450px;
+    width: 270px;
     top: 80px; 
-    left: 20px;
-    background-color: rgba(178, 0, 248, 0.356);
+    left: -5px;
+    background-color: rgba(255, 255, 255, 0);
     opacity: 1;
     font-size: 20px;
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    gap: 10px;
+    flex: auto;
+    flex-wrap: nowrap;
+    padding-top: 20px;
+    flex-direction: column;
+    font-weight: 1000;
 }
 
 .game-over-7 {
@@ -2125,7 +2134,7 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 30px;
-    z-index: 2;
+    z-index: 3;
 }
 
 .leader-drop-down-in {
@@ -2134,11 +2143,31 @@ body {
 
 @keyframes dropDownIn {
     0% {
+        opacity: 0;
         height: 0px;
     }
+    40% {
+        opacity: 1;
+    }
     100% {
+        opacity: 1;
         height: 150px;
     }
+}
+
+.leader-board-opacity {
+    height: 600px;
+    width: 260px;
+    border-style:none;
+    border-color: black;
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    z-index: 2;
 }
 
 .leader-board-filter {
@@ -2179,11 +2208,33 @@ body {
     animation: gradientAni 2s linear infinite, dropDownHeaderIn .4s ease forwards;
     user-select: none;
 }
-/*
-.drop-down-header-in {
-    
+
+.drop-down-header-2 {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    font-size: 35px;
+    font-weight: 1000;
+    text-shadow: 4px 4px 3px rgba(0, 139, 127, 0.596);
+    text-decoration:overline underline;
+    text-underline-offset: 10px;
+    text-underline-offset: 10px;
+    opacity: 1;
+    background: linear-gradient(
+        to right,
+        rgb(250, 78, 10),
+        rgb(247, 12, 204),
+        rgb(0, 106, 255),
+        rgb(48, 248, 255),
+        rgb(250, 78, 10)
+    );
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: gradientAni 2s linear infinite;
+    user-select: none;
 }
-*/
+
 @keyframes gradientAni {
     0%{
         background-position: 200% 50%;
@@ -2240,6 +2291,124 @@ body {
         transform: scale(1);
         opacity: 1;
     }
+}
+
+.drop-down-header-out {
+   animation: dropDownHeaderOut .4s ease forwards;
+}
+
+@keyframes dropDownHeaderOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+.drop-down-input-out {
+    animation: dropDownInputOut .4s ease forwards;
+ }
+ 
+@keyframes dropDownInputOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+.leader-drop-down-out {
+    animation: dropDownOut .8s ease-in-out forwards;
+}
+
+@keyframes dropDownOut {
+    0% {
+        height: 150px;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        height: 0px;
+    }
+}
+
+.leader-board-filter-out {
+    animation: leaderBoardFilterOut .5s ease forwards;
+}
+
+@keyframes leaderBoardFilterOut {
+    0% {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+.span-in {
+    animation: spanIn .25s ease forwards;
+}
+
+@keyframes spanIn {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.1);
+        
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.cool-span {
+    background: linear-gradient(
+        to right,
+        rgb(250, 78, 10),
+        rgb(247, 12, 204),
+        rgb(0, 106, 255),
+        rgb(48, 248, 255),
+        rgb(250, 78, 10)
+    );
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: gradientAni 2s linear infinite;
+}
+
+.cool-span-2 {
+    background: linear-gradient(
+        to right,
+        gold,
+        rgb(245, 243, 188),
+        rgb(203, 218, 7),
+        rgb(243, 201, 17),
+        gold
+    );
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: gradientAni 2s linear infinite;
+    
 }
 
 /*
