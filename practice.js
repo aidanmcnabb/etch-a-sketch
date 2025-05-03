@@ -1628,6 +1628,26 @@ function playGame() {
 
     function leaderBoards() {
         
+        function fetchJSON() {
+            fetch('https://api.github.com/gists', {
+                method: 'post',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  public: true,
+                  files: {
+                      [file.name]: {
+                        content: content
+                    }
+                  },
+                })
+              })
+        }
+
+        <script src="https://gist.github.com/aidanmcnabb/06ade33108a38819cc05fe57c310d302.js"></script>
+
         //a title, a numbered list of 15 or 20 scores depending on font, names left, scores right, dots in dead space.
         //the animations of list will be scale and a timeout for each list. i can have one animation for everything but have '#item #' for each li
         //send all player information to array of objects, have a loop once you send the info to automatically sort the array to index by score?
@@ -1698,7 +1718,7 @@ function playGame() {
         function leaderBoardsIntake() {
             console.log(dropDownInputValue)
 
-            //soooo, i dont really know how to host a server yet and how to pull info.  but thinking logically the way to go about it is to pull the JSON file from the server that contains the array of objects starting out when the leaderboard loads, once game over, enter input, push array object, filter array, update screen, and send JSON to server while overwriting the original. 
+            //soooo, i dont really know how to host a server yet and how to pull info.  but thinking logically the way to go about it is to pull the JSON file from the server that contains the array of objects starting out when the leaderboard loads, un-stringify it, once game over, enter input, push array object, filter array, update screen, and send JSON to server while overwriting the original. all the while keeping the original data from the JSON file that i orginaly pulled, just push array object and updating local side only until I refresh and then it pulls server side again
 
             function sortObjectsDescending(arr, property) {
     
