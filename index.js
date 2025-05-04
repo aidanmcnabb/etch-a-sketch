@@ -2042,6 +2042,14 @@ function playGame() {
     const scoreLabelContainer = document.createElement('div')
     const leaderBoardContainer = document.createElement('div')
     const matrixModeContainer = document.createElement('div')
+    const leaderBoardTitle = document.createElement('span')
+    const nameScoreContainer = document.createElement('div')
+    const dropDownInput = document.createElement('input')
+    const dropDownHeader = document.createElement('span')
+    const leaderBoardDropDown = document.createElement('div')
+    let dropDownInputValue = dropDownInput.value
+    const leaderBoardOpacity = document.createElement('div')
+    let lowNth = true
 
     function scoreLabel() {
         
@@ -2061,19 +2069,13 @@ function playGame() {
         leaderBoardContainer.classList.add('leader-board')
         leaderBoardContainer.classList.add('leader-board-in')
         document.body.appendChild(leaderBoardContainer)
-        const leaderBoardTitle = document.createElement('span')
         leaderBoardTitle.classList.add('leader-board-title')
         leaderBoardTitle.textContent = 'Leaderboards'
-        const nameScoreContainer = document.createElement('div')
         nameScoreContainer.classList.add('name-score')
-        const dropDownInput = document.createElement('input')
-        const dropDownHeader = document.createElement('span')
-        const leaderBoardDropDown = document.createElement('div')
-        let dropDownInputValue = dropDownInput.value
-        const leaderBoardOpacity = document.createElement('div')
         leaderBoardOpacity.classList.add('leader-board-opacity')
         
         let NSI = 0
+        let userObject = undefined
 
         const players = [
             {name: 'Lil Ugly Mane', score: 15},
@@ -2084,7 +2086,6 @@ function playGame() {
             {name: 'bigBagBool', score: 35},
             {name: 'mrfuxk', score: 23},
             {name: 'mfDoom03',score: 7},
-            {name: 'theChats', score: 18},
             {name: 'downsyBoy23', score: 1},
             {name: 'SHIESTYP', score: 3},
             {name: 'coMMas', score: 10},
@@ -2097,11 +2098,14 @@ function playGame() {
         }
         sortObjectsDescending(players)
 
+
+
         function appendSortedPlayers() {
             const append = setInterval(() => {
                 const span = document.createElement('span')
                 span.textContent = `${NSI + 1}. ${players[NSI].name} ....... ${players[NSI].score}`
                 span.classList.add('span-in')
+                span.classList.add('for-nth')
                 if (NSI === 0) {
                     span.classList.add('cool-span')
                 }
@@ -2113,53 +2117,77 @@ function playGame() {
                 },250)
                 nameScoreContainer.appendChild(span)
                 NSI++
-                if (NSI === 14) {
-                    clearInterval(append)
-                    NSI = 0
+                if (lowNth = true) {
+                    if (NSI === 13) {
+                        clearInterval(append)
+                    }
+                } else if (lowNth = false) {
+                    if (NSI === 14) {
+                        clearInterval(append)
+                    }
                 }
             },75)
             
         }
         
-        function removeSortedPlayers(container) {
 
+
+        function removeSortedPlayers() {
+            
+            const remove = setInterval(() => {
+                const currentNth = nameScoreContainer.querySelector(`:nth-child(${NSI}).for-nth`)
+                currentNth.classList.add('span-out')
+                setTimeout(() => {
+                    nameScoreContainer.removeChild(currentNth)
+                },250)
+                NSI--
+                if (NSI === 0) {
+                    clearInterval(remove)
+                }
+            },75)
         }
         
         function leaderBoardsContainer() {
-
             setTimeout(() => {
                 leaderBoardContainer.appendChild(leaderBoardTitle)
                 leaderBoardContainer.appendChild(nameScoreContainer)
-                
-                console.log(NSI)
-
                 appendSortedPlayers()
-
-                leaderBoardDropDown.classList.add('leader-drop-down')
-                leaderBoardDropDown.classList.add('leader-drop-down-in')
-                leaderBoardContainer.appendChild(leaderBoardDropDown)
-                
-                dropDownHeader.classList.add('drop-down-header')
-                dropDownHeader.classList.add('drop-down-header-in')
-                dropDownHeader.textContent = 'Enter Name!'
-                
-                dropDownInput.classList.add('drop-down-input')
-                dropDownInput.classList.add('drop-down-input-in')
-                dropDownInput.setAttribute('spellcheck', 'false')
-
-                setTimeout(() => {
-                    leaderBoardContainer.classList.remove('leader-board-in')
-                    leaderBoardContainer.setAttribute('style', 'height: 600px; width: 260px; opacity: 1;')
-                    leaderBoardOpacity.classList.add('leader-board-filter')
-                    leaderBoardContainer.appendChild(leaderBoardOpacity)
-                    setTimeout(() => {
-                        leaderBoardDropDown.appendChild(dropDownHeader)
-                        setTimeout(() => {
-                            leaderBoardDropDown.appendChild(dropDownInput)
-                        },500)
-                    },500)
-                },300)
             },4200)
+        }
+        leaderBoardsContainer()
+        
+        
+            
+    }
+    leaderBoards()
+
+    function leaderBoardsIntake() {
+            
+        leaderBoardDropDown.classList.add('leader-drop-down')
+            leaderBoardDropDown.classList.add('leader-drop-down-in')
+            leaderBoardContainer.appendChild(leaderBoardDropDown)
+            
+            dropDownHeader.classList.add('drop-down-header')
+            dropDownHeader.classList.add('drop-down-header-in')
+            dropDownHeader.textContent = 'Enter Name!'
+            
+            dropDownInput.classList.add('drop-down-input')
+            dropDownInput.classList.add('drop-down-input-in')
+            dropDownInput.setAttribute('spellcheck', 'false')
+
+            setTimeout(() => {
+                leaderBoardContainer.classList.remove('leader-board-in')
+                leaderBoardContainer.setAttribute('style', 'height: 600px; width: 260px; opacity: 1;')
+                leaderBoardOpacity.classList.add('leader-board-filter')
+                leaderBoardContainer.appendChild(leaderBoardOpacity)
+                setTimeout(() => {
+                    leaderBoardDropDown.appendChild(dropDownHeader)
+                    setTimeout(() => {
+                        leaderBoardDropDown.appendChild(dropDownInput)
+                    },500)
+                },500)
+            },300)
+            
 
             let nameInput = false
 
@@ -2175,6 +2203,9 @@ function playGame() {
                             dropDownHeader.classList.add('drop-down-header-out')
                             dropDownInput.classList.add('drop-down-input-out')
                             setTimeout(() => {
+                                dropDownHeader.classList.remove('drop-down-header-out')
+                                dropDownInput.classList.remove('drop-down-input-out')
+                                dropDownHeader.classList.remove('drop-down-header-2')
                                 leaderBoardDropDown.removeChild(dropDownHeader)
                                 leaderBoardDropDown.removeChild(dropDownInput)
                                 leaderBoardDropDown.classList.remove('leader-drop-down-in')
@@ -2183,30 +2214,75 @@ function playGame() {
                                     leaderBoardOpacity.classList.remove('leader-board-filter')
                                     leaderBoardOpacity.classList.add('leader-board-filter-out')
                                     setTimeout(() => {
+                                        leaderBoardDropDown.classList.remove('leader-drop-down-out')
+                                        leaderBoardOpacity.classList.remove('leader-board-filter-out')
                                         leaderBoardContainer.removeChild(leaderBoardDropDown)
+                                        leaderBoardContainer.removeChild(leaderBoardOpacity)
+                                        scoreLabelContainer.textContent = scoreNumber
+
+                                        grayClicks = 0
+                                        grayClicksInitial = 0
+                                        redClicks = 0
+                                        redClicksInitial = 0
+                                        greenClicks = 0
+                                        greenClicksInitial = 0
+                                        blueClicks = 0
+                                        blueClicksInitial = 0
+
+                                        graySquareArrayWithEmptyInitial = []
+                                        nInitial = 1
+                                        graySquareArrayInitial = undefined
+                                        graySquareAmountInitial = undefined
+                                        redSquareArrayInitial = undefined
+                                        redSquareAmountInitial = undefined
+                                        greenSquareArrayInitial = undefined
+                                        greenSquareAmountInitial = undefined
+                                        blueSquareArrayInitial = undefined
+                                        blueSquareAmountInitial = undefined
+                                        topCardInitial = undefined
+                                        topBoxInitial = undefined
+
+                                        graySquareArrayWithEmpty = []
+                                        redSquareArrayWithEmpty = []
+                                        greenSquareArrayWithEmpty = []
+                                        blueSquareArrayWithEmpty = []
+                                        n = 1
+                                        graySquareArray = undefined
+                                        graySquareAmount = undefined
+                                        redSquareArray = undefined
+                                        redSquareAmount = undefined
+                                        greenSquareArray = undefined
+                                        greenSquareAmount = undefined
+                                        blueSquareArray = undefined
+                                        blueSquareAmount = undefined
+                                        topCard = undefined
+                                        topBox = undefined
+                                        scoreNumber = 0
+
+                                        
+                                        removeSortedPlayers()
+                                        setTimeout(() => {
+                                            lowNth = false
+                                            userObject = {name: dropDownInputValue, value: scoreNumber}
+                                            players.push(userObject)
+                                            sortObjectsDescending(players)
+                                            appendSortedPlayers()
+                                        },1200)
+                                        
+
+                                        createCards()
+
                                     },300)
                                 },500)
                             },400)
-                            leaderBoardsIntake()
+                            
                         }
                     })
                 }
             }, {once: true})
 
-        }
-        leaderBoardsContainer()
-        
-        function leaderBoardsIntake() {
-            
-            
-
-            //soooo, i dont really know how to host a server yet and how to pull info.  but thinking logically the way to go about it is to pull the JSON file from the server that contains the array of objects starting out when the leaderboard loads, un-stringify it, once game over, enter input, push array object, filter array, update screen, and send JSON to server while overwriting the original. all the while keeping the original data from the JSON file that i orginaly pulled, just push array object and updating local side only until I refresh and then it pulls server side again
-        }
-        leaderBoardsIntake()
-            
+        //soooo, i dont really know how to host a server yet and how to pull info.  but thinking logically the way to go about it is to pull the JSON file from the server that contains the array of objects starting out when the leaderboard loads, un-stringify it, once game over, enter input, push array object, filter array, update screen, and send JSON to server while overwriting the original. all the while keeping the original data from the JSON file that i orginaly pulled, just push array object and updating local side only until I refresh and then it pulls server side again
     }
-    leaderBoards()
-
     
 
     function matrixMode() {
@@ -2499,59 +2575,14 @@ function playGame() {
                         document.body.removeChild(gameOverTextContainer)
                         setTimeout(() => {
                             document.body.removeChild(gameOverFilter)
-                            grayClicks = 0
-                            grayClicksInitial = 0
-                            redClicks = 0
-                            redClicksInitial = 0
-                            greenClicks = 0
-                            greenClicksInitial = 0
-                            blueClicks = 0
-                            blueClicksInitial = 0
-
-                            graySquareArrayWithEmptyInitial = []
-                            nInitial = 1
-                            graySquareArrayInitial = undefined
-                            graySquareAmountInitial = undefined
-                            redSquareArrayInitial = undefined
-                            redSquareAmountInitial = undefined
-                            greenSquareArrayInitial = undefined
-                            greenSquareAmountInitial = undefined
-                            blueSquareArrayInitial = undefined
-                            blueSquareAmountInitial = undefined
-                            topCardInitial = undefined
-                            topBoxInitial = undefined
-
-                            graySquareArrayWithEmpty = []
-                            redSquareArrayWithEmpty = []
-                            greenSquareArrayWithEmpty = []
-                            blueSquareArrayWithEmpty = []
-                            n = 1
-                            graySquareArray = undefined
-                            graySquareAmount = undefined
-                            redSquareArray = undefined
-                            redSquareAmount = undefined
-                            greenSquareArray = undefined
-                            greenSquareAmount = undefined
-                            blueSquareArray = undefined
-                            blueSquareAmount = undefined
-                            topCard = undefined
-                            topBox = undefined
-                            scoreNumber = 0
-
-                            const leaderBoardDropDown = document.createElement('div')
-                            leaderBoardDropDown.classList.add('leader-drop-down')
-                            leaderBoardDropDown.classList.add('leader-drop-down-in')
-                            leaderBoardContainer.appendChild(leaderBoardDropDown)
+                            leaderBoardsIntake()
 
                         },300)
                     },550)
                 },500)
             }, 250) 
         })
-        /*
-        scoreLabelContainer.textContent = scoreNumber
-        createCards()
-        */
+        
     }
     
     function calculateTimeFraction() {

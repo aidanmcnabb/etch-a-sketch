@@ -2392,7 +2392,7 @@ body {
     background-clip: text;
     color: transparent;
     background-size: 200% auto;
-    animation: gradientAni 2s linear infinite;
+    animation: gradientAni 2s linear infinite, spanIn .25s ease forwards;
 }
 
 .cool-span-2 {
@@ -2407,8 +2407,26 @@ body {
     background-clip: text;
     color: transparent;
     background-size: 200% auto;
-    animation: gradientAni 2s linear infinite;
-    
+    animation: gradientAni 2s linear infinite, spanIn .25s ease forwards;
+}
+
+.span-out {
+    animation: spanOut .25s ease forwards;
+}
+
+@keyframes spanOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
 }
 
 /*
