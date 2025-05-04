@@ -12,6 +12,8 @@ body {
     height: 300px;
     width: 300px;
     opacity: 0;
+    z-index: 1;
+    /* background-color: black;  MUST BE CHANGED*/
 }
 
 .base-timer-in {
@@ -38,7 +40,7 @@ body {
 }
 
 .base-timer__svg {
-    /*transform: scale(-1);*/
+   /* background-color: black;  MUST BE CHANGED*/
     background-color: #fff;
     border-radius: 50%;
 }

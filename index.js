@@ -2347,7 +2347,7 @@ function playGame() {
             createCards()
         }
 
-        //soooo, i dont really know how to host a server yet and how to pull info.  but thinking logically the way to go about it is to pull the JSON file from the server that contains the array of objects starting out when the leaderboard loads, un-stringify it, once game over, enter input, push array object, filter array, update screen, and send JSON to server while overwriting the original. all the while keeping the original data from the JSON file that i orginaly pulled, just push array object and updating local side only until I refresh and then it pulls server side again
+        //soooo, i dont really know how to host a server yet and how to pull info.  but thinking logically the way to go about it is to pull the JSON file from the server that contains the array of objects starting out when the leaderboard loads, un-stringify it, once game over, enter input, push array object, filter array, update screen, and send JSON to server while overwriting the original. all the while keeping the original data from the JSON file that i orginaly pulled, just push array object and updating local side only until I refresh and then it pulls server side again. unless i would want to do a a live updated leaderboard which would also be really easy, just setInterval to pull server side info every like 10-20 seconds and make sure the animation timing doesnt overlap with the endgame animation creating issues. dont know how i would resolve that last bit though, maybe synchronus instead of async?
     }
     
 
@@ -2356,6 +2356,166 @@ function playGame() {
         matrixModeContainer.classList.add('matrix-mode-container')
         matrixModeContainer.classList.add('matrix-mode-container-in')
         document.body.appendChild(matrixModeContainer)
+
+        function createMatrixCards() {
+            setTimeout(() => {
+                setTimeout(() => {
+                    const matrixCard1 = document.createElement('div')
+                    matrixCard1.classList.add('tiny-matrix-cards')
+                    matrixModeContainer.appendChild(matrixCard1)
+                },100)
+                setTimeout(() => {
+                    const matrixCard2 = document.createElement('div')
+                    matrixCard2.classList.add('tiny-matrix-cards')
+                    matrixModeContainer.appendChild(matrixCard2)
+                },200)
+                setTimeout(() => {
+                    const matrixCard3 = document.createElement('div')
+                    matrixCard3.classList.add('tiny-matrix-cards')
+                    matrixModeContainer.appendChild(matrixCard3)
+                },300)
+                setTimeout(() => {
+                    const matrixCard4 = document.createElement('div')
+                    matrixCard4.classList.add('tiny-matrix-cards')
+                    matrixModeContainer.appendChild(matrixCard4)
+                },400)
+                setTimeout(() => {
+                    const matrixCard5 = document.createElement('div')
+                    matrixCard5.classList.add('tiny-matrix-cards')
+                    matrixModeContainer.appendChild(matrixCard5)
+                },500)
+            },4200)  
+        }
+        createMatrixCards()
+
+        let characters = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%&ßµø¤¿ƒ†×‡▓▒░¬⌐◙○♦▼▲↔∟▬◄►☼º┼┬┴╛╜╡╢║▐▌∞≡≈∩εΩΦΣ■'
+
+        function startMatrixMode() {
+            setInterval(() => {
+
+                let randomCharacter2 = undefined
+                let randomCharacter3 = undefined
+                let randomCharacter4 = undefined
+                let randomCharacter5 = undefined
+                let randomCharacter6 = undefined
+                let randomCharacter7 = undefined
+
+                const matrixChar = document.createElement('div')
+                matrixChar.classList.add('matrix-char')
+                const matrixChar2 = document.createElement('div')
+                matrixChar2.classList.add('matrix-char2')
+                const matrixChar3 = document.createElement('div')
+                matrixChar3.classList.add('matrix-char3')
+                const matrixChar4 = document.createElement('div')
+                matrixChar4.classList.add('matrix-char4')
+                const matrixChar5 = document.createElement('div')
+                matrixChar5.classList.add('matrix-char5')
+                const matrixChar6 = document.createElement('div')
+                matrixChar6.classList.add('matrix-char6')
+                const matrixChar7 = document.createElement('div')
+                matrixChar7.classList.add('matrix-char7')
+
+                const randomLeft = Math.random() * 1920
+                console.log(randomLeft)
+
+                matrixChar.style.left = `${randomLeft}px`
+                matrixChar2.style.left = `${randomLeft}px`
+                matrixChar3.style.left =`${randomLeft}px`
+                matrixChar4.style.left =`${randomLeft}px`
+                matrixChar5.style.left =`${randomLeft}px`
+                matrixChar6.style.left =`${randomLeft}px`
+                matrixChar7.style.left =`${randomLeft}px`
+
+                document.body.appendChild(matrixChar)
+                setInterval(() => {
+                    const randomIndex = Math.floor(Math.random() * characters.length)
+                    let randomCharacter = characters.charAt(randomIndex)
+                    matrixChar.textContent = randomCharacter
+                    setTimeout(() => {
+                        randomCharacter2 = randomCharacter
+                    },160)
+                },175)
+                setTimeout(() => {
+                    document.body.removeChild(matrixChar)
+                },25000)
+
+                setTimeout(() => {
+                    document.body.appendChild(matrixChar2)
+                    setInterval(() => {
+                        matrixChar2.textContent = randomCharacter2
+                        setTimeout(() => {
+                            randomCharacter3 = randomCharacter2
+                        },17)
+                    },175)
+                    setTimeout(() => {
+                        document.body.removeChild(matrixChar2)
+                    },25000)
+                },175)
+
+                setTimeout(() => {
+                    document.body.appendChild(matrixChar3)
+                    setInterval(() => {
+                        setTimeout(() => {
+                            randomCharacter4 = randomCharacter3
+                        },180)
+                        matrixChar3.textContent = randomCharacter3
+                    },175)
+                    setTimeout(() => {
+                        document.body.removeChild(matrixChar3)
+                    },25000)
+                },350)
+
+                setTimeout(() => {
+                    document.body.appendChild(matrixChar4)
+                    setInterval(() => {
+                        randomCharacter5 = randomCharacter4
+                        matrixChar4.textContent = randomCharacter4
+                    },175)
+                    setTimeout(() => {
+                        document.body.removeChild(matrixChar4)
+                    },25000)
+                },525)
+
+                setTimeout(() => {
+                    document.body.appendChild(matrixChar5)
+                    setInterval(() => {
+                        setTimeout(() => {
+                            randomCharacter6 = randomCharacter5
+                        },150)
+                        matrixChar5.textContent = randomCharacter5
+                    },175)
+                    setTimeout(() => {
+                        document.body.removeChild(matrixChar5)
+                    },25000)
+                },700)
+
+                setTimeout(() => {
+                    document.body.appendChild(matrixChar6)
+                    setInterval(() => {
+                        setTimeout(() => {
+                            randomCharacter7 = randomCharacter6
+                        },140)
+                        matrixChar6.textContent = randomCharacter6
+                    },175)
+                    setTimeout(() => {
+                        document.body.removeChild(matrixChar6)
+                    },25000)
+                },875)
+
+                setTimeout(() => {
+                    document.body.appendChild(matrixChar7)
+                    setInterval(() => {
+                        matrixChar7.textContent = randomCharacter7
+                    },175)
+                    setTimeout(() => {
+                        document.body.removeChild(matrixChar7)
+                    },25000)
+                },1050)
+
+            },2000)
+        }
+
+        //the only data I should be pulling for matrix mode, is the scoreNumber.  that should be absolutely it, i will have to reset matrix mode counter at onTimesUp(),which also shouldn't be an issue with the counter being definied out of scope. what i want to do is once 5 cards are completed without error, total page background changes... maybe even every single card will change. i wanted the borders to light up green, and the div background colors to become darker.  just basically everything that has a background is darker, and all text and borders are accentuated in a green/glowing-green color.  also, theres the falling numbers..........................pretty sure this is why they have grid. im gonna do it without grid. it will be with fixed positioning, and the left attribute will have a random number between beggining of left and end of page viewbox. these numbers will automatically have a transform translate animation, and I will probably have to make a div inside the div to add other animations because of my issues with adding multiple infinite animations on a fixed div. just gotta fuxk with the animations and see what works best
     }
     matrixMode()
 

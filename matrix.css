@@ -1,0 +1,223 @@
+
+
+.matrix-char {
+    position: fixed;
+    top: 0px;
+    left: 900px; /* this attribute is set to nothing in the class and added after with setattribute which will need computed style */
+    height: 50px;
+    width: 50px;
+    animation: matrixChar 2.5s linear infinite forwards, gradientAni 2s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: white;
+
+    background: linear-gradient(
+        to right,
+        rgb(255, 255, 255),
+        rgb(202, 252, 197),
+        rgb(200, 252, 228),
+        rgb(242, 255, 192),
+        rgb(255, 255, 255)
+    );
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    z-index: 0;
+}
+
+@keyframes matrixChar {
+    5% {top: 50px;}
+    10% {top: 100px;}
+    15% {top: 150px;}
+    20% {top: 200px;}
+    25% {top: 250px;}
+    30% {top: 300px;}
+    35% {top: 350px;}
+    40% {top: 400px;}
+    45% {top: 450px;}
+    50% {top: 500px;}
+    55% {top: 550px;}
+    60% {top: 600px;}
+    65% {top: 650px;}
+    70% {top: 700px;}
+    75% {top: 750px;}
+    80% {top: 800px;}
+    85% {top: 850px;}
+    90% {top: 900px;}
+    95% {top: 950px;}
+    100% {top: 1000px;}
+}
+
+.matrix-char2 {
+    position: fixed;
+    top: 0px;
+    left: 900px; /* this attribute is set to nothing in the class and added after with setattribute which will need computed style */
+    height: 50px;
+    width: 50px;
+    animation: matrixChar 2.5s linear infinite forwards,gradientAni 2s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: white;
+
+    background: linear-gradient(
+        to right,
+        rgb(37, 223, 20),
+        rgb(43, 109, 37),
+        rgb(2, 99, 7),
+        rgb(136, 241, 94),
+        rgb(37, 223, 20)
+    );
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    opacity: .6;
+    z-index: 0;
+}
+
+.matrix-char3 {
+    position: fixed;
+    top: 0px;
+    left: 900px; /* this attribute is set to nothing in the class and added after with setattribute which will need computed style */
+    height: 50px;
+    width: 50px;
+    animation: matrixChar 2.5s linear infinite forwards,gradientAni 2s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: white;
+
+    background: linear-gradient(
+        to right,
+        rgb(37, 223, 20),
+        rgb(43, 109, 37),
+        rgb(2, 99, 7),
+        rgb(136, 241, 94),
+        rgb(37, 223, 20)
+    );
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    opacity: .5;
+    z-index: 0;
+}
+
+.matrix-char4 {
+    position: fixed;
+    top: 0px;
+    left: 900px; /* this attribute is set to nothing in the class and added after with setattribute which will need computed style */
+    height: 50px;
+    width: 50px;
+    animation: matrixChar 2.5s linear infinite forwards,gradientAni 2s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: white;
+
+    background: linear-gradient(
+        to right,
+        rgb(37, 223, 20),
+        rgb(43, 109, 37),
+        rgb(2, 99, 7),
+        rgb(136, 241, 94),
+        rgb(37, 223, 20)
+    );
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    opacity: .4;
+    z-index: 0;
+}
+
+.matrix-char5 {
+    position: fixed;
+    top: 0px;
+    left: 900px; /* this attribute is set to nothing in the class and added after with setattribute which will need computed style */
+    height: 50px;
+    width: 50px;
+    animation: matrixChar 2.5s linear infinite forwards,gradientAni 2s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: white;
+
+    background: linear-gradient(
+        to right,
+        rgb(37, 223, 20),
+        rgb(43, 109, 37),
+        rgb(2, 99, 7),
+        rgb(136, 241, 94),
+        rgb(37, 223, 20)
+    );
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    opacity: .2;
+    z-index: 0;
+}
+
+.matrix-char6 {
+    position: fixed;
+    top: 0px;
+    left: 900px; /* this attribute is set to nothing in the class and added after with setattribute which will need computed style */
+    height: 50px;
+    width: 50px;
+    animation: matrixChar 2.5s linear infinite forwards,gradientAni 2s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: white;
+
+    background: linear-gradient(
+        to right,
+        rgb(37, 223, 20),
+        rgb(43, 109, 37),
+        rgb(2, 99, 7),
+        rgb(136, 241, 94),
+        rgb(37, 223, 20)
+    );
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    opacity: .1;
+    z-index: 0;
+}
+
+.matrix-char7 {
+    position: fixed;
+    top: 0px;
+    left: 900px; /* this attribute is set to nothing in the class and added after with setattribute which will need computed style */
+    height: 50px;
+    width: 50px;
+    animation: matrixChar 2.5s linear infinite forwards,gradientAni 2s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: white;
+
+    background: linear-gradient(
+        to right,
+        rgb(37, 223, 20),
+        rgb(43, 109, 37),
+        rgb(2, 99, 7),
+        rgb(136, 241, 94),
+        rgb(37, 223, 20)
+    );
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    opacity: .05;
+    z-index: 0;
+}
+
+.black {
+    background-color: black;
+}

@@ -1063,6 +1063,7 @@ body {
     box-shadow: 10px 10px 7px rgb(110, 110, 110);
     background-color: white;
     opacity: 0;
+    z-index: 1;
 }
 
 
@@ -1096,7 +1097,7 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 30px;
-    z-index: 0;
+    z-index: 1;
 }
 
 .matrix-mode-container-in {
@@ -1119,7 +1120,7 @@ body {
         width: 260px;
     }
     100% {
-        height: 190px;
+        height: 150px;
         width: 260px;
         opacity: 1;
     }
@@ -2444,41 +2445,92 @@ body {
     animation: gradientAni 2s linear infinite, spanIn .25s ease forwards;
 }
 
-/*
-@keyframes gameOverEven {
-    0% {
-        transform: translateX(-297px) translateY(-335px);
-        position: absolute;
-    }
-    
-    50% {
-        transform: translateX(-170px) translateY(-490px) rotate(35deg);
-    }
-    
-    100% {
-        transform: translateX(130px) translateY(1000px) rotate(50deg);
-    }
-}
-*/
-/*
-.leader-board-name-title {
-    position: absolute;
-    top: 57px;
-    left: 13px;
-    font-size: 34px;
-    text-decoration: underline;
-    opacity: 1;
-    animation: leaderBoardTitle .5s ease-in-out forwards;
+.tiny-matrix-card1 {
+    text-shadow: 5px 3px 2px rgb(180, 180, 180);
+    border-style:solid double;
+    border-color: black;
+    border-width: 4px;
+    height: 63px;
+    padding-bottom: 0px;
+    width: 40px;
+    border-radius: 9px;
+    box-shadow: 10px 10px 7px rgb(110, 110, 110);
+    background-color: white;
+    transform: rotate(12deg) scale(.7);
+    animation: matrixCardsIn .2s ease forwards;
 }
 
-@keyframes leaderBoardNameOrScore {
+.tiny-matrix-card2 {
+    text-shadow: 5px 3px 2px rgb(180, 180, 180);
+    border-style:solid double;
+    border-color: black;
+    border-width: 4px;
+    height: 63px;
+    padding-bottom: 0px;
+    width: 40px;
+    border-radius: 9px;
+    box-shadow: 10px 10px 7px rgb(110, 110, 110);
+    background-color: white;
+    transform: rotate(12deg) scale(.7);
+    animation: matrixCardsIn .2s ease forwards;
+}
+
+.tiny-matrix-card3 {
+    text-shadow: 5px 3px 2px rgb(180, 180, 180);
+    border-style:solid double;
+    border-color: black;
+    border-width: 4px;
+    height: 63px;
+    padding-bottom: 0px;
+    width: 40px;
+    border-radius: 9px;
+    box-shadow: 10px 10px 7px rgb(110, 110, 110);
+    background-color: white;
+    transform: rotate(12deg) scale(.7);
+    animation: matrixCardsIn .2s ease forwards;
+}
+
+.tiny-matrix-card4 {
+    text-shadow: 5px 3px 2px rgb(180, 180, 180);
+    border-style:solid double;
+    border-color: black;
+    border-width: 4px;
+    height: 63px;
+    padding-bottom: 0px;
+    width: 40px;
+    border-radius: 9px;
+    box-shadow: 10px 10px 7px rgb(110, 110, 110);
+    background-color: white;
+    transform: rotate(12deg) scale(.7);
+    animation: matrixCardsIn .2s ease forwards;
+}
+
+.tiny-matrix-card5 {
+    text-shadow: 5px 3px 2px rgb(180, 180, 180);
+    border-style:solid double;
+    border-color: black;
+    border-width: 4px;
+    height: 63px;
+    padding-bottom: 0px;
+    width: 40px;
+    border-radius: 9px;
+    box-shadow: 10px 10px 7px rgb(110, 110, 110);
+    background-color: white;
+    transform: rotate(12deg) scale(.7);
+    animation: matrixCardsIn .2s ease forwards;
+}
+
+@keyframes matrixCardsIn {
     0% {
         opacity: 0;
-        transform: scale(.7);
+        transform: scale(0);
     }
-    100% {
-        opacity: 1;
+    50% {
+        transform: scale(1);
         
     }
+    100% {
+        transform: scale(.7);
+        opacity: 1;
+    }
 }
-*/
