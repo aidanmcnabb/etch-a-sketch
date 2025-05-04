@@ -2049,7 +2049,6 @@ function playGame() {
     const leaderBoardDropDown = document.createElement('div')
     let dropDownInputValue = dropDownInput.value
     const leaderBoardOpacity = document.createElement('div')
-    let lowNth = true
 
     function scoreLabel() {
         
@@ -2060,77 +2059,90 @@ function playGame() {
     }
     scoreLabel()
 
-    function leaderBoards() {
-        //a title, a numbered list of 15 or 20 scores depending on font, names left, scores right, dots in dead space.
-        //the animations of list will be scale and a timeout for each list. i can have one animation for everything but have '#item #' for each li
-        //send all player information to array of objects, have a loop once you send the info to automatically sort the array to index by score?
-        //setInterval for like 150ms, each iteration grab array[i], format name to left & score to right fill dead space with dots in between, add animations.
-        //dont know how im going to keep left and right aligned while also filling dead space with dots thats a tough one.
-        leaderBoardContainer.classList.add('leader-board')
-        leaderBoardContainer.classList.add('leader-board-in')
-        document.body.appendChild(leaderBoardContainer)
-        leaderBoardTitle.classList.add('leader-board-title')
-        leaderBoardTitle.textContent = 'Leaderboards'
-        nameScoreContainer.classList.add('name-score')
-        leaderBoardOpacity.classList.add('leader-board-opacity')
-        
-        let NSI = 0
-        let userObject = undefined
+    leaderBoardContainer.classList.add('leader-board')
+    leaderBoardContainer.classList.add('leader-board-in')
+    document.body.appendChild(leaderBoardContainer)
+    leaderBoardTitle.classList.add('leader-board-title')
+    leaderBoardTitle.textContent = 'Leaderboards'
+    nameScoreContainer.classList.add('name-score')
+    leaderBoardOpacity.classList.add('leader-board-opacity')
+    
+    let lowNth = true
+    let NSI = 0
+    let userObject = undefined
+    let playerIndex = undefined
+    let singleClassAdd = false
 
-        const players = [
-            {name: 'Lil Ugly Mane', score: 15},
-            {name: 'pIgLyWiGlY', score: 13},
-            {name: 'urmom97', score: 11},
-            {name: 'Boolxan', score: 20},
-            {name: 'lilplato', score: 27},
-            {name: 'bigBagBool', score: 35},
-            {name: 'mrfuxk', score: 23},
-            {name: 'mfDoom03',score: 7},
-            {name: 'downsyBoy23', score: 1},
-            {name: 'SHIESTYP', score: 3},
-            {name: 'coMMas', score: 10},
-            {name: 'whoDatboy',score: 19},
-            {name: 'tkeForever420', score: 40},
-        ]
+    const players = [
+        {name: 'Lil Ugly Mane', score: 15},
+        {name: 'pIgLyWiGlY', score: 13},
+        {name: 'urmom97', score: 11},
+        {name: 'Boolxan', score: 20},
+        {name: 'lilplato', score: 27},
+        {name: 'bigBagBool', score: 35},
+        {name: 'mrfuxk', score: 23},
+        {name: 'mfDoom03',score: 7},
+        {name: 'downsyBoy23', score: 1},
+        {name: 'SHIESTYP', score: 3},
+        {name: 'coMMas', score: 10},
+        {name: 'whoDatboy',score: 19},
+        {name: 'tkeForever420', score: 40},
+    ]
 
-        function sortObjectsDescending(arr) {
-            arr.sort((a, b) => b.score - a.score)
-        }
-        sortObjectsDescending(players)
+    function sortObjectsDescending(arr) {
+        arr.sort((a, b) => b.score - a.score)
+    }
+    sortObjectsDescending(players)
 
-
-
-        function appendSortedPlayers() {
-            const append = setInterval(() => {
-                const span = document.createElement('span')
-                span.textContent = `${NSI + 1}. ${players[NSI].name} ....... ${players[NSI].score}`
-                span.classList.add('span-in')
-                span.classList.add('for-nth')
-                if (NSI === 0) {
-                    span.classList.add('cool-span')
-                }
-                if (NSI >= 1 && NSI < 5) {
-                    span.classList.add('cool-span-2')
-                }
-                setTimeout(() => {
-                    span.classList.remove('span-in')
-                },250)
-                nameScoreContainer.appendChild(span)
-                NSI++
-                if (lowNth = true) {
-                    if (NSI === 13) {
-                        clearInterval(append)
-                    }
-                } else if (lowNth = false) {
-                    if (NSI === 14) {
-                        clearInterval(append)
-                    }
-                }
-            },75)
+    function appendSortedPlayers() {
+        const append = setInterval(() => {
             
-        }
+            const span = document.createElement('span')
+            span.textContent = `${NSI + 1}. ${players[NSI].name} ....... ${players[NSI].score}`
+            span.classList.add('span-in')
+            span.classList.add('for-nth')
+            
+            if (players[NSI].class) {
+                
+                span.classList.add('player-highlight')
+            }
+            
+            if (NSI === 0) {
+                span.classList.add('cool-span')
+            }
+            if (NSI >= 1 && NSI < 5) {
+                span.classList.add('cool-span-2')
+            }
+            setTimeout(() => {
+                span.classList.remove('span-in')
+            },250)
+            nameScoreContainer.appendChild(span)
+            NSI++
+            if (lowNth === true) {
+                if (NSI === 13) {
+                    clearInterval(append)
+                }
+            } else if (lowNth === false) {
+                if (NSI === 14) {
+                    clearInterval(append)
+                    singleClassAdd = true
+                }
+            }
+        },75)
         
+        
+    }
 
+    function leaderBoardsContainer() {
+        setTimeout(() => {
+            leaderBoardContainer.appendChild(leaderBoardTitle)
+            leaderBoardContainer.appendChild(nameScoreContainer)
+            appendSortedPlayers()
+        },4200)
+    }
+    leaderBoardsContainer()
+        
+    function leaderBoardsIntake() {
 
         function removeSortedPlayers() {
             
@@ -2146,24 +2158,10 @@ function playGame() {
                 }
             },75)
         }
+    
+        if (lowNth === true) {
         
-        function leaderBoardsContainer() {
-            setTimeout(() => {
-                leaderBoardContainer.appendChild(leaderBoardTitle)
-                leaderBoardContainer.appendChild(nameScoreContainer)
-                appendSortedPlayers()
-            },4200)
-        }
-        leaderBoardsContainer()
-        
-        
-            
-    }
-    leaderBoards()
-
-    function leaderBoardsIntake() {
-            
-        leaderBoardDropDown.classList.add('leader-drop-down')
+            leaderBoardDropDown.classList.add('leader-drop-down')
             leaderBoardDropDown.classList.add('leader-drop-down-in')
             leaderBoardContainer.appendChild(leaderBoardDropDown)
             
@@ -2187,7 +2185,7 @@ function playGame() {
                     },500)
                 },500)
             },300)
-            
+                
 
             let nameInput = false
 
@@ -2219,7 +2217,7 @@ function playGame() {
                                         leaderBoardContainer.removeChild(leaderBoardDropDown)
                                         leaderBoardContainer.removeChild(leaderBoardOpacity)
                                         scoreLabelContainer.textContent = scoreNumber
-
+    
                                         grayClicks = 0
                                         grayClicksInitial = 0
                                         redClicks = 0
@@ -2257,18 +2255,25 @@ function playGame() {
                                         blueSquareAmount = undefined
                                         topCard = undefined
                                         topBox = undefined
-                                        scoreNumber = 0
-
                                         
+
                                         removeSortedPlayers()
                                         setTimeout(() => {
+                                            
                                             lowNth = false
-                                            userObject = {name: dropDownInputValue, value: scoreNumber}
+                                            dropDownInputValue = dropDownInput.value
+                                            userObject = {name: dropDownInputValue, score: scoreNumber, class: true}
                                             players.push(userObject)
+                                            console.log(players)
+                                            singleClassAdd = true
                                             sortObjectsDescending(players)
                                             appendSortedPlayers()
                                         },1200)
-                                        
+                                        setTimeout(() => {
+                                            scoreNumber = 0
+                                            scoreLabelContainer.textContent = scoreNumber
+                                        },1300)
+                                            
 
                                         createCards()
 
@@ -2280,6 +2285,67 @@ function playGame() {
                     })
                 }
             }, {once: true})
+        } else {
+            grayClicks = 0
+            grayClicksInitial = 0
+            redClicks = 0
+            redClicksInitial = 0
+            greenClicks = 0
+            greenClicksInitial = 0
+            blueClicks = 0
+            blueClicksInitial = 0
+
+            graySquareArrayWithEmptyInitial = []
+            nInitial = 1
+            graySquareArrayInitial = undefined
+            graySquareAmountInitial = undefined
+            redSquareArrayInitial = undefined
+            redSquareAmountInitial = undefined
+            greenSquareArrayInitial = undefined
+            greenSquareAmountInitial = undefined
+            blueSquareArrayInitial = undefined
+            blueSquareAmountInitial = undefined
+            topCardInitial = undefined
+            topBoxInitial = undefined
+
+            graySquareArrayWithEmpty = []
+            redSquareArrayWithEmpty = []
+            greenSquareArrayWithEmpty = []
+            blueSquareArrayWithEmpty = []
+            n = 1
+            graySquareArray = undefined
+            graySquareAmount = undefined
+            redSquareArray = undefined
+            redSquareAmount = undefined
+            greenSquareArray = undefined
+            greenSquareAmount = undefined
+            blueSquareArray = undefined
+            blueSquareAmount = undefined
+            topCard = undefined
+            topBox = undefined
+        
+            removeSortedPlayers()
+            setTimeout(() => {
+                
+                function isPlayer(player) {
+                    return player.name === dropDownInputValue
+                }
+                if (players.find(isPlayer)) {
+                    playerIndex = players.findIndex(player => player.name === dropDownInputValue)
+                    if (scoreNumber > players[playerIndex].score) {
+                        players[playerIndex].score = scoreNumber
+                    }   
+                    sortObjectsDescending(players)
+                    singleClassAdd = false
+                    appendSortedPlayers()
+                }
+            },1200)
+            setTimeout(() => {
+                scoreNumber = 0
+                scoreLabelContainer.textContent = scoreNumber
+            },1300)
+            createCards()
+        }
 
         //soooo, i dont really know how to host a server yet and how to pull info.  but thinking logically the way to go about it is to pull the JSON file from the server that contains the array of objects starting out when the leaderboard loads, un-stringify it, once game over, enter input, push array object, filter array, update screen, and send JSON to server while overwriting the original. all the while keeping the original data from the JSON file that i orginaly pulled, just push array object and updating local side only until I refresh and then it pulls server side again
     }

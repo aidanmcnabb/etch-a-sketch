@@ -2429,6 +2429,21 @@ body {
     }
 }
 
+.player-highlight {
+    background: linear-gradient(
+        to right,
+        rgb(81, 255, 0),
+        rgb(56, 223, 41),
+        rgb(7, 218, 120),
+        rgb(194, 243, 17),
+        rgb(81, 255, 0)
+    );
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: gradientAni 2s linear infinite, spanIn .25s ease forwards;
+}
+
 /*
 @keyframes gameOverEven {
     0% {
