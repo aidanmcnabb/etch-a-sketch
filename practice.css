@@ -2446,6 +2446,8 @@ body {
 }
 
 .tiny-matrix-card1 {
+    position: absolute;
+    left: 15px;
     text-shadow: 5px 3px 2px rgb(180, 180, 180);
     border-style:solid double;
     border-color: black;
@@ -2456,11 +2458,12 @@ body {
     border-radius: 9px;
     box-shadow: 10px 10px 7px rgb(110, 110, 110);
     background-color: white;
-    transform: rotate(12deg) scale(.7);
-    animation: matrixCardsIn .2s ease forwards;
+    transform: rotate(15deg) scale(.7);
 }
 
 .tiny-matrix-card2 {
+    position: absolute;
+    left: 60px;
     text-shadow: 5px 3px 2px rgb(180, 180, 180);
     border-style:solid double;
     border-color: black;
@@ -2471,11 +2474,12 @@ body {
     border-radius: 9px;
     box-shadow: 10px 10px 7px rgb(110, 110, 110);
     background-color: white;
-    transform: rotate(12deg) scale(.7);
-    animation: matrixCardsIn .2s ease forwards;
+    transform: rotate(15deg) scale(.7);
 }
 
 .tiny-matrix-card3 {
+    position: absolute;
+    left: 105px;
     text-shadow: 5px 3px 2px rgb(180, 180, 180);
     border-style:solid double;
     border-color: black;
@@ -2486,11 +2490,12 @@ body {
     border-radius: 9px;
     box-shadow: 10px 10px 7px rgb(110, 110, 110);
     background-color: white;
-    transform: rotate(12deg) scale(.7);
-    animation: matrixCardsIn .2s ease forwards;
+    transform: rotate(15deg) scale(.7);
 }
 
 .tiny-matrix-card4 {
+    position: absolute;
+    left: 150px;
     text-shadow: 5px 3px 2px rgb(180, 180, 180);
     border-style:solid double;
     border-color: black;
@@ -2501,11 +2506,12 @@ body {
     border-radius: 9px;
     box-shadow: 10px 10px 7px rgb(110, 110, 110);
     background-color: white;
-    transform: rotate(12deg) scale(.7);
-    animation: matrixCardsIn .2s ease forwards;
+    transform: rotate(15deg) scale(.7);
 }
 
 .tiny-matrix-card5 {
+    position: absolute;
+    left: 195px;
     text-shadow: 5px 3px 2px rgb(180, 180, 180);
     border-style:solid double;
     border-color: black;
@@ -2516,8 +2522,12 @@ body {
     border-radius: 9px;
     box-shadow: 10px 10px 7px rgb(110, 110, 110);
     background-color: white;
-    transform: rotate(12deg) scale(.7);
-    animation: matrixCardsIn .2s ease forwards;
+    transform: rotate(15deg) scale(.7);
+    
+}
+
+.tiny-matrix-card-in {
+    animation: matrixCardsIn .2s ease-in-out forwards;
 }
 
 @keyframes matrixCardsIn {
@@ -2527,10 +2537,51 @@ body {
     }
     50% {
         transform: scale(1);
-        
+        opacity: .5;
     }
     100% {
-        transform: scale(.7);
+        transform: rotate(15deg) scale(.7);
         opacity: 1;
     }
+}
+
+.matrix-background-in {
+    animation: matrixBackgroundIn 7s linear forwards;
+}
+
+@keyframes matrixBackgroundIn {
+    100% {
+        background-color: black;
+    }
+}
+
+.matrix-container-background-in {
+    animation: matrixContainerBackgroundIn 7s linear forwards;
+}
+
+@keyframes matrixContainerBackgroundIn {
+    0% {
+        background-color: white;
+    }
+    100% {
+        background-color: rgba(66, 66, 66, 0);
+        box-shadow: 10px 10px 7px rgb(0, 0, 0);
+        border-color: rgb(78, 230, 18);
+        color: rgb(78, 230, 18);
+    }
+}
+
+.keypad-container-background-in {
+    animation: keypadContainerBackgroundIn 7s linear forwards;
+}
+
+@keyframes keypadContainerBackgroundIn {
+    100% {
+        box-shadow: 10px 10px 7px rgb(0, 0, 0);
+        border-color: rgb(78, 230, 18);
+    }
+}
+
+.correct-card {
+
 }
