@@ -2433,11 +2433,11 @@ body {
 .player-highlight {
     background: linear-gradient(
         to right,
-        rgb(81, 255, 0),
-        rgb(56, 223, 41),
-        rgb(7, 218, 120),
-        rgb(194, 243, 17),
-        rgb(81, 255, 0)
+        rgb(0, 255, 234),
+        rgb(0, 183, 255),
+        rgb(0, 255, 200),
+        rgb(0, 89, 255),
+        rgb(0, 255, 234)
     );
     background-clip: text;
     color: transparent;
@@ -2546,7 +2546,7 @@ body {
 }
 
 .matrix-background-in {
-    animation: matrixBackgroundIn 7s linear forwards;
+    animation: matrixBackgroundIn 3s linear forwards;
 }
 
 @keyframes matrixBackgroundIn {
@@ -2556,7 +2556,7 @@ body {
 }
 
 .matrix-container-background-in {
-    animation: matrixContainerBackgroundIn 7s linear forwards;
+    animation: matrixContainerBackgroundIn 3s linear forwards;
 }
 
 @keyframes matrixContainerBackgroundIn {
@@ -2572,7 +2572,7 @@ body {
 }
 
 .keypad-container-background-in {
-    animation: keypadContainerBackgroundIn 7s linear forwards;
+    animation: keypadContainerBackgroundIn 3s linear forwards;
 }
 
 @keyframes keypadContainerBackgroundIn {
@@ -2581,6 +2581,30 @@ body {
         border-color: rgb(78, 230, 18);
     }
 }
+
+.timer-background-in {
+    animation: timerBackgroundIn 3s linear forwards;
+}
+
+@keyframes timerBackgroundIn {
+    99% {
+        background-color: rgb(0, 0, 0);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+.matrix-color {
+    animation: matrixColor 3s linear forwards
+}
+
+@keyframes matrixColor {
+    100% {
+        color: rgb(78, 230, 18);
+    }
+}
+
 
 .correct-card {
 

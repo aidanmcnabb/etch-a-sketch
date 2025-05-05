@@ -2528,15 +2528,17 @@ function playGame() {
         const leaderBoardContainer = document.body.querySelector('.leader-board')
         const baseTimer = document.querySelector('#timer')
         const svgBackground = baseTimer.querySelector('.base-timer')
-        const svgInnerBackground = svgBackground.querySelector('.base-timer-svg')
+        const svgInnerBackground = svgBackground.querySelector('.base-timer__svg')
         const svgTimeLabel = document.querySelector('#base-timer-label')
         //keypad.classList.add('keypad-container-background-in')
         matrixContainer.classList.add('matrix-container-background-in')
         scoreContainer.classList.add('matrix-container-background-in')
         leaderBoardContainer.classList.add('matrix-container-background-in')
-        //svgBackground.classList.add('matrix-container-background-in')
-        //svgInnerBackground.classList.add('matrix-container-background-in')
-        //svgTimeLabel.classList.add('matrix-container-background-in')
+        svgBackground.classList.add('matrix-background-in')
+        svgInnerBackground.classList.add('matrix-background-in')
+        svgBackground.classList.add('timer-background-in')
+        svgInnerBackground.classList.add('timer-background-in')
+        baseTimer.classList.add('matrix-color')
 
         setInterval(() => {
 
