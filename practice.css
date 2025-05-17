@@ -2622,6 +2622,14 @@ body {
     }
 }
 
+.matrix-card {
+    background-color: rgb(0, 0, 0);
+    box-shadow: 10px 10px 7px rgb(0, 0, 0);
+    border-color: rgb(78, 230, 18);
+    color: rgb(78, 230, 18);
+    text-shadow: none;
+}
+
 .card-box-border-color {
     animation: cardBoxBorderColor 3s linear forwards;
 }
@@ -2632,6 +2640,39 @@ body {
     }
 }
 
+.card-box-border {
+    border-color: rgb(78, 230, 18);
+}
+
+.invis {
+    background-color: rgba(0, 0, 0, 0);
+    border-color:  rgb(19, 56, 5);
+}
+
+.invis-border {
+    border-color:  rgb(162, 247, 128);
+}
+
+.invis-in {
+    animation: invisIn 3s linear forwards;
+}
+
+@keyframes invisIn {
+    100% {
+        background-color: rgba(0, 0, 0, 0);
+        border-color:  rgb(19, 56, 5);
+    }
+}
+
+.invis-border-in {
+    animation: invisBorderIn 3s linear forwards;
+}
+
+@keyframes invisBorderIn {
+    100% {
+        border-color:  rgb(162, 247, 128);
+    }
+}
 
 .correct-card {
 

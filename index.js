@@ -1470,10 +1470,14 @@ function playGame() {
         let card6 = document.querySelector('.card6')
         let card7 = document.querySelector('.card7')
 
+        
         card.classList.add('first-card-animation')
         card.classList.add('card')
         card.classList.add('card1')
         card.setAttribute('data-index', '1')
+        if (matrixModeON) {
+            card.classList.add('matrix-card')
+        }
 
         document.body.appendChild(card)
         setTimeout(() => {
@@ -1499,6 +1503,9 @@ function playGame() {
                 typeWriter()
                 
                 box.classList.add('box')
+                if (matrixModeON) {
+                    box.classList.add('card-box-border')
+                }
                 
                 setTimeout(() => {
                     card6 = document.querySelector('.card6')
@@ -1519,14 +1526,30 @@ function playGame() {
 
                         if (color >= 0 && color <= 0.05) {
                             square.classList.add('gray')
+                            if (matrixModeON) {
+                                square.classList.add('invis-border')
+                            }
                         } else if (color >= 0.05 && color <= .1) {
                             square.classList.add('red')
+                            if (matrixModeON) {
+                                square.classList.add('invis-border')
+                            }
                         }  else if (color >= 0.1 && color <= 0.15) {
                             square.classList.add('green')
+                            if (matrixModeON) {
+                                square.classList.add('invis-border')
+                            }
                         }  else if (color >= 0.15 && color <= 0.2) {
                             square.classList.add('blue')
+                            if (matrixModeON) {
+                                square.classList.add('invis-border')
+                            }
                         }  else if (color > 0.2 && color <= 1) {
-                            square.classList.add('white')
+                            if (matrixModeON) {
+                                square.classList.add('invis')
+                            } else {
+                                square.classList.add('white')
+                            }
                         }  
                     }
                     randomColor()
@@ -2529,7 +2552,7 @@ function playGame() {
         const card6 = document.body.querySelector('.card6')
         const card7 = document.body.querySelector('.card7')
         const box7 = card7.querySelector('.box')
-        //const box6 = card6.querySelector('.box')
+        const box6 = card6.querySelector('.box')
         const matrixContainer = document.body.querySelector('.matrix-mode-container-in')
         const scoreContainer = document.body.querySelector('.score-label')
         const leaderBoardContainer = document.body.querySelector('.leader-board')
@@ -2547,14 +2570,99 @@ function playGame() {
         svgInnerBackground.classList.add('timer-background-in')
         baseTimer.classList.add('matrix-color')
         card1.classList.add('matrix-card-background-in')
+        setTimeout(() => {
+            card1.classList.remove('matrix-card-background-in')
+            card1.classList.add('matrix-card')
+        },3000)
         card2.classList.add('matrix-card-background-in')
+        setTimeout(() => {
+            card2.classList.remove('matrix-card-background-in')
+            card2.classList.add('matrix-card')
+        },3000)
         card3.classList.add('matrix-card-background-in')
+        setTimeout(() => {
+            card3.classList.remove('matrix-card-background-in')
+            card3.classList.add('matrix-card')
+        },3000)
         card4.classList.add('matrix-card-background-in')
+        setTimeout(() => {
+            card4.classList.remove('matrix-card-background-in')
+            card4.classList.add('matrix-card')
+        },3000)
         card5.classList.add('matrix-card-background-in')
+        setTimeout(() => {
+            card5.classList.remove('matrix-card-background-in')
+            card5.classList.add('matrix-card')
+        },3000)
         card6.classList.add('matrix-card-background-in')
+        setTimeout(() => {
+            card6.classList.remove('matrix-card-background-in')
+            card6.classList.add('matrix-card')
+        },3000)
         card7.classList.add('matrix-card-background-in')
+        setTimeout(() => {
+            card7.classList.remove('matrix-card-background-in')
+            card7.classList.add('matrix-card')
+        },3000)
         box7.classList.add('card-box-border-color')
+        
+        let s = 0
+
+        for (i = 0; i < 82; i++) {
+            let nthChildWHI = box7.querySelector(`:nth-child(${s}).white`)
+            if (nthChildWHI) {
+                nthChildWHI.animate([
+                    { backgroundColor: 'rgba(0, 0, 0, 0);', borderColor: 'rgb(19, 56, 5);' }
+                  ], {
+                    duration: 3000,
+                    easing: 'linear',
+                    fill: 'forwards'
+                  });
+                nthChildWHI.classList.add('invis-in')
+            }
+            let nthChildGRA = box7.querySelector(`:nth-child(${s}).gray`)
+            if (nthChildGRA) {
+                nthChildGRA.classList.add('invis-border-in')
+                nthChildGRA.animate([
+                    { borderColor: 'rgb(162, 247, 128);' }
+                  ], {
+                    duration: 3000
+                  });
+            }
+            let nthChildRED = box7.querySelector(`:nth-child(${s}).red`)
+            if (nthChildRED) {
+                nthChildRED.classList.add('invis-border-in')
+                nthChildRED.animate([
+                    { borderColor: 'rgb(162, 247, 128);' }
+                  ], {
+                    duration: 3000
+                  });
+            }
+            let nthChildGRE = box7.querySelector(`:nth-child(${s}).green`)
+            if (nthChildGRE) {
+                nthChildGRE.classList.add('invis-border-in')
+                nthChildGRE.animate([
+                    { borderColor: 'rgb(162, 247, 128);' }
+                  ], {
+                    duration: 3000
+                  });
+            }
+            let nthChildBLU = box7.querySelector(`:nth-child(${s}).blue`)
+            if (nthChildBLU) {
+                nthChildBLU.classList.add('invis-border-in')
+                nthChildBLU.animate([
+                    { borderColor: 'rgb(162, 247, 128);' }
+                  ], {
+                    duration: 3000,
+                    easing: 'linear',
+                    fill: 'forwards'
+                  });
+            }
+            s++
+        }
+
         //box6.classList.add('card-box-border-color')
+
         keyPadContainer.animate([
             { borderColor: 'rgb(0,0,0)'},
             { borderColor: 'rgb(78, 230, 18)', boxShadow: 'none'}
@@ -2589,7 +2697,6 @@ function playGame() {
             matrixChar7.classList.add('matrix-char7')
 
             const randomLeft = Math.random() * 1920
-            console.log(randomLeft)
 
             matrixChar.style.left = `${randomLeft}px`
             matrixChar2.style.left = `${randomLeft}px`
