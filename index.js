@@ -966,6 +966,7 @@ function playGame() {
 
     let correctCard = 0
     let wrongCard =  false
+    let matrixModeON = false
 
     const startConstraint = document.createElement('div')
 
@@ -1100,6 +1101,7 @@ function playGame() {
                                 const color = window.getComputedStyle(square) ["background-color"]
                                 //console.log(color)
                                 if (color === 'rgb(255, 255, 255)') {
+                                    //if (color === 'rgb(255, 255, 255)') {
                                     square.classList.remove('mouseover-without-color')
                                     square.classList.remove('box2')
                                     square.classList.add('mouseover')
@@ -1116,6 +1118,8 @@ function playGame() {
                                             card.removeChild(startConstraint)
                                         },500)   
                                     }, 1000)
+                                //} else if (matrixModeOn === false) {
+                                    //if (color === 'transparent')
                                 } else if (color === 'rgb(128, 128, 128)') {
                                     if (chosenColor === 'gray') {   
                                         square.classList.remove('mouseover-without-color')
@@ -1880,6 +1884,7 @@ function playGame() {
     function colorPicker() {
         
         
+        
         keyPadContainer.classList.add('keypad')
         keyPadContainer.classList.add('keypad-in')
         setTimeout(() => {
@@ -2512,8 +2517,10 @@ function playGame() {
 
     function matrixModeAni() {
 
+        matrixModeON = true
+
         document.body.classList.add('matrix-background-in')
-        /*
+        
         const card1 = document.body.querySelector('.card1')
         const card2 = document.body.querySelector('.card2')
         const card3 = document.body.querySelector('.card3')
@@ -2521,8 +2528,8 @@ function playGame() {
         const card5 = document.body.querySelector('.card5')
         const card6 = document.body.querySelector('.card6')
         const card7 = document.body.querySelector('.card7')
-        */
-        const keypad = document.body.querySelector('.keypad')
+        const box7 = card7.querySelector('.box')
+        //const box6 = card6.querySelector('.box')
         const matrixContainer = document.body.querySelector('.matrix-mode-container-in')
         const scoreContainer = document.body.querySelector('.score-label')
         const leaderBoardContainer = document.body.querySelector('.leader-board')
@@ -2530,7 +2537,7 @@ function playGame() {
         const svgBackground = baseTimer.querySelector('.base-timer')
         const svgInnerBackground = svgBackground.querySelector('.base-timer__svg')
         const svgTimeLabel = document.querySelector('#base-timer-label')
-        //keypad.classList.add('keypad-container-background-in')
+
         matrixContainer.classList.add('matrix-container-background-in')
         scoreContainer.classList.add('matrix-container-background-in')
         leaderBoardContainer.classList.add('matrix-container-background-in')
@@ -2539,6 +2546,23 @@ function playGame() {
         svgBackground.classList.add('timer-background-in')
         svgInnerBackground.classList.add('timer-background-in')
         baseTimer.classList.add('matrix-color')
+        card1.classList.add('matrix-card-background-in')
+        card2.classList.add('matrix-card-background-in')
+        card3.classList.add('matrix-card-background-in')
+        card4.classList.add('matrix-card-background-in')
+        card5.classList.add('matrix-card-background-in')
+        card6.classList.add('matrix-card-background-in')
+        card7.classList.add('matrix-card-background-in')
+        box7.classList.add('card-box-border-color')
+        //box6.classList.add('card-box-border-color')
+        keyPadContainer.animate([
+            { borderColor: 'rgb(0,0,0)'},
+            { borderColor: 'rgb(78, 230, 18)', boxShadow: 'none'}
+          ], {
+            duration: 3000,
+            easing: 'linear',
+            fill: 'forwards'
+          });
 
         setInterval(() => {
 
