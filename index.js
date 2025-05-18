@@ -1095,12 +1095,15 @@ function playGame() {
                             
                             square.addEventListener('mousedown', () => {
                                 
+                                let nthChildWHI = square.classList.contains('white')
+                                let nthChildINVI = square.classList.contains('invis')
+
                                 square.classList.add('square-mouse-down')
                                 square.classList.remove('mouseover')
                                 square.classList.add('mouseover-without-color')
                                 const color = window.getComputedStyle(square) ["background-color"]
                                 //console.log(color)
-                                if (color === 'rgb(255, 255, 255)') {
+                                if (color === 'rgb(255, 255, 255)' || color === 'rgba(0,0,0,0)' || nthChildINVI || nthChildWHI) {
                                     //if (color === 'rgb(255, 255, 255)') {
                                     square.classList.remove('mouseover-without-color')
                                     square.classList.remove('box2')
@@ -1118,8 +1121,7 @@ function playGame() {
                                             card.removeChild(startConstraint)
                                         },500)   
                                     }, 1000)
-                                //} else if (matrixModeOn === false) {
-                                    //if (color === 'transparent')
+                                
                                 } else if (color === 'rgb(128, 128, 128)') {
                                     if (chosenColor === 'gray') {   
                                         square.classList.remove('mouseover-without-color')
@@ -1600,12 +1602,15 @@ function playGame() {
                     })
                     square.addEventListener('mousedown', () => {
                         
+                        let nthChildWHI = square.classList.contains('white')
+                        let nthChildINVI = square.classList.contains('invis')
+
                         square.classList.add('square-mouse-down')
                         square.classList.remove('mouseover')
                         square.classList.add('mouseover-without-color')
                         const color = window.getComputedStyle(square) ["background-color"]
                         //console.log(color)
-                        if (color === 'rgb(255, 255, 255)') {
+                        if (color === 'rgb(255, 255, 255)' || color === 'rgba(0,0,0,0)' || nthChildINVI || nthChildWHI) {
                             square.classList.remove('mouseover-without-color')
                             square.classList.remove('box2')
                             square.classList.add('mouseover')
@@ -2520,7 +2525,6 @@ function playGame() {
         } else if (correctCard === 1 && wrongCard === false) {
             console.log('correct card')
             matrixCard1.classList.add('correct-card')
-            matrixModeAni()
         } else if (correctCard === 2 && wrongCard === false) {
             console.log('correct card')
             matrixCard2.classList.add('correct-card')
@@ -2533,8 +2537,11 @@ function playGame() {
         } else if (correctCard === 5 && wrongCard === false) {
             console.log('correct card')
             matrixCard5.classList.add('correct-card')
+            matrixModeAni()
         }
     }
+
+    // i think its fookin activating matrix mode infinitaley somehow
     
     let characters = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%&ßµø¤¿ƒ†×‡▓▒░¬⌐◙○♦▼▲↔∟▬◄►☼º┼┬┴╛╜╡╢║▐▌∞≡≈∩εΩΦΣ■'
 
@@ -2552,7 +2559,7 @@ function playGame() {
         const card6 = document.body.querySelector('.card6')
         const card7 = document.body.querySelector('.card7')
         const box7 = card7.querySelector('.box')
-        const box6 = card6.querySelector('.box')
+        let box6 = card6.querySelector('.box')
         const matrixContainer = document.body.querySelector('.matrix-mode-container-in')
         const scoreContainer = document.body.querySelector('.score-label')
         const leaderBoardContainer = document.body.querySelector('.leader-board')
@@ -2607,51 +2614,58 @@ function playGame() {
         box7.classList.add('card-box-border-color')
         
         let s = 0
+        let s2 = 0
 
         for (i = 0; i < 82; i++) {
             let nthChildWHI = box7.querySelector(`:nth-child(${s}).white`)
             if (nthChildWHI) {
                 nthChildWHI.animate([
-                    { backgroundColor: 'rgba(0, 0, 0, 0);', borderColor: 'rgb(19, 56, 5);' }
+                    { backgroundColor: 'rgba(0, 0, 0, 0)', borderColor: 'rgb(19, 56, 5)' }
                   ], {
                     duration: 3000,
                     easing: 'linear',
                     fill: 'forwards'
                   });
-                nthChildWHI.classList.add('invis-in')
+                //nthChildWHI.classList.add('invis')
             }
             let nthChildGRA = box7.querySelector(`:nth-child(${s}).gray`)
             if (nthChildGRA) {
-                nthChildGRA.classList.add('invis-border-in')
+                //nthChildGRA.classList.add('invis-border')
                 nthChildGRA.animate([
-                    { borderColor: 'rgb(162, 247, 128);' }
+                    { borderColor: 'rgb(185, 245, 161)' }
                   ], {
-                    duration: 3000
+                    duration: 3000,
+                    easing: 'linear',
+                    fill: 'forwards'
                   });
             }
             let nthChildRED = box7.querySelector(`:nth-child(${s}).red`)
             if (nthChildRED) {
-                nthChildRED.classList.add('invis-border-in')
+                //nthChildRED.classList.add('invis-border')
                 nthChildRED.animate([
-                    { borderColor: 'rgb(162, 247, 128);' }
+                    { borderColor: 'rgb(185, 245, 161)' }
                   ], {
-                    duration: 3000
+                    duration: 3000,
+                    easing: 'linear',
+                    fill: 'forwards'
                   });
             }
             let nthChildGRE = box7.querySelector(`:nth-child(${s}).green`)
             if (nthChildGRE) {
-                nthChildGRE.classList.add('invis-border-in')
+                //nthChildGRE.classList.add('invis-border')
                 nthChildGRE.animate([
-                    { borderColor: 'rgb(162, 247, 128);' }
+                    { borderColor: 'rgb(185, 245, 161)' }
                   ], {
-                    duration: 3000
+                    duration: 3000,
+                    easing: 'linear',
+                    fill: 'forwards'
                   });
             }
             let nthChildBLU = box7.querySelector(`:nth-child(${s}).blue`)
             if (nthChildBLU) {
-                nthChildBLU.classList.add('invis-border-in')
+                //nthChildBLU.classList.add('invis-border')
                 nthChildBLU.animate([
-                    { borderColor: 'rgb(162, 247, 128);' }
+                    { borderColor: 'rgb(185, 245, 161)' }
                   ], {
                     duration: 3000,
                     easing: 'linear',
@@ -2661,7 +2675,67 @@ function playGame() {
             s++
         }
 
-        //box6.classList.add('card-box-border-color')
+        setTimeout(() => {
+            box6 = card6.querySelector('.box')
+            for (i = 0; i < 82; i++) { 
+                let nthChildWHI2 = box6.querySelector(`:nth-child(${s2}).white`)
+                if (nthChildWHI2) {
+                    nthChildWHI2.animate([
+                        { backgroundColor: 'rgba(0, 0, 0, 0)', borderColor: 'rgb(19, 56, 5)' }
+                    ], {
+                        duration: 3000,
+                        easing: 'linear',
+                        fill: 'forwards'
+                    });
+                    //nthChildWHI.classList.add('invis')
+                }
+                let nthChildGRA2 = box6.querySelector(`:nth-child(${s2}).gray`)
+                if (nthChildGRA2) {
+                    //nthChildGRA.classList.add('invis-border')
+                    nthChildGRA2.animate([
+                        { borderColor: 'rgb(185, 245, 161)' }
+                    ], {
+                        duration: 3000,
+                        easing: 'linear',
+                        fill: 'forwards'
+                    });
+                }
+                let nthChildRED2 = box6.querySelector(`:nth-child(${s2}).red`)
+                if (nthChildRED2) {
+                    //nthChildRED.classList.add('invis-border')
+                    nthChildRED2.animate([
+                        { borderColor: 'rgb(185, 245, 161)' }
+                    ], {
+                        duration: 3000,
+                        easing: 'linear',
+                        fill: 'forwards'
+                    });
+                }
+                let nthChildGRE2 = box6.querySelector(`:nth-child(${s2}).green`)
+                if (nthChildGRE2) {
+                    //nthChildGRE.classList.add('invis-border')
+                    nthChildGRE2.animate([
+                        { borderColor: 'rgb(185, 245, 161)' }
+                    ], {
+                        duration: 3000,
+                        easing: 'linear',
+                        fill: 'forwards'
+                    });
+                }
+                let nthChildBLU2 = box6.querySelector(`:nth-child(${s2}).blue`)
+                if (nthChildBLU2) {
+                    //nthChildBLU.classList.add('invis-border')
+                    nthChildBLU2.animate([
+                        { borderColor: 'rgb(185, 245, 161)' }
+                    ], {
+                        duration: 3000,
+                        easing: 'linear',
+                        fill: 'forwards'
+                    });
+                }
+                s2++
+            }
+        },1000)   
 
         keyPadContainer.animate([
             { borderColor: 'rgb(0,0,0)'},
