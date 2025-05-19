@@ -967,6 +967,7 @@ function playGame() {
     let correctCard = 0
     let wrongCard =  false
     let matrixModeON = false
+    let playMatrixCharOnce = false
 
     const startConstraint = document.createElement('div')
 
@@ -1109,9 +1110,10 @@ function playGame() {
                                     square.classList.remove('box2')
                                     square.classList.add('mouseover')
                                     square.classList.add('bad')
-                                    wrongCard = true
-                                    correct = 0
+                                    //wrongCard = true
+                                    correctCard = 0
                                     correctCardCounter()
+                                    stopMatrixModeAni()
                                     card.appendChild(startConstraint)
                                     startConstraint.classList.add('wrong-square')
                                     setTimeout(() => {
@@ -1141,9 +1143,10 @@ function playGame() {
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
-                                        wrongCard = true
-                                        correct = 0
+                                        //wrongCard = true
+                                        correctCard = 0
                                         correctCardCounter()
+                                        stopMatrixModeAni()
                                         card.appendChild(startConstraint)
                                         startConstraint.classList.add('wrong-square')
                                         setTimeout(() => {
@@ -1173,9 +1176,10 @@ function playGame() {
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
-                                        wrongCard = true
-                                        correct = 0
+                                        //wrongCard = true
+                                        correctCard = 0
                                         correctCardCounter()
+                                        stopMatrixModeAni()
                                         card.appendChild(startConstraint)
                                         startConstraint.classList.add('wrong-square')
                                         setTimeout(() => {
@@ -1204,9 +1208,10 @@ function playGame() {
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
-                                        wrongCard = true
-                                        correct = 0
+                                        //wrongCard = true
+                                        correctCard = 0
                                         correctCardCounter()
+                                        stopMatrixModeAni()
                                         card.appendChild(startConstraint)
                                         startConstraint.classList.add('wrong-square')
                                         setTimeout(() => {
@@ -1235,9 +1240,10 @@ function playGame() {
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
-                                        wrongCard = true
-                                        correct = 0
+                                        //wrongCard = true
+                                        correctCard = 0
                                         correctCardCounter()
+                                        stopMatrixModeAni()
                                         card.appendChild(startConstraint)
                                         startConstraint.classList.add('wrong-square')
                                         setTimeout(() => {
@@ -1615,9 +1621,10 @@ function playGame() {
                             square.classList.remove('box2')
                             square.classList.add('mouseover')
                             square.classList.add('bad')
-                            wrongCard = true
-                            correct = 0
+                            //wrongCard = true
+                            correctCard = 0
                             correctCardCounter()
+                            stopMatrixModeAni()
                             card7 = document.querySelector('.card7')
                             card7.appendChild(startConstraint)
                             startConstraint.classList.add('wrong-square')
@@ -1642,9 +1649,10 @@ function playGame() {
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
-                                wrongCard = true
-                                correct = 0
+                                //wrongCard = true
+                                correctCard = 0
                                 correctCardCounter()
+                                stopMatrixModeAni()
                                 card7 = document.querySelector('.card7')
                                 card7.appendChild(startConstraint)
                                 startConstraint.classList.add('wrong-square')
@@ -1669,9 +1677,10 @@ function playGame() {
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
-                                wrongCard = true
-                                correct = 0
+                                //wrongCard = true
+                                correctCard = 0
                                 correctCardCounter()
+                                stopMatrixModeAni()
                                 card7 = document.querySelector('.card7')
                                 card7.appendChild(startConstraint)
                                 startConstraint.classList.add('wrong-square')
@@ -1696,9 +1705,10 @@ function playGame() {
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
-                                wrongCard = true
-                                correct = 0
+                                //wrongCard = true
+                                correctCard = 0
                                 correctCardCounter()
+                                stopMatrixModeAni()
                                 card7 = document.querySelector('.card7')
                                 card7.appendChild(startConstraint)
                                 startConstraint.classList.add('wrong-square')
@@ -1724,9 +1734,10 @@ function playGame() {
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
-                                wrongCard = true
-                                correct = 0
+                                //wrongCard = true
+                                correctCard = 0
                                 correctCardCounter()
+                                stopMatrixModeAni()
                                 card7 = document.querySelector('.card7')
                                 card7.appendChild(startConstraint)
                                 startConstraint.classList.add('wrong-square')
@@ -2163,7 +2174,7 @@ function playGame() {
         {name: 'SHIESTYP', score: 3},
         {name: 'coMMas', score: 10},
         {name: 'whoDatboy',score: 19},
-        {name: 'tkeForever420', score: 40},
+        {name: 'evelyn <3', score: 40},
     ]
 
     function sortObjectsDescending(arr) {
@@ -2524,6 +2535,7 @@ function playGame() {
             },710)
         } else if (correctCard === 1 && wrongCard === false) {
             console.log('correct card')
+            matrixModeAni()
             matrixCard1.classList.add('correct-card')
         } else if (correctCard === 2 && wrongCard === false) {
             console.log('correct card')
@@ -2537,7 +2549,7 @@ function playGame() {
         } else if (correctCard === 5 && wrongCard === false) {
             console.log('correct card')
             matrixCard5.classList.add('correct-card')
-            matrixModeAni()
+            
         }
     }
 
@@ -2549,6 +2561,7 @@ function playGame() {
 
         matrixModeON = true
 
+        document.body.classList.remove('matrix-background-out')
         document.body.classList.add('matrix-background-in')
         
         const card1 = document.body.querySelector('.card1')
@@ -2568,8 +2581,16 @@ function playGame() {
         const svgInnerBackground = svgBackground.querySelector('.base-timer__svg')
         const svgTimeLabel = document.querySelector('#base-timer-label')
 
+        svgBackground.classList.remove('timer-background-out')
+        svgInnerBackground.classList.remove('timer-background-out')
+        svgInnerBackground.classList.remove('matrix-background-out')
+        baseTimer.classList.remove('matrix-color-out')
+        svgBackground.classList.remove('matrix-background-out')
+        matrixContainer.classList.remove('matrix-container-background-out')
         matrixContainer.classList.add('matrix-container-background-in')
+        scoreContainer.classList.remove('matrix-container-background-out')
         scoreContainer.classList.add('matrix-container-background-in')
+        leaderBoardContainer.classList.remove('matrix-container-background-out')
         leaderBoardContainer.classList.add('matrix-container-background-in')
         svgBackground.classList.add('matrix-background-in')
         svgInnerBackground.classList.add('matrix-background-in')
@@ -2611,7 +2632,7 @@ function playGame() {
             card7.classList.remove('matrix-card-background-in')
             card7.classList.add('matrix-card')
         },3000)
-        box7.classList.add('card-box-border-color')
+        //box7.classList.add('card-box-border-color')
         
         let s = 0
         let s2 = 0
@@ -2745,134 +2766,364 @@ function playGame() {
             easing: 'linear',
             fill: 'forwards'
           });
+          box7.animate([
+            { borderColor: 'rgb(0,0,0)'},
+            { borderColor: 'rgb(78, 230, 18)'}
+            ], {
+            duration: 3000,
+            easing: 'linear',
+            fill: 'forwards'
+        })
 
-        setInterval(() => {
-
-            let randomCharacter2 = undefined
-            let randomCharacter3 = undefined
-            let randomCharacter4 = undefined
-            let randomCharacter5 = undefined
-            let randomCharacter6 = undefined
-            let randomCharacter7 = undefined
-
-            const matrixChar = document.createElement('div')
-            matrixChar.classList.add('matrix-char')
-            const matrixChar2 = document.createElement('div')
-            matrixChar2.classList.add('matrix-char2')
-            const matrixChar3 = document.createElement('div')
-            matrixChar3.classList.add('matrix-char3')
-            const matrixChar4 = document.createElement('div')
-            matrixChar4.classList.add('matrix-char4')
-            const matrixChar5 = document.createElement('div')
-            matrixChar5.classList.add('matrix-char5')
-            const matrixChar6 = document.createElement('div')
-            matrixChar6.classList.add('matrix-char6')
-            const matrixChar7 = document.createElement('div')
-            matrixChar7.classList.add('matrix-char7')
-
-            const randomLeft = Math.random() * 1920
-
-            matrixChar.style.left = `${randomLeft}px`
-            matrixChar2.style.left = `${randomLeft}px`
-            matrixChar3.style.left =`${randomLeft}px`
-            matrixChar4.style.left =`${randomLeft}px`
-            matrixChar5.style.left =`${randomLeft}px`
-            matrixChar6.style.left =`${randomLeft}px`
-            matrixChar7.style.left =`${randomLeft}px`
-
-            document.body.appendChild(matrixChar)
+        if (!playMatrixCharOnce) {
             setInterval(() => {
-                const randomIndex = Math.floor(Math.random() * characters.length)
-                let randomCharacter = characters.charAt(randomIndex)
-                matrixChar.textContent = randomCharacter
-                setTimeout(() => {
-                    randomCharacter2 = randomCharacter
-                },160)
-            },175)
-            setTimeout(() => {
-                document.body.removeChild(matrixChar)
-            },25000)
 
-            setTimeout(() => {
-                document.body.appendChild(matrixChar2)
+                let randomCharacter2 = undefined
+                let randomCharacter3 = undefined
+                let randomCharacter4 = undefined
+                let randomCharacter5 = undefined
+                let randomCharacter6 = undefined
+                let randomCharacter7 = undefined
+
+                const matrixChar = document.createElement('div')
+                matrixChar.classList.add('matrix-char')
+                const matrixChar2 = document.createElement('div')
+                matrixChar2.classList.add('matrix-char2')
+                const matrixChar3 = document.createElement('div')
+                matrixChar3.classList.add('matrix-char3')
+                const matrixChar4 = document.createElement('div')
+                matrixChar4.classList.add('matrix-char4')
+                const matrixChar5 = document.createElement('div')
+                matrixChar5.classList.add('matrix-char5')
+                const matrixChar6 = document.createElement('div')
+                matrixChar6.classList.add('matrix-char6')
+                const matrixChar7 = document.createElement('div')
+                matrixChar7.classList.add('matrix-char7')
+
+                const randomLeft = Math.random() * 1920
+
+                matrixChar.style.left = `${randomLeft}px`
+                matrixChar2.style.left = `${randomLeft}px`
+                matrixChar3.style.left =`${randomLeft}px`
+                matrixChar4.style.left =`${randomLeft}px`
+                matrixChar5.style.left =`${randomLeft}px`
+                matrixChar6.style.left =`${randomLeft}px`
+                matrixChar7.style.left =`${randomLeft}px`
+
+                document.body.appendChild(matrixChar)
                 setInterval(() => {
-                    matrixChar2.textContent = randomCharacter2
+                    const randomIndex = Math.floor(Math.random() * characters.length)
+                    let randomCharacter = characters.charAt(randomIndex)
+                    matrixChar.textContent = randomCharacter
                     setTimeout(() => {
-                        randomCharacter3 = randomCharacter2
-                    },17)
+                        randomCharacter2 = randomCharacter
+                    },160)
                 },175)
                 setTimeout(() => {
-                    document.body.removeChild(matrixChar2)
+                    document.body.removeChild(matrixChar)
                 },25000)
-            },175)
 
-            setTimeout(() => {
-                document.body.appendChild(matrixChar3)
-                setInterval(() => {
+                setTimeout(() => {
+                    document.body.appendChild(matrixChar2)
+                    setInterval(() => {
+                        matrixChar2.textContent = randomCharacter2
+                        setTimeout(() => {
+                            randomCharacter3 = randomCharacter2
+                        },17)
+                    },175)
                     setTimeout(() => {
-                        randomCharacter4 = randomCharacter3
-                    },180)
-                    matrixChar3.textContent = randomCharacter3
+                        document.body.removeChild(matrixChar2)
+                    },25000)
                 },175)
-                setTimeout(() => {
-                    document.body.removeChild(matrixChar3)
-                },25000)
-            },350)
 
-            setTimeout(() => {
-                document.body.appendChild(matrixChar4)
-                setInterval(() => {
-                    randomCharacter5 = randomCharacter4
-                    matrixChar4.textContent = randomCharacter4
-                },175)
                 setTimeout(() => {
-                    document.body.removeChild(matrixChar4)
-                },25000)
-            },525)
-
-            setTimeout(() => {
-                document.body.appendChild(matrixChar5)
-                setInterval(() => {
+                    document.body.appendChild(matrixChar3)
+                    setInterval(() => {
+                        setTimeout(() => {
+                            randomCharacter4 = randomCharacter3
+                        },180)
+                        matrixChar3.textContent = randomCharacter3
+                    },175)
                     setTimeout(() => {
-                        randomCharacter6 = randomCharacter5
-                    },150)
-                    matrixChar5.textContent = randomCharacter5
-                },175)
-                setTimeout(() => {
-                    document.body.removeChild(matrixChar5)
-                },25000)
-            },700)
+                        document.body.removeChild(matrixChar3)
+                    },25000)
+                },350)
 
-            setTimeout(() => {
-                document.body.appendChild(matrixChar6)
-                setInterval(() => {
+                setTimeout(() => {
+                    document.body.appendChild(matrixChar4)
+                    setInterval(() => {
+                        randomCharacter5 = randomCharacter4
+                        matrixChar4.textContent = randomCharacter4
+                    },175)
                     setTimeout(() => {
-                        randomCharacter7 = randomCharacter6
-                    },140)
-                    matrixChar6.textContent = randomCharacter6
-                },175)
-                setTimeout(() => {
-                    document.body.removeChild(matrixChar6)
-                },25000)
-            },875)
+                        document.body.removeChild(matrixChar4)
+                    },25000)
+                },525)
 
-            setTimeout(() => {
-                document.body.appendChild(matrixChar7)
-                setInterval(() => {
-                    matrixChar7.textContent = randomCharacter7
-                },175)
                 setTimeout(() => {
-                    document.body.removeChild(matrixChar7)
-                },25000)
-            },1050)
+                    document.body.appendChild(matrixChar5)
+                    setInterval(() => {
+                        setTimeout(() => {
+                            randomCharacter6 = randomCharacter5
+                        },150)
+                        matrixChar5.textContent = randomCharacter5
+                    },175)
+                    setTimeout(() => {
+                        document.body.removeChild(matrixChar5)
+                    },25000)
+                },700)
 
-        },1900)
+                setTimeout(() => {
+                    document.body.appendChild(matrixChar6)
+                    setInterval(() => {
+                        setTimeout(() => {
+                            randomCharacter7 = randomCharacter6
+                        },140)
+                        matrixChar6.textContent = randomCharacter6
+                    },175)
+                    setTimeout(() => {
+                        document.body.removeChild(matrixChar6)
+                    },25000)
+                },875)
+
+                setTimeout(() => {
+                    document.body.appendChild(matrixChar7)
+                    setInterval(() => {
+                        matrixChar7.textContent = randomCharacter7
+                    },175)
+                    setTimeout(() => {
+                        document.body.removeChild(matrixChar7)
+                    },25000)
+                    playMatrixCharOnce = true
+                },1050)
+
+            },1900)
+        }
     }
 
-        //the only data I should be pulling for matrix mode, is the scoreNumber.  that should be absolutely it, i will have to reset matrix mode counter at onTimesUp(),which also shouldn't be an issue with the counter being definied out of scope. what i want to do is once 5 cards are completed without error, total page background changes... maybe even every single card will change. i wanted the borders to light up green, and the div background colors to become darker.  just basically everything that has a background is darker, and all text and borders are accentuated in a green/glowing-green color.  also, theres the falling numbers..........................pretty sure this is why they have grid. im gonna do it without grid. it will be with fixed positioning, and the left attribute will have a random number between beggining of left and end of page viewbox. these numbers will automatically have a transform translate animation, and I will probably have to make a div inside the div to add other animations because of my issues with adding multiple infinite animations on a fixed div. just gotta fuxk with the animations and see what works best
+    function stopMatrixModeAni() {
+        if (matrixModeON) {   
+            document.body.classList.remove('matrix-background-in')
+            document.body.classList.add('matrix-background-out')
+            
+            const card1 = document.body.querySelector('.card1')
+            const card2 = document.body.querySelector('.card2')
+            const card3 = document.body.querySelector('.card3')
+            const card4 = document.body.querySelector('.card4')
+            const card5 = document.body.querySelector('.card5')
+            const card6 = document.body.querySelector('.card6')
+            const card7 = document.body.querySelector('.card7')
+            const box7 = card7.querySelector('.box')
+            let box6 = card6.querySelector('.box')
+            const matrixContainer = document.body.querySelector('.matrix-mode-container-in')
+            const scoreContainer = document.body.querySelector('.score-label')
+            const leaderBoardContainer = document.body.querySelector('.leader-board')
+            const baseTimer = document.querySelector('#timer')
+            const svgBackground = baseTimer.querySelector('.base-timer')
+            const svgInnerBackground = svgBackground.querySelector('.base-timer__svg')
+            const svgTimeLabel = document.querySelector('#base-timer-label')
 
+            svgInnerBackground.classList.remove('matrix-background-in')
+            baseTimer.classList.remove('matrix-color')
+            svgBackground.classList.remove('matrix-background-in')
+            matrixContainer.classList.remove('matrix-container-background-in')
+            matrixContainer.classList.add('matrix-container-background-out')
+            scoreContainer.classList.remove('matrix-container-background-in')
+            scoreContainer.classList.add('matrix-container-background-out')
+            leaderBoardContainer.classList.remove('matrix-container-background-in')
+            leaderBoardContainer.classList.add('matrix-container-background-out')
+            svgBackground.classList.add('matrix-background-out')
+            svgInnerBackground.classList.add('matrix-background-out')
+            svgBackground.classList.add('timer-background-out')
+            svgInnerBackground.classList.add('timer-background-out')
+            baseTimer.classList.add('matrix-color-out')
+            card1.classList.add('matrix-card-background-out')
+            setTimeout(() => {
+                card1.classList.remove('matrix-card')
+                card1.classList.remove('matrix-card-background-out')
+                card1.classList.add('card1')
+            },3000)
+            card2.classList.add('matrix-card-background-out')
+            setTimeout(() => {
+                card2.classList.remove('matrix-card')
+                card2.classList.remove('matrix-card-background-out')
+                card2.classList.add('card2')
+            },3000)
+            card3.classList.add('matrix-card-background-out')
+            setTimeout(() => {
+                card3.classList.remove('matrix-card')
+                card3.classList.remove('matrix-card-background-out')
+                card3.classList.add('card3')
+            },3000)
+            card4.classList.add('matrix-card-background-out')
+            setTimeout(() => {
+                card4.classList.remove('matrix-card')
+                card4.classList.remove('matrix-card-background-out')
+                card4.classList.add('card4')
+            },3000)
+            card5.classList.add('matrix-card-background-out')
+            setTimeout(() => {
+                card5.classList.remove('matrix-card')
+                card5.classList.remove('matrix-card-background-out')
+                card5.classList.add('card5')
+            },3000)
+            card6.classList.add('matrix-card-background-out')
+            setTimeout(() => {
+                card6.classList.remove('matrix-card')
+                card6.classList.remove('matrix-card-background-out')
+                card6.classList.add('card6')
+            },3000)
+            card7.classList.add('matrix-card-background-out')
+            setTimeout(() => {
+                card7.classList.remove('matrix-card')
+                card7.classList.remove('matrix-card-background-out')
+                card7.classList.add('card7')
+            },3000)
+            matrixModeON = false
 
+            keyPadContainer.animate([
+                { borderColor: 'rgb(78, 230, 18)'},
+                { borderColor: 'rgb(0,0,0)', boxShadow: '10px 5px 5px rgba(138, 138, 138, 0.719)'}
+                ], {
+                duration: 1000,
+                easing: 'linear',
+                fill: 'forwards'
+            })
+
+            box7.animate([
+                { borderColor: 'rgb(78, 230, 18)'},
+                {borderColor: 'rgb(0,0,0)'}
+                ], {
+                duration: 1000,
+                easing: 'linear',
+                fill: 'forwards'
+            })
     
+            let s = 0
+            let s2 = 0
+        
+            for (i = 0; i < 82; i++) {
+                let nthChildWHI = box7.querySelector(`:nth-child(${s}).white`)
+                if (nthChildWHI) {
+                    nthChildWHI.animate([
+                        { backgroundColor: 'rgb(255, 255, 255)', borderColor: 'rgb(0,0,0)' }
+                        ], {
+                        duration: 1000,
+                        easing: 'linear',
+                        fill: 'forwards'
+                        });
+                    //nthChildWHI.classList.add('invis')
+                }
+                let nthChildGRA = box7.querySelector(`:nth-child(${s}).gray`)
+                if (nthChildGRA) {
+                    //nthChildGRA.classList.add('invis-border')
+                    nthChildGRA.animate([
+                        { borderColor: 'black' }
+                        ], {
+                        duration: 1000,
+                        easing: 'linear',
+                        fill: 'forwards'
+                        });
+                }
+                let nthChildRED = box7.querySelector(`:nth-child(${s}).red`)
+                if (nthChildRED) {
+                    //nthChildRED.classList.add('invis-border')
+                    nthChildRED.animate([
+                        { borderColor: 'black' }
+                        ], {
+                        duration: 1000,
+                        easing: 'linear',
+                        fill: 'forwards'
+                        });
+                }
+                let nthChildGRE = box7.querySelector(`:nth-child(${s}).green`)
+                if (nthChildGRE) {
+                    //nthChildGRE.classList.add('invis-border')
+                    nthChildGRE.animate([
+                        { borderColor: 'black' }
+                        ], {
+                        duration: 1000,
+                        easing: 'linear',
+                        fill: 'forwards'
+                        });
+                }
+                let nthChildBLU = box7.querySelector(`:nth-child(${s}).blue`)
+                if (nthChildBLU) {
+                    //nthChildBLU.classList.add('invis-border')
+                    nthChildBLU.animate([
+                        { borderColor: 'black' }
+                        ], {
+                        duration: 1000,
+                        easing: 'linear',
+                        fill: 'forwards'
+                        });
+                }
+                s++
+            }
+    
+            setTimeout(() => {
+                box6 = card6.querySelector('.box')
+                for (i = 0; i < 82; i++) { 
+                    let nthChildWHI2 = box6.querySelector(`:nth-child(${s2}).white`)
+                    if (nthChildWHI2) {
+                        nthChildWHI2.animate([
+                            { backgroundColor: 'rgb(255,255,255)', borderColor: 'rgb(0,0,0)' }
+                        ], {
+                            duration: 1000,
+                            easing: 'linear',
+                            fill: 'forwards'
+                        });
+                        //nthChildWHI.classList.add('invis')
+                    }
+                    let nthChildGRA2 = box6.querySelector(`:nth-child(${s2}).gray`)
+                    if (nthChildGRA2) {
+                        //nthChildGRA.classList.add('invis-border')
+                        nthChildGRA2.animate([
+                            { borderColor: 'black' }
+                        ], {
+                            duration: 1000,
+                            easing: 'linear',
+                            fill: 'forwards'
+                        });
+                    }
+                    let nthChildRED2 = box6.querySelector(`:nth-child(${s2}).red`)
+                    if (nthChildRED2) {
+                        //nthChildRED.classList.add('invis-border')
+                        nthChildRED2.animate([
+                            { borderColor: 'black' }
+                        ], {
+                            duration: 1000,
+                            easing: 'linear',
+                            fill: 'forwards'
+                        });
+                    }
+                    let nthChildGRE2 = box6.querySelector(`:nth-child(${s2}).green`)
+                    if (nthChildGRE2) {
+                        //nthChildGRE.classList.add('invis-border')
+                        nthChildGRE2.animate([
+                            { borderColor: 'black' }
+                        ], {
+                            duration: 1000,
+                            easing: 'linear',
+                            fill: 'forwards'
+                        });
+                    }
+                    let nthChildBLU2 = box6.querySelector(`:nth-child(${s2}).blue`)
+                    if (nthChildBLU2) {
+                        //nthChildBLU.classList.add('invis-border')
+                        nthChildBLU2.animate([
+                            { borderColor: 'black' }
+                        ], {
+                            duration: 1000,
+                            easing: 'linear',
+                            fill: 'forwards'
+                        });
+                    }
+                    s2++
+                }
+            },1000)  
+        }
+    }
     
     function startButton() {
         
@@ -2903,8 +3154,6 @@ function playGame() {
                 
                 startButton.addEventListener('click', () => {
                 
-
-
                     startButton.disabled = true
                     startButton.classList.add('start-button-press')
                     setTimeout(() => {
@@ -2950,7 +3199,7 @@ function playGame() {
                     },6200)                 
                 })  
             },2500)
-            
+        
     }
 
     function levels() {

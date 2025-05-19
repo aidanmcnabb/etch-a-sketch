@@ -2700,3 +2700,93 @@ body {
         background-color: rgb(55, 224, 55);
     }
 }
+
+.matrix-background-out {
+    animation: matrixBackgroundOut 1s linear forwards;
+}
+
+@keyframes matrixBackgroundOut {
+    0% {
+        background-color: black;
+    }
+    100% {
+        background-color: white;
+    }
+}
+
+.matrix-container-background-out {
+    animation: matrixContainerBackgroundOut 1s linear forwards;
+}
+
+@keyframes matrixContainerBackgroundOut {
+    0% {
+        background-color: black;
+        box-shadow: 10px 10px 7px rgb(0, 0, 0);
+    }
+    100% {
+        background-color: white;
+        box-shadow: 10px 5px 5px rgba(138, 138, 138, 0.719);
+        border-color: black;
+        color: black;
+    }
+}
+
+.keypad-container-background-out {
+    animation: keypadContainerBackgroundOut 1s linear forwards;
+}
+
+@keyframes keypadContainerBackgroundOut {
+    0% {
+        border-color: rgb(78, 230, 18);
+        box-shadow: 10px 10px 7px rgb(0, 0, 0);
+    }
+    100% {
+        box-shadow: 10px 5px 5px rgba(138, 138, 138, 0.719);
+        border-color: black;
+    }
+}
+
+.timer-background-out {
+    animation: timerBackgroundOut 1s linear forwards;
+}
+
+@keyframes timerBackgroundOut {
+    0% {
+        background-color: black;
+    }
+    100% {
+        background-color: white;
+    }
+}
+
+.matrix-color-out {
+    animation: matrixColorOut 1s linear forwards
+}
+
+@keyframes matrixColorOut {
+    0% {
+        color: rgb(78, 230, 18);
+    }
+    100% {
+        color: black;
+    }
+}
+
+.matrix-card-background-out {
+    animation: matrixCardBackgroundOut 1s linear forwards;
+}
+
+@keyframes matrixCardBackgroundOut {
+    0% {
+        background-color: black;
+        box-shadow: 10px 10px 7px rgb(0, 0, 0);
+        text-shadow: none;
+    }
+    100% {
+        background-color: white;
+        box-shadow: 10px 5px 5px rgba(138, 138, 138, 0.719);
+        border-color: black;
+        color: black;
+        text-shadow: 10px 5px 5px rgb(180, 180, 180);
+    }
+}
