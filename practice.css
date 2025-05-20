@@ -2790,3 +2790,21 @@ body {
         text-shadow: 10px 5px 5px rgb(180, 180, 180);
     }
 }
+
+.correct-card-out {
+    animation: correctCardOut .7s infinite ease;
+}
+@keyframes correctCardOut {
+    0% {
+        background-color: white;
+
+    }
+    50% {
+        background-color: rgb(255, 0, 0);
+        transform: scale(1.05);
+    }
+    100% {
+        background-color: white;
+        transform: rotate(15deg) scale(.7);
+    }
+}

@@ -1111,6 +1111,7 @@ function playGame() {
                                     square.classList.add('mouseover')
                                     square.classList.add('bad')
                                     //wrongCard = true
+                                    wrongCardCheck()
                                     correctCard = 0
                                     correctCardCounter()
                                     stopMatrixModeAni()
@@ -1144,6 +1145,7 @@ function playGame() {
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
                                         //wrongCard = true
+                                        wrongCardCheck()
                                         correctCard = 0
                                         correctCardCounter()
                                         stopMatrixModeAni()
@@ -1177,6 +1179,7 @@ function playGame() {
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
                                         //wrongCard = true
+                                        wrongCardCheck()
                                         correctCard = 0
                                         correctCardCounter()
                                         stopMatrixModeAni()
@@ -1209,6 +1212,7 @@ function playGame() {
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
                                         //wrongCard = true
+                                        wrongCardCheck()
                                         correctCard = 0
                                         correctCardCounter()
                                         stopMatrixModeAni()
@@ -1241,6 +1245,7 @@ function playGame() {
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
                                         //wrongCard = true
+                                        wrongCardCheck()
                                         correctCard = 0
                                         correctCardCounter()
                                         stopMatrixModeAni()
@@ -1622,6 +1627,7 @@ function playGame() {
                             square.classList.add('mouseover')
                             square.classList.add('bad')
                             //wrongCard = true
+                            wrongCardCheck()
                             correctCard = 0
                             correctCardCounter()
                             stopMatrixModeAni()
@@ -1650,6 +1656,7 @@ function playGame() {
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
                                 //wrongCard = true
+                                wrongCardCheck()
                                 correctCard = 0
                                 correctCardCounter()
                                 stopMatrixModeAni()
@@ -1678,6 +1685,7 @@ function playGame() {
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
                                 //wrongCard = true
+                                wrongCardCheck()
                                 correctCard = 0
                                 correctCardCounter()
                                 stopMatrixModeAni()
@@ -1706,6 +1714,7 @@ function playGame() {
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
                                 //wrongCard = true
+                                wrongCardCheck()
                                 correctCard = 0
                                 correctCardCounter()
                                 stopMatrixModeAni()
@@ -1735,6 +1744,7 @@ function playGame() {
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
                                 //wrongCard = true
+                                wrongCardCheck()
                                 correctCard = 0
                                 correctCardCounter()
                                 stopMatrixModeAni()
@@ -2492,63 +2502,58 @@ function playGame() {
             },500)
             setTimeout(() => {
                 matrixCard1.classList.remove('tiny-matrix-card-in')
-                matrixCard1.classList.remove('tiny-matrix-card-in')
-                matrixCard1.classList.remove('tiny-matrix-card-in')
-                matrixCard1.classList.remove('tiny-matrix-card-in')
-                matrixCard1.classList.remove('tiny-matrix-card-in')
+                matrixCard2.classList.remove('tiny-matrix-card-in')
+                matrixCard3.classList.remove('tiny-matrix-card-in')
+                matrixCard4.classList.remove('tiny-matrix-card-in')
+                matrixCard5.classList.remove('tiny-matrix-card-in')
             },710)
         },4200)  
     }
     createMatrixCards()
 
     function correctCardCounter() {
-        //correctCard = #
-        //wrongCard = boolean
-        if (correctCard === 0 && wrongCard === true) {
-            console.log('cards reset')
-            setTimeout(() => {
-                matrixCard5.classList.remove('correct-card')
-                matrixCard5.classList.add('correct-card-out')
-            },100)
-            setTimeout(() => {
-                matrixCard4.classList.remove('correct-card')
-                matrixCard4.classList.add('correct-card-out')
-            },200)
-            setTimeout(() => {
-                matrixCard3.classList.remove('correct-card')
-                matrixCard3.classList.add('correct-card-out')
-            },300)
-            setTimeout(() => {
-                matrixCard2.classList.remove('correct-card')
-                matrixCard2.classList.add('correct-card-out')
-            },400)
-            setTimeout(() => {
-                matrixCard1.classList.remove('correct-card')
-                matrixCard1.classList.add('correct-card-out')
-            },500)
+
+        if (correctCard === 1) {
+            console.log('correct card')
+            matrixModeAni()
+            matrixCard1.classList.add('correct-card')
+        } else if (correctCard === 2) {
+            console.log('correct card')
+            matrixCard2.classList.add('correct-card')
+        } else if (correctCard === 3) {
+            console.log('correct card')
+            matrixCard3.classList.add('correct-card')
+        } else if (correctCard === 4) {
+            console.log('correct card')
+            matrixCard4.classList.add('correct-card')
+        } else if (correctCard === 5) {
+            console.log('correct card')
+            matrixCard5.classList.add('correct-card')
+            
+        }
+    }
+
+    function wrongCardCheck() {
+        console.log('cards reset')
+        if (correctCard === 1 || correctCard === 2 || correctCard === 3 || correctCard === 4 || correctCard >= 5) {
+            matrixCard5.classList.remove('correct-card')
+            matrixCard5.classList.add('correct-card-out')
+            matrixCard4.classList.remove('correct-card')
+            matrixCard4.classList.add('correct-card-out')
+            matrixCard3.classList.remove('correct-card')
+            matrixCard3.classList.add('correct-card-out')
+            matrixCard2.classList.remove('correct-card')
+            matrixCard2.classList.add('correct-card-out')
+            matrixCard1.classList.remove('correct-card')
+            matrixCard1.classList.add('correct-card-out')
+
             setTimeout(() => {
                 matrixCard1.classList.remove('correct-card-out')
                 matrixCard2.classList.remove('correct-card-out')
                 matrixCard3.classList.remove('correct-card-out')
                 matrixCard4.classList.remove('correct-card-out')
                 matrixCard5.classList.remove('correct-card-out')
-            },710)
-        } else if (correctCard === 1 && wrongCard === false) {
-            console.log('correct card')
-            matrixModeAni()
-            matrixCard1.classList.add('correct-card')
-        } else if (correctCard === 2 && wrongCard === false) {
-            console.log('correct card')
-            matrixCard2.classList.add('correct-card')
-        } else if (correctCard === 3 && wrongCard === false) {
-            console.log('correct card')
-            matrixCard3.classList.add('correct-card')
-        } else if (correctCard === 4 && wrongCard === false) {
-            console.log('correct card')
-            matrixCard4.classList.add('correct-card')
-        } else if (correctCard === 5 && wrongCard === false) {
-            console.log('correct card')
-            matrixCard5.classList.add('correct-card')
+            },1401)
             
         }
     }
@@ -2558,6 +2563,26 @@ function playGame() {
     let characters = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%&ßµø¤¿ƒ†×‡▓▒░¬⌐◙○♦▼▲↔∟▬◄►☼º┼┬┴╛╜╡╢║▐▌∞≡≈∩εΩΦΣ■'
 
     function matrixModeAni() {
+
+        //so i wont be able to clear the interval out of scope i dont think so i could just put a giant div over the background??  thats going to look super fucking retarded though and be terrible for shitty pc's.  now there is a way to call it the interval and reset it out of scope but I would have to make them functions.
+
+        /* You need to define the interval variable outside of the function scope so that subsequent calls to the callMyInterval will refer to the same instance.
+
+        You have defined it in the local scope of the function so every call to callMyInterval will refer to a new variable instance so you will not get reference to the previous timer.
+
+        var myIntervalRef;
+
+        function callMyInterval() {
+        var parent = document.getElementById("element");
+        if (parent.firstChild) {
+            clearInterval(myIntervalRef);
+            while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+            }
+        }
+        myIntervalRef = setMyInterval(parent);
+        } 
+        */
 
         matrixModeON = true
 
@@ -2902,27 +2927,6 @@ function playGame() {
     }
 
     function stopMatrixModeAni() {
-        
-        //so i wont be able to clear the interval out of scope i dont think so i could just put a giant div over the background??  thats going to look super fucking retarded though and be terrible for shitty pc's.  now there is a way to call it the interval and reset it out of scope but I would have to make them functions.
-
-        /* You need to define the interval variable outside of the function scope so that subsequent calls to the callMyInterval will refer to the same instance.
-
-        You have defined it in the local scope of the function so every call to callMyInterval will refer to a new variable instance so you will not get reference to the previous timer.
-
-        var myIntervalRef;
-
-        function callMyInterval() {
-        var parent = document.getElementById("element");
-        if (parent.firstChild) {
-            clearInterval(myIntervalRef);
-            while (parent.firstChild) {
-            parent.removeChild(parent.firstChild);
-            }
-        }
-        myIntervalRef = setMyInterval(parent);
-        } 
-        */
-        
         if (matrixModeON) {   
             document.body.classList.remove('matrix-background-in')
             document.body.classList.add('matrix-background-out')
@@ -3142,6 +3146,7 @@ function playGame() {
                     }
                     s2++
                 }
+                playMatrixCharOnce = false
             },1000)  
         }
     }
