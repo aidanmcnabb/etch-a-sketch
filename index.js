@@ -2902,6 +2902,27 @@ function playGame() {
     }
 
     function stopMatrixModeAni() {
+        
+        //so i wont be able to clear the interval out of scope i dont think so i could just put a giant div over the background??  thats going to look super fucking retarded though and be terrible for shitty pc's.  now there is a way to call it the interval and reset it out of scope but I would have to make them functions.
+
+        /* You need to define the interval variable outside of the function scope so that subsequent calls to the callMyInterval will refer to the same instance.
+
+        You have defined it in the local scope of the function so every call to callMyInterval will refer to a new variable instance so you will not get reference to the previous timer.
+
+        var myIntervalRef;
+
+        function callMyInterval() {
+        var parent = document.getElementById("element");
+        if (parent.firstChild) {
+            clearInterval(myIntervalRef);
+            while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+            }
+        }
+        myIntervalRef = setMyInterval(parent);
+        } 
+        */
+        
         if (matrixModeON) {   
             document.body.classList.remove('matrix-background-in')
             document.body.classList.add('matrix-background-out')
