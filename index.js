@@ -1110,7 +1110,7 @@ function playGame() {
                                     square.classList.remove('box2')
                                     square.classList.add('mouseover')
                                     square.classList.add('bad')
-                                    //wrongCard = true
+                                    wrongCard = true
                                     wrongCardCheck()
                                     correctCard = 0
                                     correctCardCounter()
@@ -1144,7 +1144,7 @@ function playGame() {
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
-                                        //wrongCard = true
+                                        wrongCard = true
                                         wrongCardCheck()
                                         correctCard = 0
                                         correctCardCounter()
@@ -1178,7 +1178,7 @@ function playGame() {
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
-                                        //wrongCard = true
+                                        wrongCard = true
                                         wrongCardCheck()
                                         correctCard = 0
                                         correctCardCounter()
@@ -1211,7 +1211,7 @@ function playGame() {
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
-                                        //wrongCard = true
+                                        wrongCard = true
                                         wrongCardCheck()
                                         correctCard = 0
                                         correctCardCounter()
@@ -1244,7 +1244,7 @@ function playGame() {
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
                                         square.classList.add('bad')
-                                        //wrongCard = true
+                                        wrongCard = true
                                         wrongCardCheck()
                                         correctCard = 0
                                         correctCardCounter()
@@ -1626,7 +1626,7 @@ function playGame() {
                             square.classList.remove('box2')
                             square.classList.add('mouseover')
                             square.classList.add('bad')
-                            //wrongCard = true
+                            wrongCard = true
                             wrongCardCheck()
                             correctCard = 0
                             correctCardCounter()
@@ -1655,7 +1655,7 @@ function playGame() {
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
-                                //wrongCard = true
+                                wrongCard = true
                                 wrongCardCheck()
                                 correctCard = 0
                                 correctCardCounter()
@@ -1684,7 +1684,7 @@ function playGame() {
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
-                                //wrongCard = true
+                                wrongCard = true
                                 wrongCardCheck()
                                 correctCard = 0
                                 correctCardCounter()
@@ -1713,7 +1713,7 @@ function playGame() {
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
-                                //wrongCard = true
+                                wrongCard = true
                                 wrongCardCheck()
                                 correctCard = 0
                                 correctCardCounter()
@@ -1743,7 +1743,7 @@ function playGame() {
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
                                 square.classList.add('bad')
-                                //wrongCard = true
+                                wrongCard = true
                                 wrongCardCheck()
                                 correctCard = 0
                                 correctCardCounter()
@@ -2515,6 +2515,7 @@ function playGame() {
 
         if (correctCard === 1) {
             console.log('correct card')
+            wrongCard = false
             matrixModeAni()
             matrixCard1.classList.add('correct-card')
         } else if (correctCard === 2) {
@@ -2557,33 +2558,15 @@ function playGame() {
             
         }
     }
-
-    // i think its fookin activating matrix mode infinitaley somehow
     
     let characters = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%&ßµø¤¿ƒ†×‡▓▒░¬⌐◙○♦▼▲↔∟▬◄►☼º┼┬┴╛╜╡╢║▐▌∞≡≈∩εΩΦΣ■'
 
+    const backgroundCover = document.createElement('div')
+    document.body.appendChild(backgroundCover)
+
     function matrixModeAni() {
 
-        //so i wont be able to clear the interval out of scope i dont think so i could just put a giant div over the background??  thats going to look super fucking retarded though and be terrible for shitty pc's.  now there is a way to call it the interval and reset it out of scope but I would have to make them functions.
-
-        /* You need to define the interval variable outside of the function scope so that subsequent calls to the callMyInterval will refer to the same instance.
-
-        You have defined it in the local scope of the function so every call to callMyInterval will refer to a new variable instance so you will not get reference to the previous timer.
-
-        var myIntervalRef;
-
-        function callMyInterval() {
-        var parent = document.getElementById("element");
-        if (parent.firstChild) {
-            clearInterval(myIntervalRef);
-            while (parent.firstChild) {
-            parent.removeChild(parent.firstChild);
-            }
-        }
-        myIntervalRef = setMyInterval(parent);
-        } 
-        */
-
+        //wrongCard = false
         matrixModeON = true
 
         document.body.classList.remove('matrix-background-out')
@@ -2621,6 +2604,11 @@ function playGame() {
         svgInnerBackground.classList.add('matrix-background-in')
         svgBackground.classList.add('timer-background-in')
         svgInnerBackground.classList.add('timer-background-in')
+
+        backgroundCover.classList.add('background-cover')
+        backgroundCover.classList.add('matrix-background-in-delayed')
+        backgroundCover.classList.remove('matrix-char-opacity')
+
         baseTimer.classList.add('matrix-color')
         card1.classList.add('matrix-card-background-in')
         setTimeout(() => {
@@ -2801,7 +2789,10 @@ function playGame() {
         })
 
         if (!playMatrixCharOnce) {
-            setInterval(() => {
+
+            //document.body.appendChild(backgroundCover)
+            
+            let matrixInterval = setInterval(() => {
 
                 let randomCharacter2 = undefined
                 let randomCharacter3 = undefined
@@ -2835,7 +2826,7 @@ function playGame() {
                 matrixChar6.style.left =`${randomLeft}px`
                 matrixChar7.style.left =`${randomLeft}px`
 
-                document.body.appendChild(matrixChar)
+                backgroundCover.appendChild(matrixChar)
                 setInterval(() => {
                     const randomIndex = Math.floor(Math.random() * characters.length)
                     let randomCharacter = characters.charAt(randomIndex)
@@ -2845,11 +2836,11 @@ function playGame() {
                     },160)
                 },175)
                 setTimeout(() => {
-                    document.body.removeChild(matrixChar)
+                        backgroundCover.removeChild(matrixChar)
                 },25000)
 
                 setTimeout(() => {
-                    document.body.appendChild(matrixChar2)
+                    backgroundCover.appendChild(matrixChar2)
                     setInterval(() => {
                         matrixChar2.textContent = randomCharacter2
                         setTimeout(() => {
@@ -2857,12 +2848,12 @@ function playGame() {
                         },17)
                     },175)
                     setTimeout(() => {
-                        document.body.removeChild(matrixChar2)
+                        backgroundCover.removeChild(matrixChar2)
                     },25000)
                 },175)
 
                 setTimeout(() => {
-                    document.body.appendChild(matrixChar3)
+                    backgroundCover.appendChild(matrixChar3)
                     setInterval(() => {
                         setTimeout(() => {
                             randomCharacter4 = randomCharacter3
@@ -2870,23 +2861,23 @@ function playGame() {
                         matrixChar3.textContent = randomCharacter3
                     },175)
                     setTimeout(() => {
-                        document.body.removeChild(matrixChar3)
+                            backgroundCover.removeChild(matrixChar3)
                     },25000)
                 },350)
 
                 setTimeout(() => {
-                    document.body.appendChild(matrixChar4)
+                    backgroundCover.appendChild(matrixChar4)
                     setInterval(() => {
                         randomCharacter5 = randomCharacter4
                         matrixChar4.textContent = randomCharacter4
                     },175)
                     setTimeout(() => {
-                        document.body.removeChild(matrixChar4)
+                            backgroundCover.removeChild(matrixChar4)
                     },25000)
                 },525)
 
                 setTimeout(() => {
-                    document.body.appendChild(matrixChar5)
+                    backgroundCover.appendChild(matrixChar5)
                     setInterval(() => {
                         setTimeout(() => {
                             randomCharacter6 = randomCharacter5
@@ -2894,12 +2885,12 @@ function playGame() {
                         matrixChar5.textContent = randomCharacter5
                     },175)
                     setTimeout(() => {
-                        document.body.removeChild(matrixChar5)
+                            backgroundCover.removeChild(matrixChar5)
                     },25000)
                 },700)
 
                 setTimeout(() => {
-                    document.body.appendChild(matrixChar6)
+                    backgroundCover.appendChild(matrixChar6)
                     setInterval(() => {
                         setTimeout(() => {
                             randomCharacter7 = randomCharacter6
@@ -2907,22 +2898,28 @@ function playGame() {
                         matrixChar6.textContent = randomCharacter6
                     },175)
                     setTimeout(() => {
-                        document.body.removeChild(matrixChar6)
+                            backgroundCover.removeChild(matrixChar6)
                     },25000)
                 },875)
 
                 setTimeout(() => {
-                    document.body.appendChild(matrixChar7)
+                    backgroundCover.appendChild(matrixChar7)
                     setInterval(() => {
                         matrixChar7.textContent = randomCharacter7
                     },175)
                     setTimeout(() => {
-                        document.body.removeChild(matrixChar7)
+                            backgroundCover.removeChild(matrixChar7)
                     },25000)
                     playMatrixCharOnce = true
                 },1050)
-
             },1900)
+            if (wrongCard) {
+                clearInterval(matrixInterval)
+                setTimeout(() => {
+                    wrongCard = false
+                },50)
+            }
+            //so this clear interval isnt working obviously. instead of doing all this bullshit, im thinking that the creation of the matrix characters only happens once, and then i apply and remove the opacity and use the original background to ease it in.  probably just use the playonce variable and never reset it back to original, and the use stopani function to remove opacity, and then reapply with the startani function.  i'll probably adjust the timeouts to populate the screen more
         }
     }
 
@@ -2947,6 +2944,7 @@ function playGame() {
             const svgBackground = baseTimer.querySelector('.base-timer')
             const svgInnerBackground = svgBackground.querySelector('.base-timer__svg')
             const svgTimeLabel = document.querySelector('#base-timer-label')
+            const backgroundCover = document.body.querySelector('.background-cover')
 
             svgInnerBackground.classList.remove('matrix-background-in')
             baseTimer.classList.remove('matrix-color')
@@ -2963,6 +2961,31 @@ function playGame() {
             svgInnerBackground.classList.add('timer-background-out')
             baseTimer.classList.add('matrix-color-out')
             card1.classList.add('matrix-card-background-out')
+
+            backgroundCover.classList.remove('matrix-background-in-delayed')
+            backgroundCover.classList.add('matrix-background-out')
+
+            function matrixCharOpacity() {
+                const matrixChars = backgroundCover.querySelectorAll('div')
+
+                matrixChars.forEach(div => {
+                
+                    div.animate([
+                        { transform: 'translateY(3000px)', opacity: '0'}
+                        ], {
+                        duration: 1500,
+                        easing: 'ease-in',
+                        fill: 'forwards'
+                    })
+                })
+                
+                setTimeout(() => {
+                    backgroundCover.classList.add('matrix-char-opacity')
+                },1000)
+                
+            }
+            matrixCharOpacity()
+
             setTimeout(() => {
                 card1.classList.remove('matrix-card')
                 card1.classList.remove('matrix-card-background-out')
@@ -3344,6 +3367,7 @@ function playGame() {
 
     function onTimesUp() {
         
+        stopMatrixModeAni()
         const gameOverTextContainer = document.createElement('div')
         gameOverTextContainer.classList.add('game-over-text-container')
         gameOverTextContainer.classList.add('game-over-text-container-in')
