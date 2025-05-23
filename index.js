@@ -968,6 +968,8 @@ function playGame() {
     let wrongCard =  false
     let matrixModeON = false
     let playMatrixCharOnce = false
+    
+    let stopEverything = false
 
     const startConstraint = document.createElement('div')
 
@@ -1113,6 +1115,7 @@ function playGame() {
                                     wrongCard = true
                                     wrongCardCheck()
                                     correctCard = 0
+                                    //cardNumber = 1
                                     correctCardCounter()
                                     stopMatrixModeAni()
                                     card.appendChild(startConstraint)
@@ -1147,6 +1150,7 @@ function playGame() {
                                         wrongCard = true
                                         wrongCardCheck()
                                         correctCard = 0
+                                        //cardNumber = 1
                                         correctCardCounter()
                                         stopMatrixModeAni()
                                         card.appendChild(startConstraint)
@@ -1181,6 +1185,7 @@ function playGame() {
                                         wrongCard = true
                                         wrongCardCheck()
                                         correctCard = 0
+                                        //cardNumber = 1
                                         correctCardCounter()
                                         stopMatrixModeAni()
                                         card.appendChild(startConstraint)
@@ -1214,6 +1219,7 @@ function playGame() {
                                         wrongCard = true
                                         wrongCardCheck()
                                         correctCard = 0
+                                        //cardNumber = 1
                                         correctCardCounter()
                                         stopMatrixModeAni()
                                         card.appendChild(startConstraint)
@@ -1247,6 +1253,7 @@ function playGame() {
                                         wrongCard = true
                                         wrongCardCheck()
                                         correctCard = 0
+                                        //cardNumber = 1
                                         correctCardCounter()
                                         stopMatrixModeAni()
                                         card.appendChild(startConstraint)
@@ -1629,6 +1636,7 @@ function playGame() {
                             wrongCard = true
                             wrongCardCheck()
                             correctCard = 0
+                            //cardNumber = 1
                             correctCardCounter()
                             stopMatrixModeAni()
                             card7 = document.querySelector('.card7')
@@ -1658,6 +1666,7 @@ function playGame() {
                                 wrongCard = true
                                 wrongCardCheck()
                                 correctCard = 0
+                                //cardNumber = 1
                                 correctCardCounter()
                                 stopMatrixModeAni()
                                 card7 = document.querySelector('.card7')
@@ -1687,6 +1696,7 @@ function playGame() {
                                 wrongCard = true
                                 wrongCardCheck()
                                 correctCard = 0
+                                //cardNumber = 1
                                 correctCardCounter()
                                 stopMatrixModeAni()
                                 card7 = document.querySelector('.card7')
@@ -1716,6 +1726,7 @@ function playGame() {
                                 wrongCard = true
                                 wrongCardCheck()
                                 correctCard = 0
+                                //cardNumber = 1
                                 correctCardCounter()
                                 stopMatrixModeAni()
                                 card7 = document.querySelector('.card7')
@@ -1746,6 +1757,7 @@ function playGame() {
                                 wrongCard = true
                                 wrongCardCheck()
                                 correctCard = 0
+                                //cardNumber = 1
                                 correctCardCounter()
                                 stopMatrixModeAni()
                                 card7 = document.querySelector('.card7')
@@ -2511,12 +2523,19 @@ function playGame() {
     }
     createMatrixCards()
 
-    function correctCardCounter() {
+    let activateAniOnce = false
+    //let nextCard = true
+    
 
+    function correctCardCounter() {
+        //make it reset to -1 when hitting wrong card! and if -1 then matrix card container does cool shit
         if (correctCard === 1) {
             console.log('correct card')
             wrongCard = false
-            matrixModeAni()
+            if (!activateAniOnce) {
+                matrixModeAni()
+                activateAniOnce = true
+            }
             matrixCard1.classList.add('correct-card')
         } else if (correctCard === 2) {
             console.log('correct card')
@@ -2779,7 +2798,7 @@ function playGame() {
             easing: 'linear',
             fill: 'forwards'
           });
-          box7.animate([
+        box7.animate([
             { borderColor: 'rgb(0,0,0)'},
             { borderColor: 'rgb(78, 230, 18)'}
             ], {
@@ -2920,11 +2939,17 @@ function playGame() {
                 },50)
             }
             //so this clear interval isnt working obviously. instead of doing all this bullshit, im thinking that the creation of the matrix characters only happens once, and then i apply and remove the opacity and use the original background to ease it in.  probably just use the playonce variable and never reset it back to original, and the use stopani function to remove opacity, and then reapply with the startani function.  i'll probably adjust the timeouts to populate the screen more
+
+            //got a bug with the cards not leaving the screen with matrixmodeani, make a -1 option for cardCounter so after wrong card it goes to -1, box border flashes green..? maybe i just use built in animation with js for the cards instead of classes? im not sure if one of them overides eachother or they can just coexist. honestly i should just make a boolean variable that trumps the acivation of everything after ontimesup activates, and it returns to original state after all animations are done (stopEverything), combined with a cover over the squares to make sure they dont activate right before ontimesup. after all that making the matrix letters transition more smoothly. also making score count for x2. gotta work on the card titles. then that should be core game mechanics.... DONE. its all within sight
         }
     }
 
     function stopMatrixModeAni() {
         if (matrixModeON) {   
+            
+            //nextCard = true
+            activateAniOnce = false
+            
             document.body.classList.remove('matrix-background-in')
             document.body.classList.add('matrix-background-out')
             
@@ -3367,6 +3392,8 @@ function playGame() {
 
     function onTimesUp() {
         
+        stopEverything = true
+
         stopMatrixModeAni()
         const gameOverTextContainer = document.createElement('div')
         gameOverTextContainer.classList.add('game-over-text-container')
@@ -3439,6 +3466,7 @@ function playGame() {
         },500)
         
         gameOverButton.addEventListener('mousedown', () => {
+            stopEverything = false
             gameOverButton.classList.remove('game-over-button-in')
             gameOverButton.classList.add('game-over-button-click')
             setTimeout(() => {
