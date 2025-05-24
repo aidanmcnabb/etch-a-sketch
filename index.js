@@ -1319,7 +1319,11 @@ function playGame() {
             }, 200)
             setTimeout(() => {
                 document.body.removeChild(finishedCard)
-                scoreNumber += 1
+                if (matrixModeON) {
+                    scoreNumber += 2
+                } else {
+                    scoreNumber += 1
+                }
                 wrongCard = false
                 correctCard++
                 console.log(correctCard)
@@ -2527,14 +2531,24 @@ function playGame() {
     let activateAniOnce = false
     //let nextCard = true
     
+    const failText = document.createElement('span')
+    failText.classList.add('fail-text')
+    failText.textContent = 'FAIL'
+    const failText2 = document.createElement('span')
+    failText2.classList.add('fail-text2')
+    failText2.textContent = 'FAIL'
 
     function correctCardCounter() {
-        //make it reset to -1 when hitting wrong card! and if -1 then matrix card container does cool shit
-        //just did it, does weird shit firgure it out
+        //i need to remove the matrixContainerIn and give it another class
+        //gotta reset cards onTimesUp
         if (correctCard === -1) {
             matrixModeContainer.classList.add('matrix-wrong-card')
+            matrixModeContainer.appendChild(failText)
+            matrixModeContainer.appendChild(failText2)
         } else if (correctCard === 0) {
             matrixModeContainer.classList.remove('matrix-wrong-card')
+            matrixModeContainer.removeChild(failText)
+            matrixModeContainer.removeChild(failText2)
         } else if (correctCard === 1) {
             console.log('correct card')
             matrixCard1.classList.add('correct-card')
@@ -2944,9 +2958,8 @@ function playGame() {
                     wrongCard = false
                 },50)
             }
-            //so this clear interval isnt working obviously. instead of doing all this bullshit, im thinking that the creation of the matrix characters only happens once, and then i apply and remove the opacity and use the original background to ease it in.  probably just use the playonce variable and never reset it back to original, and the use stopani function to remove opacity, and then reapply with the startani function.  i'll probably adjust the timeouts to populate the screen more
 
-            //make a -1 option for cardCounter so after wrong card it goes to -1. box border flashes green..? make the matrix letters transition more smoothly. also make matrix score count for x2. gotta work on the card titles. then that should be core game mechanics.... DONE. its all within sight
+            //box border flashes green..? make the matrix letters transition more smoothly. gotta work on the card titles. then that should be core game mechanics.... DONE. its all within sight
         }
     }
 
@@ -3653,10 +3666,6 @@ playGame()
 // the card titles!!
 
 //box shadow turns red around all cards everytime a second passes under 5 seconds
-
-//leaderboards
-
-//matrixmode, triggers by getting 5 cards in a row or something
 
 //seperate intro and tutorial from the actual game
 
