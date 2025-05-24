@@ -969,7 +969,8 @@ function playGame() {
     let matrixModeON = false
     let playMatrixCharOnce = false
     
-    let stopEverything = false
+    //let stopEverything = false
+    let timeUp = false
 
     const startConstraint = document.createElement('div')
 
@@ -1114,7 +1115,7 @@ function playGame() {
                                     square.classList.add('bad')
                                     wrongCard = true
                                     wrongCardCheck()
-                                    correctCard = 0
+                                    correctCard = -1
                                     //cardNumber = 1
                                     correctCardCounter()
                                     stopMatrixModeAni()
@@ -1149,7 +1150,7 @@ function playGame() {
                                         square.classList.add('bad')
                                         wrongCard = true
                                         wrongCardCheck()
-                                        correctCard = 0
+                                        correctCard = -1
                                         //cardNumber = 1
                                         correctCardCounter()
                                         stopMatrixModeAni()
@@ -1184,7 +1185,7 @@ function playGame() {
                                         square.classList.add('bad')
                                         wrongCard = true
                                         wrongCardCheck()
-                                        correctCard = 0
+                                        correctCard = -1
                                         //cardNumber = 1
                                         correctCardCounter()
                                         stopMatrixModeAni()
@@ -1218,7 +1219,7 @@ function playGame() {
                                         square.classList.add('bad')
                                         wrongCard = true
                                         wrongCardCheck()
-                                        correctCard = 0
+                                        correctCard = -1
                                         //cardNumber = 1
                                         correctCardCounter()
                                         stopMatrixModeAni()
@@ -1252,7 +1253,7 @@ function playGame() {
                                         square.classList.add('bad')
                                         wrongCard = true
                                         wrongCardCheck()
-                                        correctCard = 0
+                                        correctCard = -1
                                         //cardNumber = 1
                                         correctCardCounter()
                                         stopMatrixModeAni()
@@ -1635,7 +1636,7 @@ function playGame() {
                             square.classList.add('bad')
                             wrongCard = true
                             wrongCardCheck()
-                            correctCard = 0
+                            correctCard = -1
                             //cardNumber = 1
                             correctCardCounter()
                             stopMatrixModeAni()
@@ -1665,7 +1666,7 @@ function playGame() {
                                 square.classList.add('bad')
                                 wrongCard = true
                                 wrongCardCheck()
-                                correctCard = 0
+                                correctCard = -1
                                 //cardNumber = 1
                                 correctCardCounter()
                                 stopMatrixModeAni()
@@ -1695,7 +1696,7 @@ function playGame() {
                                 square.classList.add('bad')
                                 wrongCard = true
                                 wrongCardCheck()
-                                correctCard = 0
+                                correctCard = -1
                                 //cardNumber = 1
                                 correctCardCounter()
                                 stopMatrixModeAni()
@@ -1725,7 +1726,7 @@ function playGame() {
                                 square.classList.add('bad')
                                 wrongCard = true
                                 wrongCardCheck()
-                                correctCard = 0
+                                correctCard = -1
                                 //cardNumber = 1
                                 correctCardCounter()
                                 stopMatrixModeAni()
@@ -1756,7 +1757,7 @@ function playGame() {
                                 square.classList.add('bad')
                                 wrongCard = true
                                 wrongCardCheck()
-                                correctCard = 0
+                                correctCard = -1
                                 //cardNumber = 1
                                 correctCardCounter()
                                 stopMatrixModeAni()
@@ -1977,7 +1978,7 @@ function playGame() {
         window.addEventListener('keydown', function(event) {
 
             let topCard = document.querySelector('.card7')
-            let topBox = topCard.querySelector('.box')
+            let topBox = topCard.querySelector('.box') //causing errors... dont think its an issue though?
             let square = topBox.querySelector('.square')
             
             
@@ -2529,15 +2530,20 @@ function playGame() {
 
     function correctCardCounter() {
         //make it reset to -1 when hitting wrong card! and if -1 then matrix card container does cool shit
-        if (correctCard === 1) {
+        //just did it, does weird shit firgure it out
+        if (correctCard === -1) {
+            matrixModeContainer.classList.add('matrix-wrong-card')
+        } else if (correctCard === 0) {
+            matrixModeContainer.classList.remove('matrix-wrong-card')
+        } else if (correctCard === 1) {
             console.log('correct card')
+            matrixCard1.classList.add('correct-card')
+        } else if (correctCard === 2) {
             wrongCard = false
             if (!activateAniOnce) {
                 matrixModeAni()
                 activateAniOnce = true
             }
-            matrixCard1.classList.add('correct-card')
-        } else if (correctCard === 2) {
             console.log('correct card')
             matrixCard2.classList.add('correct-card')
         } else if (correctCard === 3) {
@@ -2940,7 +2946,7 @@ function playGame() {
             }
             //so this clear interval isnt working obviously. instead of doing all this bullshit, im thinking that the creation of the matrix characters only happens once, and then i apply and remove the opacity and use the original background to ease it in.  probably just use the playonce variable and never reset it back to original, and the use stopani function to remove opacity, and then reapply with the startani function.  i'll probably adjust the timeouts to populate the screen more
 
-            //got a bug with the cards not leaving the screen with matrixmodeani, make a -1 option for cardCounter so after wrong card it goes to -1, box border flashes green..? maybe i just use built in animation with js for the cards instead of classes? im not sure if one of them overides eachother or they can just coexist. honestly i should just make a boolean variable that trumps the acivation of everything after ontimesup activates, and it returns to original state after all animations are done (stopEverything), combined with a cover over the squares to make sure they dont activate right before ontimesup. after all that making the matrix letters transition more smoothly. also making score count for x2. gotta work on the card titles. then that should be core game mechanics.... DONE. its all within sight
+            //make a -1 option for cardCounter so after wrong card it goes to -1. box border flashes green..? make the matrix letters transition more smoothly. also make matrix score count for x2. gotta work on the card titles. then that should be core game mechanics.... DONE. its all within sight
         }
     }
 
@@ -2985,7 +2991,6 @@ function playGame() {
             svgBackground.classList.add('timer-background-out')
             svgInnerBackground.classList.add('timer-background-out')
             baseTimer.classList.add('matrix-color-out')
-            card1.classList.add('matrix-card-background-out')
 
             backgroundCover.classList.remove('matrix-background-in-delayed')
             backgroundCover.classList.add('matrix-background-out')
@@ -3011,47 +3016,50 @@ function playGame() {
             }
             matrixCharOpacity()
 
-            setTimeout(() => {
-                card1.classList.remove('matrix-card')
-                card1.classList.remove('matrix-card-background-out')
-                card1.classList.add('card1')
-            },3000)
-            card2.classList.add('matrix-card-background-out')
-            setTimeout(() => {
-                card2.classList.remove('matrix-card')
-                card2.classList.remove('matrix-card-background-out')
-                card2.classList.add('card2')
-            },3000)
-            card3.classList.add('matrix-card-background-out')
-            setTimeout(() => {
-                card3.classList.remove('matrix-card')
-                card3.classList.remove('matrix-card-background-out')
-                card3.classList.add('card3')
-            },3000)
-            card4.classList.add('matrix-card-background-out')
-            setTimeout(() => {
-                card4.classList.remove('matrix-card')
-                card4.classList.remove('matrix-card-background-out')
-                card4.classList.add('card4')
-            },3000)
-            card5.classList.add('matrix-card-background-out')
-            setTimeout(() => {
-                card5.classList.remove('matrix-card')
-                card5.classList.remove('matrix-card-background-out')
-                card5.classList.add('card5')
-            },3000)
-            card6.classList.add('matrix-card-background-out')
-            setTimeout(() => {
-                card6.classList.remove('matrix-card')
-                card6.classList.remove('matrix-card-background-out')
-                card6.classList.add('card6')
-            },3000)
-            card7.classList.add('matrix-card-background-out')
-            setTimeout(() => {
-                card7.classList.remove('matrix-card')
-                card7.classList.remove('matrix-card-background-out')
-                card7.classList.add('card7')
-            },3000)
+            if (timeUp && matrixModeON) {} else {
+                    card1.classList.add('matrix-card-background-out')
+                setTimeout(() => {
+                    card1.classList.remove('matrix-card')
+                    card1.classList.remove('matrix-card-background-out')
+                    card1.classList.add('card1')
+                },3000)
+                card2.classList.add('matrix-card-background-out')
+                setTimeout(() => {
+                    card2.classList.remove('matrix-card')
+                    card2.classList.remove('matrix-card-background-out')
+                    card2.classList.add('card2')
+                },3000)
+                card3.classList.add('matrix-card-background-out')
+                setTimeout(() => {
+                    card3.classList.remove('matrix-card')
+                    card3.classList.remove('matrix-card-background-out')
+                    card3.classList.add('card3')
+                },3000)
+                card4.classList.add('matrix-card-background-out')
+                setTimeout(() => {
+                    card4.classList.remove('matrix-card')
+                    card4.classList.remove('matrix-card-background-out')
+                    card4.classList.add('card4')
+                },3000)
+                card5.classList.add('matrix-card-background-out')
+                setTimeout(() => {
+                    card5.classList.remove('matrix-card')
+                    card5.classList.remove('matrix-card-background-out')
+                    card5.classList.add('card5')
+                },3000)
+                card6.classList.add('matrix-card-background-out')
+                setTimeout(() => {
+                    card6.classList.remove('matrix-card')
+                    card6.classList.remove('matrix-card-background-out')
+                    card6.classList.add('card6')
+                },3000)
+                card7.classList.add('matrix-card-background-out')
+                setTimeout(() => {
+                    card7.classList.remove('matrix-card')
+                    card7.classList.remove('matrix-card-background-out')
+                    card7.classList.add('card7')
+                },3000)
+            }
             matrixModeON = false
 
             keyPadContainer.animate([
@@ -3384,6 +3392,14 @@ function playGame() {
             setCircleDasharray()
             setRemainingPathColor(timeLeft)
 
+            if(timeLeft===1){
+                setTimeout(() => {
+                    let topCard = document.querySelector('.card7')
+                    let squareCover = document.createElement('div')
+                    squareCover.classList.add('start-constraint-invis')
+                    topCard.appendChild(squareCover)
+                },500)
+            }
             if(timeLeft===0){
                 onTimesUp()
             }
@@ -3392,9 +3408,13 @@ function playGame() {
 
     function onTimesUp() {
         
-        stopEverything = true
+        //stopEverything = true
+        timeUp = true
 
         stopMatrixModeAni()
+
+        timeUp = false
+
         const gameOverTextContainer = document.createElement('div')
         gameOverTextContainer.classList.add('game-over-text-container')
         gameOverTextContainer.classList.add('game-over-text-container-in')
@@ -3421,25 +3441,100 @@ function playGame() {
         const card3 = document.querySelector('.card3')
         const card2 = document.querySelector('.card2')
         const card1 = document.querySelector('.card1')
-        card7.classList.add('game-over-7')
-        setTimeout(() => {
-            card6.classList.add('game-over-6')
-        },50)
-        setTimeout(() => {
-            card5.classList.add('game-over-5')
-        },100)
-        setTimeout(() => {
-            card4.classList.add('game-over-4')
-        },150)
-        setTimeout(() => {
-            card3.classList.add('game-over-3')
-        },200)
-        setTimeout(() => {
-            card2.classList.add('game-over-2')
-        },250)
-        setTimeout(() => {
-            card1.classList.add('game-over-1')
-        },300)
+        
+        if (matrixModeON) {
+            setTimeout(() => {
+                card7.animate([
+                    { transform: 'translateX(-297px) translateY(-335px)', position: 'absolute' },
+                    { transform: 'translateX(-297px) translateY(-2000px)', color: 'rgb(0,0,0)', backgroundColor: 'rgb(255,255,255)', borderColor: 'rgb(0,0,0)' }
+                  ], {
+                    duration: 500,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                  });
+            })
+            setTimeout(() => {
+                card6.animate([
+                    { transform: 'translateX(-297px) translateY(-335px)', position: 'absolute' },
+                    { transform: 'translateX(-297px) translateY(-2000px)', color: 'rgb(0,0,0)', backgroundColor: 'rgb(255,255,255)', borderColor: 'rgb(0,0,0)'  }
+                  ], {
+                    duration: 500,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                  });
+            },50)
+            setTimeout(() => {
+                card5.animate([
+                    { transform: 'translateX(-297px) translateY(-335px)', position: 'absolute' },
+                    { transform: 'translateX(-297px) translateY(-2000px)', color: 'rgb(0,0,0)', backgroundColor: 'rgb(255,255,255)', borderColor: 'rgb(0,0,0)' }
+                  ], {
+                    duration: 500,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                  });
+            },100)
+            setTimeout(() => {
+                card4.animate([
+                    { transform: 'translateX(-297px) translateY(-335px)', position: 'absolute' },
+                    { transform: 'translateX(-297px) translateY(-2000px)', color: 'rgb(0,0,0)', backgroundColor: 'rgb(255,255,255)', borderColor: 'rgb(0,0,0)'  }
+                  ], {
+                    duration: 500,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                  });
+            },150)
+            setTimeout(() => {
+                card3.animate([
+                    { transform: 'translateX(-297px) translateY(-335px)', position: 'absolute' },
+                    { transform: 'translateX(-297px) translateY(-2000px)', color: 'rgb(0,0,0)', backgroundColor: 'rgb(255,255,255)', borderColor: 'rgb(0,0,0)'  }
+                  ], {
+                    duration: 500,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                  });
+            },200)
+            setTimeout(() => {
+                card2.animate([
+                    { transform: 'translateX(-297px) translateY(-335px)', position: 'absolute' },
+                    { transform: 'translateX(-297px) translateY(-2000px)', color: 'rgb(0,0,0)', backgroundColor: 'rgb(255,255,255)', borderColor: 'rgb(0,0,0)'  }
+                  ], {
+                    duration: 500,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                  });
+            },250)
+            setTimeout(() => {
+                card1.animate([
+                    { transform: 'translateX(-297px) translateY(-335px)', position: 'absolute' },
+                    { transform: 'translateX(-297px) translateY(-2000px)', color: 'rgb(0,0,0)', backgroundColor: 'rgb(255,255,255)', borderColor: 'rgb(0,0,0)'  }
+                  ], {
+                    duration: 500,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                  });
+            },300)
+        } else {
+            card7.classList.add('game-over-7')
+            setTimeout(() => {
+                card6.classList.add('game-over-6')
+            },50)
+            setTimeout(() => {
+                card5.classList.add('game-over-5')
+            },100)
+            setTimeout(() => {
+                card4.classList.add('game-over-4')
+            },150)
+            setTimeout(() => {
+                card3.classList.add('game-over-3')
+            },200)
+            setTimeout(() => {
+                card2.classList.add('game-over-2')
+            },250)
+            setTimeout(() => {
+                card1.classList.add('game-over-1')
+            },300) 
+        }
+
         setTimeout(() => {
             document.body.removeChild(card7)
             document.body.removeChild(card6)
@@ -3448,7 +3543,34 @@ function playGame() {
             document.body.removeChild(card3)
             document.body.removeChild(card2)
             document.body.removeChild(card1)
+            setTimeout(() => {
+                let card7buffer = document.querySelector('.card7')
+                let card6buffer = document.querySelector('.card6')
+                let card5buffer = document.querySelector('.card5')
+                let card4buffer = document.querySelector('.card4')
+                let card3buffer = document.querySelector('.card3')
+                let card2buffer = document.querySelector('.card2')
+                let card1buffer = document.querySelector('.card1')
+
+                if (card7buffer) {
+                    document.body.removeChild(card7buffer)
+                } else if (card6buffer) {
+                    document.body.removeChild(card6buffer)
+                } else if (card5buffer) {
+                    document.body.removeChild(card5buffer)
+                } else if (card4buffer) {
+                    document.body.removeChild(card4buffer)
+                } else if (card3buffer) {
+                    document.body.removeChild(card3buffer)
+                } else if (card2buffer) {
+                    document.body.removeChild(card2buffer)
+                } else if (card1buffer) {
+                    document.body.removeChild(card1buffer)
+                }
+            },500)
         },750)
+
+        
 
         setTimeout(() => {
             document.body.appendChild(gameOverTextContainer)
@@ -3466,7 +3588,7 @@ function playGame() {
         },500)
         
         gameOverButton.addEventListener('mousedown', () => {
-            stopEverything = false
+            //stopEverything = false
             gameOverButton.classList.remove('game-over-button-in')
             gameOverButton.classList.add('game-over-button-click')
             setTimeout(() => {

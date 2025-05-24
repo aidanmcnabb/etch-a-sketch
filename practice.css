@@ -1400,6 +1400,20 @@ body {
     align-items: center;
 }
 
+.start-constraint-invis {
+    position: fixed;
+    top: 182px;
+    left: 28px;
+    height: 515px;
+    width: 514px;
+    background-color: rgba(255, 255, 255, 0);
+    /*opacity: .5;*/
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .wrong-square {
     position: fixed;
     top: 190px;
@@ -2806,6 +2820,28 @@ body {
     100% {
         background-color: white;
         transform: rotate(15deg) scale(.7);
+    }
+}
+
+.matrix-wrong-card {
+    animation: matrixWrongCard .4s infinite forwards ease-in-out;
+}
+@keyframes matrixWrongCard {
+    0% {
+        background-color: white;
+    }
+    25% {
+        transform: rotate(7deg) scale(1.1);
+    }
+    50% {
+        background-color: rgb(255, 0, 0);
+        transform: rotate(-7deg) scale(1);
+    }
+    75% {
+        transform: rotate(7deg) scale(1.1);
+    }
+    100% {
+        background-color: white;
     }
 }
 
