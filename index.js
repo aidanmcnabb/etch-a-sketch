@@ -972,7 +972,13 @@ function playGame() {
     //let stopEverything = false
     let timeUp = false
 
+    let = stickMan = false
+
     const startConstraint = document.createElement('div')
+
+    const dancingMan = document.createElement('img')
+    dancingMan.classList.add('dancing-man')
+    dancingMan.src = 'img/stickmandancing2.gif'
 
     function createCards() {
         
@@ -980,6 +986,12 @@ function playGame() {
 
         let c = 1
         
+        setTimeout(() => {
+            if (stickMan) {
+                document.body.removeChild(dancingMan)
+                stickMan = true
+            }
+        },3000)
         
         setTimeout(() => {
             const cardStartUp = setInterval(() => {
@@ -1326,7 +1338,6 @@ function playGame() {
                 }
                 wrongCard = false
                 correctCard++
-                console.log(correctCard)
                 correctCardCounter()
                 const plusTime = document.getElementById('plus-time-label')
                 levels()
@@ -1480,7 +1491,6 @@ function playGame() {
                 scoreNumber += 1
                 wrongCard = false
                 correctCard++
-                console.log(correctCard)
                 correctCardCounter()
                 scoreLabelContainer.textContent = scoreNumber
             }, 400)
@@ -1980,13 +1990,12 @@ function playGame() {
         //4 = blue(d)
 
         window.addEventListener('keydown', function(event) {
-
+            /*
             let topCard = document.querySelector('.card7')
             let topBox = topCard.querySelector('.box') //causing errors... dont think its an issue though?
             let square = topBox.querySelector('.square')
-            
-            
-            
+            */
+    
             if (event.key === 'w') {
                 keyPadContainer.animate([
                     { transform: 'scale(1)' },
@@ -2147,7 +2156,7 @@ function playGame() {
         
     }
     colorPicker()
-    
+
     const scoreLabelContainer = document.createElement('div')
     const leaderBoardContainer = document.createElement('div')
     const matrixModeContainer = document.createElement('div')
@@ -2379,7 +2388,6 @@ function playGame() {
                                             dropDownInputValue = dropDownInput.value
                                             userObject = {name: dropDownInputValue, score: scoreNumber, class: true}
                                             players.push(userObject)
-                                            console.log(players)
                                             singleClassAdd = true
                                             sortObjectsDescending(players)
                                             appendSortedPlayers()
@@ -2555,19 +2563,14 @@ function playGame() {
             failText.setAttribute('style', 'opacity: 0')
             failText2.setAttribute('style', 'opacity: 0')
         } else if (correctCard === 1) {
-            console.log('correct card')
             matrixCard1.classList.add('correct-card')
         } else if (correctCard === 2) {
-            console.log('correct card')
             matrixCard2.classList.add('correct-card')
         } else if (correctCard === 3) {
-            console.log('correct card')
             matrixCard3.classList.add('correct-card')
         } else if (correctCard === 4) {
-            console.log('correct card')
             matrixCard4.classList.add('correct-card')
         } else if (correctCard === 5) {
-            console.log('correct card')
             matrixCard5.classList.add('correct-card')
             wrongCard = false
             if (!activateAniOnce) {
@@ -2578,7 +2581,6 @@ function playGame() {
     }
 
     function wrongCardCheck() {
-        console.log('cards reset')
         if (correctCard === 1 || correctCard === 2 || correctCard === 3 || correctCard === 4 || correctCard >= 5) {
             matrixCard5.classList.remove('correct-card')
             matrixCard5.classList.add('correct-card-out')
@@ -2999,6 +3001,9 @@ function playGame() {
             svgBackground.classList.remove('matrix-background-in')
             matrixContainer.classList.remove('matrix-container-background-in')
             matrixContainer.classList.add('matrix-container-background-out')
+            setTimeout(() => {
+                matrixContainer.classList.remove('matrix-container-background-out')
+            },3000)
             scoreContainer.classList.remove('matrix-container-background-in')
             scoreContainer.classList.add('matrix-container-background-out')
             leaderBoardContainer.classList.remove('matrix-container-background-in')
@@ -3616,6 +3621,8 @@ function playGame() {
         },500)
         
         gameOverButton.addEventListener('mousedown', () => {
+            document.body.appendChild(dancingMan)
+            stickMan = true
             //stopEverything = false
             gameOverButton.classList.remove('game-over-button-in')
             gameOverButton.classList.add('game-over-button-click')

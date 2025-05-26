@@ -2932,3 +2932,8 @@ body {
         color: rgb(241, 111, 24);
     }
 }
+
+.dancing-man {
+    position: absolute;
+    top: 42%;
+}
