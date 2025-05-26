@@ -2488,6 +2488,7 @@ function playGame() {
     document.body.appendChild(matrixModeContainer)
     setTimeout(() => {
         matrixModeContainer.setAttribute('style', 'opacity: 1;')
+        matrixModeContainer.classList.remove('matrix-mode-container-in')
     },7000)
 
     function createMatrixCards() {
@@ -2533,31 +2534,30 @@ function playGame() {
     
     const failText = document.createElement('span')
     failText.classList.add('fail-text')
-    failText.textContent = 'FAIL'
+    failText.textContent = '失FAIL敗'
     const failText2 = document.createElement('span')
     failText2.classList.add('fail-text2')
-    failText2.textContent = 'FAIL'
+    failText2.textContent = '失FAIL敗'
+    matrixModeContainer.appendChild(failText)
+    matrixModeContainer.appendChild(failText2)
+    failText.setAttribute('style', 'opacity: 0')
+    failText2.setAttribute('style', 'opacity: 0')
 
     function correctCardCounter() {
         //i need to remove the matrixContainerIn and give it another class
         //gotta reset cards onTimesUp
         if (correctCard === -1) {
             matrixModeContainer.classList.add('matrix-wrong-card')
-            matrixModeContainer.appendChild(failText)
-            matrixModeContainer.appendChild(failText2)
+            failText.setAttribute('style', 'opacity: 1')
+            failText2.setAttribute('style', 'opacity: 1')
         } else if (correctCard === 0) {
             matrixModeContainer.classList.remove('matrix-wrong-card')
-            matrixModeContainer.removeChild(failText)
-            matrixModeContainer.removeChild(failText2)
+            failText.setAttribute('style', 'opacity: 0')
+            failText2.setAttribute('style', 'opacity: 0')
         } else if (correctCard === 1) {
             console.log('correct card')
             matrixCard1.classList.add('correct-card')
         } else if (correctCard === 2) {
-            wrongCard = false
-            if (!activateAniOnce) {
-                matrixModeAni()
-                activateAniOnce = true
-            }
             console.log('correct card')
             matrixCard2.classList.add('correct-card')
         } else if (correctCard === 3) {
@@ -2569,7 +2569,11 @@ function playGame() {
         } else if (correctCard === 5) {
             console.log('correct card')
             matrixCard5.classList.add('correct-card')
-            
+            wrongCard = false
+            if (!activateAniOnce) {
+                matrixModeAni()
+                activateAniOnce = true
+            } 
         }
     }
 
@@ -2620,7 +2624,7 @@ function playGame() {
         const card7 = document.body.querySelector('.card7')
         const box7 = card7.querySelector('.box')
         let box6 = card6.querySelector('.box')
-        const matrixContainer = document.body.querySelector('.matrix-mode-container-in')
+        const matrixContainer = document.body.querySelector('.matrix-mode-container')
         const scoreContainer = document.body.querySelector('.score-label')
         const leaderBoardContainer = document.body.querySelector('.leader-board')
         const baseTimer = document.querySelector('#timer')
@@ -2981,7 +2985,7 @@ function playGame() {
             const card7 = document.body.querySelector('.card7')
             const box7 = card7.querySelector('.box')
             let box6 = card6.querySelector('.box')
-            const matrixContainer = document.body.querySelector('.matrix-mode-container-in')
+            const matrixContainer = document.body.querySelector('.matrix-mode-container')
             const scoreContainer = document.body.querySelector('.score-label')
             const leaderBoardContainer = document.body.querySelector('.leader-board')
             const baseTimer = document.querySelector('#timer')
@@ -3085,6 +3089,15 @@ function playGame() {
             })
 
             box7.animate([
+                { borderColor: 'rgb(78, 230, 18)'},
+                {borderColor: 'rgb(0,0,0)'}
+                ], {
+                duration: 1000,
+                easing: 'linear',
+                fill: 'forwards'
+            })
+
+            box6.animate([
                 { borderColor: 'rgb(78, 230, 18)'},
                 {borderColor: 'rgb(0,0,0)'}
                 ], {
@@ -3299,7 +3312,7 @@ function playGame() {
 
     function levels() {
         
-        if (scoreNumber === 10) {
+        if (scoreNumber >= 10 && scoreNumber < 20) {
             const level2 = document.createElement('div')
             level2.classList.add('level-2')
             level2.textContent = 'LEVEL2'
@@ -3307,7 +3320,7 @@ function playGame() {
             setTimeout(() => {
                 document.body.removeChild(level2)
             },7000)
-        } else if (scoreNumber === 20) {
+        } else if (scoreNumber >= 20 && scoreNumber < 30) {
             const level3 = document.createElement('div')
             level3.classList.add('level-3')
             level3.textContent = 'LEVEL3'
@@ -3315,7 +3328,7 @@ function playGame() {
             setTimeout(() => {
                 document.body.removeChild(level3)
             },7000)
-        } else if (scoreNumber === 30) {
+        } else if (scoreNumber >= 30 && scoreNumber < 40) {
             const level4 = document.createElement('div')
             level4.classList.add('level-4')
             level4.textContent = 'LEVEL4'
@@ -3323,7 +3336,7 @@ function playGame() {
             setTimeout(() => {
                 document.body.removeChild(level4)
             },7000)
-        } else if (scoreNumber === 40) {
+        } else if (scoreNumber >= 40) {
             const level5 = document.createElement('div')
             level5.classList.add('level-5')
             level5.textContent = 'LEVEL5'
@@ -3427,6 +3440,8 @@ function playGame() {
         stopMatrixModeAni()
 
         timeUp = false
+        correctCard = 0
+        correctCardCounter()
 
         const gameOverTextContainer = document.createElement('div')
         gameOverTextContainer.classList.add('game-over-text-container')
