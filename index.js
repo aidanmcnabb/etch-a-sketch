@@ -916,6 +916,22 @@ function tutorialFuntion() {
 tutorialFuntion()
 */
 
+//SOUNDS
+
+function createCardsSound() {
+    var createCardSoundPlay = new Audio("audio/CreateCardsSound.mp3") //this sound will have to be queded up
+    createCardSoundPlay.play()
+}
+
+//all div entrance sounds will have to be queded up
+
+function startButtonSound() {
+    var startButtonSoundplay = new Audio('audio/Countdown.mp3')
+    startButtonSoundplay.play()
+}
+
+//SOUNDS
+
 function playGame() {
 
     
@@ -981,7 +997,8 @@ function playGame() {
     dancingMan.src = 'img/stickmandancing2.gif'
 
     function createCards() {
-        
+
+
         // if ((cardnumber) === (arraynumber)) {color = (arraycolor)}
 
         let c = 1
@@ -3240,6 +3257,8 @@ function playGame() {
     
     function startButton() {
         
+
+
             let topCard = document.querySelector('.card7')
             startConstraint.classList.add('start-constraint')
             topCard.appendChild(startConstraint)
@@ -3267,6 +3286,8 @@ function playGame() {
                 
                 startButton.addEventListener('click', () => {
                 
+                    startButtonSound()
+
                     startButton.disabled = true
                     startButton.classList.add('start-button-press')
                     setTimeout(() => {
