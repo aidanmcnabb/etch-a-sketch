@@ -1248,7 +1248,8 @@ body {
     position: absolute;
     top: 18.5%; 
     left: 39%;
-    
+    user-select: none;
+    pointer-events: none;
 }
 
 .a-key {
@@ -1258,6 +1259,8 @@ body {
     position: absolute;
     top: 53%; 
     left: 13.5%;
+    user-select: none;
+    pointer-events: none;
 }
 
 .s-key {
@@ -1267,6 +1270,8 @@ body {
     position: absolute;
     top: 53%; 
     left: 39%;
+    user-select: none;
+    pointer-events: none;
 }
 
 .d-key {
@@ -1276,6 +1281,8 @@ body {
     position: absolute;
     top: 53%;  
     left: 64.5%;
+    user-select: none;
+    pointer-events: none;
 }
 
 .w-press-in {
@@ -1844,6 +1851,7 @@ body {
     text-decoration: underline;
     opacity: 0;
     animation: leaderBoardTitle .4s ease-in-out forwards;
+    user-select: none;
 }
 
 @keyframes leaderBoardTitle {
@@ -1875,6 +1883,7 @@ body {
     padding-top: 20px;
     flex-direction: column;
     font-weight: 1000;
+    user-select: none;
 }
 
 .game-over-7 {
@@ -2409,6 +2418,7 @@ body {
     color: transparent;
     background-size: 200% auto;
     animation: gradientAni 2s linear infinite, spanIn .25s ease forwards;
+    user-select: none;
 }
 
 .cool-span-2 {
@@ -2424,6 +2434,7 @@ body {
     color: transparent;
     background-size: 200% auto;
     animation: gradientAni 2s linear infinite, spanIn .25s ease forwards;
+    user-select: none;
 }
 
 .span-out {

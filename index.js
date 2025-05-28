@@ -430,10 +430,6 @@
 
 
 // if z-index value is <= 2
-function squareSound() {
-    var squareClick = new Audio("audio/click-buttons-ui-menu-sounds-effects-button-2-203594.mp3")
-    squareClick.play()
-}
 
 /*
 const sideBarRight = document.createElement('div')
@@ -930,6 +926,33 @@ function startButtonSound() {
     startButtonSoundplay.play()
 }
 
+function startButtonSound2() {
+    var startButtonSoundplay2 = new Audio('audio/Countdown2.mp3')
+    startButtonSoundplay2.play()
+}
+
+function squareSound1() {
+    var squareClick1 = new Audio("audio/SquareClick1.mp3")
+    squareClick1.play()
+}
+function squareSound2() {
+    var squareClick2 = new Audio("audio/SquareClick2.mp3")
+    squareClick2.play()
+}
+function squareSound3() {
+    var squareClick3 = new Audio("audio/SquareClick3.mp3")
+    squareClick3.play()
+}
+function squareSound4() {
+    var squareClick4 = new Audio("audio/SquareClick4.mp3")
+    squareClick4.play()
+}
+function wrongSquareSound() {
+    var wrongSquare = new Audio("audio/WrongSquare.mp3")
+    wrongSquare.play()
+}
+
+
 //SOUNDS
 
 function playGame() {
@@ -989,6 +1012,11 @@ function playGame() {
     let timeUp = false
 
     let = stickMan = false
+
+    let level2ON = false
+    let level3ON = false
+    let level4ON = false
+    let level5ON = false
 
     const startConstraint = document.createElement('div')
 
@@ -1138,6 +1166,7 @@ function playGame() {
                                 //console.log(color)
                                 if (color === 'rgb(255, 255, 255)' || color === 'rgba(0,0,0,0)' || nthChildINVI || nthChildWHI) {
                                     //if (color === 'rgb(255, 255, 255)') {
+                                    wrongSquareSound()
                                     square.classList.remove('mouseover-without-color')
                                     square.classList.remove('box2')
                                     square.classList.add('mouseover')
@@ -1160,6 +1189,7 @@ function playGame() {
                                 
                                 } else if (color === 'rgb(128, 128, 128)') {
                                     if (chosenColor === 'gray') {   
+                                        squareSound1()
                                         square.classList.remove('mouseover-without-color')
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
@@ -1173,6 +1203,7 @@ function playGame() {
                                         cardCompletionCheck()
                                         initialCardCompletionCheck()
                                     } else {
+                                        wrongSquareSound()
                                         square.classList.remove('mouseover-without-color')
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
@@ -1195,6 +1226,7 @@ function playGame() {
                                     }
                                 } else if (color === 'rgb(169, 97, 108)') {
                                     if (chosenColor === 'red') {  
+                                        squareSound2()
                                         square.classList.remove('mouseover-without-color')
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
@@ -1208,6 +1240,7 @@ function playGame() {
                                         cardCompletionCheck()
                                         initialCardCompletionCheck()
                                     } else {
+                                        wrongSquareSound()
                                         square.classList.remove('mouseover-without-color')
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
@@ -1230,6 +1263,7 @@ function playGame() {
                                     }
                                 } else if (color === 'rgb(114, 170, 145)') {
                                     if (chosenColor === 'green') {  
+                                        squareSound3()
                                         square.classList.remove('mouseover-without-color')
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
@@ -1242,6 +1276,7 @@ function playGame() {
                                         cardCompletionCheck()
                                         initialCardCompletionCheck()
                                     } else {
+                                        wrongSquareSound()
                                         square.classList.remove('mouseover-without-color')
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
@@ -1264,6 +1299,7 @@ function playGame() {
                                     }
                                 } else if (color === 'rgb(115, 127, 167)') {
                                     if (chosenColor === 'blue') {
+                                        squareSound4()
                                         square.classList.remove('mouseover-without-color')
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
@@ -1276,6 +1312,7 @@ function playGame() {
                                         cardCompletionCheck()
                                         initialCardCompletionCheck()
                                     } else {
+                                        wrongSquareSound()
                                         square.classList.remove('mouseover-without-color')
                                         square.classList.remove('box2')
                                         square.classList.add('mouseover')
@@ -1304,7 +1341,7 @@ function playGame() {
                             })
                             
                         
-                            square.setAttribute('onclick', 'squareSound()')
+                            //square.setAttribute('onclick', 'squareSound()')
                             box.appendChild(square)
                             
                             if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
@@ -1335,10 +1372,34 @@ function playGame() {
     },300)
     */
 
+function cardSwipe1Play() {
+    var cardSwipe1 = new Audio("audio/CardSwipe1.mp3")
+    cardSwipe1.play()
+}
+function cardSwipe2Play() {
+    var cardSwipe2 = new Audio("audio/CardSwipe2.mp3")
+    cardSwipe2.play()
+}
+function cardSwipe3Play() {
+    var cardSwipe3 = new Audio("audio/CardSwipe3.mp3")
+    cardSwipe3.play()
+}
+function randomCardSwipe() {
+    let x = Math.random()
+    if (x >= 0 && x < .33) {
+        cardSwipe1Play()
+    } else if (x >= .33 && x < .66) {
+        cardSwipe2Play()
+    } else if (x >= .66 && x <= 1) {
+        cardSwipe3Play()
+    }
+}
+
     function cardCompletionCheck() {
         const finishedCard = document.querySelector('.card7')
         if (grayClicks === graySquareAmount && redClicks === redSquareAmount && greenClicks === greenSquareAmount && blueClicks === blueSquareAmount) {
             finishedCard.classList.add('test')
+            randomCardSwipe()
             grayClicks = 0
             redClicks = 0
             greenClicks = 0
@@ -1486,6 +1547,8 @@ function playGame() {
         const finishedCard = document.querySelector('.card7')
         
         if (grayClicksInitial === graySquareAmountInitial && redClicksInitial === redSquareAmountInitial && greenClicksInitial === greenSquareAmountInitial && blueClicksInitial === blueSquareAmountInitial) {
+            
+            randomCardSwipe()
             finishedCard.classList.add('test')
             grayClicksInitial = 0
             redClicksInitial = 0
@@ -1661,6 +1724,7 @@ function playGame() {
                         const color = window.getComputedStyle(square) ["background-color"]
                         //console.log(color)
                         if (color === 'rgb(255, 255, 255)' || color === 'rgba(0,0,0,0)' || nthChildINVI || nthChildWHI) {
+                            wrongSquareSound()
                             square.classList.remove('mouseover-without-color')
                             square.classList.remove('box2')
                             square.classList.add('mouseover')
@@ -1684,6 +1748,7 @@ function playGame() {
                             
                         } else if (color === 'rgb(128, 128, 128)') {
                             if (chosenColor === 'gray') {   
+                                squareSound1()
                                 square.classList.remove('mouseover-without-color')
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
@@ -1691,6 +1756,7 @@ function playGame() {
                                 grayClicks++
                                 cardCompletionCheck()
                             } else {
+                                wrongSquareSound()
                                 square.classList.remove('mouseover-without-color')
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
@@ -1714,6 +1780,7 @@ function playGame() {
                             }
                         } else if (color === 'rgb(169, 97, 108)') {
                             if (chosenColor === 'red') {   
+                                squareSound2()
                                 square.classList.remove('mouseover-without-color')
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
@@ -1721,6 +1788,7 @@ function playGame() {
                                 redClicks++
                                 cardCompletionCheck()
                             } else {
+                                wrongSquareSound()
                                 square.classList.remove('mouseover-without-color')
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
@@ -1744,6 +1812,7 @@ function playGame() {
                             }
                         } else if (color === 'rgb(114, 170, 145)') {
                             if (chosenColor === 'green') {     
+                                squareSound3()
                                 square.classList.remove('mouseover-without-color')
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
@@ -1751,6 +1820,7 @@ function playGame() {
                                 greenClicks++
                                 cardCompletionCheck()
                             } else {
+                                wrongSquareSound()
                                 square.classList.remove('mouseover-without-color')
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
@@ -1774,6 +1844,7 @@ function playGame() {
                             }
                         } else if (color === 'rgb(115, 127, 167)') {
                             if (chosenColor === 'blue') {   
+                                squareSound4()
                                 square.classList.remove('mouseover-without-color')
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
@@ -1782,6 +1853,7 @@ function playGame() {
                                 correctCardCounter()
                                 cardCompletionCheck()
                             } else {
+                                wrongSquareSound()
                                 square.classList.remove('mouseover-without-color')
                                 square.classList.remove('box2')
                                 square.classList.add('mouseover')
@@ -1810,7 +1882,7 @@ function playGame() {
                         }, 100)
                     })
             
-                    square.setAttribute('onclick', 'squareSound()')
+                    //square.setAttribute('onclick', 'squareSound()')
                     box.appendChild(square)
                     
                     if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
@@ -2411,6 +2483,10 @@ function playGame() {
                                         },1200)
                                         setTimeout(() => {
                                             scoreNumber = 0
+                                            level2ON = false
+                                            level3ON = false
+                                            level4ON = false
+                                            level5ON = false
                                             scoreLabelContainer.textContent = scoreNumber
                                         },1300)
                                             
@@ -2482,6 +2558,10 @@ function playGame() {
             },1200)
             setTimeout(() => {
                 scoreNumber = 0
+                level2ON = false
+                level3ON = false
+                level4ON = false
+                level5ON = false
                 scoreLabelContainer.textContent = scoreNumber
             },1300)
             createCards()
@@ -3255,10 +3335,9 @@ function playGame() {
         }
     }
     
+    let originalCountDown = false
+
     function startButton() {
-        
-
-
             let topCard = document.querySelector('.card7')
             startConstraint.classList.add('start-constraint')
             topCard.appendChild(startConstraint)
@@ -3267,6 +3346,7 @@ function playGame() {
             startButton.classList.add('start-button-in')
             const startPic = document.createElement('img')
             startPic.src = 'img/playbutton.gif'
+            startPic.setAttribute('draggable', 'false')
             startPic.height = 150
             startPic.width = 150
             startPic.setAttribute('style', 'padding-left: 11px;')
@@ -3285,9 +3365,13 @@ function playGame() {
                 startPic.classList.remove('start-button-in')
                 
                 startButton.addEventListener('click', () => {
-                
-                    startButtonSound()
-
+                    
+                    if (!originalCountDown) {
+                        startButtonSound()
+                        originalCountDown = true
+                    } else {
+                        startButtonSound2()
+                    }
                     startButton.disabled = true
                     startButton.classList.add('start-button-press')
                     setTimeout(() => {
@@ -3339,37 +3423,49 @@ function playGame() {
     function levels() {
         
         if (scoreNumber >= 10 && scoreNumber < 20) {
-            const level2 = document.createElement('div')
-            level2.classList.add('level-2')
-            level2.textContent = 'LEVEL2'
-            document.body.appendChild(level2)
-            setTimeout(() => {
-                document.body.removeChild(level2)
-            },7000)
+            if (!level2ON) {   
+                const level2 = document.createElement('div')
+                level2.classList.add('level-2')
+                level2.textContent = 'LEVEL2'
+                document.body.appendChild(level2)
+                setTimeout(() => {
+                    document.body.removeChild(level2)
+                },7000)
+                level2ON = true
+            }
         } else if (scoreNumber >= 20 && scoreNumber < 30) {
-            const level3 = document.createElement('div')
-            level3.classList.add('level-3')
-            level3.textContent = 'LEVEL3'
-            document.body.appendChild(level3)
-            setTimeout(() => {
-                document.body.removeChild(level3)
-            },7000)
+            if (!level3ON) { 
+                const level3 = document.createElement('div')
+                level3.classList.add('level-3')
+                level3.textContent = 'LEVEL3'
+                document.body.appendChild(level3)
+                setTimeout(() => {
+                    document.body.removeChild(level3)
+                },7000)
+                level3ON = true
+            }
         } else if (scoreNumber >= 30 && scoreNumber < 40) {
-            const level4 = document.createElement('div')
-            level4.classList.add('level-4')
-            level4.textContent = 'LEVEL4'
-            document.body.appendChild(level4)
-            setTimeout(() => {
-                document.body.removeChild(level4)
-            },7000)
+            if (!level4ON) { 
+                const level4 = document.createElement('div')
+                level4.classList.add('level-4')
+                level4.textContent = 'LEVEL4'
+                document.body.appendChild(level4)
+                setTimeout(() => {
+                    document.body.removeChild(level4)
+                },7000)
+                level4ON = true
+            }
         } else if (scoreNumber >= 40) {
-            const level5 = document.createElement('div')
-            level5.classList.add('level-5')
-            level5.textContent = 'LEVEL5'
-            document.body.appendChild(level5)
-            setTimeout(() => {
-                document.body.removeChild(level5)
-            },7000)
+            if (!level5ON) { 
+                const level5 = document.createElement('div')
+                level5.classList.add('level-5')
+                level5.textContent = 'LEVEL5'
+                document.body.appendChild(level5)
+                setTimeout(() => {
+                    document.body.removeChild(level5)
+                },7000)
+                level5ON = true
+            }
         }
     }
 
