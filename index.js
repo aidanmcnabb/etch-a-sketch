@@ -1086,7 +1086,13 @@ function playGame() {
                         setTimeout(() => {
                             let index = 0
                             let speed = 80;
-                            let titleText = 'Jet Sketch'
+                            let titleText = ''
+                            if (card.dataset.index === '6') {
+                                let randomTitle = getRandomTitle(titles)
+                                titleText = `${randomTitle}`
+                            } else {
+                                titleText = 'Jet Sketch'
+                            }
                             cardTitle.classList.add('title')
                             cardTitle.classList.add('blinking-cursor2')
                             function typeWriter() {
@@ -2691,6 +2697,11 @@ function randomCardSwipe() {
             matrixModeContainer.classList.remove('matrix-wrong-card')
             failText.setAttribute('style', 'opacity: 0')
             failText2.setAttribute('style', 'opacity: 0')
+            matrixCard1.classList.remove('correct-card')
+            matrixCard2.classList.remove('correct-card')
+            matrixCard3.classList.remove('correct-card')
+            matrixCard4.classList.remove('correct-card')
+            matrixCard5.classList.remove('correct-card')
         } else if (correctCard === 1) {
             matrixCard1.classList.add('correct-card')
         } else if (correctCard === 2) {
