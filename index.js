@@ -1065,6 +1065,7 @@ function playGame() {
                     const box = document.createElement('div')
                     const cardTitle = document.createElement('header')
                     const card = document.createElement('div')
+                    card.setAttribute('draggable', 'false')
 
                     card.classList.add('card')
                     card.classList.add('card-animation')
@@ -1612,7 +1613,7 @@ function randomCardSwipe() {
         let card6 = document.querySelector('.card6')
         let card7 = document.querySelector('.card7')
 
-        
+        card.setAttribute('draggable', 'false')
         card.classList.add('first-card-animation')
         card.classList.add('card')
         card.classList.add('card1')
@@ -3383,6 +3384,7 @@ function randomCardSwipe() {
     function startButton() {
             let topCard = document.querySelector('.card7')
             startConstraint.classList.add('start-constraint')
+            startConstraint.setAttribute('draggable', 'false')
             topCard.appendChild(startConstraint)
             const startButton = document.createElement('button')
             startButton.classList.add('start-button')

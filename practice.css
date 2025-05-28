@@ -1406,6 +1406,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .start-constraint-invis {
@@ -1467,6 +1468,7 @@ body {
     border-style: double solid;
     border-width: 5px;
     cursor: pointer;
+    user-select: none;
 }
 
 .start-button-in {
