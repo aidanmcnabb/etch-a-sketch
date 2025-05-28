@@ -960,6 +960,10 @@ function leaderboardInSound2() {
     var leaderboardIn2 = new Audio("audio/leaderboardIn2.mp3")
     leaderboardIn2.play()
 }
+function leaderboardDropDownSound() {
+    var dropDownSound = new Audio('audio/cartoon-game-damage-alert-ni-sound-1-00-03.mp3')
+    dropDownSound.play()
+}
 
 
 //SOUNDS
@@ -970,6 +974,9 @@ function playGame() {
 
     const cardNumbers = [' ', 'card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7']
     const dataArray = ['', '1', '2', '3', '4', '5', '6', '7']
+    
+    const titles = ['tupacase','repurip','grition','hiating','probviewed','dopiture','ovinatels','applauchew','ductorm','nortonious','prograker','fectors','mosquen','obvia','muj','bronteen','fezzle','writme','jeanspard','cartherite','veytoy','iwoppion','surfewed','immpreator','disaplurntor','lazap','gyshile','ejecroict','featan','sobreats','ramutable','cillipod','bergeagers','gregarpor','halentecks','afformance','irrublor','reconcy','houshia','prembalts','morior','writivent','byfoculous','breater','recinators','callent','payellards','dikort','posical','mackinted','ewondles','formand','gipory','beerpuglet','trudicats','eraow','rocitalk','catchibed','shorogyt','beowieff','windorians','jukelox','adably','craptacular','exciling','baylory','diater','rockoklacq','arinterpord','glaphany','hasteives','whiste','hystinet','justantion','ratica','appremens','ejecroict','ludge','relappons','faciatoom','nellight','umbartto','youtich','ariterg','hashtockle','tempons','trementers','pulappli','procreorate','glishey','ezocholon','heddies','latomaning','exceantors','nocobot','ancefuls','sewab','iyallow','mantous','vabling','gramushed','chituthes','tuentality','unfabrans','holyopt','reimagg','tativeraw','turnment','dijoriwack','iniquin','unetripting','badete','xorri','darripring','exciling','weepeggle','reachrigy','phratened','metters','trogeeps','dwellismols','ariterg','heavaig','brarter','fewtert','casionest','formand','paratered','pedistifte','ulip','eropt','younjuring','woam']
+
     let grayClicks = 0
     let grayClicksInitial = 0
     let redClicks = 0
@@ -1032,6 +1039,11 @@ function playGame() {
     const dancingMan = document.createElement('img')
     dancingMan.classList.add('dancing-man')
     dancingMan.src = 'img/stickmandancing2.gif'
+
+    function getRandomTitle(arr) {
+        const randomIndex = Math.floor(Math.random() * arr.length)
+        return arr[randomIndex]
+    }
 
     function createCards() {
 
@@ -1613,7 +1625,11 @@ function randomCardSwipe() {
             setTimeout(() => {
                 let index = 0
                 let speed = 80;
-                let titleText = 'Jet Sketch'
+
+                let randomTitle = getRandomTitle(titles)
+
+                //let titleText = 'Jet Sketch'
+                let titleText = `${randomTitle}`
                 cardTitle.classList.add('title')
                 cardTitle.classList.add('blinking-cursor2')
                 function typeWriter() {
@@ -2386,6 +2402,10 @@ function randomCardSwipe() {
             leaderBoardDropDown.classList.add('leader-drop-down')
             leaderBoardDropDown.classList.add('leader-drop-down-in')
             leaderBoardContainer.appendChild(leaderBoardDropDown)
+
+            leaderBoardDropDown.addEventListener('DOMContentLoaded', () => {
+                leaderboardDropDownSound()
+            })
             
             dropDownHeader.classList.add('drop-down-header')
             dropDownHeader.classList.add('drop-down-header-in')
@@ -3367,6 +3387,10 @@ function randomCardSwipe() {
             const startCountdown = document.createElement('div')
             startCountdown.classList.add('start-countdown')
             startCountdown.classList.add('start-countdown-ani')
+            const memeFace = document.createElement('img')
+            memeFace.src = 'img/uglyman.png'
+            memeFace.height = 200
+            memeFace.width = 200
 
             setTimeout(() => {
                 startConstraint.appendChild(startButton)
@@ -3398,13 +3422,17 @@ function randomCardSwipe() {
                     },2400)
                     setTimeout(() => {
                         startCountdown.textContent = '2'
+                        //startCountdown.setAttribute('style', 'color: yellowgreen;')
                     },3400)
                     setTimeout(() => {
                         startCountdown.textContent = '1'
+                        //startCountdown.setAttribute('style', 'color: green;')
                     },4400)
                     setTimeout(() => {
-                        startCountdown.textContent = 'GO'
-                        //startCountdown.setAttribute('style', 'color: green;')
+                        startConstraint.appendChild(memeFace)
+                        memeFace.classList.add('start-countdown')
+                        memeFace.classList.add('start-countdown-ani')
+                        startCountdown.textContent = ''
                     },5400)
                     setTimeout(() => {
                         timePassed = 0
@@ -3416,6 +3444,7 @@ function randomCardSwipe() {
                     },5600)
                     setTimeout(() => {
                         startConstraint.removeChild(startCountdown)
+                        startConstraint.removeChild(memeFace)
                         startConstraint.classList.remove('start-constraint-opacity')
                         startConstraint.classList.remove('start-constraint')
                         topCard.removeChild(startConstraint)
