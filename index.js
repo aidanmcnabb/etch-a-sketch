@@ -952,6 +952,15 @@ function wrongSquareSound() {
     wrongSquare.play()
 }
 
+function leaderboardInSound1() {
+    var leaderboardIn1 = new Audio("audio/leaderboardIn.mp3")
+    leaderboardIn1.play()
+}
+function leaderboardInSound2() {
+    var leaderboardIn2 = new Audio("audio/leaderboardIn2.mp3")
+    leaderboardIn2.play()
+}
+
 
 //SOUNDS
 
@@ -2469,7 +2478,7 @@ function randomCardSwipe() {
                                         topCard = undefined
                                         topBox = undefined
                                         
-
+                                        leaderboardInSound2()
                                         removeSortedPlayers()
                                         setTimeout(() => {
                                             
@@ -2480,6 +2489,7 @@ function randomCardSwipe() {
                                             singleClassAdd = true
                                             sortObjectsDescending(players)
                                             appendSortedPlayers()
+                                            leaderboardInSound1()
                                         },1200)
                                         setTimeout(() => {
                                             scoreNumber = 0
@@ -2541,6 +2551,7 @@ function randomCardSwipe() {
             topBox = undefined
         
             removeSortedPlayers()
+            //leaderboardInSound2()
             setTimeout(() => {
                 
                 function isPlayer(player) {
@@ -2554,6 +2565,7 @@ function randomCardSwipe() {
                     sortObjectsDescending(players)
                     singleClassAdd = false
                     appendSortedPlayers()
+                    //leaderboardInSound()
                 }
             },1200)
             setTimeout(() => {
@@ -3372,6 +3384,7 @@ function randomCardSwipe() {
                     } else {
                         startButtonSound2()
                     }
+                    
                     startButton.disabled = true
                     startButton.classList.add('start-button-press')
                     setTimeout(() => {
