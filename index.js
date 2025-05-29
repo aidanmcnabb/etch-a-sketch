@@ -991,6 +991,11 @@ function leaderboardDropDownSound() {
     dropDownSound.play()
 }
 
+function gameOverOutSound() {
+    var gameOverOutPlay = new Audio('audio/gameOverOut.mp3')
+    gameOverOutPlay.play()
+}
+
 
 //SOUNDS
 
@@ -3853,6 +3858,7 @@ function randomCardSwipe() {
             //stopEverything = false
             gameOverButton.classList.remove('game-over-button-in')
             gameOverButton.classList.add('game-over-button-click')
+            gameOverOutSound()
             setTimeout(() => {
                 gameOverTextContainer.classList.add('game-over-button-click')
                 setTimeout(() => {
