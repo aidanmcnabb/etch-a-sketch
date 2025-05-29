@@ -928,28 +928,33 @@ function gameOverSound() {
 
 let playSoundOnce = false
 let gameOverObserver = false
+let gameSound = 1
 var startButtonSoundplay = new Audio('audio/Countdown.mp3')
+var startButtonSoundplay2 = new Audio('audio/Countdown2.mp3')
 
 function startButtonSound() {
-    if (!playSoundOnce) {
+    if (!playSoundOnce && gameSound === 1) {
         startButtonSoundplay.play()
         playSoundOnce = true
+    } else if (!playSoundOnce && gameSound === 2) {
+        startButtonSoundplay2.play()
     }
     if (gameOverObserver) {   
         const startObserver = new MutationObserver(entries => {
-            startButtonSoundplay.pause()
-            startButtonSoundplay.currentTime = 0
+            if (gameSound === 1) {   
+                startButtonSoundplay.pause()
+                startButtonSoundplay.currentTime = 0
+                gameSound = 2
+            } else {
+                startButtonSoundplay2.pause()
+                startButtonSoundplay2.currentTime = 0
+            }
             gameOverSound()
             startObserver.disconnect()
         })
         let body = document.querySelector('body')
         startObserver.observe(body, { childList: true })
     }
-}
-
-function startButtonSound2() {
-    var startButtonSoundplay2 = new Audio('audio/Countdown2.mp3')
-    startButtonSoundplay2.play()
 }
 
 function squareSound1() {
@@ -2466,6 +2471,7 @@ function randomCardSwipe() {
             dropDownInput.classList.add('drop-down-input')
             dropDownInput.classList.add('drop-down-input-in')
             dropDownInput.setAttribute('spellcheck', 'false')
+            dropDownInput.setAttribute('maxlength', '12')
 
             setTimeout(() => {
                 leaderBoardContainer.classList.remove('leader-board-in')
@@ -3464,7 +3470,7 @@ function randomCardSwipe() {
                         startButtonSound()
                         originalCountDown = true
                     } else {
-                        startButtonSound2()
+                        startButtonSound()
                     }
                     
                     startButton.disabled = true
