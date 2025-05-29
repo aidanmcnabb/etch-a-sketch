@@ -915,15 +915,36 @@ tutorialFuntion()
 //SOUNDS
 
 function createCardsSound() {
-    var createCardSoundPlay = new Audio("audio/CreateCardsSound.mp3") //this sound will have to be queded up
+    var createCardSoundPlay = new Audio("audio/CardsIn.mp3") //this sound will have to be queded up
     createCardSoundPlay.play()
+}
+
+function gameOverSound() {
+    var gameOverPlay = new Audio('audio/gameOver.mp3')
+    gameOverPlay.play()
 }
 
 //all div entrance sounds will have to be queded up
 
+let playSoundOnce = false
+let gameOverObserver = false
+var startButtonSoundplay = new Audio('audio/Countdown.mp3')
+
 function startButtonSound() {
-    var startButtonSoundplay = new Audio('audio/Countdown.mp3')
-    startButtonSoundplay.play()
+    if (!playSoundOnce) {
+        startButtonSoundplay.play()
+        playSoundOnce = true
+    }
+    if (gameOverObserver) {   
+        const startObserver = new MutationObserver(entries => {
+            startButtonSoundplay.pause()
+            startButtonSoundplay.currentTime = 0
+            gameOverSound()
+            startObserver.disconnect()
+        })
+        let body = document.querySelector('body')
+        startObserver.observe(body, { childList: true })
+    }
 }
 
 function startButtonSound2() {
@@ -961,7 +982,7 @@ function leaderboardInSound2() {
     leaderboardIn2.play()
 }
 function leaderboardDropDownSound() {
-    var dropDownSound = new Audio('audio/cartoon-game-damage-alert-ni-sound-1-00-03.mp3')
+    var dropDownSound = new Audio('audio/dropDownChildIn.mp3')
     dropDownSound.play()
 }
 
@@ -970,7 +991,19 @@ function leaderboardDropDownSound() {
 
 function playGame() {
 
-    
+    setTimeout(() => {
+        const cardsObserver = new MutationObserver(entries => {
+            createCardsSound()
+            setTimeout(() => {
+                leaderboardInSound1()
+            },2700)
+            cardsObserver.disconnect()
+        })
+        const body = document.querySelector('body')
+
+        cardsObserver.observe(body, { childList: true })
+    },1400)
+
 
     const cardNumbers = [' ', 'card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7']
     const dataArray = ['', '1', '2', '3', '4', '5', '6', '7']
@@ -2408,11 +2441,23 @@ function randomCardSwipe() {
         
             leaderBoardDropDown.classList.add('leader-drop-down')
             leaderBoardDropDown.classList.add('leader-drop-down-in')
+
+            function dropDownObserver() {
+                const dropDownObserver = new MutationObserver(entries => {
+                    leaderboardDropDownSound()
+                    dropDownObserver.disconnect()
+                })
+                dropDownObserver.observe(leaderBoardContainer, { childList: true })
+            }
+            dropDownObserver()
+
             leaderBoardContainer.appendChild(leaderBoardDropDown)
 
+            /*
             leaderBoardDropDown.addEventListener('DOMContentLoaded', () => {
                 leaderboardDropDownSound()
             })
+            */
             
             dropDownHeader.classList.add('drop-down-header')
             dropDownHeader.classList.add('drop-down-header-in')
@@ -3778,7 +3823,11 @@ function randomCardSwipe() {
         
 
         setTimeout(() => {
+            gameOverObserver = true
+            startButtonSound()
+            playSoundOnce = false
             document.body.appendChild(gameOverTextContainer)
+            gameOverObserver = false
             document.body.appendChild(gameOverFilter)
             setTimeout(() => {
                 gameOverTextContainer.appendChild(gameOverTextHeader)
