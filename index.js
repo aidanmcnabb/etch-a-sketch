@@ -996,6 +996,16 @@ function gameOverOutSound() {
     gameOverOutPlay.play()
 }
 
+function dropDownOutSound() {
+    var dropDownOutPlay = new Audio('audio/dropDownOut.mp3')
+    dropDownOutPlay.play()
+}
+
+function justCardsInSound() {
+    var justCardsInPlay = new Audio('audio/justCardsIn.mp3')
+    justCardsInPlay.play()
+}
+
 
 //SOUNDS
 
@@ -2499,6 +2509,15 @@ function randomCardSwipe() {
                 if (nameInput === true) {
                     dropDownInput.addEventListener('keyup', (e) => {
                         if (e.key === 'Enter') {
+                            dropDownOutSound()
+
+                            const justCardsInObserver = new MutationObserver(entries => {
+                                justCardsInSound()
+                                justCardsInObserver.disconnect()
+                            })
+                            let body = document.querySelector('body')
+                            justCardsInObserver.observe(body, { childList: true })
+
                             dropDownInputValue = dropDownInput.value
                             dropDownHeader.classList.remove('drop-down-header')
                             dropDownInput.classList.remove('drop-down-input-in')
@@ -2634,7 +2653,7 @@ function randomCardSwipe() {
             topBox = undefined
         
             removeSortedPlayers()
-            //leaderboardInSound2()
+            leaderboardInSound2()
             setTimeout(() => {
                 
                 function isPlayer(player) {
@@ -2648,7 +2667,14 @@ function randomCardSwipe() {
                     sortObjectsDescending(players)
                     singleClassAdd = false
                     appendSortedPlayers()
-                    //leaderboardInSound()
+                    leaderboardInSound1()
+
+                    const justCardsInObserver = new MutationObserver(entries => {
+                        justCardsInSound()
+                        justCardsInObserver.disconnect()
+                    })
+                    let body = document.querySelector('body')
+                    justCardsInObserver.observe(body, { childList: true })
                 }
             },1200)
             setTimeout(() => {
