@@ -48,6 +48,9 @@
             }
             
             setTime(2300)
+            setTimeout(() => {
+                typing1Sound()
+            },2300)
             setTime(2500)  
             setTime(2600)  
             setTime(2690)  
@@ -76,6 +79,9 @@
             setDecriment(7200)
             setDecriment(7300)
             setTime(9000)
+            setTimeout(() => {
+                typing2Sound()
+            },9000)
             setTime(9100)  
             setTime(9200)  
             setTime(9290)  
@@ -112,6 +118,9 @@
             setDecriment(13110)
             setDecriment(13180)
             setTime(14180)
+            setTimeout(() => {
+                typing3Sound()
+            },14180)
             setTime(14280)  
             setTime(14380)  
             setTime(14480)  
@@ -124,6 +133,7 @@
         function buttonClick() {
             //this is all basically a manual timer for all of my animations that originated from the "consent" button. this allows me to also play my master sound for the entire intro animation as well.  there is probably a better way to do all of this, i am willing to look into it to see if this is even right.  it works though!  
             consentButton.addEventListener('mousedown', () => {
+                iUnderstandSound()
                 consentButton.classList.remove('fade')
                 consentButton.classList.remove('button-infinite')
                 consentButton.classList.add('button-click')
@@ -449,6 +459,25 @@ function justCardsInSound() {
     justCardsInPlay.play()
 }
 
+function iUnderstandSound() {
+    var iUnderstandPlay = new Audio('audio/iUnderstand.mp3')
+    iUnderstandPlay.play()
+}
+
+function typing1Sound() {
+    var typing1Play = new Audio('audio/typing1.mp3')
+    typing1Play.play()
+}
+
+function typing2Sound() {
+    var typing2Play = new Audio('audio/typing2.mp3')
+    typing2Play.play()
+}
+
+function typing3Sound() {
+    var typing3Play = new Audio('audio/typing3.mp3')
+    typing3Play.play()
+}
 
 //SOUNDS
 
