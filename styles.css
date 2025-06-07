@@ -83,6 +83,7 @@ body {
     font-size: 28px;
     text-shadow: 10px 5px 5px rgb(180, 180, 180);
     display: flex;
+    user-select: none;
 }
 
 .blinking-cursor::after {
@@ -260,7 +261,10 @@ body {
     width: 400px;
     border-radius: 20px;
     box-shadow: 10px 10px 7px rgb(110, 110, 110);
-    
+        position: absolute;
+    top: 20%;
+    left: 40%;
+    user-select: none;
 }
 
 .fade2 {
