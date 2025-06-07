@@ -1,6 +1,21 @@
-intro = false
+
+//intro = false
+if (localStorage.length === 0) {intro = false} else {intro = JSON.parse(localStorage.getItem('intro'))}
+
+
         
 function introAndTutorial() {
+    
+    document.querySelector("#animation-container").innerHTML =
+    `   
+        <div id="animation-container2" class="fade">
+            <img src="img/headset3.png" alt="" class="" id="pic1">
+            <span class="fade" id="short">This is best experienced with Headphones</span>
+            <button id="consent" class="fade button-infinite">I Understand</button>
+        </div> 
+        <div id="animation"></div>
+    `
+    
     const animationContainer = document.querySelector('#animation-container')
     const animationContainer2 = document.querySelector('#animation-container2')
     const animationVisual = document.querySelector('#animation')
@@ -356,6 +371,8 @@ function introAndTutorial() {
             document.querySelector('body').setAttribute('style', 'font-optical-sizing: \'\'; font-weight: \'\'; font-style: \'\'; font-size: \'\'; display: \'\'; justify-content: \'\'; margin-top: \'\';')
             document.querySelector('body').classList.remove('gradient-overlay3')
             playGame()
+            intro = true
+            localStorage.setItem('intro', JSON.stringify(intro))
         }, 6501)
     }
 }
@@ -2251,7 +2268,7 @@ function randomCardSwipe() {
 
     function correctCardCounter() {
         //i need to remove the matrixContainerIn and give it another class
-        //gotta reset cards onTimesUp
+        //gotta reset cards onTime
         if (correctCard === -1) {
             matrixModeContainer.classList.add('matrix-wrong-card')
             failText.setAttribute('style', 'opacity: 1')
@@ -2978,6 +2995,16 @@ function randomCardSwipe() {
                 
                 startButton.addEventListener('click', () => {
                     
+                    if (!pressed) {
+                        rewatchButton.animate([
+                                { transform: 'translateX(400px)'}
+                            ], {
+                                duration: 600,
+                                easing: 'ease-in-out',
+                                fill: 'forwards'
+                        });
+                    }
+
                     if (!originalCountDown) {
                         startButtonSound()
                         originalCountDown = true
@@ -3199,6 +3226,16 @@ function randomCardSwipe() {
         gameOverButton.classList.add('game-over-button')
         gameOverButton.classList.add('game-over-button-in')
         gameOverButton.textContent = 'Thanks..?'
+
+        if (!pressed) {
+            rewatchButton.animate([
+                    { transform: 'translateX(0px)'}
+                ], {
+                    duration: 600,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+            });
+        }
         
         clearInterval(timer);
         document.getElementById("base-timer-path-remaining").classList.remove('countdown')
@@ -3416,7 +3453,57 @@ function randomCardSwipe() {
             document.getElementById("base-timer-path-remaining").classList.remove(warning.color)
         }
     }
+
+    let pressed = false
+    const rewatchButton = document.createElement('div')
+
+    function rewatchIntro() {
+        rewatchButton.classList.add('rewatch')
+        rewatchButton.classList.add('rewatch-in')
+        const rewatchButtonImg = document.createElement('img')
+        rewatchButtonImg.src = 'img/rewatch.png'
+        rewatchButtonImg.height = 45
+        rewatchButton.appendChild(rewatchButtonImg)
+        setTimeout(() => {
+            document.body.appendChild(rewatchButton)
+        },4000)
+
+
+
+        rewatchButton.addEventListener('mousedown', () => {
+            let pressed = true
+            localStorage.clear();
+            rewatchButton.animate([
+                    { transform: 'scale(1)', backgroundColor: 'white'},
+                    { transform: 'scale(.7)', backgroundColor: 'gray' },
+                    { transform: 'scale(1)', backgroundColor: 'white' }
+                  ], {
+                    duration: 200
+            });
+            rewatchButtonImg.animate([
+                    { transform: 'scale(1)', backgroundColor: 'white'},
+                    { transform: 'scale(.7)', backgroundColor: 'gray' },
+                    { transform: 'scale(1)', backgroundColor: 'white' }
+                  ], {
+                    duration: 200
+            });
+            setTimeout(() => {
+                rewatchButton.animate([
+                        { transform: 'translateX(400px)'}
+                    ], {
+                        duration: 600,
+                        easing: 'ease-in-out',
+                        fill: 'forwards'
+                });
+                setTimeout(() => {
+                    document.body.removeChild(rewatchButton)
+                },500)
+            },250)
+        }, {once: true})
+    }
+    rewatchIntro()
 }
+
 
 
 //a credits and options button that transistions the page and scrolls you up or down depnding on where you click... very hard... i think
