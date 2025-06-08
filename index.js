@@ -365,7 +365,6 @@ function introAndTutorial() {
             document.querySelector('body').setAttribute('style', 'font-optical-sizing: \'\'; font-weight: \'\'; font-style: \'\'; font-size: \'\'; display: \'\'; justify-content: \'\'; margin-top: \'\';')
             document.querySelector('body').classList.remove('gradient-overlay3')
             playGame()
-            tutorialSheet()
         }, 6501)
     }
 }
@@ -502,6 +501,11 @@ function doublePointsSound() {
     doublePointsPlay.play()
 }
 
+function tutorialButtonSound() {
+    var tutorialButtonPlay = new Audio('audio/tutorialSound.mp3')
+    tutorialButtonPlay.play()
+}
+
 //SOUNDS
 
 if (intro === false) {
@@ -512,7 +516,9 @@ if (intro === false) {
 
 function tutorialSheet() {
     const tutorialOverSheet = document.createElement('div')
+    const windowDiv = document.createElement('div')
     tutorialOverSheet.classList.add('tutorial-sheet')
+    windowDiv.classList.add('window-div')
     document.body.appendChild(tutorialOverSheet)
     setTimeout(() => {
         tutorialOverSheet.animate([
@@ -557,6 +563,7 @@ function tutorialSheet() {
     setTimeout(() => {
         textContainerButton.addEventListener('mousedown', () => {
             // MOVEMENT 1 MOVEMENT 1 MOVEMENT 1 MOVEMENT 1 MOVEMENT 1
+            tutorialButtonSound()
             textContainerButton.animate([
                 { transform: 'scale(1)' },
                 { transform: 'scale(.7)', backgroundColor: 'gray' },
@@ -578,6 +585,15 @@ function tutorialSheet() {
                 });
             },200)
             setTimeout(() => {
+                document.body.appendChild(windowDiv)
+                windowDiv.animate([
+                    {opacity: '0'},
+                    {opacity: '1'}
+                ], {
+                    duration: 500,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                });
                 tutorialTextContainer.animate([
                     {transform: 'translateX(75px) translateY(270px)', borderColor: 'black', width: '450px'}
                 ], {
@@ -627,6 +643,7 @@ function tutorialSheet() {
             },1102)
             textContainerButton2.addEventListener('mousedown', () => {
                 // MOVEMENT 2 MOVEMENT 2 MOVEMENT 2 MOVEMENT 2 MOVEMENT 2
+                tutorialButtonSound()
                 textContainerButton2.animate([
                     { transform: 'scale(1)' },
                     { transform: 'scale(.7)', backgroundColor: 'gray' },
@@ -638,9 +655,9 @@ function tutorialSheet() {
                 });
                 setTimeout(() => {
                     tutorialTextContainer.animate([
-                        { transform: 'scale(1) translateX(75px) translateY(270px)' },
-                        { transform: 'scale(.7) translateX(75px) translateY(270px)', backgroundColor: 'gray' },
-                        { transform: 'scale(1) translateX(75px) translateY(270px)', borderColor: 'green' }
+                        { transform: 'translateX(75px) translateY(270px)' },
+                        { transform: 'translateX(75px) translateY(270px)', backgroundColor: 'gray' },
+                        { transform: 'translateX(75px) translateY(270px)', borderColor: 'green' }
                     ], {
                         duration: 400,
                         easing: 'ease-in-out',
@@ -648,6 +665,13 @@ function tutorialSheet() {
                     });
                 },200)
                 setTimeout(() => {
+                    windowDiv.animate([
+                        {transform: 'translateY(-350px)', borderColor: 'black', width: '250px', height: '300px'}
+                    ], {
+                        duration: 500,
+                        easing: 'ease-in-out',
+                        fill: 'forwards'
+                    });
                     tutorialTextContainer.animate([
                         {transform: 'translateX(140px) translateY(-55px)', borderColor: 'black', width: '350px'}
                     ], {
@@ -697,6 +721,7 @@ function tutorialSheet() {
                 },1102)
                 textContainerButton3.addEventListener('mousedown', () => {
                     // MOVEMENT 3 MOVEMENT 3 MOVEMENT 3 MOVEMENT 3 MOVEMENT 3
+                    tutorialButtonSound()
                     textContainerButton3.animate([
                         { transform: 'scale(1)' },
                         { transform: 'scale(.7)', backgroundColor: 'gray' },
@@ -708,9 +733,9 @@ function tutorialSheet() {
                     });
                     setTimeout(() => {
                         tutorialTextContainer.animate([
-                            { transform: 'scale(1) translateX(140px) translateY(-55px)' },
-                            { transform: 'scale(.7) translateX(140px) translateY(-55px)', backgroundColor: 'gray' },
-                            { transform: 'scale(1) translateX(140px) translateY(-55px)', borderColor: 'green' }
+                            { transform: 'translateX(140px) translateY(-55px)' },
+                            { transform: 'translateX(140px) translateY(-55px)', backgroundColor: 'gray' },
+                            { transform: 'translateX(140px) translateY(-55px)', borderColor: 'green' }
                         ], {
                             duration: 400,
                             easing: 'ease-in-out',
@@ -718,6 +743,13 @@ function tutorialSheet() {
                         });
                     },200)
                     setTimeout(() => {
+                        windowDiv.animate([
+                            {transform: 'translateY(-650px)', borderColor: 'black', width: '300px', height: '250px'}
+                        ], {
+                            duration: 500,
+                            easing: 'ease-in-out',
+                            fill: 'forwards'
+                        });
                         tutorialTextContainer.animate([
                             {transform: 'translateX(115px) translateY(-375px)', borderColor: 'black', width: '350px'}
                         ], {
@@ -767,6 +799,7 @@ function tutorialSheet() {
                     },1102)
                     textContainerButton4.addEventListener('mousedown', () => {
                         // MOVEMENT 4 MOVEMENT 4 MOVEMENT 4 MOVEMENT 4 MOVEMENT 4
+                        tutorialButtonSound()
                         textContainerButton4.animate([
                             { transform: 'scale(1)' },
                             { transform: 'scale(.7)', backgroundColor: 'gray' },
@@ -778,9 +811,9 @@ function tutorialSheet() {
                         });
                         setTimeout(() => {
                             tutorialTextContainer.animate([
-                                { transform: 'scale(1) translateX(115px) translateY(-375px)' },
-                                { transform: 'scale(.7) translateX(115px) translateY(-375px)', backgroundColor: 'gray' },
-                                { transform: 'scale(1) translateX(115px) translateY(-375px)', borderColor: 'green' }
+                                { transform: 'translateX(115px) translateY(-375px)' },
+                                { transform: 'translateX(115px) translateY(-375px)', backgroundColor: 'gray' },
+                                { transform: 'translateX(115px) translateY(-375px)', borderColor: 'green' }
                             ], {
                                 duration: 400,
                                 easing: 'ease-in-out',
@@ -788,6 +821,13 @@ function tutorialSheet() {
                             });
                         },200)
                         setTimeout(() => {
+                            windowDiv.animate([
+                                {transform: 'translateY(-650px) translateX(-965px)', borderColor: 'black', width: '310px', height: '250px'}
+                            ], {
+                                duration: 500,
+                                easing: 'ease-in-out',
+                                fill: 'forwards'
+                            });
                             tutorialTextContainer.animate([
                                 {transform: 'translateX(-115px) translateY(-375px)', borderColor: 'black', width: '350px'}
                             ], {
@@ -837,6 +877,7 @@ function tutorialSheet() {
                         },1102)
                         textContainerButton5.addEventListener('mousedown', () => {
                             // MOVEMENT 5 MOVEMENT 5 MOVEMENT 5 MOVEMENT 5 MOVEMENT 5
+                            tutorialButtonSound()
                             textContainerButton5.animate([
                                 { transform: 'scale(1)' },
                                 { transform: 'scale(.7)', backgroundColor: 'gray' },
@@ -848,9 +889,9 @@ function tutorialSheet() {
                             });
                             setTimeout(() => {
                                 tutorialTextContainer.animate([
-                                    { transform: 'scale(1) translateX(-115px) translateY(-375px)' },
-                                    { transform: 'scale(.7) translateX(-115px) translateY(-375px)', backgroundColor: 'gray' },
-                                    { transform: 'scale(1) translateX(-115px) translateY(-375px)', borderColor: 'green' }
+                                    { transform: 'translateX(-115px) translateY(-375px)' },
+                                    { transform: 'translateX(-115px) translateY(-375px)', backgroundColor: 'gray' },
+                                    { transform: 'translateX(-115px) translateY(-375px)', borderColor: 'green' }
                                 ], {
                                     duration: 400,
                                     easing: 'ease-in-out',
@@ -858,6 +899,13 @@ function tutorialSheet() {
                                 });
                             },200)
                             setTimeout(() => {
+                                windowDiv.animate([
+                                    {opacity: '0'}
+                                ], {
+                                    duration: 500,
+                                    easing: 'ease-in-out',
+                                    fill: 'forwards'
+                                });
                                 tutorialTextContainer.animate([
                                     {transform: 'translateX(0px) translateY(0px)', borderColor: 'black', width: '350px'}
                                 ], {
@@ -882,6 +930,7 @@ function tutorialSheet() {
                             },601)
                             const textContainerButton6 = document.createElement('button')
                             setTimeout(() => {
+                                document.body.removeChild(windowDiv)
                                 textContainerButton6.classList.add('text-button')
                                 textAnimationContainer.textContent = 'That\'s it! Press the play button and just click the squares with the right color!'
                                 textAnimationContainer.animate([
@@ -907,6 +956,7 @@ function tutorialSheet() {
                             },1102)
                             textContainerButton6.addEventListener('mousedown', () => {
                                 // MOVEMENT 6 MOVEMENT 6 MOVEMENT 6 MOVEMENT 6 MOVEMENT 6
+                                tutorialButtonSound()
                                 textContainerButton6.animate([
                                     { transform: 'scale(1)' },
                                     { transform: 'scale(.7)', backgroundColor: 'gray' },
@@ -976,6 +1026,7 @@ function tutorialSheet() {
                                     },600)
                                 },1102)
                                 textContainerButton7.addEventListener('mousedown', () => {
+                                    tutorialButtonSound()
                                     textContainerButton7.animate([
                                         { transform: 'scale(1)' },
                                         { transform: 'scale(.7)', backgroundColor: 'gray' },
@@ -1031,6 +1082,7 @@ function tutorialSheet() {
 }
 
 function playGame() {
+    tutorialSheet()
     document.querySelector('link[href="styles.css"]')
 
     setTimeout(() => {
