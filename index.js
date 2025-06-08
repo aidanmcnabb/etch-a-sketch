@@ -2524,8 +2524,10 @@ function randomCardSwipe() {
                             }
 
                             const justCardsInObserver = new MutationObserver(entries => {
-                                justCardsInSound()
-                                justCardsInObserver.disconnect()
+                                setTimeout(() => {
+                                    justCardsInSound()
+                                },2000)
+                                justCardsInObserver.disconnect()   
                             })
                             let body = document.querySelector('body')
                             justCardsInObserver.observe(body, { childList: true })
