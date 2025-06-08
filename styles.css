@@ -141,6 +141,7 @@ body {
     font-family: "Pixelify Sans";
     font-size: 15px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .consent2 {
@@ -158,6 +159,10 @@ body {
     justify-content: center;
     align-items: center;
     
+}
+
+#short {
+    margin-bottom: 40px;
 }
 
 @keyframes fadeToBlack {

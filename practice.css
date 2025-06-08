@@ -3062,3 +3062,50 @@ body {
     border-radius: 20px;
     user-select: none;
 }
+
+.arrow-1 {
+    position: relative;
+    top: -1300px;
+    left: -670px;
+    z-index: 13;
+}
+
+.arrow-2 {
+    position: relative;
+    top: -1350px;
+    left: -260px;
+    z-index: 13;
+}
+
+.arrow-3 {
+    position: relative;
+    top: -1420px;
+    left: -690px;
+    z-index: 13;
+}
+
+.arrow-in {
+    animation: arrowIn .5s ease-in-out forwards;
+}
+
+@keyframes arrowIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.arrow-out {
+    animation: arrowOut .5s ease-in-out forwards;
+}
+
+@keyframes arrowOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

@@ -8,7 +8,7 @@ function introAndTutorial() {
     `   
         <div id="animation-container2" class="fade">
             <img src="img/headset3.png" alt="" class="" id="pic1">
-            <span class="fade" id="short">This is best experienced with Headphones</span>
+            <span class="fade" id="short">This is best experienced with Headphones. This is strictly a desktop application.</span>
             <button id="consent" class="fade button-infinite">I Understand</button>
         </div> 
         <div id="animation"></div>
@@ -365,6 +365,7 @@ function introAndTutorial() {
             document.querySelector('body').setAttribute('style', 'font-optical-sizing: \'\'; font-weight: \'\'; font-style: \'\'; font-size: \'\'; display: \'\'; justify-content: \'\'; margin-top: \'\';')
             document.querySelector('body').classList.remove('gradient-overlay3')
             playGame()
+            tutorialSheet()
         }, 6501)
     }
 }
@@ -1082,7 +1083,6 @@ function tutorialSheet() {
 }
 
 function playGame() {
-    tutorialSheet()
     document.querySelector('link[href="styles.css"]')
 
     setTimeout(() => {
@@ -2490,6 +2490,21 @@ function randomCardSwipe() {
                         if (e.key === 'Enter') {
                             dropDownOutSound()
 
+                            if (!nameDeclared) {
+                                arrow1.classList.remove('arrow-in')
+                                arrow1.classList.add('arrow-out')
+                                arrow2.classList.remove('arrow-in')
+                                arrow2.classList.add('arrow-out')
+                                arrow3.classList.remove('arrow-in')
+                                arrow3.classList.add('arrow-out')
+                                setTimeout(() => {
+                                    document.body.removeChild(arrow1)
+                                    document.body.removeChild(arrow2)
+                                    document.body.removeChild(arrow3)
+                                    nameDeclared = true
+                                },600)
+                            }
+
                             const justCardsInObserver = new MutationObserver(entries => {
                                 justCardsInSound()
                                 justCardsInObserver.disconnect()
@@ -3631,6 +3646,29 @@ function randomCardSwipe() {
         },1000)
     }
 
+    const arrow1 = document.createElement('img')
+    arrow1.src = 'img/arrow1.gif'
+    arrow1.height = 100
+    arrow1.width = 100
+    arrow1.classList.add('arrow-1')
+    arrow1.classList.add('arrow-in')
+
+    const arrow2 = document.createElement('img')
+    arrow2.src = 'img/arrow2.gif'
+    arrow2.height = 100
+    arrow2.width = 100
+    arrow2.classList.add('arrow-2')
+    arrow2.classList.add('arrow-in')
+
+    const arrow3 = document.createElement('img')
+    arrow3.src = 'img/arrow3.gif'
+    arrow3.height = 100
+    arrow3.width = 100
+    arrow3.classList.add('arrow-3')
+    arrow3.classList.add('arrow-in')
+
+    let nameDeclared = false
+
     function onTimesUp() {
         timeUp = true
 
@@ -3823,7 +3861,7 @@ function randomCardSwipe() {
                 },1050)
             },500)
         },500)
-        
+
         gameOverButton.addEventListener('mousedown', () => {
             document.body.appendChild(dancingMan)
             stickMan = true
@@ -3844,7 +3882,11 @@ function randomCardSwipe() {
                         setTimeout(() => {
                             document.body.removeChild(gameOverFilter)
                             leaderBoardsIntake()
-
+                            if (!nameDeclared) {
+                                document.body.appendChild(arrow1)
+                                document.body.appendChild(arrow2)
+                                document.body.appendChild(arrow3)
+                            }
                         },300)
                     },550)
                 },500)
