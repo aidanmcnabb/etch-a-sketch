@@ -1,8 +1,6 @@
 
 //intro = false
 if (localStorage.length === 0) {intro = false} else {intro = JSON.parse(localStorage.getItem('intro'))}
-
-
         
 function introAndTutorial() {
     
@@ -284,7 +282,6 @@ function introAndTutorial() {
             setTimeout(() => {
                 //this is where i learned that having 2 infinite animations happening on two seperate classes at the same time cancels the latter class because of cascade. (i think, or its just a weird bug with text-shadow animations? im still very confused tbh.)  so to fix this i just made each class its own seperate version and played all the animations on a single class.  this presents itself to be a problem that i want to be fixed in the future, it is inefficient and looks terrible with all the extra classes and keyframes used. I looked up to see if there is a way to add parameters for keyframes, though that will be a problem that i will focus on solely on in the future. for now i just wanted to get it done with the fix that i fully understood.
 
-                //this is just a slight translation of the animationVisual whenever the stick figure punches it
                 animationVisual.classList.remove('glitch')
                 animationVisual.classList.add('glitch12')
             }, 25890)
@@ -332,7 +329,6 @@ function introAndTutorial() {
                 animationVisual5.classList.add('glitch10')
             }, 36000)
             setTimeout(() => {
-                // changed letters to "play!" during translation to appear seamless
                 animationVisual.textContent = 'p'
                 animationVisual2.textContent = 'l'
                 animationVisual3.textContent = 'a'
@@ -340,14 +336,12 @@ function introAndTutorial() {
                 animationVisual5.textContent = '!'
             }, 36100)
             setTimeout(() => {
-                //replaced the 5 seperate divs with one so i can make a button
                 animationContainer.removeChild(animationVisual)
                 animationContainer.removeChild(animationVisual2)
                 animationContainer.removeChild(animationVisual3)
                 animationContainer.removeChild(animationVisual4)
                 animationContainer.removeChild(animationVisual5)
                 playButton.classList.add('glitch11', 'filter', 'consent2')
-                //playButton.setAttribute('onclick', 'playButtonFunc()')
                 playButton.textContent = 'play!'
                 animationContainer.appendChild(playButton)
                 playButton.addEventListener('click', () => {
@@ -371,15 +365,15 @@ function introAndTutorial() {
             document.querySelector('body').setAttribute('style', 'font-optical-sizing: \'\'; font-weight: \'\'; font-style: \'\'; font-size: \'\'; display: \'\'; justify-content: \'\'; margin-top: \'\';')
             document.querySelector('body').classList.remove('gradient-overlay3')
             playGame()
-            intro = true
-            localStorage.setItem('intro', JSON.stringify(intro))
+            tutorialSheet()
         }, 6501)
     }
 }
+
 //SOUNDS
 
 function createCardsSound() {
-    var createCardSoundPlay = new Audio("audio/CardsIn.mp3") //this sound will have to be queded up
+    var createCardSoundPlay = new Audio("audio/CardsIn.mp3")
     createCardSoundPlay.play()
 }
 
@@ -387,8 +381,6 @@ function gameOverSound() {
     var gameOverPlay = new Audio('audio/gameOver.mp3')
     gameOverPlay.play()
 }
-
-//all div entrance sounds will have to be queded up
 
 let playSoundOnce = false
 let gameOverObserver = false
@@ -518,8 +510,527 @@ if (intro === false) {
     playGame()
 }
 
-function playGame() {
+function tutorialSheet() {
+    const tutorialOverSheet = document.createElement('div')
+    tutorialOverSheet.classList.add('tutorial-sheet')
+    document.body.appendChild(tutorialOverSheet)
+    setTimeout(() => {
+        tutorialOverSheet.animate([
+            { backgroundColor: 'rgba(0, 0, 0, .5)'}
+        ], {
+            duration: 300,
+            easing: 'linear',
+            fill: 'forwards'
+        });
+    },4500)
+    const tutorialTextContainer = document.createElement('div')
+    tutorialTextContainer.classList.add('text-container')
+    setTimeout(() => {
+        document.body.appendChild(tutorialTextContainer)
+        tutorialTextContainer.animate([
+            { width: '400px', height: '250px'}
+        ], {
+            duration: 500,
+            easing: 'ease-in-out',
+            fill: 'forwards'
+        });
+    },4500)
+    const textAnimationContainer = document.createElement('div')
+    textAnimationContainer.classList.add('text-animation')
+    const textContainerButton = document.createElement('button')
+    textContainerButton.classList.add('text-button')
+    setTimeout(() => {
+        textAnimationContainer.textContent = 'Quick Tutorial... K?'
+        tutorialTextContainer.appendChild(textAnimationContainer)
+        textContainerButton.textContent = 'cool'
+        tutorialTextContainer.appendChild(textContainerButton)
+        setTimeout(() => {
+        textContainerButton.animate([
+            { opacity: '1'}
+        ], {
+            duration: 500,
+            easing: 'ease-in-out',
+            fill: 'forwards'
+        });
+        },400)
+    },5200)
+    setTimeout(() => {
+        textContainerButton.addEventListener('mousedown', () => {
+            // MOVEMENT 1 MOVEMENT 1 MOVEMENT 1 MOVEMENT 1 MOVEMENT 1
+            textContainerButton.animate([
+                { transform: 'scale(1)' },
+                { transform: 'scale(.7)', backgroundColor: 'gray' },
+                { transform: 'scale(1)', borderColor: 'green' }
+            ], {
+                duration: 400,
+                easing: 'ease-in-out',
+                fill: 'forwards'
+            });
+            setTimeout(() => {
+                tutorialTextContainer.animate([
+                    { transform: 'scale(1)' },
+                    { transform: 'scale(.7)', backgroundColor: 'gray' },
+                    { transform: 'scale(1)', borderColor: 'green' }
+                ], {
+                    duration: 400,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                });
+            },200)
+            setTimeout(() => {
+                tutorialTextContainer.animate([
+                    {transform: 'translateX(75px) translateY(270px)', borderColor: 'black', width: '450px'}
+                ], {
+                    duration: 500,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                });
+                textAnimationContainer.animate([
+                    {opacity: '0'}
+                ], {
+                    duration: 300,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                });
+                textContainerButton.animate([
+                    {opacity: '0'}
+                ], {
+                    duration: 400,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                });
+            },601)
+            const textContainerButton2 = document.createElement('button')
+            setTimeout(() => {
+                textContainerButton2.classList.add('text-button')
+                textAnimationContainer.textContent = 'This is the color picker. Cycle through W, A, S and D to choose the color that corresponds with the square you\'re going to click. Try it out!'
+                textAnimationContainer.animate([
+                    {fontSize: '26px'},
+                    {opacity: '1', fontSize: '26px'}
+                ], {
+                    duration: 400,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                });
+                tutorialTextContainer.removeChild(textContainerButton)
+                tutorialTextContainer.appendChild(textContainerButton2)
+                setTimeout(() => {
+                    textContainerButton2.textContent = 'wow'
+                    textContainerButton2.animate([
+                        {opacity: '1'}
+                    ], {
+                        duration: 400,
+                        easing: 'ease-in-out',
+                        fill: 'forwards'
+                    });
+                },600)
+            },1102)
+            textContainerButton2.addEventListener('mousedown', () => {
+                // MOVEMENT 2 MOVEMENT 2 MOVEMENT 2 MOVEMENT 2 MOVEMENT 2
+                textContainerButton2.animate([
+                    { transform: 'scale(1)' },
+                    { transform: 'scale(.7)', backgroundColor: 'gray' },
+                    { transform: 'scale(1)', borderColor: 'green' }
+                ], {
+                    duration: 400,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                });
+                setTimeout(() => {
+                    tutorialTextContainer.animate([
+                        { transform: 'scale(1) translateX(75px) translateY(270px)' },
+                        { transform: 'scale(.7) translateX(75px) translateY(270px)', backgroundColor: 'gray' },
+                        { transform: 'scale(1) translateX(75px) translateY(270px)', borderColor: 'green' }
+                    ], {
+                        duration: 400,
+                        easing: 'ease-in-out',
+                        fill: 'forwards'
+                    });
+                },200)
+                setTimeout(() => {
+                    tutorialTextContainer.animate([
+                        {transform: 'translateX(140px) translateY(-55px)', borderColor: 'black', width: '350px'}
+                    ], {
+                        duration: 500,
+                        easing: 'ease-in-out',
+                        fill: 'forwards'
+                    });
+                    textAnimationContainer.animate([
+                        {opacity: '0'}
+                    ], {
+                        duration: 300,
+                        easing: 'ease-in-out',
+                        fill: 'forwards'
+                    });
+                    textContainerButton2.animate([
+                        {opacity: '0'}
+                    ], {
+                        duration: 400,
+                        easing: 'ease-in-out',
+                        fill: 'forwards'
+                    });
+                },601)
+                const textContainerButton3 = document.createElement('button')
+                setTimeout(() => {
+                    textContainerButton3.classList.add('text-button')
+                    textAnimationContainer.textContent = 'This is the timer. Completing a card adds time... don\'t run out of it!'
+                    textAnimationContainer.animate([
+                        {fontSize: '26px'},
+                        {opacity: '1', fontSize: '26px'}
+                    ], {
+                        duration: 400,
+                        easing: 'ease-in-out',
+                        fill: 'forwards'
+                    });
+                    tutorialTextContainer.removeChild(textContainerButton2)
+                    tutorialTextContainer.appendChild(textContainerButton3)
+                    setTimeout(() => {
+                        textContainerButton3.textContent = 'sick'
+                        textContainerButton3.animate([
+                            {opacity: '1'}
+                        ], {
+                            duration: 400,
+                            easing: 'ease-in-out',
+                            fill: 'forwards'
+                        });
+                    },600)
+                },1102)
+                textContainerButton3.addEventListener('mousedown', () => {
+                    // MOVEMENT 3 MOVEMENT 3 MOVEMENT 3 MOVEMENT 3 MOVEMENT 3
+                    textContainerButton3.animate([
+                        { transform: 'scale(1)' },
+                        { transform: 'scale(.7)', backgroundColor: 'gray' },
+                        { transform: 'scale(1)', borderColor: 'green' }
+                    ], {
+                        duration: 400,
+                        easing: 'ease-in-out',
+                        fill: 'forwards'
+                    });
+                    setTimeout(() => {
+                        tutorialTextContainer.animate([
+                            { transform: 'scale(1) translateX(140px) translateY(-55px)' },
+                            { transform: 'scale(.7) translateX(140px) translateY(-55px)', backgroundColor: 'gray' },
+                            { transform: 'scale(1) translateX(140px) translateY(-55px)', borderColor: 'green' }
+                        ], {
+                            duration: 400,
+                            easing: 'ease-in-out',
+                            fill: 'forwards'
+                        });
+                    },200)
+                    setTimeout(() => {
+                        tutorialTextContainer.animate([
+                            {transform: 'translateX(115px) translateY(-375px)', borderColor: 'black', width: '350px'}
+                        ], {
+                            duration: 500,
+                            easing: 'ease-in-out',
+                            fill: 'forwards'
+                        });
+                        textAnimationContainer.animate([
+                            {opacity: '0'}
+                        ], {
+                            duration: 300,
+                            easing: 'ease-in-out',
+                            fill: 'forwards'
+                        });
+                        textContainerButton3.animate([
+                            {opacity: '0'}
+                        ], {
+                            duration: 400,
+                            easing: 'ease-in-out',
+                            fill: 'forwards'
+                        });
+                    },601)
+                    const textContainerButton4 = document.createElement('button')
+                    setTimeout(() => {
+                        textContainerButton4.classList.add('text-button')
+                        textAnimationContainer.textContent = 'This is the matrix mode counter. Try to complete 5 cards without messing up, you get double points!'
+                        textAnimationContainer.animate([
+                            {fontSize: '26px'},
+                            {opacity: '1', fontSize: '26px'}
+                        ], {
+                            duration: 400,
+                            easing: 'ease-in-out',
+                            fill: 'forwards'
+                        });
+                        tutorialTextContainer.removeChild(textContainerButton3)
+                        tutorialTextContainer.appendChild(textContainerButton4)
+                        setTimeout(() => {
+                            textContainerButton4.textContent = 'woow'
+                            textContainerButton4.animate([
+                                {opacity: '1'}
+                            ], {
+                                duration: 400,
+                                easing: 'ease-in-out',
+                                fill: 'forwards'
+                            });
+                        },600)
+                    },1102)
+                    textContainerButton4.addEventListener('mousedown', () => {
+                        // MOVEMENT 4 MOVEMENT 4 MOVEMENT 4 MOVEMENT 4 MOVEMENT 4
+                        textContainerButton4.animate([
+                            { transform: 'scale(1)' },
+                            { transform: 'scale(.7)', backgroundColor: 'gray' },
+                            { transform: 'scale(1)', borderColor: 'green' }
+                        ], {
+                            duration: 400,
+                            easing: 'ease-in-out',
+                            fill: 'forwards'
+                        });
+                        setTimeout(() => {
+                            tutorialTextContainer.animate([
+                                { transform: 'scale(1) translateX(115px) translateY(-375px)' },
+                                { transform: 'scale(.7) translateX(115px) translateY(-375px)', backgroundColor: 'gray' },
+                                { transform: 'scale(1) translateX(115px) translateY(-375px)', borderColor: 'green' }
+                            ], {
+                                duration: 400,
+                                easing: 'ease-in-out',
+                                fill: 'forwards'
+                            });
+                        },200)
+                        setTimeout(() => {
+                            tutorialTextContainer.animate([
+                                {transform: 'translateX(-115px) translateY(-375px)', borderColor: 'black', width: '350px'}
+                            ], {
+                                duration: 500,
+                                easing: 'ease-in-out',
+                                fill: 'forwards'
+                            });
+                            textAnimationContainer.animate([
+                                {opacity: '0'}
+                            ], {
+                                duration: 300,
+                                easing: 'ease-in-out',
+                                fill: 'forwards'
+                            });
+                            textContainerButton4.animate([
+                                {opacity: '0'}
+                            ], {
+                                duration: 400,
+                                easing: 'ease-in-out',
+                                fill: 'forwards'
+                            });
+                        },601)
+                        const textContainerButton5 = document.createElement('button')
+                        setTimeout(() => {
+                            textContainerButton5.classList.add('text-button')
+                            textAnimationContainer.textContent = 'This is your score! Each card completed adds a point. After your current game is over your score will show up on the leaderboards below it.'
+                            textAnimationContainer.animate([
+                                {fontSize: '26px'},
+                                {opacity: '1', fontSize: '26px'}
+                            ], {
+                                duration: 400,
+                                easing: 'ease-in-out',
+                                fill: 'forwards'
+                            });
+                            tutorialTextContainer.removeChild(textContainerButton4)
+                            tutorialTextContainer.appendChild(textContainerButton5)
+                            setTimeout(() => {
+                                textContainerButton5.textContent = 'okay'
+                                textContainerButton5.animate([
+                                    {opacity: '1'}
+                                ], {
+                                    duration: 400,
+                                    easing: 'ease-in-out',
+                                    fill: 'forwards'
+                                });
+                            },600)
+                        },1102)
+                        textContainerButton5.addEventListener('mousedown', () => {
+                            // MOVEMENT 5 MOVEMENT 5 MOVEMENT 5 MOVEMENT 5 MOVEMENT 5
+                            textContainerButton5.animate([
+                                { transform: 'scale(1)' },
+                                { transform: 'scale(.7)', backgroundColor: 'gray' },
+                                { transform: 'scale(1)', borderColor: 'green' }
+                            ], {
+                                duration: 400,
+                                easing: 'ease-in-out',
+                                fill: 'forwards'
+                            });
+                            setTimeout(() => {
+                                tutorialTextContainer.animate([
+                                    { transform: 'scale(1) translateX(-115px) translateY(-375px)' },
+                                    { transform: 'scale(.7) translateX(-115px) translateY(-375px)', backgroundColor: 'gray' },
+                                    { transform: 'scale(1) translateX(-115px) translateY(-375px)', borderColor: 'green' }
+                                ], {
+                                    duration: 400,
+                                    easing: 'ease-in-out',
+                                    fill: 'forwards'
+                                });
+                            },200)
+                            setTimeout(() => {
+                                tutorialTextContainer.animate([
+                                    {transform: 'translateX(0px) translateY(0px)', borderColor: 'black', width: '350px'}
+                                ], {
+                                    duration: 500,
+                                    easing: 'ease-in-out',
+                                    fill: 'forwards'
+                                });
+                                textAnimationContainer.animate([
+                                    {opacity: '0'}
+                                ], {
+                                    duration: 300,
+                                    easing: 'ease-in-out',
+                                    fill: 'forwards'
+                                });
+                                textContainerButton5.animate([
+                                    {opacity: '0'}
+                                ], {
+                                    duration: 400,
+                                    easing: 'ease-in-out',
+                                    fill: 'forwards'
+                                });
+                            },601)
+                            const textContainerButton6 = document.createElement('button')
+                            setTimeout(() => {
+                                textContainerButton6.classList.add('text-button')
+                                textAnimationContainer.textContent = 'That\'s it! Press the play button and just click the squares with the right color!'
+                                textAnimationContainer.animate([
+                                    {fontSize: '26px'},
+                                    {opacity: '1', fontSize: '26px'}
+                                ], {
+                                    duration: 400,
+                                    easing: 'ease-in-out',
+                                    fill: 'forwards'
+                                });
+                                tutorialTextContainer.removeChild(textContainerButton5)
+                                tutorialTextContainer.appendChild(textContainerButton6)
+                                setTimeout(() => {
+                                    textContainerButton6.textContent = 'okay'
+                                    textContainerButton6.animate([
+                                        {opacity: '1'}
+                                    ], {
+                                        duration: 400,
+                                        easing: 'ease-in-out',
+                                        fill: 'forwards'
+                                    });
+                                },600)
+                            },1102)
+                            textContainerButton6.addEventListener('mousedown', () => {
+                                // MOVEMENT 6 MOVEMENT 6 MOVEMENT 6 MOVEMENT 6 MOVEMENT 6
+                                textContainerButton6.animate([
+                                    { transform: 'scale(1)' },
+                                    { transform: 'scale(.7)', backgroundColor: 'gray' },
+                                    { transform: 'scale(1)', borderColor: 'green' }
+                                ], {
+                                    duration: 400,
+                                    easing: 'ease-in-out',
+                                    fill: 'forwards'
+                                });
+                                setTimeout(() => {
+                                    tutorialTextContainer.animate([
+                                        { transform: 'scale(1) translateX(0px) translateY(0px)' },
+                                        { transform: 'scale(.7) translateX(0px) translateY(0px)', backgroundColor: 'gray' },
+                                        { transform: 'scale(1) translateX(0px) translateY(0px)', borderColor: 'green' }
+                                    ], {
+                                        duration: 400,
+                                        easing: 'ease-in-out',
+                                        fill: 'forwards'
+                                    });
+                                },200)
+                                setTimeout(() => {
+                                    tutorialTextContainer.animate([
+                                        {borderColor: 'black'}
+                                    ], {
+                                        duration: 300,
+                                        easing: 'ease-in-out',
+                                        fill: 'forwards'
+                                    });
+                                    textAnimationContainer.animate([
+                                        {opacity: '0'}
+                                    ], {
+                                        duration: 300,
+                                        easing: 'ease-in-out',
+                                        fill: 'forwards'
+                                    });
+                                    textContainerButton5.animate([
+                                        {opacity: '0'}
+                                    ], {
+                                        duration: 200,
+                                        easing: 'ease-in-out',
+                                        fill: 'forwards'
+                                    });
+                                },501)
+                                const textContainerButton7 = document.createElement('button')
+                                setTimeout(() => {
+                                    textContainerButton7.classList.add('text-button')
+                                    textAnimationContainer.textContent = 'Also, if you want to see the intro and this tutorial again just press the button in the top right and refresh your browser. Bye-bye!'
+                                    textAnimationContainer.animate([
+                                        {fontSize: '26px'},
+                                        {opacity: '1', fontSize: '26px'}
+                                    ], {
+                                        duration: 400,
+                                        easing: 'ease-in-out',
+                                        fill: 'forwards'
+                                    });
+                                    tutorialTextContainer.removeChild(textContainerButton6)
+                                    tutorialTextContainer.appendChild(textContainerButton7)
+                                    setTimeout(() => {
+                                        textContainerButton7.textContent = 'bye'
+                                        textContainerButton7.animate([
+                                            {opacity: '1'}
+                                        ], {
+                                            duration: 400,
+                                            easing: 'ease-in-out',
+                                            fill: 'forwards'
+                                        });
+                                    },600)
+                                },1102)
+                                textContainerButton7.addEventListener('mousedown', () => {
+                                    textContainerButton7.animate([
+                                        { transform: 'scale(1)' },
+                                        { transform: 'scale(.7)', backgroundColor: 'gray' },
+                                        { transform: 'scale(1)', borderColor: 'green' }
+                                    ], {
+                                        duration: 400,
+                                        easing: 'ease-in-out',
+                                        fill: 'forwards'
+                                    });
+                                    setTimeout(() => {
+                                        tutorialTextContainer.animate([
+                                            { transform: 'scale(1) translateX(0px) translateY(0px)' },
+                                            { transform: 'scale(.7) translateX(0px) translateY(0px)', backgroundColor: 'gray' },
+                                            { transform: 'scale(1) translateX(0px) translateY(0px)', borderColor: 'green' }
+                                        ], {
+                                            duration: 400,
+                                            easing: 'ease-in-out',
+                                            fill: 'forwards'
+                                        });
+                                    },200)
+                                    setTimeout(() => {
+                                        tutorialTextContainer.animate([
+                                            { opacity: '0'}
+                                        ], {
+                                            duration: 300,
+                                            easing: 'ease-in-out',
+                                            fill: 'forwards'
+                                        });
+                                    },600)
+                                    setTimeout(() => {
+                                        document.body.removeChild(tutorialTextContainer)
+                                        tutorialOverSheet.animate([
+                                            { opacity: '0'}
+                                        ], {
+                                            duration: 300,
+                                            easing: 'ease-in-out',
+                                            fill: 'forwards'
+                                        });
+                                    },900)
+                                    setTimeout(() => {
+                                        document.body.removeChild(tutorialOverSheet)
+                                        intro = true
+                                        localStorage.setItem('intro', JSON.stringify(intro))
+                                    },1200)
+                                }, {once: true})
+                            }, {once: true})
+                        }, {once: true})
+                    }, {once: true})
+                }, {once: true})
+            }, {once: true})
+        }, {once: true})
+    },6100)
+}
 
+function playGame() {
     document.querySelector('link[href="styles.css"]')
 
     setTimeout(() => {
@@ -588,7 +1099,6 @@ function playGame() {
     let matrixModeON = false
     let playMatrixCharOnce = false
     
-    //let stopEverything = false
     let timeUp = false
 
     let stickMan = false
@@ -610,9 +1120,6 @@ function playGame() {
     }
 
     function createCards() {
-
-
-        // if ((cardnumber) === (arraynumber)) {color = (arraycolor)}
 
         let c = 1
         
@@ -677,7 +1184,6 @@ function playGame() {
 
                         const square = document.createElement('div')
 
-                        
                         innerLoop: for (i = 1; i < 100; i++) {
                             const square = document.createElement('div')
                             
@@ -702,9 +1208,7 @@ function playGame() {
                             randomColor()
                             
                             square.classList.add('box2')
-                            square.classList.add('square')  //making that squares
-
-                            
+                            square.classList.add('square')
 
                             square.addEventListener('mouseover', () => {
                                 
@@ -733,7 +1237,6 @@ function playGame() {
                                 }
                             })
                             
-                            
                             square.addEventListener('mouseout', () => {
                                 square.classList.remove('mouseover-red')
                                 square.classList.remove('mouseover-green')
@@ -755,9 +1258,7 @@ function playGame() {
                                 square.classList.remove('mouseover')
                                 square.classList.add('mouseover-without-color')
                                 const color = window.getComputedStyle(square) ["background-color"]
-                                //console.log(color)
                                 if (color === 'rgb(255, 255, 255)' || color === 'rgba(0,0,0,0)' || nthChildINVI || nthChildWHI) {
-                                    //if (color === 'rgb(255, 255, 255)') {
                                     wrongSquareSound()
                                     square.classList.remove('mouseover-without-color')
                                     square.classList.remove('box2')
@@ -766,7 +1267,6 @@ function playGame() {
                                     wrongCard = true
                                     wrongCardCheck()
                                     correctCard = -1
-                                    //cardNumber = 1
                                     correctCardCounter()
                                     stopMatrixModeAni()
                                     card.appendChild(startConstraint)
@@ -803,7 +1303,6 @@ function playGame() {
                                         wrongCard = true
                                         wrongCardCheck()
                                         correctCard = -1
-                                        //cardNumber = 1
                                         correctCardCounter()
                                         stopMatrixModeAni()
                                         card.appendChild(startConstraint)
@@ -840,7 +1339,6 @@ function playGame() {
                                         wrongCard = true
                                         wrongCardCheck()
                                         correctCard = -1
-                                        //cardNumber = 1
                                         correctCardCounter()
                                         stopMatrixModeAni()
                                         card.appendChild(startConstraint)
@@ -876,7 +1374,6 @@ function playGame() {
                                         wrongCard = true
                                         wrongCardCheck()
                                         correctCard = -1
-                                        //cardNumber = 1
                                         correctCardCounter()
                                         stopMatrixModeAni()
                                         card.appendChild(startConstraint)
@@ -912,7 +1409,6 @@ function playGame() {
                                         wrongCard = true
                                         wrongCardCheck()
                                         correctCard = -1
-                                        //cardNumber = 1
                                         correctCardCounter()
                                         stopMatrixModeAni()
                                         card.appendChild(startConstraint)
@@ -932,8 +1428,6 @@ function playGame() {
                                 }, 100)
                             })
                             
-                        
-                            //square.setAttribute('onclick', 'squareSound()')
                             box.appendChild(square)
                             
                             if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
@@ -943,26 +1437,16 @@ function playGame() {
                             startButton()
                         }
                         
-                        
                         setTimeout(() => {
                             initialDataHandling()
                         }, 2000)
                     }    
                         c++
-                    
                 } else {clearInterval(cardStartUp)}    
             }, 120)
         }, 1000)        
     }
     createCards()
-
-    /*
-    setTimeout(() => {
-        if (startAnew === true) {
-            createCards()
-        }
-    },300)
-    */
 
 function cardSwipe1Play() {
     var cardSwipe1 = new Audio("audio/CardSwipe1.mp3")
@@ -1064,7 +1548,6 @@ function randomCardSwipe() {
                 }
                 scoreLabelContainer.textContent = scoreNumber
             }, 400)
-            
         }
     }
 
@@ -1166,7 +1649,6 @@ function randomCardSwipe() {
                 correctCardCounter()
                 scoreLabelContainer.textContent = scoreNumber
             }, 400)
-            
         }
     }
 
@@ -1199,7 +1681,6 @@ function randomCardSwipe() {
 
                 let randomTitle = getRandomTitle(titles)
 
-                //let titleText = 'Jet Sketch'
                 let titleText = `${randomTitle}`
                 cardTitle.classList.add('title')
                 cardTitle.classList.add('blinking-cursor2')
@@ -1223,7 +1704,6 @@ function randomCardSwipe() {
                     card6.appendChild(cardTitle)
                     card6.appendChild(box)
                 }, 1)
-        
             }, 200)
 
                 innerLoop: for (i = 1; i < 100; i++) {
@@ -1292,7 +1772,6 @@ function randomCardSwipe() {
                         }
                     })
                     
-                    
                     square.addEventListener('mouseout', () => {
                         square.classList.remove('mouseover-red')
                         square.classList.remove('mouseover-green')
@@ -1318,7 +1797,6 @@ function randomCardSwipe() {
                         square.classList.remove('mouseover')
                         square.classList.add('mouseover-without-color')
                         const color = window.getComputedStyle(square) ["background-color"]
-                        //console.log(color)
                         if (color === 'rgb(255, 255, 255)' || color === 'rgba(0,0,0,0)' || nthChildINVI || nthChildWHI) {
                             wrongSquareSound()
                             square.classList.remove('mouseover-without-color')
@@ -1328,7 +1806,6 @@ function randomCardSwipe() {
                             wrongCard = true
                             wrongCardCheck()
                             correctCard = -1
-                            //cardNumber = 1
                             correctCardCounter()
                             stopMatrixModeAni()
                             card7 = document.querySelector('.card7')
@@ -1360,7 +1837,6 @@ function randomCardSwipe() {
                                 wrongCard = true
                                 wrongCardCheck()
                                 correctCard = -1
-                                //cardNumber = 1
                                 correctCardCounter()
                                 stopMatrixModeAni()
                                 card7 = document.querySelector('.card7')
@@ -1392,7 +1868,6 @@ function randomCardSwipe() {
                                 wrongCard = true
                                 wrongCardCheck()
                                 correctCard = -1
-                                //cardNumber = 1
                                 correctCardCounter()
                                 stopMatrixModeAni()
                                 card7 = document.querySelector('.card7')
@@ -1424,7 +1899,6 @@ function randomCardSwipe() {
                                 wrongCard = true
                                 wrongCardCheck()
                                 correctCard = -1
-                                //cardNumber = 1
                                 correctCardCounter()
                                 stopMatrixModeAni()
                                 card7 = document.querySelector('.card7')
@@ -1457,7 +1931,6 @@ function randomCardSwipe() {
                                 wrongCard = true
                                 wrongCardCheck()
                                 correctCard = -1
-                                //cardNumber = 1
                                 correctCardCounter()
                                 stopMatrixModeAni()
                                 card7 = document.querySelector('.card7')
@@ -1477,8 +1950,7 @@ function randomCardSwipe() {
                             square.classList.remove('square-mouse-down')
                         }, 100)
                     })
-            
-                    //square.setAttribute('onclick', 'squareSound()')
+
                     box.appendChild(square)
                     
                     if (i === 81) {break innerLoop} //breaking innerLoop after quares fill up container+
@@ -1489,8 +1961,7 @@ function randomCardSwipe() {
         function cardDataHandling() {
             
             const dataIndexArray = [1, 2, 3, 4, 5, 6, 7]
-            //im probably going to make an animation for each card going to new position. so like .one-to-two & .two-to-three, etc.
-            
+
             function dataIncrement(arr) {
                 for (i = 0; i < arr.length; i++) {
                     arr[i]++
@@ -1537,8 +2008,6 @@ function randomCardSwipe() {
                         graySquareArray = graySquareArrayWithEmpty.filter(() => 'div.gray')
                         graySquareAmount = graySquareArray.length
 
-                        //console.log(graySquareAmount)
-
                         n = 1
 
                         for (i = 0; i < 82; i++) {
@@ -1551,8 +2020,6 @@ function randomCardSwipe() {
                         
                         redSquareArray = redSquareArrayWithEmpty.filter(() => 'div.red')
                         redSquareAmount = redSquareArray.length
-
-                        //console.log(redSquareAmount)
 
                         n = 1
 
@@ -1567,8 +2034,6 @@ function randomCardSwipe() {
                         greenSquareArray = greenSquareArrayWithEmpty.filter(() => 'div.green')
                         greenSquareAmount = greenSquareArray.length
 
-                        //console.log(greenSquareAmount)
-
                         n = 1
 
                         for (i = 0; i < 82; i++) {
@@ -1582,12 +2047,7 @@ function randomCardSwipe() {
                         blueSquareArray = blueSquareArrayWithEmpty.filter(() => 'div.blue')
                         blueSquareAmount = blueSquareArray.length
 
-                        //console.log(blueSquareAmount)
-
                         n = 1
-                        
-                        //bug orriginates from how fast the class changes on the 7th card
-                        
                     }
                     createColorArray()
                 }, 200)    
@@ -1621,9 +2081,7 @@ function randomCardSwipe() {
             changeDataAndClass()
         }       
     }
-    
-    
-    
+
     const keyPadContainer = document.createElement('div')
     const wKeyContainer = document.createElement('div')
     const aKeyContainer = document.createElement('div')
@@ -1667,18 +2125,7 @@ function randomCardSwipe() {
         sKeyContainer.appendChild(sPicture)
         dKeyContainer.appendChild(dPicture)
 
-        //1 = gray(w)
-        //2 = red(a)
-        //3 = green(s)
-        //4 = blue(d)
-
         window.addEventListener('keydown', function(event) {
-            /*
-            let topCard = document.querySelector('.card7')
-            let topBox = topCard.querySelector('.box') //causing errors... dont think its an issue though?
-            let square = topBox.querySelector('.square')
-            */
-    
             if (event.key === 'w') {
                 keyPadContainer.animate([
                     { transform: 'scale(1)' },
@@ -1692,7 +2139,6 @@ function randomCardSwipe() {
                 if (chosenColor === 'red') {
                     aKeyContainer.classList.add('a-press-out')
                     aKeyContainer.classList.remove('a-press-in')
-                    //aKeyContainer.classList.add('keypad-red-to-gray')
                     keyPadContainer.classList.remove('a-keypad-color')
                     setTimeout(() => {
                         aKeyContainer.classList.remove('a-press-out')
@@ -1700,7 +2146,6 @@ function randomCardSwipe() {
                 } else if (chosenColor === 'green') {
                     sKeyContainer.classList.add('s-press-out')
                     sKeyContainer.classList.remove('s-press-in')
-                    //sKeyContainer.classList.add('keypad-green-to-gray')
                     keyPadContainer.classList.remove('s-keypad-color')
                     setTimeout(() => {
                         sKeyContainer.classList.remove('s-press-out')
@@ -1708,15 +2153,12 @@ function randomCardSwipe() {
                 } else if (chosenColor === 'blue') {
                     dKeyContainer.classList.add('d-press-out')
                     dKeyContainer.classList.remove('d-press-in')
-                    //dKeyContainer.classList.add('keypad-blue-to-gray')
                     keyPadContainer.classList.remove('d-keypad-color')
                     setTimeout(() => {
                         dKeyContainer.classList.remove('d-press-out')
                     },100)
                 }
-            
                 chosenColor = 'gray'
-                //console.log(chosenColor)
             }
             if (event.key === 'a') {
                 keyPadContainer.animate([
@@ -1731,7 +2173,6 @@ function randomCardSwipe() {
                 if (chosenColor === 'gray') {
                     wKeyContainer.classList.add('w-press-out')
                     wKeyContainer.classList.remove('w-press-in')
-                    //wKeyContainer.classList.add('keypad-gray-to-red')
                     keyPadContainer.classList.remove('w-keypad-color')
                     setTimeout(() => {
                         wKeyContainer.classList.remove('w-press-out')
@@ -1739,7 +2180,6 @@ function randomCardSwipe() {
                 } else if (chosenColor === 'green') {
                     sKeyContainer.classList.add('s-press-out')
                     sKeyContainer.classList.remove('s-press-in')
-                    //sKeyContainer.classList.add('keypad-green-to-red')
                     keyPadContainer.classList.remove('s-keypad-color')
                     setTimeout(() => {
                         sKeyContainer.classList.remove('s-press-out')
@@ -1747,14 +2187,12 @@ function randomCardSwipe() {
                 } else if (chosenColor === 'blue') {
                     dKeyContainer.classList.add('d-press-out')
                     dKeyContainer.classList.remove('d-press-in')
-                    //dKeyContainer.classList.add('keypad-blue-to-red')
                     keyPadContainer.classList.remove('d-keypad-color')
                     setTimeout(() => {
                         dKeyContainer.classList.remove('d-press-out')
                     },100)
                 }
                 chosenColor = 'red'
-                //console.log(chosenColor)
             }
             if (event.key === 's') {
                 keyPadContainer.animate([
@@ -1769,7 +2207,6 @@ function randomCardSwipe() {
                 if (chosenColor === 'gray') {
                     wKeyContainer.classList.add('w-press-out')
                     wKeyContainer.classList.remove('w-press-in')
-                    //wKeyContainer.classList.add('keypad-gray-to-green')
                     keyPadContainer.classList.remove('w-keypad-color')
                     setTimeout(() => {
                         wKeyContainer.classList.remove('w-press-out')
@@ -1777,7 +2214,6 @@ function randomCardSwipe() {
                 } else if (chosenColor === 'red') {
                     aKeyContainer.classList.add('a-press-out')
                     aKeyContainer.classList.remove('a-press-in')
-                    //aKeyContainer.classList.add('keypad-red-to-green')
                     keyPadContainer.classList.remove('a-keypad-color')
                     setTimeout(() => {
                         aKeyContainer.classList.remove('a-press-out')
@@ -1785,14 +2221,12 @@ function randomCardSwipe() {
                 } else if (chosenColor === 'blue') {
                     dKeyContainer.classList.add('d-press-out')
                     dKeyContainer.classList.remove('d-press-in')
-                    //dKeyContainer.classList.add('keypad-blue-to-green')
                     keyPadContainer.classList.remove('d-keypad-color')
                     setTimeout(() => {
                         dKeyContainer.classList.remove('d-press-out')
                     },100)
                 }
                 chosenColor = 'green'
-                //console.log(chosenColor)
             }
             if (event.key === 'd') {
                 keyPadContainer.animate([
@@ -1807,7 +2241,6 @@ function randomCardSwipe() {
                 if (chosenColor === 'gray') {
                     wKeyContainer.classList.add('w-press-out')
                     wKeyContainer.classList.remove('w-press-in')
-                    //dKeyContainer.classList.add('d-keypad-red-to-gray')
                     keyPadContainer.classList.remove('w-keypad-color')
                     setTimeout(() => {
                         wKeyContainer.classList.remove('w-press-out')
@@ -1815,7 +2248,6 @@ function randomCardSwipe() {
                 } else if (chosenColor === 'green') {
                     sKeyContainer.classList.add('s-press-out')
                     sKeyContainer.classList.remove('s-press-in')
-                    //sKeyContainer.classList.add('s-keypad-red-to-gray')
                     keyPadContainer.classList.remove('s-keypad-color')
                     setTimeout(() => {
                         sKeyContainer.classList.remove('s-press-out')
@@ -1823,18 +2255,13 @@ function randomCardSwipe() {
                 } else if (chosenColor === 'red') {
                     aKeyContainer.classList.add('a-press-out')
                     aKeyContainer.classList.remove('a-press-in')
-                    //aKeyContainer.classList.add('a-keypad-red-to-gray')
                     keyPadContainer.classList.remove('a-keypad-color')
                     setTimeout(() => {
                         aKeyContainer.classList.remove('a-press-out')
                     },100)
                 }
                 chosenColor = 'blue'
-                //console.log(chosenColor)
             }
-            
-            
-
         })
         
     }
@@ -1936,8 +2363,6 @@ function randomCardSwipe() {
                 }
             }
         },75)
-        
-        
     }
 
     function leaderBoardsContainer() {
@@ -1982,12 +2407,6 @@ function randomCardSwipe() {
 
             leaderBoardContainer.appendChild(leaderBoardDropDown)
 
-            /*
-            leaderBoardDropDown.addEventListener('DOMContentLoaded', () => {
-                leaderboardDropDownSound()
-            })
-            */
-            
             dropDownHeader.classList.add('drop-down-header')
             dropDownHeader.classList.add('drop-down-header-in')
             dropDownHeader.textContent = 'Enter Name!'
@@ -2010,7 +2429,6 @@ function randomCardSwipe() {
                 },500)
             },300)
                 
-
             let nameInput = false
 
             dropDownInput.addEventListener('input', () => {
@@ -2092,7 +2510,6 @@ function randomCardSwipe() {
                                         leaderboardInSound2()
                                         removeSortedPlayers()
                                         setTimeout(() => {
-                                            
                                             lowNth = false
                                             dropDownInputValue = dropDownInput.value
                                             userObject = {name: dropDownInputValue, score: scoreNumber, class: true}
@@ -2110,14 +2527,10 @@ function randomCardSwipe() {
                                             level5ON = false
                                             scoreLabelContainer.textContent = scoreNumber
                                         },1300)
-                                            
-
                                         createCards()
-
                                     },300)
                                 },500)
                             },400)
-                            
                         }
                     })
                 }
@@ -2196,7 +2609,6 @@ function randomCardSwipe() {
             },1300)
             createCards()
         }
-
         //soooo, i dont really know how to host a server yet and how to pull info.  but thinking logically the way to go about it is to pull the JSON file from the server that contains the array of objects starting out when the leaderboard loads, un-stringify it, once game over, enter input, push array object, filter array, update screen, and send JSON to server while overwriting the original. all the while keeping the original data from the JSON file that i orginaly pulled, just push array object and updating local side only until I refresh and then it pulls server side again. unless i would want to do a a live updated leaderboard which would also be really easy, just setInterval to pull server side info every like 10-20 seconds and make sure the animation timing doesnt overlap with the endgame animation creating issues. dont know how i would resolve that last bit though, maybe synchronus instead of async?
     }
     
@@ -2253,7 +2665,6 @@ function randomCardSwipe() {
     createMatrixCards()
 
     let activateAniOnce = false
-    //let nextCard = true
     
     const failText = document.createElement('span')
     failText.classList.add('fail-text')
@@ -2265,14 +2676,14 @@ function randomCardSwipe() {
     matrixModeContainer.appendChild(failText2)
     failText.setAttribute('style', 'opacity: 0')
     failText2.setAttribute('style', 'opacity: 0')
+    let doublePointsSoundActivated = false
 
     function correctCardCounter() {
-        //i need to remove the matrixContainerIn and give it another class
-        //gotta reset cards onTime
         if (correctCard === -1) {
             matrixModeContainer.classList.add('matrix-wrong-card')
             failText.setAttribute('style', 'opacity: 1')
             failText2.setAttribute('style', 'opacity: 1')
+            doublePointsSoundActivated = false
         } else if (correctCard === 0) {
             matrixModeContainer.classList.remove('matrix-wrong-card')
             failText.setAttribute('style', 'opacity: 0')
@@ -2292,7 +2703,10 @@ function randomCardSwipe() {
             matrixCard4.classList.add('correct-card')
         } else if (correctCard === 5) {
             matrixCard5.classList.add('correct-card')
-            doublePointsSound()
+            if (!doublePointsSoundActivated) {
+                doublePointsSound()
+                doublePointsSoundActivated = true
+            }
             wrongCard = false
             if (!activateAniOnce) {
                 matrixModeAni()
@@ -2321,7 +2735,6 @@ function randomCardSwipe() {
                 matrixCard4.classList.remove('correct-card-out')
                 matrixCard5.classList.remove('correct-card-out')
             },1401)
-            
         }
     }
     
@@ -2331,8 +2744,6 @@ function randomCardSwipe() {
     document.body.appendChild(backgroundCover)
 
     function matrixModeAni() {
-
-        //wrongCard = false
         matrixModeON = true
 
         document.body.classList.remove('matrix-background-out')
@@ -2411,7 +2822,6 @@ function randomCardSwipe() {
             card7.classList.remove('matrix-card-background-in')
             card7.classList.add('matrix-card')
         },3000)
-        //box7.classList.add('card-box-border-color')
         
         let s = 0
         let s2 = 0
@@ -2426,11 +2836,9 @@ function randomCardSwipe() {
                     easing: 'linear',
                     fill: 'forwards'
                   });
-                //nthChildWHI.classList.add('invis')
             }
             let nthChildGRA = box7.querySelector(`:nth-child(${s}).gray`)
             if (nthChildGRA) {
-                //nthChildGRA.classList.add('invis-border')
                 nthChildGRA.animate([
                     { borderColor: 'rgb(185, 245, 161)' }
                   ], {
@@ -2441,7 +2849,6 @@ function randomCardSwipe() {
             }
             let nthChildRED = box7.querySelector(`:nth-child(${s}).red`)
             if (nthChildRED) {
-                //nthChildRED.classList.add('invis-border')
                 nthChildRED.animate([
                     { borderColor: 'rgb(185, 245, 161)' }
                   ], {
@@ -2452,7 +2859,6 @@ function randomCardSwipe() {
             }
             let nthChildGRE = box7.querySelector(`:nth-child(${s}).green`)
             if (nthChildGRE) {
-                //nthChildGRE.classList.add('invis-border')
                 nthChildGRE.animate([
                     { borderColor: 'rgb(185, 245, 161)' }
                   ], {
@@ -2463,7 +2869,6 @@ function randomCardSwipe() {
             }
             let nthChildBLU = box7.querySelector(`:nth-child(${s}).blue`)
             if (nthChildBLU) {
-                //nthChildBLU.classList.add('invis-border')
                 nthChildBLU.animate([
                     { borderColor: 'rgb(185, 245, 161)' }
                   ], {
@@ -2487,11 +2892,9 @@ function randomCardSwipe() {
                         easing: 'linear',
                         fill: 'forwards'
                     });
-                    //nthChildWHI.classList.add('invis')
                 }
                 let nthChildGRA2 = box6.querySelector(`:nth-child(${s2}).gray`)
                 if (nthChildGRA2) {
-                    //nthChildGRA.classList.add('invis-border')
                     nthChildGRA2.animate([
                         { borderColor: 'rgb(185, 245, 161)' }
                     ], {
@@ -2502,7 +2905,6 @@ function randomCardSwipe() {
                 }
                 let nthChildRED2 = box6.querySelector(`:nth-child(${s2}).red`)
                 if (nthChildRED2) {
-                    //nthChildRED.classList.add('invis-border')
                     nthChildRED2.animate([
                         { borderColor: 'rgb(185, 245, 161)' }
                     ], {
@@ -2513,7 +2915,6 @@ function randomCardSwipe() {
                 }
                 let nthChildGRE2 = box6.querySelector(`:nth-child(${s2}).green`)
                 if (nthChildGRE2) {
-                    //nthChildGRE.classList.add('invis-border')
                     nthChildGRE2.animate([
                         { borderColor: 'rgb(185, 245, 161)' }
                     ], {
@@ -2524,7 +2925,6 @@ function randomCardSwipe() {
                 }
                 let nthChildBLU2 = box6.querySelector(`:nth-child(${s2}).blue`)
                 if (nthChildBLU2) {
-                    //nthChildBLU.classList.add('invis-border')
                     nthChildBLU2.animate([
                         { borderColor: 'rgb(185, 245, 161)' }
                     ], {
@@ -2555,8 +2955,6 @@ function randomCardSwipe() {
         })
 
         if (!playMatrixCharOnce) {
-
-            //document.body.appendChild(backgroundCover)
             
             let matrixInterval = setInterval(() => {
 
@@ -2685,15 +3083,11 @@ function randomCardSwipe() {
                     wrongCard = false
                 },50)
             }
-
-            //box border flashes green..? make the matrix letters transition more smoothly. gotta work on the card titles. then that should be core game mechanics.... DONE. its all within sight
         }
     }
 
     function stopMatrixModeAni() {
         if (matrixModeON) {   
-            
-            //nextCard = true
             activateAniOnce = false
             
             document.body.classList.remove('matrix-background-in')
@@ -2751,11 +3145,9 @@ function randomCardSwipe() {
                         fill: 'forwards'
                     })
                 })
-                
                 setTimeout(() => {
                     backgroundCover.classList.add('matrix-char-opacity')
                 },1000)
-                
             }
             matrixCharOpacity()
 
@@ -2845,11 +3237,9 @@ function randomCardSwipe() {
                         easing: 'linear',
                         fill: 'forwards'
                         });
-                    //nthChildWHI.classList.add('invis')
                 }
                 let nthChildGRA = box7.querySelector(`:nth-child(${s}).gray`)
                 if (nthChildGRA) {
-                    //nthChildGRA.classList.add('invis-border')
                     nthChildGRA.animate([
                         { borderColor: 'black' }
                         ], {
@@ -2860,7 +3250,6 @@ function randomCardSwipe() {
                 }
                 let nthChildRED = box7.querySelector(`:nth-child(${s}).red`)
                 if (nthChildRED) {
-                    //nthChildRED.classList.add('invis-border')
                     nthChildRED.animate([
                         { borderColor: 'black' }
                         ], {
@@ -2871,7 +3260,6 @@ function randomCardSwipe() {
                 }
                 let nthChildGRE = box7.querySelector(`:nth-child(${s}).green`)
                 if (nthChildGRE) {
-                    //nthChildGRE.classList.add('invis-border')
                     nthChildGRE.animate([
                         { borderColor: 'black' }
                         ], {
@@ -2882,7 +3270,6 @@ function randomCardSwipe() {
                 }
                 let nthChildBLU = box7.querySelector(`:nth-child(${s}).blue`)
                 if (nthChildBLU) {
-                    //nthChildBLU.classList.add('invis-border')
                     nthChildBLU.animate([
                         { borderColor: 'black' }
                         ], {
@@ -2906,11 +3293,9 @@ function randomCardSwipe() {
                             easing: 'linear',
                             fill: 'forwards'
                         });
-                        //nthChildWHI.classList.add('invis')
                     }
                     let nthChildGRA2 = box6.querySelector(`:nth-child(${s2}).gray`)
                     if (nthChildGRA2) {
-                        //nthChildGRA.classList.add('invis-border')
                         nthChildGRA2.animate([
                             { borderColor: 'black' }
                         ], {
@@ -2921,7 +3306,6 @@ function randomCardSwipe() {
                     }
                     let nthChildRED2 = box6.querySelector(`:nth-child(${s2}).red`)
                     if (nthChildRED2) {
-                        //nthChildRED.classList.add('invis-border')
                         nthChildRED2.animate([
                             { borderColor: 'black' }
                         ], {
@@ -2932,7 +3316,6 @@ function randomCardSwipe() {
                     }
                     let nthChildGRE2 = box6.querySelector(`:nth-child(${s2}).green`)
                     if (nthChildGRE2) {
-                        //nthChildGRE.classList.add('invis-border')
                         nthChildGRE2.animate([
                             { borderColor: 'black' }
                         ], {
@@ -2943,7 +3326,6 @@ function randomCardSwipe() {
                     }
                     let nthChildBLU2 = box6.querySelector(`:nth-child(${s2}).blue`)
                     if (nthChildBLU2) {
-                        //nthChildBLU.classList.add('invis-border')
                         nthChildBLU2.animate([
                             { borderColor: 'black' }
                         ], {
@@ -3062,7 +3444,6 @@ function randomCardSwipe() {
                     },6200)                 
                 })  
             },2500)
-        
     }
 
     function levels() {
@@ -3114,7 +3495,6 @@ function randomCardSwipe() {
         }
     }
 
-  
     const FULL_DASH_ARRAY= 283
     const WARNING_THRESHOLD = 10
     const ALERT_THRESHOLD = 5
@@ -3200,8 +3580,6 @@ function randomCardSwipe() {
     }
 
     function onTimesUp() {
-        
-        //stopEverything = true
         timeUp = true
 
         stopMatrixModeAni()
@@ -3375,8 +3753,6 @@ function randomCardSwipe() {
             },500)
         },750)
 
-        
-
         setTimeout(() => {
             gameOverObserver = true
             startButtonSound()
@@ -3422,7 +3798,6 @@ function randomCardSwipe() {
                 },500)
             }, 250) 
         })
-        
     }
     
     function calculateTimeFraction() {
@@ -3468,8 +3843,6 @@ function randomCardSwipe() {
             document.body.appendChild(rewatchButton)
         },4000)
 
-
-
         rewatchButton.addEventListener('mousedown', () => {
             let pressed = true
             localStorage.clear();
@@ -3504,50 +3877,8 @@ function randomCardSwipe() {
     rewatchIntro()
 }
 
-
-
 //a credits and options button that transistions the page and scrolls you up or down depnding on where you click... very hard... i think
 
 //seperate intro & tutorial from the actual game
 
 //tutorial can just be a giant transparent sheet over everything and the spotlight div has the exact opposite color to make it look like it becomes completely transparent. so black?
-
-/*
-    <!--Below is the custom SVG that I needed for the fractalnoise filter. I might consider deleting it and only using it for the intro animation. I'll find out soon if i will need it again.-->
-    <svg style="display: none;" id="svg">
-        <defs>
-            <filter id="noise">
-                <feTurbulence 
-                    baseFrequency="0.7,0.8"
-                    seed="0"
-                    type="fractalNoise"
-                    result="static"
-                >
-                 <animate 
-                        attributeName="seed"
-                        values="0;100;0"
-                        dur="40ms"
-                        repeatCount="indefinite"
-                ></animate>
-                </feTurbulence>
-                <feDisplacementMap 
-                in="SourceGraphic" 
-                in2="static" 
-                scale="20"
-                >
-                <animate 
-                attributeName="scale"
-                values="0;60;0"
-                dur="40ms"
-                repeatCount="indefinite"
-                ></animate>
-                />
-            </filter>
-        </defs>
-    </svg>
-    <script>
-        
-
-    </script>
-*/
-
