@@ -518,6 +518,27 @@ function tutorialButtonSound() {
     tutorialButtonPlay.play()
 }
 
+function clickRightHere() {
+    const clickHere = document.createElement('div')
+    clickHere.textContent = 'Click Here'
+    clickHere.classList.add('click-here')
+    clickHere.classList.add('click-here-in')
+    setTimeout(() => {
+        document.body.appendChild(clickHere)
+    },200)
+    setTimeout(() => {
+        window.addEventListener('mousedown', () => {
+        clickHere.classList.remove('click-here-in')
+        clickHere.classList.add('click-here-out')
+        setTimeout(() => {
+            document.body.removeChild(clickHere)
+            playGame()
+        },500)
+    }, {once: true})
+    },700)
+
+}
+
 //SOUNDS
 if (mobileAndTabletCheck()) {
     const onlyDesktop = document.body.createElement('div')
@@ -528,7 +549,7 @@ if (mobileAndTabletCheck()) {
     if (intro === false) {
         introAndTutorial()
     } else {
-        playGame()
+        clickRightHere()
     }
 
 }
@@ -1101,6 +1122,7 @@ function tutorialSheet() {
 }
 
 function playGame() {
+
     document.querySelector('link[href="styles.css"]')
 
     setTimeout(() => {

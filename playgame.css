@@ -3109,3 +3109,36 @@ body {
         opacity: 0;
     }
 }
+
+.click-here {
+    position: relative;
+    top: 430px;
+    font-size: 70px;
+    user-select: none;
+}
+
+.click-here-in {
+    animation: clickHereIn .45s ease-in-out forwards;
+}
+
+@keyframes clickHereIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.click-here-out {
+    animation: clickHereOut .45s ease-in-out forwards;
+}
+
+@keyframes clickHereOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
