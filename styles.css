@@ -161,10 +161,6 @@ body {
     
 }
 
-#short {
-    margin-bottom: 40px;
-}
-
 @keyframes fadeToBlack {
     5% {
         transform: scale(.8);
@@ -266,7 +262,29 @@ body {
     width: 400px;
     border-radius: 20px;
     box-shadow: 10px 10px 7px rgb(110, 110, 110);
-        position: absolute;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    user-select: none;
+}
+
+.animation-container3 {
+    font-size: 28px;
+    text-shadow: 10px 5px 5px rgb(180, 180, 180);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    border-style:solid double;
+    border-color: black;
+    border-width: 12px;
+    height: 500px;
+    padding-top: 50px;
+    padding-bottom: 0px;
+    width: 400px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 7px rgb(110, 110, 110);
+    position: absolute;
     top: 20%;
     left: 40%;
     user-select: none;
